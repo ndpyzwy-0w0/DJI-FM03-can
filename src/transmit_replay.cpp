@@ -52,6 +52,24 @@
 #define REPLAY_INCLUDE_0469 0
 #endif
 
+// How often to repeat the dial command. The captured cadence is about 10 ms, but
+// pushing a three frame packet that often, while the bus also carries motor traffic,
+// fills the TWAI transmit queue. When the queue is saturated twai_transmit corrupts
+// the driver's queue and panics (see the note above send_packet), which turned the
+// first S4 attempt into a crash loop. Space the repeats so the controller has time
+// to place each packet on the bus.
+#ifndef REPLAY_0469_INTERVAL_MS
+#define REPLAY_0469_INTERVAL_MS 150
+#endif
+
+// Transmit queue depth in replay mode. Kept deliberately shallow: the panic this
+// project keeps hitting happens inside twai_transmit when it has to enqueue behind a
+// full queue, so a shallower queue means fewer chances to enqueue into a saturated
+// one. Override per environment when testing.
+#ifndef TX_QUEUE_LEN
+#define TX_QUEUE_LEN 1
+#endif
+
 #ifndef LED_RGB_GPIO
 #define LED_RGB_GPIO 48
 #endif
@@ -132,7 +150,7 @@ static bool set_mode(bool replay) {
     twai_general_config_t general = TWAI_GENERAL_CONFIG_DEFAULT(
         (gpio_num_t)PIN_TX, (gpio_num_t)PIN_RX,
         replay ? TWAI_MODE_NORMAL : TWAI_MODE_LISTEN_ONLY);
-    general.tx_queue_len = replay ? 8 : 0;
+    general.tx_queue_len = replay ? TX_QUEUE_LEN : 0;
     general.rx_queue_len = 128;
     twai_timing_config_t timing = REPLAY_TIMING();
     twai_filter_config_t filter = TWAI_FILTER_CONFIG_ACCEPT_ALL();
@@ -263,10 +281,10 @@ static void run_replay_window() {
             last_send = millis();
             bool ok = send_m0001_request();
 #if REPLAY_INCLUDE_0469
-            // The dial command runs at the captured ~10 ms cadence, independent of
-            // the slower bring-up request.
+            // The dial command is repeated at a conservative cadence; see the note
+            // on REPLAY_0469_INTERVAL_MS for why it is not the captured 10 ms.
             static unsigned long last_dial = 0;
-            if (millis() - last_dial >= 10) {
+            if (millis() - last_dial >= REPLAY_0469_INTERVAL_MS) {
                 last_dial = millis();
                 ok = send_m0469() && ok;
             }
