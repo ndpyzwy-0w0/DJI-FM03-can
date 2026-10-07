@@ -1,0 +1,5 @@
+* text=auto
+captures/*.log -text
+*.bin -text
+*.png -text
+*.cmd text eol=crlf

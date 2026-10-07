@@ -1,0 +1,142 @@
+{
+  "raw_log": "captures\\20261007_154446_862533_capture.log",
+  "user_action": "dial moved once in one direction; direction and action time not recorded",
+  "method": "concatenate data bytes separately for each CAN ID; scan 0x55 headers and require CRC8 and CRC16 to pass",
+  "reference": "https://github.com/o-gs/dji-firmware-tools/blob/master/comm_dat2pcap.py",
+  "crc8": {
+    "init": "0x77",
+    "reflected_polynomial": "0x8C"
+  },
+  "crc16": {
+    "init": "0x3692",
+    "reflected_polynomial": "0x8408"
+  },
+  "can_streams": {
+    "0x106": {
+      "crc_valid_packets": 1581,
+      "crc_invalid_candidates": 0,
+      "packet_lengths": {
+        "58": 1520,
+        "16": 61
+      },
+      "groups": {
+        "04->F1 flags=00 cmd=04:05": 1520,
+        "04->C9 flags=00 cmd=04:10": 61
+      },
+      "unique_payloads": {
+        "04->F1 flags=00 cmd=04:05": 1520,
+        "04->C9 flags=00 cmd=04:10": 1
+      },
+      "sample_packets": {
+        "04->F1 flags=00 cmd=04:05": "55 3a 04 70 04 f1 f2 ee 00 04 05 16 00 28 02 48 f9 86 00 f5 ff 00 01 52 00 7e 0b cd bc 00 00 23 02 81 03 e8 47 90 3d 4d 93 49 3d b1 08 ec be 30 1b 62 bf 00 00 00 00 00 a7 38",
+        "04->C9 flags=00 cmd=04:10": "55 10 04 56 04 c9 85 07 00 04 10 7a 01 01 ff 7f"
+      },
+      "remaining_bytes": 40
+    },
+    "0x201": {
+      "crc_valid_packets": 3942,
+      "crc_invalid_candidates": 0,
+      "packet_lengths": {
+        "19": 3030,
+        "28": 304,
+        "21": 304,
+        "26": 304
+      },
+      "groups": {
+        "E5->52 flags=00 cmd=04:69": 3030,
+        "DF->52 flags=00 cmd=04:2F": 912
+      },
+      "unique_payloads": {
+        "E5->52 flags=00 cmd=04:69": 428,
+        "DF->52 flags=00 cmd=04:2F": 5
+      },
+      "sample_packets": {
+        "E5->52 flags=00 cmd=04:69": "55 13 04 03 e5 52 c3 97 00 04 69 0f 04 08 19 00 00 48 1b",
+        "DF->52 flags=00 cmd=04:2F": "55 1c 04 1b df 52 94 7b 00 04 2f 09 00 00 00 00 00 80 00 00 00 00 00 00 00 00 ff ec"
+      },
+      "remaining_bytes": 0
+    },
+    "0x232": {
+      "crc_valid_packets": 2128,
+      "crc_invalid_candidates": 0,
+      "packet_lengths": {
+        "16": 608,
+        "28": 608,
+        "21": 608,
+        "26": 304
+      },
+      "groups": {
+        "BF->32 flags=20 cmd=24:20": 608,
+        "BF->32 flags=00 cmd=04:2F": 608,
+        "BF->52 flags=00 cmd=04:2F": 912
+      },
+      "unique_payloads": {
+        "BF->32 flags=20 cmd=24:20": 2,
+        "BF->32 flags=00 cmd=04:2F": 2,
+        "BF->52 flags=00 cmd=04:2F": 5
+      },
+      "sample_packets": {
+        "BF->32 flags=20 cmd=24:20": "55 10 04 56 bf 32 8e 7b 20 24 20 5a 41 01 9e d6",
+        "BF->32 flags=00 cmd=04:2F": "55 1c 04 1b bf 32 93 7b 00 04 2f 09 00 00 00 00 00 80 00 00 00 00 00 00 00 00 7a 01",
+        "BF->52 flags=00 cmd=04:2F": "55 1c 04 1b bf 52 94 7b 00 04 2f 09 00 00 00 00 00 80 00 00 00 00 00 00 00 00 c1 63"
+      },
+      "remaining_bytes": 0
+    },
+    "0x503": {
+      "crc_valid_packets": 3030,
+      "crc_invalid_candidates": 0,
+      "packet_lengths": {
+        "19": 3030
+      },
+      "groups": {
+        "E5->BF flags=00 cmd=04:69": 3030
+      },
+      "unique_payloads": {
+        "E5->BF flags=00 cmd=04:69": 428
+      },
+      "sample_packets": {
+        "E5->BF flags=00 cmd=04:69": "55 13 04 03 e5 bf c2 97 00 04 69 0f 04 08 19 00 00 06 16"
+      },
+      "remaining_bytes": 0
+    },
+    "0x504": {
+      "crc_valid_packets": 3952,
+      "crc_invalid_candidates": 0,
+      "packet_lengths": {
+        "28": 912,
+        "21": 608,
+        "26": 608,
+        "19": 304,
+        "15": 304,
+        "20": 304,
+        "16": 304,
+        "13": 608
+      },
+      "groups": {
+        "BF->E5 flags=00 cmd=04:2F": 1824,
+        "BF->02 flags=00 cmd=04:2F": 304,
+        "BF->52 flags=00 cmd=04:2F": 912,
+        "BF->E5 flags=80 cmd=04:2F": 304,
+        "BF->04 flags=00 cmd=00:0E": 304,
+        "BF->E5 flags=00 cmd=00:0E": 304
+      },
+      "unique_payloads": {
+        "BF->E5 flags=00 cmd=04:2F": 8,
+        "BF->02 flags=00 cmd=04:2F": 1,
+        "BF->52 flags=00 cmd=04:2F": 5,
+        "BF->E5 flags=80 cmd=04:2F": 1,
+        "BF->04 flags=00 cmd=00:0E": 1,
+        "BF->E5 flags=00 cmd=00:0E": 1
+      },
+      "sample_packets": {
+        "BF->E5 flags=00 cmd=04:2F": "55 1c 04 1b bf e5 90 7b 00 04 2f 09 00 00 00 00 00 80 00 00 00 00 00 00 00 00 10 5e",
+        "BF->02 flags=00 cmd=04:2F": "55 1c 04 1b bf 02 92 7b 00 04 2f 09 00 00 00 00 00 80 00 00 00 00 00 00 00 00 39 6d",
+        "BF->52 flags=00 cmd=04:2F": "55 1c 04 1b bf 52 94 7b 00 04 2f 09 00 00 00 00 00 80 00 00 00 00 00 00 00 00 c1 63",
+        "BF->E5 flags=80 cmd=04:2F": "55 14 04 6d bf e5 9c 7b 80 04 2f 00 1a 00 00 00 00 00 05 7a",
+        "BF->04 flags=00 cmd=00:0E": "55 0d 04 33 bf 04 9e 7b 00 00 0e 6e b1",
+        "BF->E5 flags=00 cmd=00:0E": "55 0d 04 33 bf e5 9f 7b 00 00 0e 12 3c"
+      },
+      "remaining_bytes": 0
+    }
+  }
+}

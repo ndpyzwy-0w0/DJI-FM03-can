@@ -1,0 +1,11 @@
+.vs/
+.vscode/
+.pio/
+build/
+dist/
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+backups/

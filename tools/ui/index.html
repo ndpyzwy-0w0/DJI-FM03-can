@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>FM03 抓包上位机</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <main>
+    <header>
+      <div><span class="eyebrow">RS3 → FM03 · CAN MONITOR</span><h1>FM03 抓包上位机</h1><p class="intro">开始监听，观察数据，保留每一份原始记录。</p></div>
+      <div class="badge" id="phase" role="status"><span class="dot"></span><span id="phaseText">正在连接上位机</span></div>
+    </header>
+
+    <section class="controls" aria-label="抓包控制">
+      <div class="field"><label for="port">串口设备</label><div class="port-row"><select id="port" aria-label="串口设备"><option value="">正在读取串口…</option></select><button id="refresh" class="quiet" title="重新检测串口">刷新</button></div></div>
+      <div class="field"><label for="label">本次场景</label><select id="label"><option value="idle">静止</option><option value="slow_forward">慢速正转</option><option value="slow_reverse">慢速反转</option><option value="fast_forward">快速正转</option><option value="fast_reverse">快速反转</option><option value="calibration">校准</option><option value="capture">其他</option></select></div>
+      <div class="actions"><button id="start" class="primary" disabled>开始抓包</button><button id="stop" disabled>停止并保存</button></div>
+    </section>
+
+    <div id="notice" class="notice" role="status">选择串口后点击开始。未接 CAN 总线时，可以先检查固件状态。</div>
+
+    <section class="metrics" aria-label="实时抓包指标">
+      <div class="metric featured"><span>本次收到</span><strong id="frames">0</strong><small>CAN 帧</small></div>
+      <div class="metric"><span>实时接收</span><strong id="fps">0</strong><small>帧 / 秒 · 最近 1 秒</small></div>
+      <div class="metric"><span>抓包时长</span><strong id="elapsed">00:00</strong><small id="bytes">已保存 0 B</small></div>
+      <div class="metric"><span>不同 CAN ID</span><strong id="unique">0</strong><small id="bitrate">CAN 速率待确认</small></div>
+    </section>
+
+    <section class="health" aria-label="接收完整性">
+      <div><span>固件丢帧增量</span><strong id="drops">—</strong></div>
+      <div><span>序号缺口</span><strong id="gaps">0</strong></div>
+      <div><span>总线错误增量</span><strong id="errors">—</strong></div>
+      <div><span>固件状态</span><strong id="firmware">尚未读取</strong></div>
+      <p id="healthDetail">丢帧与总线错误以本次收到的首条固件状态为基准。</p>
+    </section>
+
+    <section class="workspace">
+      <div class="panel live-panel">
+        <div class="panel-title"><h2>实时帧</h2><span>最新 150 帧 · 新帧在上</span></div>
+        <div class="table-scroll"><table><thead><tr><th>设备时间 / 秒</th><th>序号</th><th>CAN ID</th><th>帧类型</th><th>DLC</th><th>数据 HEX</th></tr></thead><tbody id="frameRows"></tbody></table>
+        <div class="empty" id="frameEmpty"><div class="empty-mark">CAN</div><strong>等待第一帧</strong><p>连接正常工作的 RS3 ↔ FM03 链路后，数据会显示在这里。</p></div></div>
+      </div>
+      <div class="panel id-panel"><div class="panel-title"><h2>ID 概览</h2><span id="idCount">0 个</span></div><div class="id-scroll" id="idRows"></div><div class="empty compact" id="idEmpty"><p>收到数据后，按帧数排序。</p></div></div>
+    </section>
+
+    <section class="save-panel">
+      <div><h2 id="saveTitle">原始日志自动保存</h2><p id="savePath">正在读取保存位置…</p><small>关闭页面不会停止抓包，请先点击「停止并保存」。停止后会释放串口。</small></div>
+      <div class="downloads"><a id="downloadLog" class="button" hidden>下载原始日志</a><a id="downloadSummary" class="button" hidden>下载摘要</a></div>
+    </section>
+    <details><summary>查看固件消息与计数详情</summary><pre id="details">暂无固件消息。</pre></details>
+    <footer><span>本机串口 921600 baud · 仅监听</span><span>显示的设备时间为驱动取帧时间。</span></footer>
+  </main>
+</body>
+</html>

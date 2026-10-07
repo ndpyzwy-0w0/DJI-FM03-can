@@ -1,0 +1,39 @@
+{
+  "port": "COM17",
+  "serial_baud": 921600,
+  "label": "no_bus_startup",
+  "started_at": "2026-10-07T15:19:52.378136+08:00",
+  "elapsed_seconds": 5.235,
+  "interrupted": false,
+  "raw_log": "J:\\New soft project\\FM03\\captures\\20261007_151952_378136_no_bus_startup.log",
+  "frames": 0,
+  "ids": {},
+  "sequence_gaps": 0,
+  "sequence_resets": 0,
+  "non_frame_lines": 0,
+  "first_t_us": null,
+  "last_t_us": null,
+  "status_first": {
+    "t_us": 15079824,
+    "bitrate": 1000000,
+    "rx": 0,
+    "logger_dropped": 0,
+    "rx_missed": 0,
+    "rx_overrun": 0,
+    "bus_errors": 0,
+    "pending": 0,
+    "logger_pending": 0
+  },
+  "status_last": {
+    "t_us": 20079784,
+    "bitrate": 1000000,
+    "rx": 0,
+    "logger_dropped": 0,
+    "rx_missed": 0,
+    "rx_overrun": 0,
+    "bus_errors": 0,
+    "pending": 0,
+    "logger_pending": 0
+  },
+  "firmware_errors": []
+}
