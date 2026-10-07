@@ -62,12 +62,18 @@
 #define REPLAY_0469_INTERVAL_MS 150
 #endif
 
-// Transmit queue depth in replay mode. Kept deliberately shallow: the panic this
-// project keeps hitting happens inside twai_transmit when it has to enqueue behind a
-// full queue, so a shallower queue means fewer chances to enqueue into a saturated
-// one. Override per environment when testing.
+// Transmit queue depth in replay mode. Kept at ZERO on purpose.
+//
+// This is the finding that matters most in this file: with tx_queue_len > 0,
+// twai_transmit calls xQueueSend on the driver's TX queue, and that path panics on
+// this setup (uxListRemove <- xTaskRemoveFromEventList <- xQueueGenericSend <-
+// twai_transmit). Every crashing variant in this project had a non-zero queue; the
+// one configuration that runs indefinitely without crashing (only the 00:01 request)
+// had tx_queue_len == 0, in which case twai_transmit never enqueues and simply fails
+// if the transmit buffer is occupied. send_packet therefore checks the in-flight
+// count first and only transmits when the buffer is free.
 #ifndef TX_QUEUE_LEN
-#define TX_QUEUE_LEN 1
+#define TX_QUEUE_LEN 0
 #endif
 
 // Controller mode used while replaying.
@@ -194,6 +200,21 @@ static bool send_packet(uint32_t identifier, const uint8_t *packet,
     if (tx_backoff_ticks) {
         return false;
     }
+    // Wait until the controller has nothing in flight before queueing more. With a
+    // disabled TX queue (tx_queue_len = 0) twai_transmit cannot enqueue behind a busy
+    // buffer - it would just fail - so the only safe pattern is to check first. This
+    // also keeps us out of the FreeRTOS queue wait list, which is where the crash
+    // described above send_packet happens.
+    for (int spin = 0; spin < 50; ++spin) {
+        twai_status_info_t status{};
+        if (twai_get_status_info(&status) != ESP_OK) {
+            return false;
+        }
+        if (status.msgs_to_tx == 0) {
+            break;
+        }
+        delay(1);
+    }
     const uint8_t *cursor = packet;
     for (uint8_t index = 0; index < frame_count; ++index) {
         twai_message_t message{};
@@ -205,7 +226,7 @@ static bool send_packet(uint32_t identifier, const uint8_t *packet,
         for (uint8_t byte = 0; byte < frame_lengths[index]; ++byte) {
             message.data[byte] = cursor[byte];
         }
-        if (twai_transmit(&message, pdMS_TO_TICKS(20)) != ESP_OK) {
+        if (twai_transmit(&message, 0) != ESP_OK) {
             tx_backoff_ticks = 20;   // ~200 ms at the 10 ms polling step
             return false;
         }
