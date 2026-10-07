@@ -45,6 +45,13 @@
 #define REPLAY_AUTO_START 0
 #endif
 
+// Stage 4 adds the periodic dial command (value zero) on top of the bring-up
+// request, to test whether that stream is what the motor needs to report a healthy
+// link.
+#ifndef REPLAY_INCLUDE_0469
+#define REPLAY_INCLUDE_0469 0
+#endif
+
 #ifndef LED_RGB_GPIO
 #define LED_RGB_GPIO 48
 #endif
@@ -71,6 +78,18 @@ static const unsigned long LONG_PRESS_MS = 2000;
 static const uint8_t M0001_REQUEST[13] = {
     0x55, 0x0d, 0x04, 0x33, 0xe5, 0xbf, 0x00, 0x00, 0x40, 0x00, 0x01, 0xdd, 0xfe,
 };
+
+// S4: the dial command, replayed with the dial value at zero (nothing commanded to
+// move) so the test can show whether this stream alone changes the motor's reported
+// state. Recovered from captures/20261007_154729_002678_idle.log as CAN 0x503,
+// logical E5->BF, 19 bytes in three CAN frames; the sequence number was 0x1796
+// there and is re-stamped to 0 here to match the bring-up convention, with both
+// CRCs recomputed and verified.
+static const uint8_t M0469_PACKET[19] = {
+    0x55, 0x13, 0x04, 0x03, 0xe5, 0xbf, 0x00, 0x00, 0x00, 0x04, 0x69,
+    0x0f, 0x04, 0x08, 0x19, 0x00, 0x00, 0x6b, 0x56,
+};
+static const uint8_t M0469_FRAMES[3] = {8, 8, 3};
 
 // --- State ---------------------------------------------------------------------
 
@@ -128,19 +147,50 @@ static bool set_mode(bool replay) {
     return true;
 }
 
-// One 13 byte CAN frame replayed verbatim. No self reception: we are talking to the
-// motor, not to ourselves, so we do not want these frames in our own receive log.
-static bool send_m0001_request() {
-    twai_message_t message{};
-    message.identifier = 0x503;
-    message.extd = 0;
-    message.rtr = 0;
-    message.self = 0;
-    message.data_length_code = sizeof(M0001_REQUEST);
-    for (unsigned index = 0; index < sizeof(M0001_REQUEST); ++index) {
-        message.data[index] = M0001_REQUEST[index];
+// NOTE ON AN IDF DEFECT: calling twai_transmit() again immediately after it fails
+// with a full transmit queue has been observed to corrupt the TWAI queue's internal
+// list and panic the board (backtrace: twai_transmit -> xQueueGenericSend ->
+// xTaskRemoveFromEventList -> uxListRemove). Both failures seen in this project had
+// that shape. So a failed transmit is never retried immediately: this counter makes
+// the caller back off, and nothing is sent while it is non-zero.
+static uint32_t tx_backoff_ticks = 0;
+
+static bool send_packet(uint32_t identifier, const uint8_t *packet,
+                        const uint8_t *frame_lengths, uint8_t frame_count) {
+    if (tx_backoff_ticks) {
+        return false;
     }
-    return twai_transmit(&message, pdMS_TO_TICKS(50)) == ESP_OK;
+    const uint8_t *cursor = packet;
+    for (uint8_t index = 0; index < frame_count; ++index) {
+        twai_message_t message{};
+        message.identifier = identifier;
+        message.extd = 0;
+        message.rtr = 0;
+        message.self = 0;
+        message.data_length_code = frame_lengths[index];
+        for (uint8_t byte = 0; byte < frame_lengths[index]; ++byte) {
+            message.data[byte] = cursor[byte];
+        }
+        if (twai_transmit(&message, pdMS_TO_TICKS(20)) != ESP_OK) {
+            tx_backoff_ticks = 20;   // ~200 ms at the 10 ms polling step
+            return false;
+        }
+        cursor += frame_lengths[index];
+    }
+    return true;
+}
+
+// The 13 byte request occupies two CAN frames, not one: frame 1 is the first eight
+// bytes, frame 2 the remaining five. Putting all 13 bytes in one frame overruns
+// twai_message_t.data, which is only eight bytes.
+static bool send_m0001_request() {
+    static const uint8_t lengths[2] = {8, 5};
+    return send_packet(0x503, M0001_REQUEST, lengths, 2);
+}
+
+// The dial command as its three real CAN frames.
+static bool send_m0469() {
+    return send_packet(0x503, M0469_PACKET, M0469_FRAMES, 3);
 }
 
 static bool button_down() {
@@ -195,6 +245,9 @@ static void run_replay_window() {
     unsigned long rejected = 0;
     bool reported_rejection = false;
     while (mode.load() == 1 && millis() - started < (unsigned long)REPLAY_SECONDS * 1000UL) {
+        if (tx_backoff_ticks) {
+            --tx_backoff_ticks;
+        }
         bool down = button_down();
         if (ignore_button_until_release) {
             if (!down) {
@@ -208,7 +261,17 @@ static void run_replay_window() {
         }
         if (millis() - last_send >= REPLAY_INTERVAL_MS) {
             last_send = millis();
-            if (send_m0001_request()) {
+            bool ok = send_m0001_request();
+#if REPLAY_INCLUDE_0469
+            // The dial command runs at the captured ~10 ms cadence, independent of
+            // the slower bring-up request.
+            static unsigned long last_dial = 0;
+            if (millis() - last_dial >= 10) {
+                last_dial = millis();
+                ok = send_m0469() && ok;
+            }
+#endif
+            if (ok) {
                 ++replay_sends;
                 reported_rejection = false;
             } else {

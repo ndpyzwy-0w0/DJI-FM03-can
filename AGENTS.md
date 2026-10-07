@@ -8,6 +8,16 @@
 - 检查 `git status --short --branch`，保留用户及其他 agent 的未提交修改。
 - 串口号、进程和页面状态是动态信息；使用前核实，勿凭旧记录重烧录。
 
+## 固件已知缺陷与规避（写代码前必读）
+
+- **IDF 缺陷：`twai_transmit()` 在发送队列饱和、连续被拒时会损坏 TWAI 队列内部链表并 panic。** 两次崩溃回溯形状相同：
+  `uxListRemove <- xTaskRemoveFromEventList <- xQueueGenericSend <- twai_transmit (twai.c:574) <- 调用方`。
+  在本项目里发生于"以 10 ms 间隔狂发、队列持续满"的工况（曾造成 34 次 panic 的崩溃循环）。
+  **规避：任何发送失败后必须退避（本项目用约 200 ms），退避期间不得再调用 `twai_transmit`。**
+- **CAN 单帧数据上限 8 字节。** 写回放固件时务必按真实分片发送：本项目里 `00:01` 请求是 13 字节 = **8+5 两帧**、`04:69` 是 19 字节 = **8+8+3 三帧**。把 13 字节塞进一个 `twai_message_t` 会造成 `Stack smashing protect failure`（本 agent 已犯过一次）。
+- **不要用软件 RTS 复位板子**：本 agent 曾因此把 ESP32 留在无输出的异常状态。需要复位时请用户按键，或直接重新烧录（esptool 自己处理复位时序）。
+- **`pio device monitor` 会拉 DTR/RTS 使板子复位**，不能用于"不打扰"的观察；采集工具先置 DTR/RTS=false 再开串口才是对的。
+
 ## 抓包前置检查（每次有效实验都做）
 
 抓包工具看不到 FM03 面板灯，也看不到两端电源状态，这些只能由用户提供。缺一项就可能把记录变成无法解读的废数据——本项目已因此返工过。采集前逐项确认，并把答案写进 `captures/INDEX.md`：
