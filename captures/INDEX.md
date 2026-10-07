@@ -1,5 +1,7 @@
 # 抓包索引
 
+对话措辞与具体文件的完整对应见根目录 [CAPTURE_FILE_MAP.md](<J:/New soft project/FM03/CAPTURE_FILE_MAP.md>)（2026-10-08新增）：覆盖25份captures原始日志、.pio中的S1/纯监听记录及诊断文本，注明哪些文件没有找到独立原件。此索引的旧计数有历史口径差异，完整行/尾部边界以新对应文档及原始文件复核为准。
+
 原始 `.log` 不编辑、不覆盖。同名 `.json` 是采集摘要；分析输出另存为 `.analysis.json`、`.vs-idle.json` 或 `.protocol.json`。标签只表明采集时的选择，实际动作以用户确认和本索引为准。
 
 ## 有效协议实验
