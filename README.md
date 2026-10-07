@@ -177,7 +177,7 @@ PowerShell（项目目录）：
 
 ```powershell
 .\.venv\Scripts\python.exe tools\check_stability.py --self-check
-.\.venv\Scripts\python.exe tools\check_stability.py captures\20261007_154729_002678_idle.log captures\20261007_185515_591414_slow_forward.log --markdown reports\findings.md
+.\.venv\Scripts\python.exe tools\check_stability.py captures\20261007_154729_002678_idle.log captures\20261007_185515_591414_slow_forward.log --markdown reports\20261007_stability_findings.md
 ```
 
 9 份健康记录共 **75844 包、27 条路由**，与 `protocol_catalog.json` 总数相等。结论：
