@@ -18,8 +18,36 @@
 
 #include <Arduino.h>
 #include <atomic>
+#include <cstring>
 #include "driver/twai.h"
 #include "esp_timer.h"
+
+// --- DUML checksums -----------------------------------------------------------
+//
+// Same algorithm as tools/analyze_protocol.py, so the bytes this firmware emits can
+// be checked against the captures with the project's own tools. The header CRC8 uses
+// init 0x77 / reflected polynomial 0x8C over the first three bytes; the packet CRC16
+// uses init 0x3692 / reflected polynomial 0x8408 over the whole packet except its
+// trailing two bytes, stored little endian.
+static uint16_t dji_crc(const uint8_t *data, unsigned length, uint16_t initial,
+                        uint16_t polynomial) {
+    uint16_t value = initial;
+    for (unsigned index = 0; index < length; ++index) {
+        value ^= data[index];
+        for (int bit = 0; bit < 8; ++bit) {
+            value = (value & 1) ? (uint16_t)((value >> 1) ^ polynomial) : (value >> 1);
+        }
+    }
+    return value;
+}
+
+static uint8_t crc8(const uint8_t *data, unsigned length) {
+    return (uint8_t)dji_crc(data, length, 0x77, 0x8C);
+}
+
+static uint16_t crc16(const uint8_t *data, unsigned length) {
+    return dji_crc(data, length, 0x3692, 0x8408);
+}
 
 #ifndef REPLAY_STAGE
 #define REPLAY_STAGE 1
@@ -120,15 +148,46 @@ static const uint8_t M0001_REQUEST[13] = {
 
 // S4: the dial command, replayed with the dial value at zero (nothing commanded to
 // move) so the test can show whether this stream alone changes the motor's reported
-// state. Recovered from captures/20261007_154729_002678_idle.log as CAN 0x503,
-// logical E5->BF, 19 bytes in three CAN frames; the sequence number was 0x1796
-// there and is re-stamped to 0 here to match the bring-up convention, with both
-// CRCs recomputed and verified.
-static const uint8_t M0469_PACKET[19] = {
-    0x55, 0x13, 0x04, 0x03, 0xe5, 0xbf, 0x00, 0x00, 0x00, 0x04, 0x69,
-    0x0f, 0x04, 0x08, 0x19, 0x00, 0x00, 0x6b, 0x56,
+// state.
+//
+// Recovered from captures/20261007_154729_002678_idle.log. RS3 emits this command on
+// TWO routes per period, differing only in the logical destination and the CAN ID:
+//
+//   0x503  E5->BF   (to the motor)
+//   0x201  E5->52
+//
+// Both carry the same payload. The captured sequence numbers start at 6038 on the
+// 0x503 route and 6039 on the 0x201 route, and each route advances its own counter by
+// two per packet. The bytes below therefore keep their captured sequence numbers and
+// are re-stamped per send with an advancing sequence, recomputing both CRCs.
+static const uint8_t M0469_TO_MOTOR[19] = {
+    0x55, 0x13, 0x04, 0x03, 0xe5, 0xbf, 0x96, 0x17, 0x00, 0x04, 0x69,
+    0x0f, 0x04, 0x08, 0x19, 0x00, 0x00, 0xe5, 0x56,
 };
+static const uint8_t M0469_TO_PEER[19] = {
+    0x55, 0x13, 0x04, 0x03, 0xe5, 0x52, 0x97, 0x17, 0x00, 0x04, 0x69,
+    0x0f, 0x04, 0x08, 0x19, 0x00, 0x00, 0xab, 0x5b,
+};
+// Both are 19 bytes in three CAN frames: 8 + 8 + 3.
 static const uint8_t M0469_FRAMES[3] = {8, 8, 3};
+
+// Per-route sequence counters, seeded from the captured values and advancing by two
+// per packet, matching the observed cadence.
+static uint16_t seq_to_motor = 6038;
+static uint16_t seq_to_peer = 6039;
+
+// Copy a template packet and re-stamp it with a new sequence, recomputing the header
+// CRC8 and the packet CRC16. Without this the frames carry sequence 0 forever, and a
+// receiver that expects the sequence to advance can treat every frame as a duplicate.
+static void stamp_packet(const uint8_t *source, uint16_t sequence, uint8_t *out) {
+    memcpy(out, source, 19);
+    out[6] = (uint8_t)(sequence & 0xFF);
+    out[7] = (uint8_t)(sequence >> 8);
+    out[3] = crc8(out, 3);
+    uint16_t packet_crc = crc16(out, 17);
+    out[17] = (uint8_t)(packet_crc & 0xFF);
+    out[18] = (uint8_t)(packet_crc >> 8);
+}
 
 // --- State ---------------------------------------------------------------------
 
@@ -243,9 +302,18 @@ static bool send_m0001_request() {
     return send_packet(0x503, M0001_REQUEST, lengths, 2);
 }
 
-// The dial command as its three real CAN frames.
+// The dial command as its three real CAN frames, on both routes RS3 uses. Each route
+// advances its own sequence counter, so the frames are re-stamped every time.
 static bool send_m0469() {
-    return send_packet(0x503, M0469_PACKET, M0469_FRAMES, 3);
+    uint8_t motor[19];
+    uint8_t peer[19];
+    stamp_packet(M0469_TO_MOTOR, seq_to_motor, motor);
+    stamp_packet(M0469_TO_PEER, seq_to_peer, peer);
+    bool ok = send_packet(0x503, motor, M0469_FRAMES, 3);
+    ok = send_packet(0x201, peer, M0469_FRAMES, 3) && ok;
+    seq_to_motor = (uint16_t)(seq_to_motor + 2);
+    seq_to_peer = (uint16_t)(seq_to_peer + 2);
+    return ok;
 }
 
 static bool button_down() {
