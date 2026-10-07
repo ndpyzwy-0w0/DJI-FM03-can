@@ -70,6 +70,21 @@
 #define TX_QUEUE_LEN 1
 #endif
 
+// Controller mode used while replaying.
+//
+// NORMAL waits for an acknowledgement on every frame it sends. On this bench the bus
+// holds only the focus motor, which does not acknowledge our frames, so each send
+// blocks until the timeout and the transmit queue backs up. That backlog is what
+// leads into the twai_transmit panic described above send_packet.
+//
+// NO_ACK does not wait for an acknowledgement at all: the controller treats a frame
+// as sent once it is on the wire. That removes the queue backlog this project keeps
+// hitting, at the cost of not being able to tell whether the motor accepted a frame
+// (which we never could anyway, since it does not acknowledge us).
+#ifndef REPLAY_USE_NO_ACK
+#define REPLAY_USE_NO_ACK 0
+#endif
+
 #ifndef LED_RGB_GPIO
 #define LED_RGB_GPIO 48
 #endif
@@ -149,7 +164,8 @@ static bool set_mode(bool replay) {
     twai_driver_uninstall();
     twai_general_config_t general = TWAI_GENERAL_CONFIG_DEFAULT(
         (gpio_num_t)PIN_TX, (gpio_num_t)PIN_RX,
-        replay ? TWAI_MODE_NORMAL : TWAI_MODE_LISTEN_ONLY);
+        replay ? (REPLAY_USE_NO_ACK ? TWAI_MODE_NO_ACK : TWAI_MODE_NORMAL)
+               : TWAI_MODE_LISTEN_ONLY);
     general.tx_queue_len = replay ? TX_QUEUE_LEN : 0;
     general.rx_queue_len = 128;
     twai_timing_config_t timing = REPLAY_TIMING();
