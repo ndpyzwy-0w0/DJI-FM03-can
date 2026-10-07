@@ -467,3 +467,13 @@
 - 约束记录：两模块**绝不能同时接总线**（会成 40Ω）；**绝不能用 `loopback_test` 固件配接在真实总线上的收发器**（该固件需自发自收、总线必须空）。
 - **更正本 agent 此前说法**：M4 回环自检**不需要短接任何杜邦线**。SN65HVD230 内部即把 TX 回送到 RX，控制器 RX 同时反映收发器驱动电平与总线电平，故 `NO_ACK` + 自发自收即可收到自己的帧。**唯一要求：总线为空**。已改写 `src/loopback_test.cpp` 的注释与失败提示，并重新编译 `loopback_test` 通过（无 warning，Flash 281889）。
 - 本轮未烧录、未接线、未发送；只改代码注释与文档。
+
+## 2026-10-08 07:30 北京时间 — M4 通过；根因是本 agent 固件缺自发自收标志；M5 发送固件就绪
+
+- 用户授权后烧录 `loopback_test` 并运行。**首次 FAIL**（STEP1 即 `sent=1 received_ok=0`），用户换用带 120Ω 的模块 B 后**仍 FAIL** → 证明"需要 120Ω 终端"这个诊断**证据不足**，本 agent 的该判断被推翻。
+- 查官方 [IDF TWAI 自检示例](https://github.com/espressif/esp-idf/blob/master/examples/peripherals/twai/twai_self_test/README.md)：要求 `NO_ACK` 模式 **与** Self Reception Requests **同时**具备。本 agent 固件只用了前者、**未设 `TWAI_MSG_FLAG_SELF`**，控制器因此从不把自己发的帧排入接收队列。**在三处发送路径加 `self = 1` 后一次通过。**
+- **M4 最终 PASS**：`STEP1 received_ok=1`、**`STEP2 bringup_request received_ok=1/1 ok=1`**、`STEP3 burst 100/100`、`RESULT PASS`，各项错误计数为 0。STEP2 即把 `00:01` 请求 13 字节按其两个真实 CAN 帧（8+5）发出并原样收回（含两个 CRC）。→ **M3 发送侧最难的一环已被证明可行。**
+- 已核实固件字节：`crc8=0x33`、`crc16=0xfedd`；两帧切分 `55 0d 04 33 e5 bf 00 00` + `40 00 01 dd fe`。
+- **M5 发送固件已写好（未烧录、未发送）**：新增 `src/transmit_replay.cpp` + 环境 `replay_s1`。安全设计：开机恒定 LISTEN ONLY（蓝灯）；**长按 BOOT 2 秒**才进入有界回放窗口（15 秒、每 500 ms 一帧）；窗口内再按即停；窗口结束自动回 LISTEN ONLY；回放期间红灯；边发边记录电机回帧。S1 只发 `00:01` 空请求（CAN `0x503`、序号用实测的 0、`self=0`）。
+- 隔离验证：三个环境各自只编译自己的源文件；**`src/main.cpp` 的 `twai_transmit` 仍为 0**。
+- **M5 执行前提（待用户确认）**：总线只接电机（适配器单独供 5V）、RS3 断电且数据线不入总线、用带 120Ω 的模块 B。本 agent 未烧录、未发送。

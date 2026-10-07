@@ -3,10 +3,18 @@
 // Purpose: prove the ESP32 can build and put correctly formed CAN frames on the
 // wire *before* anything is connected to the focus motor.
 //
-// How the loop closes: an SN65HVD230 feeds TX back to RX internally, and the
-// controller's RX reflects both what the transceiver is driving and what the bus
-// carries. So a controller in NO_ACK mode with self reception enabled receives its
-// own frames. No jumper between the transceiver's D and R pins is required.
+// How the loop closes: controller -> transceiver drives the CANH/CANL differential
+// pair -> the same transceiver's receiver monitors that pair -> R -> controller.
+//
+// Two things are required, per the ESP-IDF TWAI self-test example
+// (examples/peripherals/twai/twai_self_test): NO_ACK mode AND a self reception
+// request on every transmitted message (TWAI_MSG_FLAG_SELF). MEASURED 2026-10-08:
+// without the self reception flag nothing is received at all, even with a
+// terminated pair, because the controller never queues its own frames.
+//
+// The pair should also be terminated: use the transceiver that still has its
+// 120 ohm fitted, or add a 120 ohm resistor across CANH/CANL. No jumper between
+// the module's D and R pins is needed.
 //
 // This is a DIFFERENT firmware from src/main.cpp (the listener). It is selected by
 // the `loopback_test` PlatformIO environment and must never replace the listener
@@ -48,12 +56,15 @@ static uint32_t sent = 0;
 static uint32_t mismatches = 0;
 
 // Build a frame straight from the recovered packet bytes so the test exercises the
-// same bytes M3 will have to emit.
+// same bytes M3 will have to emit. TWAI_MSG_FLAG_SELF is required: it asks the
+// controller to queue its own transmission for reception, which is what makes this
+// a self test at all.
 static bool send_bytes(uint32_t identifier, const uint8_t *bytes, uint8_t length) {
     twai_message_t message{};
     message.identifier = identifier;
     message.extd = 0;
     message.rtr = 0;
+    message.self = 1;
     message.data_length_code = length;
     for (uint8_t index = 0; index < length; ++index) {
         message.data[index] = bytes[index];
@@ -108,6 +119,7 @@ void setup() {
     // Step 1: a plain standard frame at a known identifier.
     twai_message_t plain{};
     plain.identifier = 0x123;
+    plain.self = 1;
     plain.data_length_code = 4;
     plain.data[0] = 0xDE; plain.data[1] = 0xAD; plain.data[2] = 0xBE; plain.data[3] = 0xEF;
     bool step1_sent = twai_transmit(&plain, pdMS_TO_TICKS(100)) == ESP_OK;
@@ -129,6 +141,7 @@ void setup() {
     for (uint32_t index = 0; index < burst_count; ++index) {
         twai_message_t message{};
         message.identifier = 0x300 + (index & 0x0F);
+        message.self = 1;
         message.data_length_code = 8;
         for (uint8_t byte = 0; byte < 8; ++byte) {
             message.data[byte] = (uint8_t)(index + byte);
@@ -151,8 +164,9 @@ void setup() {
                   status.rx_missed_count, status.rx_overrun_count,
                   status.bus_error_count, mismatches);
     if (!all_ok) {
-        Serial.println("# HINT bus must be empty (no motor, no RS3); the transceiver "
-                       "loops TX back to RX internally, so no jumper is needed");
+        Serial.println("# HINT bus must be empty (no motor, no RS3) AND terminated: "
+                       "use the transceiver with its 120 ohm fitted, or add one "
+                       "across CANH/CANL");
     }
     twai_stop();
     twai_driver_uninstall();
