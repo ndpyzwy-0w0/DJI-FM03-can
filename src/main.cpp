@@ -114,7 +114,12 @@ static bool install_driver(twai_mode_t mode) {
     twai_general_config_t general = TWAI_GENERAL_CONFIG_DEFAULT(
         GPIO_NUM_4, GPIO_NUM_5, mode);
     general.tx_queue_len = (mode == TWAI_MODE_NORMAL) ? 8 : 0;
-    general.rx_queue_len = 512;
+    // A deep RX queue costs the receive ISR a memcpy per frame and lengthens the
+    // interrupt path. This stays moderate because the flood case (one bus end
+    // retransmitting one frame at ~2 kHz) is exactly when ISR pressure is worst;
+    // normal traffic needs only a few slots. Overflow is visible as nonzero
+    // "pending" plus rx_missed/rx_overrun in the STATUS line.
+    general.rx_queue_len = 128;
     twai_timing_config_t timing = timing_config();
     twai_filter_config_t filter = TWAI_FILTER_CONFIG_ACCEPT_ALL();
     esp_err_t result = twai_driver_install(&general, &timing, &filter);

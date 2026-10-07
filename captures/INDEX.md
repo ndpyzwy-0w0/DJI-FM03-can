@@ -55,6 +55,15 @@
 - **`20261007_214348_391693_capture.log`**：用户确认先开始抓包再开RS3，全程无拨轮；具体按下开机键时刻未记录。22.17秒、30011完整帧、5个ID、7965CRC双校验包；序号连续无重置、无非帧完整行/尾部未完成字节。首末logger_dropped217981、bus_errors43不变，rx_missed/rx_overrun0，状态增量均0。首状态到首CAN帧5.379213秒；首CAN帧起1282帧0x106重复8字节不组成DUML，重复原因未知。9对00:01查询回复候选含GB53/PJ08；04:69全零，0x201先16包启动前缀再正常布局；04:2F/12、18、09发生启动状态切换，意义及必要性未知。SHA256 `96bcc55efb0889e46124f6ffea6e4e9b30e0aaa53e9350aeae47d5b27f66e145`。报告 `reports/20261007_startup_validation.json`、`reports/20261007_startup_findings.md` 及旁analysis.json，原始字节未改。
 - **`20261007_214217_047222_capture.log`**：相邻诊断记录，动作/接线/顺序未知，不承接最新那段的确认。27.97秒、46223完整帧，仅0x232相同8字节 `55100456BF320000`、0CRC包。序号缺口131007、无重置；首末输出丢帧0→128810、错误0→15，rx_missed/rx_overrun0；末尾18字节未完成行（离线summary算1非帧行、GUI只统计完整行算0）。SHA256 `d4d93488ea9380d75f2ef367eace4650293e1416be5de879f3bca4a59d2c6d85`；独立analysis.json及上电报告保留。不能据此还原完整启动或确认ACK/硬件原因。
 
+## 单端上电/无应答复现实验（2026-10-07 23:39:31）
+
+- **`20261007_233931_124320_idle.log`**：用户在一次单端上电实验中保存，标签为 `idle`；**具体是哪一端在线、上电顺序、是否真的断开了另一端的 CANH/CANL 均未记录**，需用户补充后才能作为严格对照。16.74秒、19039个完整帧、**只有1个CAN ID（0x232）、19039帧全部是同一8字节 `55100456BF320000`**、**0个CRC有效DUML包**。帧间隔min51µs/中位131µs/max2881µs，即约每130µs重发一次、持续约9秒（首帧1.111202s到末帧10.064723s，设备取帧时间）。
+- 该段**复现了 `20261007_214217_047222` 的同一签名**（同ID、同8字节、同样0个完整包），是本项目第一次在**已知实验意图**下复现它。
+- **重要边界**：本段开头含一次**固件崩溃重启**——`Guru Meditation Error: Core 1 panic'ed (LoadProhibited)`，回溯源到 `twai_handle_rx_buffer_frames`/`twai_intr_handler_main` → `xQueueGenericSendFromISR` → `xTaskRemoveFromEventList` → `uxListRemove`（EXCVADDR 0x8e）。崩溃前状态累计 `mode_switches=2`、`rx=0`；重启后帧计数归零。因此本段的采集器自身不稳定，**不能宣称该段采集完整**。
+- 段内固件计数：`rx` 0→68708，而 `logger_dropped` 0→49576（**输出队列丢掉约72%的帧**），`rx_missed`/`rx_overrun` 恒为0，`bus_errors` 在重启前恒为1、重启后由0增至431064。**串口行吞吐是瓶颈，不是总线丢帧**；该签名结论只依赖"帧内容与ID"，不依赖丢帧数。
+- 重启前的状态行另有 `# BUTTON idle_level=HIGH pullup=1`、`# READY listen_only`，证明当时已运行修复后的GPIO0版本。
+- 原始SHA256 `CE99ED065B340B213EBB331CF3F79EB32DBDBD0A55792D46FDC92F4F33DC40F9`；旁 `.analysis.json`（0个CRC包）与 `.json` 摘要保留，原始字节未改。
+
 ## 每次新抓包应补充
 
 - 原始文件名、北京时间、时长、标签与用户确认的真实动作。

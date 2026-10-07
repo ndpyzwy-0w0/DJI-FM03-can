@@ -33,7 +33,15 @@
 - 2026-10-07 23:20 **固件已改为按钮/LED 模式版**。`src/main.cpp` 修改要点：①**上电永远 Listen Only**；②板上 BOOT 键（GPIO0）**长按 2 秒**在 listen / transmit 之间切换；③内置可寻址 RGB 灯指示模式（慢蓝脉冲=监听、快红脉冲=可发，切换后 1.6 秒常亮便于确认）；④状态行新增 `mode=`、`mode_switches=`、`button=`，但**保持了 `# STATUS` 既有字段与帧行格式不变**，上位机与解析脚本无需改动；⑤**仍然没有任何 `twai_transmit` 调用**，transmit 模式只是让发送"成为可能"，本固件一个 CAN 帧都不会发。切换模式会 `twai_stop`→`twai_driver_uninstall`→按新模式 `twai_driver_install`→`twai_start`，并用 `driver_installed` 原子标志防止接收任务对未安装的驱动调用 `twai_receive`。
 - 2026-10-07 23:35 **首次烧录并暴露、修复了一个严重缺陷**：首版**未给 GPIO0 配置上拉**，该脚浮空被读成 LOW，按键逻辑把"当前已按下"当成按压起点，导致**开机约 2 秒后自动切到 transmit 模式且无人操作**（实测 `mode=transmit mode_switches=1`）。当时总线未接入（rx=0）且固件无发送调用，未发出任何帧。修复为 fail-closed：`BUTTON_USES_INTERNAL_PULLUP` **默认 1**；启动自检若按键脚即读作按下，则**彻底禁用模式切换**、恒定 Listen Only、LED 常亮暗红、状态输出 `button=fault_switching_disabled`。复烧后连续 8 条状态均为 `mode=listen mode_switches=0 button=ok`，不再自动切换。
 - 诊断经验：`pio device monitor` 会拉 DTR/RTS 使板子复位，**不能**用于"不打扰"观察；`tools/capture.py`/`gui_server.py` 先置 DTR/RTS=false 再开串口是正确的，诊断也应照此。
-- 编译/烧录状态：`listen_1m`、`listen_500k` 均编译无 warning；`listen_1m` 已烧录并复读验证。**用户尚未目视确认** LED 颜色，也**尚未实测真实长按切换**。
+- 编译/烧录状态：`listen_1m`、`listen_500k` 均编译无 warning；`listen_1m` 已烧录并复读验证。
+- 2026-10-07 23:45 **用户实机确认：LED 两种模式显示与真实长按切换均正常**（蓝色慢闪=listen、长按后转红=transmit）。本 agent 独立复读串口交叉验证：切换前 `mode_switches=0`，用户长按后读数为 `mode=transmit mode_switches=1 button=ok`——计数变化与用户操作一致，长按切换是既成事实而非仅用户陈述。
+- **当前板子停在 transmit 模式**（`mode_switches=1`），本 agent 已请用户长按切回 listen。原因：监听模块的 Rs 若仍悬空，其驱动器是开着的，"发不出去"目前**只**依赖控制器处于 Listen Only；**未补 Rs 接 3.3 V 之前，应让板子长期停在 listen 模式**。
+- **尚未验证**：真实总线接入后的抓包是否与改动前一致（`driver_installed` 卡死风险）、模式切换对采集连续性的影响。
+- 2026-10-07 23:39 **单端上电/无应答复现实验成功复现历史异常签名，同段也暴露固件崩溃**。见 `captures/20261007_233931_124320_idle.log` 与 `captures/INDEX.md`：16.74秒、19039完整帧、**仅0x232一个ID、全部为同一8字节 `55100456BF320000`、0个CRC有效包**，帧间隔中位约131µs（约2kHz重发、持续约9秒）——与 `20261007_214217_047222` 签名一致，**首次在已知实验意图下复现**。
+- 该段开头是**固件崩溃重启**：`Guru Meditation Error: Core 1 panic'ed (LoadProhibited)`，回溯 `twai_handle_rx_buffer_frames`/`twai_intr_handler_main` → `xQueueGenericSendFromISR` → `xTaskRemoveFromEventList` → `uxListRemove`（EXCVADDR 0x8e）。**根因未定位**；已做的低成本缓解是把驱动 `rx_queue_len` 由512降到128（缩短中断路径）。**在此问题查清前，不要把"单端在线/对端不在线"当作可安全长期运行的工况**。
+- 吞吐边界（实测）：这种重发风暴下 `rx` 达68708帧而 `logger_dropped` 新增49576，**约72%的帧丢在串口输出队列**；`rx_missed`/`rx_overrun` 恒0，说明丢在采集器侧而非总线侧。任何依赖"帧计数"的结论在此类记录上都不可靠；本段结论只依赖帧内容与ID。
+- **因果关系仍未确认**：`bus_errors` 在该段并未随重发上升（重启前恒1，重启后由0增至431064），所以"无应答导致不停重传"的机理**没有得到支持**；但也不能据此断定对端当时仍在线，因为**用户尚未记录当时哪一端在线、以及另一端是否真的从总线断开**。在补上这条对照信息之前，只把该段当作"同一签名的第二次出现"。
+
 - 2026-10-07 已确认 COM17 的 CH343 USB-UART 对应这块 ESP32；插拔后端口可能变化，应重新检测。
 - 上位机：双击 `启动上位机.cmd`，访问 `http://127.0.0.1:8765/`。只绑定本机地址；重复启动复用现有服务。
 - 开始抓包连接串口并写日志；停止保存摘要并释放串口。关闭网页不会停止采集。烧录前先确认未在抓包。

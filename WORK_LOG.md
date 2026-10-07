@@ -278,3 +278,14 @@
 - 附带发现：`pio device monitor` 会触发板子复位（拉 DTR/RTS），因此**不能用它做"不打扰"的观察**；本项目的 `tools/capture.py`、`tools/gui_server.py` 都先把 DTR/RTS 置 false 再开串口，这一点是对的，诊断时也照此办理。
 - 本轮验证：`listen_1m`、`listen_500k` 均编译成功无 warning；烧录成功并复读。**仍未由用户确认**：LED 是否真的显示蓝色慢闪、真实长按 2 秒后能否切到红灯、切换对采集连续性的影响。`src/main.cpp` 有未提交修改。
 - 下一步：请用户目视确认灯色，并在**确认总线接线正确**的前提下试一次长按切换；之后按原流程抓一段确认监听正常。
+
+## 2026-10-07 23:39–23:55 北京时间 — 单端上电实验：复现异常签名，并发现固件崩溃
+
+- 用户执行了单端上电/无应答实验并保存 `captures/20261007_233931_124320_idle.log`（标签仍为 `idle`）。**用户尚未说明哪一端在线、上电顺序、另一端是否已从总线断开**，已在 INDEX 与 HANDOFF 中标注为待补。
+- 结果（`tools/analyze_protocol.py`）：16.74秒、19039完整帧、**仅1个CAN ID（0x232）**、**19039帧全部是同一8字节 `55100456BF320000`**、**0个CRC有效DUML包**；帧间隔 min51µs / 中位131µs / max2881µs，即约2kHz重发并持续约9秒。**与 `20261007_214217_047222` 的签名一致，首次在已知实验意图下复现该签名。**
+- **同段发现固件崩溃**：`Guru Meditation Error: Core 1 panic'ed (LoadProhibited)`，用 `xtensa-esp32s3-elf-addr2line` 对当次烧录的 `firmware.elf` 解码得 `twai_handle_rx_buffer_frames`/`twai_intr_handler_main`（IDF twai.c:132/224）→ `xQueueGenericSendFromISR` → `xTaskRemoveFromEventList` → `uxListRemove`（EXCVADDR 0x8e）。即**TWAI接收中断在向RX队列投递时崩溃**，属IDF/FreeRTOS内部；**本 agent 未能定位根因**，检索未找到明确对应的上游issue。
+- 低成本缓解（已改并编译）：驱动 `rx_queue_len` 由 **512 降到 128**，缩短中断路径与每次memcpy开销；正常流量只需少数槽位，溢出会以 `pending`/`rx_missed`/`rx_overrun` 可见。`listen_1m`/`listen_500k` 编译通过无warning。**缓解措施尚未在风暴工况下验证**。
+- 吞吐边界实测：该段 `rx` 0→68708 而 `logger_dropped` 0→49576，**约72%的帧丢在串口输出队列**；`rx_missed`/`rx_overrun` 恒0，说明瓶颈是串口行输出而非总线或驱动。故**不能拿此类记录的帧计数做结论**；本次签名结论只依赖帧内容与ID。
+- 因果存疑并已记录：`bus_errors` 未随重发上升（重启前恒1），"无应答→不停重传"的预期**未获支持**；但也不能据此断言对端在线，因为当时在线端与断开状态未记录。补充该对照信息前，本段只作"同一签名第二次出现"。
+- 另核实：该段重启前状态为 `# BUTTON idle_level=HIGH pullup=1`、`# READY listen_only`，证明运行的是修复GPIO0后的版本；采集结束后探针复读确认板子仍为 `mode=listen`、`mode_switches=0`、`button=ok`。
+- 本轮证据与文档：新增原始log/摘要/analysis并追加 `captures/INDEX.md` 索引、更新 `HANDOFF.md`；`src/main.cpp` 改 rx_queue_len。原始抓包未编辑。
