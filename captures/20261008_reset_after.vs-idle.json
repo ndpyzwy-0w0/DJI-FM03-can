@@ -1,0 +1,6 @@
+{
+  "reference": "J:\\New soft project\\FM03\\captures\\20261008_reset_before.log",
+  "other": "J:\\New soft project\\FM03\\captures\\20261008_reset_after.log",
+  "offset_convention": "zero-based DUML payload offset, excluding header and CRC",
+  "groups": []
+}
