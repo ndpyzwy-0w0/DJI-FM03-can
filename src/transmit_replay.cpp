@@ -101,11 +101,13 @@ static uint16_t crc16(const uint8_t *data, unsigned length) {
 #define REPLAY_HANDSHAKE_UNTIL_MS 3000
 #endif
 
-// One-shot handshake milestones, so each packet goes out exactly once per window.
+// One-shot handshake milestones, so each boot packet goes out exactly once per window.
+static bool handshake_sent_announce = false;
 static bool handshake_sent_startup = false;
 static bool handshake_sent_gb53 = false;
 static bool handshake_sent_request = false;
 static unsigned long last_request = 0;
+static unsigned long last_rejection_report = 0;
 
 // Stage 4 adds the periodic dial command (value zero) on top of the bring-up
 // request, to test whether that stream is what the motor needs to report a healthy
@@ -350,20 +352,45 @@ static bool send_m0469() {
     return ok;
 }
 
-// --- Handshake, reproduced from the startup capture ---------------------------
+// --- The real power-on sequence, measured 2026-10-08 --------------------------
 //
-// The motor does not accept the steady-state dial stream on its own: RB3 first walks
-// it through a handshake. From captures/20261007_214348_391693_capture.log, in order:
+// Captured from a real RS3 switching on with the motor attached
+// (captures/20261008_023547_737827_capture.log). The motor's LED goes green almost
+// immediately after power-on, and the whole sequence below spans only about 100 ms:
 //
-//    t=0.000s  0x106  04>F1  04:05  len 58  gimbal attitude, repeated ~20 ms
-//    t=0.068s  0x201  E5>52  04:69  payload 0F 04 00 00 00 00   (startup variant)
-//    t=0.098s  the motor begins answering
-//    t=0.110s  0x503  E5>BF  00:01  len 43  payload contains "GB53"
-//    t=0.228s  0x503  E5>BF  04:69  payload 0F 04 08 19 00 00   (steady variant)
-//    t=0.550s  0x503  E5>BF  00:01  len 13  the repeating request
+//   t=0.000  CAN 0x106  04>C9  04:10  seq 0     announcement
+//   t=0.000  CAN 0x106  04>F1  04:05  seq 62,82,102,... every ~20 ms, +20 per packet
+//   t=0.065  CAN 0x201  E5>52  04:69  seq 6, 8, 10, 12   payload 0F 04 00 00 00 00
+//   t=0.097  the motor's first heartbeat (0x232 BF>32 24:20)
 //
-// The 04:05 payload carries live attitude data we cannot reproduce; one captured
-// sample is replayed verbatim, which is enough to present the same traffic shape.
+// Note the differences from the steady state this firmware used to replay: the
+// startup dial command goes to 0x201 E5>52 (not 0x503 E5>BF), carries a zero value
+// payload, and uses single digit sequence numbers. Replaying the steady-state values
+// for a power-on was wrong.
+static const uint8_t BOOT_ANNOUNCE[16] = {
+    0x55, 0x10, 0x04, 0x56, 0x04, 0xc9, 0x00, 0x00, 0x00, 0x04, 0x10,
+    0x7a, 0x01, 0x01, 0x64, 0xe4,
+};
+static const uint8_t BOOT_ANNOUNCE_FRAMES[2] = {8, 8};
+
+// First captured 04:05 sample of the boot burst, with its header sequence 62.
+static const uint8_t BOOT_0405_FIRST[58] = {
+    0x55, 0x3a, 0x04, 0x70, 0x04, 0xf1, 0x3e, 0x00, 0x00, 0x04, 0x05,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x82, 0x00, 0xf7, 0xff, 0x00,
+    0x01, 0xd2, 0x68, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x02, 0x00, 0x00, 0x00, 0x80, 0x3f, 0xcf, 0x77, 0xc6, 0x39, 0x76,
+    0x30, 0x1c, 0xb8, 0x55, 0xb1, 0xdd, 0xb8, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0xc3, 0xaa,
+};
+static const uint8_t BOOT_0405_FRAMES[8] = {8, 8, 8, 8, 8, 8, 8, 2};
+
+// The startup dial command: 0x201 E5>52, payload 0F 04 00 00 00 00, sequence 6.
+static const uint8_t BOOT_0469[19] = {
+    0x55, 0x13, 0x04, 0x03, 0xe5, 0x52, 0x06, 0x00, 0x00, 0x04, 0x69,
+    0x0f, 0x04, 0x00, 0x00, 0x00, 0x00, 0x90, 0x07,
+};
+static const uint8_t BOOT_0469_FRAMES[3] = {8, 8, 3};
+
 static const uint8_t H0405_SAMPLE[58] = {
     0x55, 0x3a, 0x04, 0x70, 0x04, 0xf1, 0x3e, 0x00, 0x00, 0x04, 0x05,
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x82, 0x00, 0xf4, 0xff, 0x00,
@@ -519,38 +546,38 @@ static void run_replay_window() {
             bool ok = true;
             unsigned long elapsed = millis() - started;
 #if REPLAY_HANDSHAKE
-            // Handshake phase, timed as in the capture: the gimbal attitude stream
-            // first, the startup dial request at about 60 ms, the GB53 reply at about
-            // 110 ms while the attitude stream continues, then the steady dial stream
-            // from about 230 ms onward.
+            // Power-on sequence, reproducing the measured boot: announce, then the
+            // attitude burst stepping its sequence by 20 every ~20 ms, then the
+            // startup dial command on 0x201, then the steady stream. The captured
+            // order is announce and attitude from t=0, dial at about 65 ms, and the
+            // motor answering from about 97 ms.
             static unsigned long last_attitude = 0;
+            static uint16_t boot_attitude_seq = 62;
             if (elapsed < REPLAY_HANDSHAKE_UNTIL_MS) {
+                if (!handshake_sent_announce) {
+                    handshake_sent_announce = true;
+                    ok = send_packet(0x106, BOOT_ANNOUNCE, BOOT_ANNOUNCE_FRAMES, 2) && ok;
+                    Serial.println("# HANDSHAKE announce_sent");
+                }
                 if (millis() - last_attitude >= 20) {
                     last_attitude = millis();
+                    // Re-stamp the captured sample with the advancing boot sequence.
                     uint8_t attitude[58];
-                    build_attitude(attitude);
-                    ok = send_packet(0x106, attitude, H0405_FRAMES, 8) && ok;
+                    memcpy(attitude, BOOT_0405_FIRST, 58);
+                    attitude[6] = (uint8_t)(boot_attitude_seq & 0xFF);
+                    attitude[7] = (uint8_t)(boot_attitude_seq >> 8);
+                    boot_attitude_seq = (uint16_t)(boot_attitude_seq + 20);
+                    attitude[3] = crc8(attitude, 3);
+                    uint16_t packet_crc = crc16(attitude, 56);
+                    attitude[56] = (uint8_t)(packet_crc & 0xFF);
+                    attitude[57] = (uint8_t)(packet_crc >> 8);
+                    ok = send_packet(0x106, attitude, BOOT_0405_FRAMES, 8) && ok;
                 }
             }
-            if (elapsed >= 60 && !handshake_sent_startup) {
+            if (elapsed >= 65 && !handshake_sent_startup) {
                 handshake_sent_startup = true;
-                ok = send_packet(0x201, M0469_STARTUP, M0469_STARTUP_FRAMES, 3) && ok;
-                Serial.println("# HANDSHAKE startup_dial_sent");
-            }
-            if (elapsed >= 110 && !handshake_sent_gb53) {
-                handshake_sent_gb53 = true;
-                ok = send_packet(0x503, H0001_GB53, H0001_GB53_FRAMES, 6) && ok;
-                Serial.println("# HANDSHAKE gb53_reply_sent");
-            }
-            if (elapsed < 550 && !handshake_sent_request) {
-                if (elapsed >= 500) {
-                    handshake_sent_request = true;
-                    ok = send_m0001_request() && ok;
-                    Serial.println("# HANDSHAKE request_sent");
-                }
-            } else if (elapsed >= 550 && millis() - last_request >= 500) {
-                last_request = millis();
-                ok = send_m0001_request() && ok;
+                ok = send_packet(0x201, BOOT_0469, BOOT_0469_FRAMES, 3) && ok;
+                Serial.println("# HANDSHAKE boot_dial_sent");
             }
 #else
             ok = send_m0001_request();
@@ -560,9 +587,9 @@ static void run_replay_window() {
             // on REPLAY_0469_INTERVAL_MS for why it is not the captured 10 ms.
             static unsigned long last_dial = 0;
 #if REPLAY_HANDSHAKE
-            // During the handshake the startup variant already went out; the steady
-            // stream starts at about 230 ms, matching the capture.
-            bool steady_time = elapsed >= 230;
+            // The steady stream starts once the boot sequence is done, matching the
+            // capture where the motor answers from about 97 ms.
+            bool steady_time = elapsed >= 100;
 #else
             bool steady_time = true;
 #endif
@@ -575,12 +602,14 @@ static void run_replay_window() {
                 ++replay_sends;
                 reported_rejection = false;
             } else {
-                // The queue stays full while a frame cannot get onto the bus, so
-                // report the condition once per burst instead of every attempt.
+                // A rejected transmit can repeat every few milliseconds while the bus
+                // is monopolised, which once flooded the serial link with thousands of
+                // lines and hid the real output. Report at most once per second.
                 ++rejected;
-                if (!reported_rejection) {
+                if (millis() - last_rejection_report >= 1000) {
+                    last_rejection_report = millis();
                     reported_rejection = true;
-                    Serial.println("# WARN transmit_rejected queue_full_bus_monopolised");
+                    Serial.printf("# WARN transmit_rejected total=%u\n", rejected);
                 }
             }
         }
