@@ -73,6 +73,20 @@ static uint16_t crc16(const uint8_t *data, unsigned length) {
 #define REPLAY_AUTO_START 0
 #endif
 
+// Duty cycle for the transmitted traffic. The first S4 attempts crashed and rebooted
+// roughly every 0.1-0.9 s, which means the motor saw short bursts of our frames
+// separated by silence - and that is exactly when the operator reported seeing the
+// status LED go green. With the crash fixed and the sender running continuously the
+// LED has stayed red. That suggests the motor may want gaps rather than an
+// uninterrupted stream, so this cycles the sender between ON and OFF without changing
+// any packet content. Set both to 0 to transmit continuously.
+#ifndef REPLAY_ON_MS
+#define REPLAY_ON_MS 0
+#endif
+#ifndef REPLAY_OFF_MS
+#define REPLAY_OFF_MS 0
+#endif
+
 // Stage 4 adds the periodic dial command (value zero) on top of the bring-up
 // request, to test whether that stream is what the motor needs to report a healthy
 // link.
@@ -361,7 +375,7 @@ static void service_button() {
 }
 
 // Runs one bounded replay window; returns when finished or stopped by a fresh press.
-static void run_replay_window() {
+static bool run_replay_window() {
     unsigned long started = millis();
     unsigned long last_send = 0;
     unsigned long released_at = 0;
@@ -371,6 +385,12 @@ static void run_replay_window() {
         if (tx_backoff_ticks) {
             --tx_backoff_ticks;
         }
+        // Burst mode: when both phases are configured, transmit only during the ON
+        // phase. Received frames keep being logged during the silent half.
+        bool allowed_to_send = true;
+#if (REPLAY_ON_MS > 0) && (REPLAY_OFF_MS > 0)
+        allowed_to_send = ((millis() - started) % (REPLAY_ON_MS + REPLAY_OFF_MS)) < REPLAY_ON_MS;
+#endif
         bool down = button_down();
         if (ignore_button_until_release) {
             if (!down) {
@@ -382,7 +402,7 @@ static void run_replay_window() {
             Serial.println("# REPLAY stopped_by_button");
             break;
         }
-        if (millis() - last_send >= REPLAY_INTERVAL_MS) {
+        if (allowed_to_send && millis() - last_send >= REPLAY_INTERVAL_MS) {
             last_send = millis();
             bool ok = send_m0001_request();
 #if REPLAY_INCLUDE_0469
