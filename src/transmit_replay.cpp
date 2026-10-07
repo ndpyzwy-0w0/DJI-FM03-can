@@ -87,6 +87,26 @@ static uint16_t crc16(const uint8_t *data, unsigned length) {
 #define REPLAY_OFF_MS 0
 #endif
 
+// Reproduce the RS3 startup handshake before settling into the steady dial stream.
+// The motor answers the dial command but does not report a healthy link without this,
+// so the handshake is on by default for stage 4.
+#ifndef REPLAY_HANDSHAKE
+#define REPLAY_HANDSHAKE 0
+#endif
+
+// How long the gimbal attitude stream (04:05) keeps repeating alongside the
+// handshake. The capture shows it running well past the handshake, but a couple of
+// seconds is enough to present the same traffic shape.
+#ifndef REPLAY_HANDSHAKE_UNTIL_MS
+#define REPLAY_HANDSHAKE_UNTIL_MS 3000
+#endif
+
+// One-shot handshake milestones, so each packet goes out exactly once per window.
+static bool handshake_sent_startup = false;
+static bool handshake_sent_gb53 = false;
+static bool handshake_sent_request = false;
+static unsigned long last_request = 0;
+
 // Stage 4 adds the periodic dial command (value zero) on top of the bring-up
 // request, to test whether that stream is what the motor needs to report a healthy
 // link.
@@ -330,6 +350,46 @@ static bool send_m0469() {
     return ok;
 }
 
+// --- Handshake, reproduced from the startup capture ---------------------------
+//
+// The motor does not accept the steady-state dial stream on its own: RB3 first walks
+// it through a handshake. From captures/20261007_214348_391693_capture.log, in order:
+//
+//    t=0.000s  0x106  04>F1  04:05  len 58  gimbal attitude, repeated ~20 ms
+//    t=0.068s  0x201  E5>52  04:69  payload 0F 04 00 00 00 00   (startup variant)
+//    t=0.098s  the motor begins answering
+//    t=0.110s  0x503  E5>BF  00:01  len 43  payload contains "GB53"
+//    t=0.228s  0x503  E5>BF  04:69  payload 0F 04 08 19 00 00   (steady variant)
+//    t=0.550s  0x503  E5>BF  00:01  len 13  the repeating request
+//
+// The 04:05 payload carries live attitude data we cannot reproduce; one captured
+// sample is replayed verbatim, which is enough to present the same traffic shape.
+static const uint8_t H0405_SAMPLE[58] = {
+    0x55, 0x3a, 0x04, 0x70, 0x04, 0xf1, 0x3e, 0x00, 0x00, 0x04, 0x05,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x82, 0x00, 0xf4, 0xff, 0x00,
+    0x01, 0xbd, 0x68, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x02, 0x00, 0x00, 0x00, 0x80, 0x3f, 0xcf, 0x77, 0xc6, 0x39, 0x76,
+    0x30, 0x1c, 0xb8, 0x55, 0xb1, 0xdd, 0xb8, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0xc3, 0xaa,
+};
+static const uint8_t H0405_FRAMES[8] = {8, 8, 8, 8, 8, 8, 8, 2};
+
+// The 43 byte reply that carries "GB53" (ascii), six CAN frames.
+static const uint8_t H0001_GB53[43] = {
+    0x55, 0x2b, 0x04, 0x58, 0xe5, 0xbf, 0x12, 0x00, 0x80, 0x00, 0x01,
+    0x00, 0x01, 0x47, 0x42, 0x35, 0x33, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x09, 0x07,
+    0x50, 0x41, 0x03, 0x00, 0x01, 0x00, 0x00, 0x00, 0x49, 0x18,
+};
+static const uint8_t H0001_GB53_FRAMES[6] = {8, 8, 8, 8, 8, 3};
+
+// The startup variant of the dial command, with the two trailing value bytes zero.
+static const uint8_t M0469_STARTUP[19] = {
+    0x55, 0x13, 0x04, 0x03, 0xe5, 0x52, 0x06, 0x00, 0x00, 0x04, 0x69,
+    0x0f, 0x04, 0x00, 0x00, 0x00, 0x00, 0x90, 0x07,
+};
+static const uint8_t M0469_STARTUP_FRAMES[3] = {8, 8, 3};
+
 static bool button_down() {
     return digitalRead(BUTTON_GPIO) == LOW;
 }
@@ -375,7 +435,7 @@ static void service_button() {
 }
 
 // Runs one bounded replay window; returns when finished or stopped by a fresh press.
-static bool run_replay_window() {
+static void run_replay_window() {
     unsigned long started = millis();
     unsigned long last_send = 0;
     unsigned long released_at = 0;
@@ -404,12 +464,55 @@ static bool run_replay_window() {
         }
         if (allowed_to_send && millis() - last_send >= REPLAY_INTERVAL_MS) {
             last_send = millis();
-            bool ok = send_m0001_request();
+            bool ok = true;
+            unsigned long elapsed = millis() - started;
+#if REPLAY_HANDSHAKE
+            // Handshake phase, timed as in the capture: the gimbal attitude stream
+            // first, the startup dial request at about 60 ms, the GB53 reply at about
+            // 110 ms while the attitude stream continues, then the steady dial stream
+            // from about 230 ms onward.
+            static unsigned long last_attitude = 0;
+            if (elapsed < REPLAY_HANDSHAKE_UNTIL_MS) {
+                if (millis() - last_attitude >= 20) {
+                    last_attitude = millis();
+                    ok = send_packet(0x106, H0405_SAMPLE, H0405_FRAMES, 8) && ok;
+                }
+            }
+            if (elapsed >= 60 && !handshake_sent_startup) {
+                handshake_sent_startup = true;
+                ok = send_packet(0x201, M0469_STARTUP, M0469_STARTUP_FRAMES, 3) && ok;
+                Serial.println("# HANDSHAKE startup_dial_sent");
+            }
+            if (elapsed >= 110 && !handshake_sent_gb53) {
+                handshake_sent_gb53 = true;
+                ok = send_packet(0x503, H0001_GB53, H0001_GB53_FRAMES, 6) && ok;
+                Serial.println("# HANDSHAKE gb53_reply_sent");
+            }
+            if (elapsed < 550 && !handshake_sent_request) {
+                if (elapsed >= 500) {
+                    handshake_sent_request = true;
+                    ok = send_m0001_request() && ok;
+                    Serial.println("# HANDSHAKE request_sent");
+                }
+            } else if (elapsed >= 550 && millis() - last_request >= 500) {
+                last_request = millis();
+                ok = send_m0001_request() && ok;
+            }
+#else
+            ok = send_m0001_request();
+#endif
 #if REPLAY_INCLUDE_0469
             // The dial command is repeated at a conservative cadence; see the note
             // on REPLAY_0469_INTERVAL_MS for why it is not the captured 10 ms.
             static unsigned long last_dial = 0;
-            if (millis() - last_dial >= REPLAY_0469_INTERVAL_MS) {
+#if REPLAY_HANDSHAKE
+            // During the handshake the startup variant already went out; the steady
+            // stream starts at about 230 ms, matching the capture.
+            bool steady_time = elapsed >= 230;
+#else
+            bool steady_time = true;
+#endif
+            if (steady_time && millis() - last_dial >= REPLAY_0469_INTERVAL_MS) {
                 last_dial = millis();
                 ok = send_m0469() && ok;
             }
