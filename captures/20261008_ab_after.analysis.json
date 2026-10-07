@@ -1,0 +1,869 @@
+{
+  "raw_log": "J:\\New soft project\\FM03\\captures\\20261008_ab_after.log",
+  "crc_valid_packets": 5093,
+  "integrity": {
+    "frames": 15532,
+    "ids": {
+      "S:00000504": 10188,
+      "S:00000232": 5344
+    },
+    "sequence_gaps": 0,
+    "sequence_resets": 0,
+    "non_frame_lines": 1,
+    "first_t_us": 1104951,
+    "last_t_us": 25264394,
+    "status_first": null,
+    "status_last": null,
+    "firmware_errors": []
+  },
+  "groups": {
+    "S:0x232 BF>32 flags=00 cmd=04:2F payload_len=15": {
+      "packets": 243,
+      "unique_payloads": 1,
+      "variable_payload_offsets": [],
+      "byte_values": [
+        [
+          9
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ]
+      ],
+      "most_common_payloads": [
+        [
+          "09 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          243
+        ]
+      ],
+      "median_interval_ms": 100.005,
+      "sample_packet": "55 1c 04 1b bf 32 29 48 00 04 2f 09 00 00 00 00 00 00 00 00 00 00 00 00 00 00 6d e3"
+    },
+    "S:0x232 BF>32 flags=00 cmd=04:2F payload_len=8": {
+      "packets": 243,
+      "unique_payloads": 1,
+      "variable_payload_offsets": [],
+      "byte_values": [
+        [
+          18
+        ],
+        [
+          0
+        ],
+        [
+          1
+        ],
+        [
+          4
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ]
+      ],
+      "most_common_payloads": [
+        [
+          "12 00 01 04 00 00 00 00",
+          243
+        ]
+      ],
+      "median_interval_ms": 100.004,
+      "sample_packet": "55 15 04 a9 bf 32 19 48 00 04 2f 12 00 01 04 00 00 00 00 30 8d"
+    },
+    "S:0x232 BF>32 flags=20 cmd=24:20 payload_len=3": {
+      "packets": 486,
+      "unique_payloads": 2,
+      "variable_payload_offsets": [
+        0
+      ],
+      "byte_values": [
+        [
+          90,
+          93
+        ],
+        [
+          65
+        ],
+        [
+          1
+        ]
+      ],
+      "most_common_payloads": [
+        [
+          "5a 41 01",
+          243
+        ],
+        [
+          "5d 41 01",
+          243
+        ]
+      ],
+      "median_interval_ms": 0.25,
+      "sample_packet": "55 10 04 56 bf 32 24 48 20 24 20 5a 41 01 7b f3"
+    },
+    "S:0x232 BF>52 flags=00 cmd=04:2F payload_len=13": {
+      "packets": 242,
+      "unique_payloads": 3,
+      "variable_payload_offsets": [
+        2
+      ],
+      "byte_values": [
+        [
+          19
+        ],
+        [
+          0
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          255
+        ],
+        [
+          255
+        ],
+        [
+          255
+        ],
+        [
+          255
+        ],
+        [
+          255
+        ],
+        [
+          255
+        ],
+        [
+          255
+        ],
+        [
+          255
+        ]
+      ],
+      "most_common_payloads": [
+        [
+          "13 00 01 00 00 ff ff ff ff ff ff ff ff",
+          82
+        ],
+        [
+          "13 00 02 00 00 ff ff ff ff ff ff ff ff",
+          80
+        ],
+        [
+          "13 00 03 00 00 ff ff ff ff ff ff ff ff",
+          80
+        ]
+      ],
+      "median_interval_ms": 100.005,
+      "sample_packet": "55 1a 04 b1 bf 52 1c 48 00 04 2f 13 00 01 00 00 ff ff ff ff ff ff ff ff c9 55"
+    },
+    "S:0x232 BF>52 flags=00 cmd=04:2F payload_len=15": {
+      "packets": 243,
+      "unique_payloads": 1,
+      "variable_payload_offsets": [],
+      "byte_values": [
+        [
+          9
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ]
+      ],
+      "most_common_payloads": [
+        [
+          "09 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          243
+        ]
+      ],
+      "median_interval_ms": 100.005,
+      "sample_packet": "55 1c 04 1b bf 52 17 48 00 04 2f 09 00 00 00 00 00 00 00 00 00 00 00 00 00 00 80 3a"
+    },
+    "S:0x232 BF>52 flags=00 cmd=04:2F payload_len=8": {
+      "packets": 243,
+      "unique_payloads": 1,
+      "variable_payload_offsets": [],
+      "byte_values": [
+        [
+          18
+        ],
+        [
+          0
+        ],
+        [
+          1
+        ],
+        [
+          4
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ]
+      ],
+      "most_common_payloads": [
+        [
+          "12 00 01 04 00 00 00 00",
+          243
+        ]
+      ],
+      "median_interval_ms": 100.004,
+      "sample_packet": "55 15 04 a9 bf 52 1a 48 00 04 2f 12 00 01 04 00 00 00 00 17 65"
+    },
+    "S:0x504 BF>02 flags=00 cmd=04:2F payload_len=15": {
+      "packets": 243,
+      "unique_payloads": 1,
+      "variable_payload_offsets": [],
+      "byte_values": [
+        [
+          9
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ]
+      ],
+      "most_common_payloads": [
+        [
+          "09 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          243
+        ]
+      ],
+      "median_interval_ms": 100.004,
+      "sample_packet": "55 1c 04 1b bf 02 28 48 00 04 2f 09 00 00 00 00 00 00 00 00 00 00 00 00 00 00 2e 8f"
+    },
+    "S:0x504 BF>04 flags=00 cmd=00:0E payload_len=0": {
+      "packets": 242,
+      "unique_payloads": 1,
+      "variable_payload_offsets": [],
+      "byte_values": [],
+      "most_common_payloads": [
+        [
+          "",
+          242
+        ]
+      ],
+      "median_interval_ms": 100.005,
+      "sample_packet": "55 0d 04 33 bf 04 21 48 00 00 0e 29 ec"
+    },
+    "S:0x504 BF>52 flags=00 cmd=04:2F payload_len=13": {
+      "packets": 242,
+      "unique_payloads": 3,
+      "variable_payload_offsets": [
+        2
+      ],
+      "byte_values": [
+        [
+          19
+        ],
+        [
+          0
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          255
+        ],
+        [
+          255
+        ],
+        [
+          255
+        ],
+        [
+          255
+        ],
+        [
+          255
+        ],
+        [
+          255
+        ],
+        [
+          255
+        ],
+        [
+          255
+        ]
+      ],
+      "most_common_payloads": [
+        [
+          "13 00 01 00 00 ff ff ff ff ff ff ff ff",
+          82
+        ],
+        [
+          "13 00 02 00 00 ff ff ff ff ff ff ff ff",
+          80
+        ],
+        [
+          "13 00 03 00 00 ff ff ff ff ff ff ff ff",
+          80
+        ]
+      ],
+      "median_interval_ms": 100.005,
+      "sample_packet": "55 1a 04 b1 bf 52 1c 48 00 04 2f 13 00 01 00 00 ff ff ff ff ff ff ff ff c9 55"
+    },
+    "S:0x504 BF>52 flags=00 cmd=04:2F payload_len=15": {
+      "packets": 243,
+      "unique_payloads": 1,
+      "variable_payload_offsets": [],
+      "byte_values": [
+        [
+          9
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ]
+      ],
+      "most_common_payloads": [
+        [
+          "09 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          243
+        ]
+      ],
+      "median_interval_ms": 100.005,
+      "sample_packet": "55 1c 04 1b bf 52 2a 48 00 04 2f 09 00 00 00 00 00 00 00 00 00 00 00 00 00 00 bd e4"
+    },
+    "S:0x504 BF>52 flags=00 cmd=04:2F payload_len=8": {
+      "packets": 243,
+      "unique_payloads": 1,
+      "variable_payload_offsets": [],
+      "byte_values": [
+        [
+          18
+        ],
+        [
+          0
+        ],
+        [
+          1
+        ],
+        [
+          4
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ]
+      ],
+      "most_common_payloads": [
+        [
+          "12 00 01 04 00 00 00 00",
+          243
+        ]
+      ],
+      "median_interval_ms": 100.004,
+      "sample_packet": "55 15 04 a9 bf 52 1a 48 00 04 2f 12 00 01 04 00 00 00 00 17 65"
+    },
+    "S:0x504 BF>E5 flags=00 cmd=00:0E payload_len=0": {
+      "packets": 242,
+      "unique_payloads": 1,
+      "variable_payload_offsets": [],
+      "byte_values": [],
+      "most_common_payloads": [
+        [
+          "",
+          242
+        ]
+      ],
+      "median_interval_ms": 100.004,
+      "sample_packet": "55 0d 04 33 bf e5 22 48 00 00 0e dd 77"
+    },
+    "S:0x504 BF>E5 flags=00 cmd=04:2F payload_len=13": {
+      "packets": 242,
+      "unique_payloads": 3,
+      "variable_payload_offsets": [
+        2
+      ],
+      "byte_values": [
+        [
+          19
+        ],
+        [
+          0
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          255
+        ],
+        [
+          255
+        ],
+        [
+          255
+        ],
+        [
+          255
+        ],
+        [
+          255
+        ],
+        [
+          255
+        ],
+        [
+          255
+        ],
+        [
+          255
+        ]
+      ],
+      "most_common_payloads": [
+        [
+          "13 00 01 00 00 ff ff ff ff ff ff ff ff",
+          82
+        ],
+        [
+          "13 00 02 00 00 ff ff ff ff ff ff ff ff",
+          80
+        ],
+        [
+          "13 00 03 00 00 ff ff ff ff ff ff ff ff",
+          80
+        ]
+      ],
+      "median_interval_ms": 100.004,
+      "sample_packet": "55 1a 04 b1 bf e5 1b 48 00 04 2f 13 00 01 00 00 ff ff ff ff ff ff ff ff f2 33"
+    },
+    "S:0x504 BF>E5 flags=00 cmd=04:2F payload_len=15": {
+      "packets": 243,
+      "unique_payloads": 1,
+      "variable_payload_offsets": [],
+      "byte_values": [
+        [
+          9
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ]
+      ],
+      "most_common_payloads": [
+        [
+          "09 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          243
+        ]
+      ],
+      "median_interval_ms": 100.005,
+      "sample_packet": "55 1c 04 1b bf e5 26 48 00 04 2f 09 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ba 13"
+    },
+    "S:0x504 BF>E5 flags=00 cmd=04:2F payload_len=2": {
+      "packets": 242,
+      "unique_payloads": 1,
+      "variable_payload_offsets": [],
+      "byte_values": [
+        [
+          25
+        ],
+        [
+          3
+        ]
+      ],
+      "most_common_payloads": [
+        [
+          "19 03",
+          242
+        ]
+      ],
+      "median_interval_ms": 100.005,
+      "sample_packet": "55 0f 04 a2 bf e5 1e 48 00 04 2f 19 03 8a 8a"
+    },
+    "S:0x504 BF>E5 flags=00 cmd=04:2F payload_len=3": {
+      "packets": 242,
+      "unique_payloads": 1,
+      "variable_payload_offsets": [],
+      "byte_values": [
+        [
+          27
+        ],
+        [
+          75
+        ],
+        [
+          0
+        ]
+      ],
+      "most_common_payloads": [
+        [
+          "1b 4b 00",
+          242
+        ]
+      ],
+      "median_interval_ms": 100.004,
+      "sample_packet": "55 10 04 56 bf e5 20 48 00 04 2f 1b 4b 00 3c 36"
+    },
+    "S:0x504 BF>E5 flags=00 cmd=04:2F payload_len=6": {
+      "packets": 242,
+      "unique_payloads": 1,
+      "variable_payload_offsets": [],
+      "byte_values": [
+        [
+          24
+        ],
+        [
+          1
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ]
+      ],
+      "most_common_payloads": [
+        [
+          "18 01 00 00 00 00",
+          242
+        ]
+      ],
+      "median_interval_ms": 100.004,
+      "sample_packet": "55 13 04 03 bf e5 1d 48 00 04 2f 18 01 00 00 00 00 e3 e6"
+    },
+    "S:0x504 BF>E5 flags=00 cmd=04:2F payload_len=8": {
+      "packets": 243,
+      "unique_payloads": 1,
+      "variable_payload_offsets": [],
+      "byte_values": [
+        [
+          18
+        ],
+        [
+          0
+        ],
+        [
+          1
+        ],
+        [
+          4
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ]
+      ],
+      "most_common_payloads": [
+        [
+          "12 00 01 04 00 00 00 00",
+          243
+        ]
+      ],
+      "median_interval_ms": 100.005,
+      "sample_packet": "55 15 04 a9 bf e5 18 48 00 04 2f 12 00 01 04 00 00 00 00 7c eb"
+    },
+    "S:0x504 BF>E5 flags=40 cmd=00:01 payload_len=0": {
+      "packets": 242,
+      "unique_payloads": 1,
+      "variable_payload_offsets": [],
+      "byte_values": [],
+      "most_common_payloads": [
+        [
+          "",
+          242
+        ]
+      ],
+      "median_interval_ms": 100.005,
+      "sample_packet": "55 0d 04 33 bf e5 23 48 40 00 01 18 82"
+    },
+    "S:0x504 BF>E5 flags=80 cmd=04:2F payload_len=7": {
+      "packets": 242,
+      "unique_payloads": 1,
+      "variable_payload_offsets": [],
+      "byte_values": [
+        [
+          0
+        ],
+        [
+          26
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ]
+      ],
+      "most_common_payloads": [
+        [
+          "00 1a 00 00 00 00 00",
+          242
+        ]
+      ],
+      "median_interval_ms": 100.005,
+      "sample_packet": "55 14 04 6d bf e5 1f 48 80 04 2f 00 1a 00 00 00 00 00 57 3e"
+    }
+  },
+  "notes": [
+    "CAN payload streams are separate by ID and extended flag.",
+    "Reassembly boundaries reset at observed sequence gaps, reboots or changed firmware drop counters.",
+    "Timestamps are driver-dequeue timestamps, not hardware frame-edge times.",
+    "Variable payload bytes are candidates, not identified motor control fields.",
+    "Incomplete final UART line is excluded from packet reconstruction."
+  ]
+}
