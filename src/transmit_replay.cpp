@@ -33,6 +33,18 @@
 #define REPLAY_INTERVAL_MS 500
 #endif
 
+// Rapid mode: start a replay window automatically the moment the board boots, and
+// repeat far faster than the observed 500 ms cadence. This exists because the
+// focus motor floods the bus at ~7600 frames/s once it is up (about 84% of 1 Mbps),
+// which leaves no room for a 13 byte frame to be transmitted at all. The only
+// window in which a controller can get a frame onto the wire is the brief quiet
+// period between the motor powering up and its flood starting (measured at roughly
+// 100 ms in the RS3 power-on capture). So the sender must already be running and
+// hammering before the motor is switched on.
+#ifndef REPLAY_AUTO_START
+#define REPLAY_AUTO_START 0
+#endif
+
 #ifndef LED_RGB_GPIO
 #define LED_RGB_GPIO 48
 #endif
@@ -135,21 +147,31 @@ static bool button_down() {
     return digitalRead(BUTTON_GPIO) == LOW;
 }
 
+// Set when a long press starts a window: the finger is still on the button at that
+// moment, so the window must ignore the button until it has been released once,
+// otherwise the press that started the window would immediately stop it.
+static bool ignore_button_until_release = false;
+
 static void service_button() {
     static bool was_down = false;
     static bool long_press_fired = false;
     static unsigned long pressed_at = 0;
-    if (!button_usable) return;
     bool down = button_down();
+
+    if (!down) {
+        ignore_button_until_release = false;
+    }
+    if (!button_usable) {
+        was_down = down;
+        return;
+    }
     if (down && !was_down) {
         pressed_at = millis();
         long_press_fired = false;
     } else if (down && !long_press_fired && millis() - pressed_at >= LONG_PRESS_MS) {
         long_press_fired = true;
         if (mode.load() == 1) {
-            Serial.println("# REPLAY stop_requested_by_button");
-            set_mode(false);
-            write_led(0, 0, 24);
+            // Handled inside the window loop; nothing to do here.
         } else {
             Serial.printf("# REPLAY stage=%u starting seconds=%u interval_ms=%u\n",
                           (unsigned)REPLAY_STAGE, (unsigned)REPLAY_SECONDS,
@@ -157,6 +179,7 @@ static void service_button() {
             if (set_mode(true)) {
                 ++replay_windows;
                 replay_sends = 0;
+                ignore_button_until_release = true;
                 write_led(48, 0, 0);
             }
         }
@@ -164,29 +187,43 @@ static void service_button() {
     was_down = down;
 }
 
-// Runs one bounded replay window; returns when finished or stopped by the button.
+// Runs one bounded replay window; returns when finished or stopped by a fresh press.
 static void run_replay_window() {
     unsigned long started = millis();
     unsigned long last_send = 0;
+    unsigned long released_at = 0;
+    unsigned long rejected = 0;
+    bool reported_rejection = false;
     while (mode.load() == 1 && millis() - started < (unsigned long)REPLAY_SECONDS * 1000UL) {
-        if (button_down()) {
-            delay(50);
-            if (button_down()) {
-                Serial.println("# REPLAY stopped_by_button");
-                break;
+        bool down = button_down();
+        if (ignore_button_until_release) {
+            if (!down) {
+                ignore_button_until_release = false;
+                released_at = millis();
             }
+        } else if (down && released_at && millis() - released_at > 300) {
+            // A fresh press after the starting press was released: stop.
+            Serial.println("# REPLAY stopped_by_button");
+            break;
         }
         if (millis() - last_send >= REPLAY_INTERVAL_MS) {
             last_send = millis();
             if (send_m0001_request()) {
                 ++replay_sends;
+                reported_rejection = false;
             } else {
-                Serial.println("# WARN transmit_rejected queue_full_or_bus_off");
+                // The queue stays full while a frame cannot get onto the bus, so
+                // report the condition once per burst instead of every attempt.
+                ++rejected;
+                if (!reported_rejection) {
+                    reported_rejection = true;
+                    Serial.println("# WARN transmit_rejected queue_full_bus_monopolised");
+                }
             }
         }
         // Keep draining received frames while replaying.
         CapturedFrame item{};
-        if (xQueueReceive(log_queue, &item, pdMS_TO_TICKS(10)) == pdTRUE) {
+        if (xQueueReceive(log_queue, &item, pdMS_TO_TICKS(5)) == pdTRUE) {
             char line[128];
             int length = snprintf(line, sizeof(line), "%llu,%u,%08X,%u,%u,%u,",
                                   (unsigned long long)item.timestamp_us, item.sequence,
@@ -202,9 +239,9 @@ static void run_replay_window() {
     }
     twai_status_info_t status{};
     twai_get_status_info(&status);
-    Serial.printf("# REPLAY window_done sent=%u rx=%u bus_errors=%u tx_errors=%u "
-                  "rx_missed=%u logger_dropped=%u\n",
-                  replay_sends, received.load(), status.bus_error_count,
+    Serial.printf("# REPLAY window_done sent=%u rejected=%u rx=%u bus_errors=%u "
+                  "tx_errors=%u rx_missed=%u logger_dropped=%u\n",
+                  replay_sends, rejected, received.load(), status.bus_error_count,
                   status.tx_error_counter, status.rx_missed_count,
                   logger_dropped.load());
     set_mode(false);
@@ -255,6 +292,17 @@ void setup() {
     }
     write_led(0, 0, 24);   // blue = listen only, cannot transmit
     Serial.println("# READY listen_only");
+#if REPLAY_AUTO_START
+    // Rapid mode: begin hammering immediately so our frames are already going out
+    // when the motor is switched on, before its flood monopolises the bus.
+    Serial.println("# AUTO_START beginning replay window now");
+    if (set_mode(true)) {
+        ++replay_windows;
+        replay_sends = 0;
+        ignore_button_until_release = !button_down();
+        write_led(48, 0, 0);
+    }
+#endif
 }
 
 void loop() {
