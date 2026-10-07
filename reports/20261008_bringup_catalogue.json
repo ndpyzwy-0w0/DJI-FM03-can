@@ -1,0 +1,560 @@
+{
+  "raw_log": "J:\\New soft project\\FM03\\captures\\20261007_214348_391693_capture.log",
+  "packets": 7953,
+  "span_s": 16.5499,
+  "window_seconds": 0.6,
+  "first_occurrence_order": [
+    {
+      "t_s": 0.0,
+      "can_ids": [
+        "0x106"
+      ],
+      "source": "0x04",
+      "destination": "0xC9",
+      "flags": "0x00",
+      "command": "04:10",
+      "payload_len": 3,
+      "sequence": 0,
+      "header_crc8": 86,
+      "packet_crc16": 58468,
+      "packet_hex": "55 10 04 56 04 c9 00 00 00 04 10 7a 01 01 64 e4",
+      "packets_in_capture": 34
+    },
+    {
+      "t_s": 0.000256,
+      "can_ids": [
+        "0x106"
+      ],
+      "source": "0x04",
+      "destination": "0xF1",
+      "flags": "0x00",
+      "command": "04:05",
+      "payload_len": 45,
+      "sequence": 62,
+      "header_crc8": 112,
+      "packet_crc16": 43715,
+      "packet_hex": "55 3a 04 70 04 f1 3e 00 00 04 05 00 00 00 00 00 00 82 00 f4 ff 00 01 bd 68 09 00 00 00 00 00 00 00 02 00 00 00 80 3f cf 77 c6 39 76 30 1c b8 55 b1 dd b8 00 00 00 00 00 c3 aa",
+      "packets_in_capture": 824
+    },
+    {
+      "t_s": 0.068078,
+      "can_ids": [
+        "0x201"
+      ],
+      "source": "0xE5",
+      "destination": "0x52",
+      "flags": "0x00",
+      "command": "04:69",
+      "payload_len": 6,
+      "sequence": 6,
+      "header_crc8": 3,
+      "packet_crc16": 1936,
+      "packet_hex": "55 13 04 03 e5 52 06 00 00 04 69 0f 04 00 00 00 00 90 07",
+      "packets_in_capture": 1649
+    },
+    {
+      "t_s": 0.098192,
+      "can_ids": [
+        "0x232"
+      ],
+      "source": "0xBF",
+      "destination": "0x32",
+      "flags": "0x20",
+      "command": "24:20",
+      "payload_len": 3,
+      "sequence": 0,
+      "header_crc8": 86,
+      "packet_crc16": 19135,
+      "packet_hex": "55 10 04 56 bf 32 00 00 20 24 20 5a 41 01 bf 4a",
+      "packets_in_capture": 330
+    },
+    {
+      "t_s": 0.098866,
+      "can_ids": [
+        "0x504"
+      ],
+      "source": "0xBF",
+      "destination": "0xE5",
+      "flags": "0x00",
+      "command": "04:2F",
+      "payload_len": 15,
+      "sequence": 2,
+      "header_crc8": 27,
+      "packet_crc16": 1923,
+      "packet_hex": "55 1c 04 1b bf e5 02 00 00 04 2f 09 00 00 00 00 00 00 00 00 00 00 00 00 00 00 83 07",
+      "packets_in_capture": 165
+    },
+    {
+      "t_s": 0.099326,
+      "can_ids": [
+        "0x504"
+      ],
+      "source": "0xBF",
+      "destination": "0x02",
+      "flags": "0x00",
+      "command": "04:2F",
+      "payload_len": 15,
+      "sequence": 4,
+      "header_crc8": 27,
+      "packet_crc16": 20929,
+      "packet_hex": "55 1c 04 1b bf 02 04 00 00 04 2f 09 00 00 00 00 00 00 00 00 00 00 00 00 00 00 c1 51",
+      "packets_in_capture": 165
+    },
+    {
+      "t_s": 0.099779,
+      "can_ids": [
+        "0x232"
+      ],
+      "source": "0xBF",
+      "destination": "0x32",
+      "flags": "0x00",
+      "command": "04:2F",
+      "payload_len": 15,
+      "sequence": 5,
+      "header_crc8": 27,
+      "packet_crc16": 15746,
+      "packet_hex": "55 1c 04 1b bf 32 05 00 00 04 2f 09 00 00 00 00 00 00 00 00 00 00 00 00 00 00 82 3d",
+      "packets_in_capture": 165
+    },
+    {
+      "t_s": 0.100233,
+      "can_ids": [
+        "0x504",
+        "0x232"
+      ],
+      "source": "0xBF",
+      "destination": "0x52",
+      "flags": "0x00",
+      "command": "04:2F",
+      "payload_len": 15,
+      "sequence": 6,
+      "header_crc8": 27,
+      "packet_crc16": 14930,
+      "packet_hex": "55 1c 04 1b bf 52 06 00 00 04 2f 09 00 00 00 00 00 00 00 00 00 00 00 00 00 00 52 3a",
+      "packets_in_capture": 330
+    },
+    {
+      "t_s": 0.101137,
+      "can_ids": [
+        "0x201"
+      ],
+      "source": "0xDF",
+      "destination": "0x52",
+      "flags": "0x00",
+      "command": "04:2F",
+      "payload_len": 15,
+      "sequence": 6,
+      "header_crc8": 27,
+      "packet_crc16": 46444,
+      "packet_hex": "55 1c 04 1b df 52 06 00 00 04 2f 09 00 00 00 00 00 00 00 00 00 00 00 00 00 00 6c b5",
+      "packets_in_capture": 165
+    },
+    {
+      "t_s": 0.101255,
+      "can_ids": [
+        "0x504"
+      ],
+      "source": "0xBF",
+      "destination": "0xE5",
+      "flags": "0x00",
+      "command": "04:2F",
+      "payload_len": 8,
+      "sequence": 7,
+      "header_crc8": 169,
+      "packet_crc16": 62491,
+      "packet_hex": "55 15 04 a9 bf e5 07 00 00 04 2f 12 00 01 00 00 00 00 00 1b f4",
+      "packets_in_capture": 165
+    },
+    {
+      "t_s": 0.101918,
+      "can_ids": [
+        "0x232"
+      ],
+      "source": "0xBF",
+      "destination": "0x32",
+      "flags": "0x00",
+      "command": "04:2F",
+      "payload_len": 8,
+      "sequence": 8,
+      "header_crc8": 169,
+      "packet_crc16": 41681,
+      "packet_hex": "55 15 04 a9 bf 32 08 00 00 04 2f 12 00 01 00 00 00 00 00 d1 a2",
+      "packets_in_capture": 165
+    },
+    {
+      "t_s": 0.102253,
+      "can_ids": [
+        "0x504",
+        "0x232"
+      ],
+      "source": "0xBF",
+      "destination": "0x52",
+      "flags": "0x00",
+      "command": "04:2F",
+      "payload_len": 8,
+      "sequence": 9,
+      "header_crc8": 169,
+      "packet_crc16": 16812,
+      "packet_hex": "55 15 04 a9 bf 52 09 00 00 04 2f 12 00 01 00 00 00 00 00 ac 41",
+      "packets_in_capture": 330
+    },
+    {
+      "t_s": 0.10292,
+      "can_ids": [
+        "0x504"
+      ],
+      "source": "0xBF",
+      "destination": "0xE5",
+      "flags": "0x00",
+      "command": "04:2F",
+      "payload_len": 13,
+      "sequence": 10,
+      "header_crc8": 177,
+      "packet_crc16": 24789,
+      "packet_hex": "55 1a 04 b1 bf e5 0a 00 00 04 2f 13 00 02 00 00 ff ff ff ff ff ff ff ff d5 60",
+      "packets_in_capture": 165
+    },
+    {
+      "t_s": 0.10316,
+      "can_ids": [
+        "0x201"
+      ],
+      "source": "0xDF",
+      "destination": "0x52",
+      "flags": "0x00",
+      "command": "04:2F",
+      "payload_len": 8,
+      "sequence": 9,
+      "header_crc8": 169,
+      "packet_crc16": 38855,
+      "packet_hex": "55 15 04 a9 df 52 09 00 00 04 2f 12 00 01 00 00 00 00 00 c7 97",
+      "packets_in_capture": 165
+    },
+    {
+      "t_s": 0.103687,
+      "can_ids": [
+        "0x504",
+        "0x232"
+      ],
+      "source": "0xBF",
+      "destination": "0x52",
+      "flags": "0x00",
+      "command": "04:2F",
+      "payload_len": 13,
+      "sequence": 11,
+      "header_crc8": 177,
+      "packet_crc16": 1182,
+      "packet_hex": "55 1a 04 b1 bf 52 0b 00 00 04 2f 13 00 02 00 00 ff ff ff ff ff ff ff ff 9e 04",
+      "packets_in_capture": 330
+    },
+    {
+      "t_s": 0.104548,
+      "can_ids": [
+        "0x504"
+      ],
+      "source": "0xBF",
+      "destination": "0xE5",
+      "flags": "0x00",
+      "command": "04:2F",
+      "payload_len": 6,
+      "sequence": 12,
+      "header_crc8": 3,
+      "packet_crc16": 61729,
+      "packet_hex": "55 13 04 03 bf e5 0c 00 00 04 2f 18 00 00 00 00 00 21 f1",
+      "packets_in_capture": 165
+    },
+    {
+      "t_s": 0.104867,
+      "can_ids": [
+        "0x504"
+      ],
+      "source": "0xBF",
+      "destination": "0xE5",
+      "flags": "0x00",
+      "command": "04:2F",
+      "payload_len": 2,
+      "sequence": 13,
+      "header_crc8": 162,
+      "packet_crc16": 46244,
+      "packet_hex": "55 0f 04 a2 bf e5 0d 00 00 04 2f 19 03 a4 b4",
+      "packets_in_capture": 165
+    },
+    {
+      "t_s": 0.105095,
+      "can_ids": [
+        "0x201"
+      ],
+      "source": "0xDF",
+      "destination": "0x52",
+      "flags": "0x00",
+      "command": "04:2F",
+      "payload_len": 13,
+      "sequence": 11,
+      "header_crc8": 177,
+      "packet_crc16": 20771,
+      "packet_hex": "55 1a 04 b1 df 52 0b 00 00 04 2f 13 00 02 00 00 ff ff ff ff ff ff ff ff 23 51",
+      "packets_in_capture": 165
+    },
+    {
+      "t_s": 0.105212,
+      "can_ids": [
+        "0x504"
+      ],
+      "source": "0xBF",
+      "destination": "0xE5",
+      "flags": "0x80",
+      "command": "04:2F",
+      "payload_len": 7,
+      "sequence": 14,
+      "header_crc8": 109,
+      "packet_crc16": 57205,
+      "packet_hex": "55 14 04 6d bf e5 0e 00 80 04 2f 00 1a 00 00 00 00 00 75 df",
+      "packets_in_capture": 165
+    },
+    {
+      "t_s": 0.105845,
+      "can_ids": [
+        "0x504"
+      ],
+      "source": "0xBF",
+      "destination": "0xE5",
+      "flags": "0x00",
+      "command": "04:2F",
+      "payload_len": 3,
+      "sequence": 15,
+      "header_crc8": 86,
+      "packet_crc16": 10388,
+      "packet_hex": "55 10 04 56 bf e5 0f 00 00 04 2f 1b 4b 00 94 28",
+      "packets_in_capture": 165
+    },
+    {
+      "t_s": 0.106084,
+      "can_ids": [
+        "0x504"
+      ],
+      "source": "0xBF",
+      "destination": "0x04",
+      "flags": "0x00",
+      "command": "00:0E",
+      "payload_len": 0,
+      "sequence": 16,
+      "header_crc8": 51,
+      "packet_crc16": 49363,
+      "packet_hex": "55 0d 04 33 bf 04 10 00 00 00 0e d3 c0",
+      "packets_in_capture": 165
+    },
+    {
+      "t_s": 0.106299,
+      "can_ids": [
+        "0x504"
+      ],
+      "source": "0xBF",
+      "destination": "0xE5",
+      "flags": "0x00",
+      "command": "00:0E",
+      "payload_len": 0,
+      "sequence": 17,
+      "header_crc8": 51,
+      "packet_crc16": 19887,
+      "packet_hex": "55 0d 04 33 bf e5 11 00 00 00 0e af 4d",
+      "packets_in_capture": 165
+    },
+    {
+      "t_s": 0.106512,
+      "can_ids": [
+        "0x504"
+      ],
+      "source": "0xBF",
+      "destination": "0xE5",
+      "flags": "0x40",
+      "command": "00:01",
+      "payload_len": 0,
+      "sequence": 18,
+      "header_crc8": 51,
+      "packet_crc16": 44770,
+      "packet_hex": "55 0d 04 33 bf e5 12 00 40 00 01 e2 ae",
+      "packets_in_capture": 1
+    },
+    {
+      "t_s": 0.110067,
+      "can_ids": [
+        "0x503"
+      ],
+      "source": "0xE5",
+      "destination": "0xBF",
+      "flags": "0x80",
+      "command": "00:01",
+      "payload_len": 30,
+      "sequence": 18,
+      "header_crc8": 88,
+      "packet_crc16": 6217,
+      "packet_hex": "55 2b 04 58 e5 bf 12 00 80 00 01 00 01 47 42 35 33 00 00 00 00 00 00 00 00 00 00 00 00 04 00 09 07 50 41 03 00 01 00 00 00 49 18",
+      "packets_in_capture": 1
+    },
+    {
+      "t_s": 0.228097,
+      "can_ids": [
+        "0x503"
+      ],
+      "source": "0xE5",
+      "destination": "0xBF",
+      "flags": "0x00",
+      "command": "04:69",
+      "payload_len": 6,
+      "sequence": 38,
+      "header_crc8": 3,
+      "packet_crc16": 16790,
+      "packet_hex": "55 13 04 03 e5 bf 26 00 00 04 69 0f 04 08 19 00 00 96 41",
+      "packets_in_capture": 1633
+    },
+    {
+      "t_s": 0.550155,
+      "can_ids": [
+        "0x503"
+      ],
+      "source": "0xE5",
+      "destination": "0xBF",
+      "flags": "0x40",
+      "command": "00:01",
+      "payload_len": 0,
+      "sequence": 0,
+      "header_crc8": 51,
+      "packet_crc16": 65245,
+      "packet_hex": "55 0d 04 33 e5 bf 00 00 40 00 01 dd fe",
+      "packets_in_capture": 8
+    },
+    {
+      "t_s": 0.551073,
+      "can_ids": [
+        "0x504"
+      ],
+      "source": "0xBF",
+      "destination": "0xE5",
+      "flags": "0xC0",
+      "command": "00:01",
+      "payload_len": 30,
+      "sequence": 0,
+      "header_crc8": 88,
+      "packet_crc16": 36010,
+      "packet_hex": "55 2b 04 58 bf e5 00 00 c0 00 01 00 01 50 4a 30 38 00 00 00 00 00 00 00 00 00 00 00 00 01 0a 07 00 29 03 03 00 01 00 00 00 aa 8c",
+      "packets_in_capture": 8
+    }
+  ],
+  "sequence_steps_per_route": {
+    "04>C9 f00 04:10 len3": {
+      "5": 33
+    },
+    "04>F1 f00 04:05 len45": {
+      "20": 811,
+      "40": 12
+    },
+    "E5>52 f00 04:69 len6": {
+      "2": 1552,
+      "3": 71,
+      "4": 21,
+      "6": 1,
+      "7": 3
+    },
+    "BF>32 f20 24:20 len3": {
+      "1": 165,
+      "17": 163,
+      "18": 1
+    },
+    "BF>E5 f00 04:2F len15": {
+      "18": 163,
+      "19": 1
+    },
+    "BF>02 f00 04:2F len15": {
+      "18": 163,
+      "19": 1
+    },
+    "BF>32 f00 04:2F len15": {
+      "18": 163,
+      "19": 1
+    },
+    "BF>52 f00 04:2F len15": {
+      "0": 165,
+      "18": 163,
+      "19": 1
+    },
+    "DF>52 f00 04:2F len15": {
+      "18": 163,
+      "19": 1
+    },
+    "BF>E5 f00 04:2F len8": {
+      "18": 163,
+      "19": 1
+    },
+    "BF>32 f00 04:2F len8": {
+      "18": 163,
+      "19": 1
+    },
+    "BF>52 f00 04:2F len8": {
+      "0": 165,
+      "18": 163,
+      "19": 1
+    },
+    "BF>E5 f00 04:2F len13": {
+      "18": 163,
+      "19": 1
+    },
+    "DF>52 f00 04:2F len8": {
+      "18": 163,
+      "19": 1
+    },
+    "BF>52 f00 04:2F len13": {
+      "0": 165,
+      "18": 163,
+      "19": 1
+    },
+    "BF>E5 f00 04:2F len6": {
+      "18": 163,
+      "19": 1
+    },
+    "BF>E5 f00 04:2F len2": {
+      "18": 163,
+      "19": 1
+    },
+    "DF>52 f00 04:2F len13": {
+      "18": 163,
+      "19": 1
+    },
+    "BF>E5 f80 04:2F len7": {
+      "18": 163,
+      "19": 1
+    },
+    "BF>E5 f00 04:2F len3": {
+      "18": 163,
+      "19": 1
+    },
+    "BF>04 f00 00:0E len0": {
+      "18": 163,
+      "19": 1
+    },
+    "BF>E5 f00 00:0E len0": {
+      "18": 163,
+      "19": 1
+    },
+    "BF>E5 f40 00:01 len0": {},
+    "E5>BF f80 00:01 len30": {},
+    "E5>BF f00 04:69 len6": {
+      "2": 1537,
+      "3": 70,
+      "4": 21,
+      "6": 1,
+      "7": 3
+    },
+    "E5>BF f40 00:01 len0": {
+      "0": 7
+    },
+    "BF>E5 fC0 00:01 len30": {
+      "0": 7
+    }
+  },
+  "notes": [
+    "Times are relative to the first valid packet, not to power-on.",
+    "Only CRC-validated packets are listed; the flood states produce none.",
+    "Sequence steps are reported per route across the whole capture.",
+    "No serial port is opened and no frame is transmitted."
+  ]
+}
