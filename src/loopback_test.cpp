@@ -1,18 +1,20 @@
 // Loopback self-test for the transmit path (M4).
 //
 // Purpose: prove the ESP32 can build and put correctly formed CAN frames on the
-// wire *before* anything is connected to the focus motor. The controller runs in
-// NO_ACK mode so it needs no other node, and it is configured to receive its own
-// transmissions (self reception request), so a passing test proves the whole
-// build-and-send path: identifier, DLC, payload and bit timing.
+// wire *before* anything is connected to the focus motor.
+//
+// How the loop closes: an SN65HVD230 feeds TX back to RX internally, and the
+// controller's RX reflects both what the transceiver is driving and what the bus
+// carries. So a controller in NO_ACK mode with self reception enabled receives its
+// own frames. No jumper between the transceiver's D and R pins is required.
 //
 // This is a DIFFERENT firmware from src/main.cpp (the listener). It is selected by
 // the `loopback_test` PlatformIO environment and must never replace the listener
 // build used for passive capture.
 //
-// Safety: run this with the transceiver's TX and RX tied together and NOTHING
-// attached to a real CAN bus. No frame may be sent while the RS3 is talking to the
-// motor.
+// Safety: run this with the transceiver attached to the ESP32 and NOTHING else on
+// the bus - no focus motor, no RS3, no other node. No frame may be sent while the
+// RS3 is talking to the motor.
 //
 // The third check is the important one for M3: it transmits the exact 00:01
 // bring-up request bytes recovered from the capture and verifies the controller
@@ -149,8 +151,8 @@ void setup() {
                   status.rx_missed_count, status.rx_overrun_count,
                   status.bus_error_count, mismatches);
     if (!all_ok) {
-        Serial.println("# HINT check that the transceiver TX and RX are tied together "
-                       "and that no real bus is attached");
+        Serial.println("# HINT bus must be empty (no motor, no RS3); the transceiver "
+                       "loops TX back to RX internally, so no jumper is needed");
     }
     twai_stop();
     twai_driver_uninstall();
