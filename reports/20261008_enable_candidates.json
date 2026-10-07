@@ -1,0 +1,497 @@
+{
+  "raw_log": "J:\\New soft project\\FM03\\captures\\20261007_214348_391693_capture.log",
+  "packets": 7953,
+  "span_s": 16.5499,
+  "bringup_seconds": 1.0,
+  "steady_window_s": 3.0,
+  "routes": [
+    {
+      "route": "04>C9 f00 04:10 len3",
+      "first_s": 0.0,
+      "can_ids": [
+        "0x106"
+      ],
+      "packets_total": 34,
+      "packets_first_second": 3,
+      "packets_after": 31,
+      "packets_last_window": 6,
+      "steady_rate_per_s": 2.0,
+      "distinct_payloads": 1,
+      "top_payloads": [
+        "7a 01 01"
+      ],
+      "verdict": "steady traffic"
+    },
+    {
+      "route": "04>F1 f00 04:05 len45",
+      "first_s": 0.000256,
+      "can_ids": [
+        "0x106"
+      ],
+      "packets_total": 824,
+      "packets_first_second": 59,
+      "packets_after": 765,
+      "packets_last_window": 148,
+      "steady_rate_per_s": 49.333,
+      "distinct_payloads": 824,
+      "top_payloads": [
+        "00 00 00 00 00 00 82 00 f4 ff 00 01 bd 68 09 00 00 00 00 00 00 00 02 00 00 00 80 3f cf 77 c6 39 76 30 1c b8 55 b1 dd b8 00 00 00 00 00",
+        "00 00 00 00 00 00 82 00 f4 ff 00 01 de b6 09 00 00 00 00 00 00 00 02 00 fe ff 7f 3f 67 bd e4 39 84 1d d7 b8 f2 a5 4a b9 00 00 00 00 00",
+        "00 00 00 00 00 00 82 00 f4 ff 00 01 00 05 0a 00 00 00 00 00 00 00 02 00 fe ff 7f 3f 28 a3 f5 39 f5 a7 31 b9 89 53 89 b9 00 00 00 00 00"
+      ],
+      "verdict": "steady traffic"
+    },
+    {
+      "route": "E5>52 f00 04:69 len6",
+      "first_s": 0.068078,
+      "can_ids": [
+        "0x201"
+      ],
+      "packets_total": 1649,
+      "packets_first_second": 94,
+      "packets_after": 1555,
+      "packets_last_window": 300,
+      "steady_rate_per_s": 100.0,
+      "distinct_payloads": 2,
+      "top_payloads": [
+        "0f 04 08 19 00 00",
+        "0f 04 00 00 00 00"
+      ],
+      "verdict": "steady traffic"
+    },
+    {
+      "route": "BF>32 f20 24:20 len3",
+      "first_s": 0.098192,
+      "can_ids": [
+        "0x232"
+      ],
+      "packets_total": 330,
+      "packets_first_second": 20,
+      "packets_after": 310,
+      "packets_last_window": 60,
+      "steady_rate_per_s": 20.0,
+      "distinct_payloads": 2,
+      "top_payloads": [
+        "5a 41 01",
+        "5d 41 01"
+      ],
+      "verdict": "steady traffic"
+    },
+    {
+      "route": "BF>E5 f00 04:2F len15",
+      "first_s": 0.098866,
+      "can_ids": [
+        "0x504"
+      ],
+      "packets_total": 165,
+      "packets_first_second": 10,
+      "packets_after": 155,
+      "packets_last_window": 30,
+      "steady_rate_per_s": 10.0,
+      "distinct_payloads": 2,
+      "top_payloads": [
+        "09 00 00 ff ff ff 7f 00 00 00 00 00 00 00 00",
+        "09 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+      ],
+      "verdict": "steady traffic"
+    },
+    {
+      "route": "BF>02 f00 04:2F len15",
+      "first_s": 0.099326,
+      "can_ids": [
+        "0x504"
+      ],
+      "packets_total": 165,
+      "packets_first_second": 10,
+      "packets_after": 155,
+      "packets_last_window": 30,
+      "steady_rate_per_s": 10.0,
+      "distinct_payloads": 2,
+      "top_payloads": [
+        "09 00 00 ff ff ff 7f 00 00 00 00 00 00 00 00",
+        "09 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+      ],
+      "verdict": "steady traffic"
+    },
+    {
+      "route": "BF>32 f00 04:2F len15",
+      "first_s": 0.099779,
+      "can_ids": [
+        "0x232"
+      ],
+      "packets_total": 165,
+      "packets_first_second": 9,
+      "packets_after": 156,
+      "packets_last_window": 30,
+      "steady_rate_per_s": 10.0,
+      "distinct_payloads": 2,
+      "top_payloads": [
+        "09 00 00 ff ff ff 7f 00 00 00 00 00 00 00 00",
+        "09 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+      ],
+      "verdict": "steady traffic"
+    },
+    {
+      "route": "BF>52 f00 04:2F len15",
+      "first_s": 0.100233,
+      "can_ids": [
+        "0x232",
+        "0x504"
+      ],
+      "packets_total": 330,
+      "packets_first_second": 18,
+      "packets_after": 312,
+      "packets_last_window": 60,
+      "steady_rate_per_s": 20.0,
+      "distinct_payloads": 2,
+      "top_payloads": [
+        "09 00 00 ff ff ff 7f 00 00 00 00 00 00 00 00",
+        "09 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+      ],
+      "verdict": "steady traffic"
+    },
+    {
+      "route": "DF>52 f00 04:2F len15",
+      "first_s": 0.101137,
+      "can_ids": [
+        "0x201"
+      ],
+      "packets_total": 165,
+      "packets_first_second": 9,
+      "packets_after": 156,
+      "packets_last_window": 30,
+      "steady_rate_per_s": 10.0,
+      "distinct_payloads": 2,
+      "top_payloads": [
+        "09 00 00 ff ff ff 7f 00 00 00 00 00 00 00 00",
+        "09 00 00 00 00 00 00 00 00 00 00 00 00 00 00"
+      ],
+      "verdict": "steady traffic"
+    },
+    {
+      "route": "BF>E5 f00 04:2F len8",
+      "first_s": 0.101255,
+      "can_ids": [
+        "0x504"
+      ],
+      "packets_total": 165,
+      "packets_first_second": 9,
+      "packets_after": 156,
+      "packets_last_window": 30,
+      "steady_rate_per_s": 10.0,
+      "distinct_payloads": 2,
+      "top_payloads": [
+        "12 00 01 04 00 00 00 00",
+        "12 00 01 00 00 00 00 00"
+      ],
+      "verdict": "steady traffic"
+    },
+    {
+      "route": "BF>32 f00 04:2F len8",
+      "first_s": 0.101918,
+      "can_ids": [
+        "0x232"
+      ],
+      "packets_total": 165,
+      "packets_first_second": 9,
+      "packets_after": 156,
+      "packets_last_window": 30,
+      "steady_rate_per_s": 10.0,
+      "distinct_payloads": 2,
+      "top_payloads": [
+        "12 00 01 04 00 00 00 00",
+        "12 00 01 00 00 00 00 00"
+      ],
+      "verdict": "steady traffic"
+    },
+    {
+      "route": "BF>52 f00 04:2F len8",
+      "first_s": 0.102253,
+      "can_ids": [
+        "0x232",
+        "0x504"
+      ],
+      "packets_total": 330,
+      "packets_first_second": 18,
+      "packets_after": 312,
+      "packets_last_window": 60,
+      "steady_rate_per_s": 20.0,
+      "distinct_payloads": 2,
+      "top_payloads": [
+        "12 00 01 04 00 00 00 00",
+        "12 00 01 00 00 00 00 00"
+      ],
+      "verdict": "steady traffic"
+    },
+    {
+      "route": "BF>E5 f00 04:2F len13",
+      "first_s": 0.10292,
+      "can_ids": [
+        "0x504"
+      ],
+      "packets_total": 165,
+      "packets_first_second": 9,
+      "packets_after": 156,
+      "packets_last_window": 30,
+      "steady_rate_per_s": 10.0,
+      "distinct_payloads": 3,
+      "top_payloads": [
+        "13 00 02 00 00 ff ff ff ff ff ff ff ff",
+        "13 00 03 00 00 ff ff ff ff ff ff ff ff",
+        "13 00 01 00 00 ff ff ff ff ff ff ff ff"
+      ],
+      "verdict": "steady traffic"
+    },
+    {
+      "route": "DF>52 f00 04:2F len8",
+      "first_s": 0.10316,
+      "can_ids": [
+        "0x201"
+      ],
+      "packets_total": 165,
+      "packets_first_second": 9,
+      "packets_after": 156,
+      "packets_last_window": 30,
+      "steady_rate_per_s": 10.0,
+      "distinct_payloads": 2,
+      "top_payloads": [
+        "12 00 01 04 00 00 00 00",
+        "12 00 01 00 00 00 00 00"
+      ],
+      "verdict": "steady traffic"
+    },
+    {
+      "route": "BF>52 f00 04:2F len13",
+      "first_s": 0.103687,
+      "can_ids": [
+        "0x232",
+        "0x504"
+      ],
+      "packets_total": 330,
+      "packets_first_second": 18,
+      "packets_after": 312,
+      "packets_last_window": 60,
+      "steady_rate_per_s": 20.0,
+      "distinct_payloads": 3,
+      "top_payloads": [
+        "13 00 02 00 00 ff ff ff ff ff ff ff ff",
+        "13 00 03 00 00 ff ff ff ff ff ff ff ff",
+        "13 00 01 00 00 ff ff ff ff ff ff ff ff"
+      ],
+      "verdict": "steady traffic"
+    },
+    {
+      "route": "BF>E5 f00 04:2F len6",
+      "first_s": 0.104548,
+      "can_ids": [
+        "0x504"
+      ],
+      "packets_total": 165,
+      "packets_first_second": 9,
+      "packets_after": 156,
+      "packets_last_window": 30,
+      "steady_rate_per_s": 10.0,
+      "distinct_payloads": 2,
+      "top_payloads": [
+        "18 01 00 00 00 00",
+        "18 00 00 00 00 00"
+      ],
+      "verdict": "steady traffic"
+    },
+    {
+      "route": "BF>E5 f00 04:2F len2",
+      "first_s": 0.104867,
+      "can_ids": [
+        "0x504"
+      ],
+      "packets_total": 165,
+      "packets_first_second": 9,
+      "packets_after": 156,
+      "packets_last_window": 30,
+      "steady_rate_per_s": 10.0,
+      "distinct_payloads": 1,
+      "top_payloads": [
+        "19 03"
+      ],
+      "verdict": "steady traffic"
+    },
+    {
+      "route": "DF>52 f00 04:2F len13",
+      "first_s": 0.105095,
+      "can_ids": [
+        "0x201"
+      ],
+      "packets_total": 165,
+      "packets_first_second": 9,
+      "packets_after": 156,
+      "packets_last_window": 30,
+      "steady_rate_per_s": 10.0,
+      "distinct_payloads": 3,
+      "top_payloads": [
+        "13 00 02 00 00 ff ff ff ff ff ff ff ff",
+        "13 00 03 00 00 ff ff ff ff ff ff ff ff",
+        "13 00 01 00 00 ff ff ff ff ff ff ff ff"
+      ],
+      "verdict": "steady traffic"
+    },
+    {
+      "route": "BF>E5 f80 04:2F len7",
+      "first_s": 0.105212,
+      "can_ids": [
+        "0x504"
+      ],
+      "packets_total": 165,
+      "packets_first_second": 9,
+      "packets_after": 156,
+      "packets_last_window": 30,
+      "steady_rate_per_s": 10.0,
+      "distinct_payloads": 1,
+      "top_payloads": [
+        "00 1a 00 00 00 00 00"
+      ],
+      "verdict": "steady traffic"
+    },
+    {
+      "route": "BF>E5 f00 04:2F len3",
+      "first_s": 0.105845,
+      "can_ids": [
+        "0x504"
+      ],
+      "packets_total": 165,
+      "packets_first_second": 9,
+      "packets_after": 156,
+      "packets_last_window": 30,
+      "steady_rate_per_s": 10.0,
+      "distinct_payloads": 1,
+      "top_payloads": [
+        "1b 4b 00"
+      ],
+      "verdict": "steady traffic"
+    },
+    {
+      "route": "BF>04 f00 00:0E len0",
+      "first_s": 0.106084,
+      "can_ids": [
+        "0x504"
+      ],
+      "packets_total": 165,
+      "packets_first_second": 9,
+      "packets_after": 156,
+      "packets_last_window": 30,
+      "steady_rate_per_s": 10.0,
+      "distinct_payloads": 1,
+      "top_payloads": [
+        ""
+      ],
+      "verdict": "steady traffic"
+    },
+    {
+      "route": "BF>E5 f00 00:0E len0",
+      "first_s": 0.106299,
+      "can_ids": [
+        "0x504"
+      ],
+      "packets_total": 165,
+      "packets_first_second": 9,
+      "packets_after": 156,
+      "packets_last_window": 30,
+      "steady_rate_per_s": 10.0,
+      "distinct_payloads": 1,
+      "top_payloads": [
+        ""
+      ],
+      "verdict": "steady traffic"
+    },
+    {
+      "route": "BF>E5 f40 00:01 len0",
+      "first_s": 0.106512,
+      "can_ids": [
+        "0x504"
+      ],
+      "packets_total": 1,
+      "packets_first_second": 1,
+      "packets_after": 0,
+      "packets_last_window": 0,
+      "steady_rate_per_s": 0.0,
+      "distinct_payloads": 1,
+      "top_payloads": [
+        ""
+      ],
+      "verdict": "BRING-UP ONLY (never in the last window)"
+    },
+    {
+      "route": "E5>BF f80 00:01 len30",
+      "first_s": 0.110067,
+      "can_ids": [
+        "0x503"
+      ],
+      "packets_total": 1,
+      "packets_first_second": 1,
+      "packets_after": 0,
+      "packets_last_window": 0,
+      "steady_rate_per_s": 0.0,
+      "distinct_payloads": 1,
+      "top_payloads": [
+        "00 01 47 42 35 33 00 00 00 00 00 00 00 00 00 00 00 00 04 00 09 07 50 41 03 00 01 00 00 00"
+      ],
+      "verdict": "BRING-UP ONLY (never in the last window)"
+    },
+    {
+      "route": "E5>BF f00 04:69 len6",
+      "first_s": 0.228097,
+      "can_ids": [
+        "0x503"
+      ],
+      "packets_total": 1633,
+      "packets_first_second": 78,
+      "packets_after": 1555,
+      "packets_last_window": 300,
+      "steady_rate_per_s": 100.0,
+      "distinct_payloads": 1,
+      "top_payloads": [
+        "0f 04 08 19 00 00"
+      ],
+      "verdict": "steady traffic"
+    },
+    {
+      "route": "E5>BF f40 00:01 len0",
+      "first_s": 0.550155,
+      "can_ids": [
+        "0x503"
+      ],
+      "packets_total": 8,
+      "packets_first_second": 2,
+      "packets_after": 6,
+      "packets_last_window": 0,
+      "steady_rate_per_s": 0.0,
+      "distinct_payloads": 1,
+      "top_payloads": [
+        ""
+      ],
+      "verdict": "BRING-UP ONLY (never in the last window)"
+    },
+    {
+      "route": "BF>E5 fC0 00:01 len30",
+      "first_s": 0.551073,
+      "can_ids": [
+        "0x504"
+      ],
+      "packets_total": 8,
+      "packets_first_second": 2,
+      "packets_after": 6,
+      "packets_last_window": 0,
+      "steady_rate_per_s": 0.0,
+      "distinct_payloads": 1,
+      "top_payloads": [
+        "00 01 50 4a 30 38 00 00 00 00 00 00 00 00 00 00 00 00 01 0a 07 00 29 03 03 00 01 00 00 00"
+      ],
+      "verdict": "BRING-UP ONLY (never in the last window)"
+    }
+  ],
+  "notes": [
+    "Times are relative to the first valid packet, not power-on.",
+    "'BRING-UP ONLY' means the route produced no packet in the final window.",
+    "A steady periodic route is business traffic; a one-shot route is an enable/handshake candidate.",
+    "No serial port is opened and no frame is transmitted."
+  ]
+}
