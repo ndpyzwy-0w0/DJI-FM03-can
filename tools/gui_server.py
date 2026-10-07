@@ -98,6 +98,7 @@ class CaptureSession:
         self.operation_lock = threading.Lock()
         self.thread = None
         self.stop_event = threading.Event()
+        self.closing = False
         self._reset("", "")
 
     def _reset(self, port, label):
@@ -131,6 +132,8 @@ class CaptureSession:
         if port not in {item["port"] for item in available_ports()}:
             raise ValueError("找不到所选串口，请连接开发板后刷新串口。")
         with self.operation_lock, self.lock:
+            if self.closing:
+                raise ValueError("上位机正在关闭，重新启动后才能抓包。")
             if self.thread and self.thread.is_alive():
                 raise ValueError("当前抓包尚未结束，请先停止。")
             self._reset(port, label)
@@ -139,15 +142,19 @@ class CaptureSession:
             self.thread = threading.Thread(target=self._record, daemon=True)
             self.thread.start()
 
-    def stop(self):
+    def stop(self, closing=False):
         with self.operation_lock:
             with self.lock:
+                if closing:
+                    self.closing = True
                 thread = self.thread
                 if thread and thread.is_alive():
                     self.phase = "stopping"
                     self.stop_event.set()
             if thread:
                 thread.join(timeout=3)
+                if thread.is_alive():
+                    raise ValueError("串口尚未停止，服务保持运行，请稍后重试。")
 
     def _consume(self, chunk):
         now = time.monotonic()
@@ -220,6 +227,7 @@ class CaptureSession:
             active = self.phase in ("starting", "capturing", "stopping")
             elapsed = now - self.started if active and self.started else self.elapsed
             return {"product": "fm03_capture", "phase": self.phase,
+                    "closing": self.closing,
                     "port": self.port, "label": self.label,
                     "started_at": self.started_at, "elapsed": round(elapsed, 2),
                     "frames": self.frames, "fps": sum(n for t, n in self.rate_window if now - t <= 1) if active else 0,
@@ -374,6 +382,14 @@ class Handler(BaseHTTPRequestHandler):
                 self.server.capture.start(body.get("port"), body.get("label", "capture"))
             elif route == "/api/stop":
                 self.server.capture.stop()
+            elif route == "/api/shutdown":
+                self.server.capture.stop(closing=True)
+                state = self.server.capture.snapshot()
+                if state["raw_file"] and not state["summary_file"]:
+                    raise ValueError(state["error"] or "摘要尚未保存，服务保持运行。")
+                self._reply(200, {**state, "shutdown": True})
+                threading.Thread(target=self.server.shutdown, daemon=True).start()
+                return
             else:
                 self._reply(404, {"error": "操作不存在。"})
                 return

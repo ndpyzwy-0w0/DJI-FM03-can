@@ -1,6 +1,6 @@
 "use strict";
 const byId = (id) => document.getElementById(id);
-let token = "", busy = false, latestState = null, timer = null;
+let token = "", busy = false, latestState = null, timer = null, appClosed = false;
 const count = (n) => Number(n || 0).toLocaleString("zh-CN");
 const size = (n) => n < 1024 ? `${n} B` : n < 1048576 ? `${(n / 1024).toFixed(1)} KB` : `${(n / 1048576).toFixed(2)} MB`;
 const duration = (seconds) => {const n = Math.floor(seconds);return `${String(Math.floor(n / 60)).padStart(2, "0")}:${String(n % 60).padStart(2, "0")}`;};
@@ -93,13 +93,15 @@ function renderIds(rows, total) {
 }
 
 function render(state) {
+  if (appClosed) return;
   latestState = state;if(state.token) token = state.token;
   const active = ["starting", "capturing", "stopping"].includes(state.phase);
   const labels = {idle:"待机", starting:"正在连接串口", capturing:"正在抓包", stopping:"正在停止并保存", stopped:"已停止 · 日志已保存", error:"抓包中断"};
   byId("phaseText").textContent = labels[state.phase] || state.phase;
   byId("phase").className = `badge ${state.phase === "capturing" ? "live" : state.phase === "error" ? "error" : ""}`;
-  byId("start").disabled = busy || active || !byId("port").value || !token;
+  byId("start").disabled = busy || active || state.closing || !byId("port").value || !token;
   byId("stop").disabled = busy || !["starting", "capturing"].includes(state.phase);
+  byId("shutdown").disabled = busy || !token;
   byId("port").disabled = active || busy;byId("label").disabled = active || busy;byId("refresh").disabled = active || busy;
   byId("frames").textContent = count(state.frames);byId("fps").textContent = count(state.fps);
   byId("elapsed").textContent = duration(state.elapsed);byId("bytes").textContent = `已保存 ${size(state.bytes_saved)}`;
@@ -143,15 +145,26 @@ async function refreshPorts() {
 
 async function action(path, body) {
   busy = true;if(latestState) render(latestState);
-  try {render(await api(path, body));}
+  if (path === "/api/shutdown") notice("正在停止抓包、保存日志并关闭上位机…");
+  try {
+    const state = await api(path, body);render(state);
+    if (state.shutdown) {
+      appClosed = true;clearTimeout(timer);
+      for (const id of ["start", "stop", "shutdown", "port", "label", "refresh", "zeroSound"]) byId(id).disabled = true;
+      byId("downloadLog").hidden = true;byId("downloadSummary").hidden = true;
+      byId("phaseText").textContent = "上位机已关闭";byId("phase").className = "badge";
+      notice(`${state.error ? `${state.error} ` : ""}上位机已关闭。${state.raw_file ? "日志保存在页面显示的本机路径。" : ""}需要再次使用时，双击「启动上位机.cmd」。`, state.error ? "warning" : "");
+    }
+  }
   catch (error) {notice(error.message, "error");}
-  finally {busy = false;if(latestState) {byId("start").disabled = ["starting","capturing","stopping"].includes(latestState.phase) || !byId("port").value || !token;byId("stop").disabled = !["starting","capturing"].includes(latestState.phase);}}
+  finally {busy = false;if(latestState && !appClosed) {byId("start").disabled = latestState.closing || ["starting","capturing","stopping"].includes(latestState.phase) || !byId("port").value || !token;byId("stop").disabled = !["starting","capturing"].includes(latestState.phase);byId("shutdown").disabled = !token;}}
 }
 
 byId("refresh").addEventListener("click", () => refreshPorts().catch((error) => notice(error.message,"error")));
 byId("port").addEventListener("change", () => latestState && render(latestState));
 byId("start").addEventListener("click", () => action("/api/start", {port:byId("port").value, label:byId("label").value}));
 byId("stop").addEventListener("click", () => action("/api/stop", {}));
+byId("shutdown").addEventListener("click", () => action("/api/shutdown", {}));
 byId("zeroSound").addEventListener("change", async () => {
   if (!byId("zeroSound").checked) return;
   try {audio ||= new AudioContext();await audio.resume();}
@@ -159,9 +172,9 @@ byId("zeroSound").addEventListener("change", async () => {
 });
 
 async function poll() {
-  try {if (!busy) render(await api("/api/state"));}
-  catch (error) {byId("phaseText").textContent = "上位机服务未连接";byId("phase").className = "badge error";byId("start").disabled = true;byId("stop").disabled = true;token = "";renderCandidate(null,false);notice("无法连接本机上位机服务，请重新运行「启动上位机.cmd」。", "error");}
-  timer = setTimeout(poll, latestState?.phase === "capturing" ? 250 : 500);
+  try {if (!busy && !appClosed) render(await api("/api/state"));}
+  catch (error) {if (appClosed) return;byId("phaseText").textContent = "上位机服务未连接";byId("phase").className = "badge error";byId("start").disabled = true;byId("stop").disabled = true;byId("shutdown").disabled = true;token = "";renderCandidate(null,false);notice("无法连接本机上位机服务，请重新运行「启动上位机.cmd」。", "error");}
+  if (!appClosed) timer = setTimeout(poll, latestState?.phase === "capturing" ? 250 : 500);
 }
 async function init() {await poll();try {await refreshPorts();}catch(error){notice(error.message,"error");}}
 init();

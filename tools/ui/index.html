@@ -17,7 +17,7 @@
     <section class="controls" aria-label="抓包控制">
       <div class="field"><label for="port">串口设备</label><div class="port-row"><select id="port" aria-label="串口设备"><option value="">正在读取串口…</option></select><button id="refresh" class="quiet" title="重新检测串口">刷新</button></div></div>
       <div class="field"><label for="label">本次场景</label><select id="label"><option value="idle">静止</option><option value="slow_forward">慢速正转</option><option value="slow_reverse">慢速反转</option><option value="fast_forward">快速正转</option><option value="fast_reverse">快速反转</option><option value="calibration">校准</option><option value="capture">其他</option></select></div>
-      <div class="actions"><button id="start" class="primary" disabled>开始抓包</button><button id="stop" disabled>停止并保存</button></div>
+      <div class="actions"><button id="start" class="primary" disabled>开始抓包</button><button id="stop" disabled>停止并保存</button><button id="shutdown" class="quiet" title="停止抓包、保存日志并退出上位机服务" disabled>关闭上位机</button></div>
     </section>
 
     <div id="notice" class="notice" role="status">选择串口后点击开始。未接 CAN 总线时，可以先检查固件状态。</div>
@@ -58,7 +58,7 @@
     </section>
 
     <section class="save-panel">
-      <div><h2 id="saveTitle">原始日志自动保存</h2><p id="savePath">正在读取保存位置…</p><small>关闭页面不会停止抓包，请先点击「停止并保存」。停止后会释放串口。</small></div>
+      <div><h2 id="saveTitle">原始日志自动保存</h2><p id="savePath">正在读取保存位置…</p><small>「停止并保存」可继续抓包；「关闭上位机」会保存并退出服务。仅关闭网页不会停止抓包。</small></div>
       <div class="downloads"><a id="downloadLog" class="button" hidden>下载原始日志</a><a id="downloadSummary" class="button" hidden>下载摘要</a></div>
     </section>
     <details><summary>查看固件消息与计数详情</summary><pre id="details">暂无固件消息。</pre></details>

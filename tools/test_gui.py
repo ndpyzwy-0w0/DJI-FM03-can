@@ -242,6 +242,98 @@ class GuiTests(unittest.TestCase):
             request("/captures/..%2FREADME.md")
         self.assertEqual(caught.exception.code, 404)
 
+    def shutdown_server(self, session):
+        server = ThreadingHTTPServer(("127.0.0.1", 0), Handler)
+        server.capture, server.token = session, "test-token"
+        thread = threading.Thread(target=server.serve_forever, daemon=True)
+        thread.start()
+        def cleanup():
+            server.shutdown()
+            server.server_close()
+            thread.join(timeout=2)
+        self.addCleanup(cleanup)
+        def request(token="test-token"):
+            headers = {"X-FM03-Token": token, "Content-Type": "application/json"}
+            return urlopen(Request(f"http://127.0.0.1:{server.server_port}/api/shutdown",
+                                   data=b"{}", headers=headers), timeout=4)
+        return thread, request
+
+    def test_shutdown_idle_and_capture_saves_before_exit(self):
+        for capturing in (False, True):
+            with self.subTest(capturing=capturing):
+                session = self.session()
+                thread, shutdown = self.shutdown_server(session)
+                if capturing:
+                    session.start("COM_TEST", "shutdown_test")
+                    wait_for(lambda: session.snapshot()["frames"] == 2)
+                with self.assertRaises(HTTPError) as caught:
+                    shutdown(token="wrong-token")
+                self.assertEqual(caught.exception.code, 403)
+                self.assertTrue(thread.is_alive())
+                self.assertFalse(session.closing)
+                with shutdown() as response:
+                    state = json.load(response)
+                self.assertTrue(state["shutdown"])
+                thread.join(timeout=2)
+                self.assertFalse(thread.is_alive())
+                with self.assertRaisesRegex(ValueError, "正在关闭"):
+                    session.start("COM_TEST", "restart")
+                if capturing:
+                    self.assertTrue(self.devices[-1].closed)
+                    self.assertEqual(session.raw_path.read_bytes(), RAW)
+                    summary = json.loads(session.summary_path.read_text(encoding="utf-8"))
+                    self.assertEqual(summary["frames"], 2)
+                    self.assertEqual(state["phase"], "stopped")
+                    self.assertEqual(state["summary_file"], session.summary_path.name)
+
+    def test_shutdown_timeout_keeps_service_and_can_retry(self):
+        session = self.session()
+        entered, release = threading.Event(), threading.Event()
+        class BlockingSerial(FakeSerial):
+            def read(self, size):
+                if self.chunks:
+                    return super().read(size)
+                entered.set()
+                release.wait(timeout=5)
+                return b""
+        device = BlockingSerial()
+        session.serial_factory = lambda **_: device
+        self.addCleanup(release.set)
+        session.start("COM_TEST", "shutdown_timeout")
+        self.assertTrue(entered.wait(timeout=2))
+        thread, shutdown = self.shutdown_server(session)
+        with patch.object(session.thread, "join", return_value=None):
+            with self.assertRaises(HTTPError) as caught:
+                shutdown()
+        self.assertEqual(caught.exception.code, 400)
+        self.assertIn("服务保持运行", json.load(caught.exception)["error"])
+        self.assertTrue(thread.is_alive())
+        self.assertFalse(device.closed)
+        release.set()
+        wait_for(lambda: session.snapshot()["phase"] == "stopped")
+        with shutdown() as response:
+            self.assertTrue(json.load(response)["shutdown"])
+        thread.join(timeout=2)
+        self.assertFalse(thread.is_alive())
+        self.assertTrue(device.closed)
+        self.assertEqual(session.raw_path.read_bytes(), RAW)
+        self.assertTrue(session.summary_path.is_file())
+
+    def test_shutdown_summary_failure_keeps_service_and_raw(self):
+        session = self.session()
+        thread, shutdown = self.shutdown_server(session)
+        session.start("COM_TEST", "shutdown_summary_error")
+        wait_for(lambda: session.snapshot()["frames"] == 2)
+        with patch("gui_server.Path.write_text", side_effect=OSError("test summary disk failure")):
+            with self.assertRaises(HTTPError) as caught:
+                shutdown()
+        self.assertEqual(caught.exception.code, 400)
+        self.assertIn("摘要保存失败", json.load(caught.exception)["error"])
+        self.assertTrue(thread.is_alive())
+        self.assertTrue(self.devices[-1].closed)
+        self.assertEqual(session.raw_path.read_bytes(), RAW)
+        self.assertIsNone(session.summary_path)
+
 
 if __name__ == "__main__":
     unittest.main()
