@@ -151,3 +151,22 @@ PowerShell（项目目录）：
 下一步只需一次明确的快速拨动后完全停手，继续抓到电机停止，并记录/视频标出拨轮停和电机停的时间，以比较输入归零与真实电机运动的关系。当前仍被动监听，不发送CAN控制帧。
 
 本轮离线工具 `tools/compare_speed.py` 输出 `reports/20261007_speed_comparison.json/.csv`。原始抓包不修改；所有记录、例外和未确定事项已写入HANDOFF。
+
+## 离线报文构造与双CRC回验（2026-10-07 22:50）
+
+`tools/build_packet.py` 构造 DUML 包并按实包重算报头 CRC8 与整包 CRC16。它**只做内存计算**：不 import pyserial、不打开串口、没有任何 CAN 发送路径，因此可以在保持只监听链路不变的前提下，验证未来主动阶段要用的编码器。
+
+```powershell
+# 自检
+.\.venv\Scripts\python.exe tools\build_packet.py --self-check
+# 构造一个包（打印实包十六进制、双CRC、字段与CAN分片），只是打印，不发送
+.\.venv\Scripts\python.exe tools\build_packet.py --build source=0xE5 destination=0xBF sequence=0x1234 command=04:69 payload=0F0408190000
+# 逐包复核已有抓包
+.\.venv\Scripts\python.exe tools\build_packet.py captures\20261007_154729_002678_idle.log --show 5
+```
+
+11 份日志共 **76110 个 CRC 有效包全部逐字节重建成功，0 处不一致**，且与各 `.analysis.json` 的 `crc_valid_packets` 合计完全相等；脚本内含覆盖度守卫，包数不符即报错。报告保存在 `reports/20261007_packet_build_validation.json`。
+
+报头字段更正：偏移 2 是**高 6 位版本 + 低 2 位长度高位**，实包里的 `0x04` 是移位后的字节（版本值 = 1），不是“低 4 位版本”。
+
+**编码正确不等于报文可以安全发送或必需。** 物理端点、使能条件和发送范围仍未确认，当前阶段依然只监听、不发 CAN 帧。
