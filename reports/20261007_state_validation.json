@@ -1,0 +1,4838 @@
+{
+  "scope": "Passive observations, no confirmed motor feedback or startup/enable sequence.",
+  "captures": [
+    {
+      "raw_log": "J:\\New soft project\\FM03\\captures\\20261007_154446_862533_capture.log",
+      "sha256": "1d1bf75462e3046c3d7b318c1484d054109e7bd2cd37e0eb48bf4bc48d208a91",
+      "integrity": {
+        "frames": 52666,
+        "ids": {
+          "S:00000106": 12294,
+          "S:00000503": 9090,
+          "S:00000201": 12434,
+          "S:00000232": 6688,
+          "S:00000504": 12160
+        },
+        "sequence_gaps": 0,
+        "sequence_resets": 0,
+        "non_frame_lines": 2,
+        "first_t_us": 9102611,
+        "last_t_us": 39525861,
+        "status_first": {
+          "t_us": 9109460,
+          "bitrate": 1000000,
+          "rx": 13892,
+          "logger_dropped": 0,
+          "rx_missed": 0,
+          "rx_overrun": 0,
+          "bus_errors": 0,
+          "pending": 0,
+          "logger_pending": 9
+        },
+        "status_last": {
+          "t_us": 39162396,
+          "bitrate": 1000000,
+          "rx": 65959,
+          "logger_dropped": 0,
+          "rx_missed": 0,
+          "rx_overrun": 0,
+          "bus_errors": 0,
+          "pending": 0,
+          "logger_pending": 58
+        },
+        "firmware_errors": []
+      },
+      "crc_valid_packets": 14633,
+      "groups": {
+        "0x106 04>C9 flags=00 cmd=04:10 len=3 subtype=": {
+          "packets": 61,
+          "median_interval_ms": 500.0565,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "7A 01 01",
+              61
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x106 04>F1 flags=00 cmd=04:05 len=45 subtype=": {
+          "packets": 1520,
+          "median_interval_ms": 20.002,
+          "unique_payloads": 1520,
+          "payload_counts": [
+            [
+              "16 00 28 02 48 F9 86 00 F5 FF 00 01 52 00 7E 0B CD BC 00 00 23 02 81 03 E8 47 90 3D 4D 93 49 3D B1 08 EC BE 30 1B 62 BF 00 00 00 00 00",
+              1
+            ],
+            [
+              "16 00 28 02 48 F9 86 00 F5 FF 00 01 80 4E 7E 0B CD BC 00 00 23 02 81 03 0E 44 90 3D DB A4 49 3D 5E 06 EC BE C5 1B 62 BF 00 00 00 00 00",
+              1
+            ],
+            [
+              "16 00 28 02 48 F9 86 00 F5 FF 00 01 9D 9C 7E 0B CD BC 00 00 23 02 81 03 AF 47 90 3D 9E A9 49 3D 1E 04 EC BE 4E 1C 62 BF 00 00 00 00 00",
+              1
+            ],
+            [
+              "16 00 28 02 48 F9 86 00 F5 FF 00 01 D4 EA 7E 0B CD BC 00 00 23 02 81 03 E3 49 90 3D 9D 94 49 3D 6E 04 EC BE 46 1C 62 BF 00 00 00 00 00",
+              1
+            ],
+            [
+              "16 00 28 02 48 F9 86 00 F5 FF 00 01 E7 38 7F 0B CD BC 00 00 23 02 81 03 4C 4C 90 3D E5 8F 49 3D AC 05 EC BE F1 1B 62 BF 00 00 00 00 00",
+              1
+            ]
+          ],
+          "variable_payload_offsets": [
+            0,
+            2,
+            4,
+            8,
+            12,
+            13,
+            14,
+            15,
+            16,
+            20,
+            22,
+            24,
+            25,
+            26,
+            28,
+            29,
+            30,
+            32,
+            33,
+            34,
+            36,
+            37
+          ],
+          "four_float32_le_payload_offset24": {
+            "finite_packets": 1520,
+            "norm_squared_min": 0.9999999053172344,
+            "norm_squared_max": 1.0000001832675547,
+            "maximum_error_from_one": 1.8326755468756062e-07
+          },
+          "uint32_le_payload_offset12_increment": {
+            "median": 20002,
+            "minimum": 19801,
+            "maximum": 20209
+          }
+        },
+        "0x201 DF>52 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 304,
+          "median_interval_ms": 100.009,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              304
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x201 DF>52 flags=00 cmd=04:2F len=13 subtype=13 00": {
+          "packets": 304,
+          "median_interval_ms": 100.009,
+          "unique_payloads": 3,
+          "payload_counts": [
+            [
+              "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+              102
+            ],
+            [
+              "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+              101
+            ],
+            [
+              "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+              101
+            ]
+          ],
+          "variable_payload_offsets": [
+            2
+          ],
+          "offset2_value_counts": {
+            "2": 102,
+            "3": 101,
+            "1": 101
+          },
+          "cycle_1_2_3_pairs": 303,
+          "same_segment_pairs": 303
+        },
+        "0x201 DF>52 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 304,
+          "median_interval_ms": 100.01,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              304
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 304
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.047258,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 1.972
+              }
+            }
+          ]
+        },
+        "0x232 BF>32 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 304,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              304
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x232 BF>32 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 304,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              304
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 304
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.04605,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 0.764
+              }
+            }
+          ]
+        },
+        "0x232 BF>32 flags=20 cmd=24:20 len=3 subtype=5a 41 01": {
+          "packets": 304,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "5A 41 01",
+              304
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x232 BF>32 flags=20 cmd=24:20 len=3 subtype=5d 41 01": {
+          "packets": 304,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "5D 41 01",
+              304
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x232 BF>52 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 304,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              304
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x232 BF>52 flags=00 cmd=04:2F len=13 subtype=13 00": {
+          "packets": 304,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 3,
+          "payload_counts": [
+            [
+              "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+              102
+            ],
+            [
+              "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+              101
+            ],
+            [
+              "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+              101
+            ]
+          ],
+          "variable_payload_offsets": [
+            2
+          ],
+          "offset2_value_counts": {
+            "2": 102,
+            "3": 101,
+            "1": 101
+          },
+          "cycle_1_2_3_pairs": 303,
+          "same_segment_pairs": 303
+        },
+        "0x232 BF>52 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 304,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              304
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 304
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.047143,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 1.857
+              }
+            }
+          ]
+        },
+        "0x504 BF>02 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 304,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              304
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 304
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.045169,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 9.98
+              }
+            }
+          ]
+        },
+        "0x504 BF>04 flags=00 cmd=00:0E len=0 subtype=": {
+          "packets": 304,
+          "median_interval_ms": 100.006,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "",
+              304
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>52 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 304,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              304
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>52 flags=00 cmd=04:2F len=13 subtype=13 00": {
+          "packets": 304,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 3,
+          "payload_counts": [
+            [
+              "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+              102
+            ],
+            [
+              "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+              101
+            ],
+            [
+              "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+              101
+            ]
+          ],
+          "variable_payload_offsets": [
+            2
+          ],
+          "offset2_value_counts": {
+            "2": 102,
+            "3": 101,
+            "1": 101
+          },
+          "cycle_1_2_3_pairs": 303,
+          "same_segment_pairs": 303
+        },
+        "0x504 BF>52 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 304,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              304
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 304
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.046691,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 1.405
+              }
+            }
+          ]
+        },
+        "0x504 BF>E5 flags=00 cmd=00:0E len=0 subtype=": {
+          "packets": 304,
+          "median_interval_ms": 100.005,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "",
+              304
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=2 subtype=19 03": {
+          "packets": 304,
+          "median_interval_ms": 100.006,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "19 03",
+              304
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=3 subtype=1b 4b": {
+          "packets": 304,
+          "median_interval_ms": 100.006,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "1B 4B 00",
+              304
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=6 subtype=18 01": {
+          "packets": 304,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "18 01 00 00 00 00",
+              304
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 304,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              304
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=13 subtype=13 00": {
+          "packets": 304,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 3,
+          "payload_counts": [
+            [
+              "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+              102
+            ],
+            [
+              "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+              101
+            ],
+            [
+              "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+              101
+            ]
+          ],
+          "variable_payload_offsets": [
+            2
+          ],
+          "offset2_value_counts": {
+            "2": 102,
+            "3": 101,
+            "1": 101
+          },
+          "cycle_1_2_3_pairs": 303,
+          "same_segment_pairs": 303
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 304,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              304
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 304
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.044713,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 9.524
+              }
+            }
+          ]
+        },
+        "0x504 BF>E5 flags=80 cmd=04:2F len=7 subtype=00 1a": {
+          "packets": 304,
+          "median_interval_ms": 100.006,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "00 1A 00 00 00 00 00",
+              304
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "opposite_address_same_sequence_request_matches": 0
+        }
+      },
+      "copy_0x504_BF_to_0x232_BF": {
+        "pairs": 912,
+        "same_entire_packet": 912,
+        "same_payload": 912,
+        "same_packet_except_sender_and_crc": 912,
+        "changed_packet_offsets": [],
+        "unpaired_left": 0,
+        "unpaired_right": 0
+      },
+      "copy_0x232_BF_to_0x201_DF": {
+        "pairs": 912,
+        "same_entire_packet": 0,
+        "same_payload": 912,
+        "same_packet_except_sender_and_crc": 912,
+        "changed_packet_offsets": [
+          4,
+          19,
+          20,
+          24,
+          25,
+          26,
+          27
+        ],
+        "unpaired_left": 0,
+        "unpaired_right": 0
+      }
+    },
+    {
+      "raw_log": "J:\\New soft project\\FM03\\captures\\20261007_154729_002678_idle.log",
+      "sha256": "22e4d08ce478a0bb8a44e466bc0cae2801aa911858e5ff1e0410b0b3fef47a1d",
+      "integrity": {
+        "frames": 17987,
+        "ids": {
+          "S:00000106": 4194,
+          "S:00000503": 3111,
+          "S:00000201": 4251,
+          "S:00000232": 2285,
+          "S:00000504": 4146
+        },
+        "sequence_gaps": 0,
+        "sequence_resets": 0,
+        "non_frame_lines": 2,
+        "first_t_us": 171237894,
+        "last_t_us": 181607561,
+        "status_first": {
+          "t_us": 171255792,
+          "bitrate": 1000000,
+          "rx": 138155,
+          "logger_dropped": 273,
+          "rx_missed": 0,
+          "rx_overrun": 0,
+          "bus_errors": 1,
+          "pending": 0,
+          "logger_pending": 18
+        },
+        "status_last": {
+          "t_us": 181271819,
+          "bitrate": 1000000,
+          "rx": 155509,
+          "logger_dropped": 273,
+          "rx_missed": 0,
+          "rx_overrun": 0,
+          "bus_errors": 1,
+          "pending": 0,
+          "logger_pending": 2
+        },
+        "firmware_errors": []
+      },
+      "crc_valid_packets": 4998,
+      "groups": {
+        "0x106 04>C9 flags=00 cmd=04:10 len=3 subtype=": {
+          "packets": 21,
+          "median_interval_ms": 500.0535,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "7A 01 01",
+              21
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x106 04>F1 flags=00 cmd=04:05 len=45 subtype=": {
+          "packets": 519,
+          "median_interval_ms": 20.003,
+          "unique_payloads": 519,
+          "payload_counts": [
+            [
+              "14 00 28 02 47 F9 82 00 F5 FF 00 01 79 95 27 15 BD BC 00 00 23 02 81 03 81 5A 8C 3D 51 FF 41 3D 11 68 EC BE CA 12 62 BF 00 00 00 00 00",
+              1
+            ],
+            [
+              "14 00 28 02 47 F9 82 00 F5 FF 00 01 A9 E3 27 15 BD BC 00 00 23 02 81 03 C3 5E 8C 3D D0 F4 41 3D BC 66 EC BE 23 13 62 BF 00 00 00 00 00",
+              1
+            ],
+            [
+              "14 00 28 02 47 F9 82 00 F5 FF 00 01 C6 31 28 15 BD BC 00 00 23 02 81 03 77 5F 8C 3D 18 F6 41 3D 0C 68 EC BE C7 12 62 BF 00 00 00 00 00",
+              1
+            ],
+            [
+              "14 00 28 02 47 F9 82 00 F5 FF 00 01 E8 7F 28 15 BD BC 00 00 23 02 81 03 59 5A 8C 3D F7 FF 41 3D 75 6A EC BE 2A 12 62 BF 00 00 00 00 00",
+              1
+            ],
+            [
+              "14 00 28 02 46 F9 82 00 F5 FF 00 01 07 CE 28 15 BC BC 00 00 23 02 81 03 76 55 8C 3D C3 01 42 3D 10 6C EC BE CA 11 62 BF 00 00 00 00 00",
+              1
+            ]
+          ],
+          "variable_payload_offsets": [
+            0,
+            2,
+            4,
+            8,
+            12,
+            13,
+            14,
+            16,
+            20,
+            24,
+            25,
+            26,
+            28,
+            29,
+            30,
+            32,
+            33,
+            34,
+            36,
+            37,
+            38
+          ],
+          "four_float32_le_payload_offset24": {
+            "finite_packets": 519,
+            "norm_squared_min": 0.9999999075546884,
+            "norm_squared_max": 1.0000001829603828,
+            "maximum_error_from_one": 1.8296038284404403e-07
+          },
+          "uint32_le_payload_offset12_increment": {
+            "median": 20002.0,
+            "minimum": 19799,
+            "maximum": 20207
+          }
+        },
+        "0x201 DF>52 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 104,
+          "median_interval_ms": 100.009,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              104
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x201 DF>52 flags=00 cmd=04:2F len=13 subtype=13 00": {
+          "packets": 103,
+          "median_interval_ms": 100.009,
+          "unique_payloads": 3,
+          "payload_counts": [
+            [
+              "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+              35
+            ],
+            [
+              "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+              34
+            ],
+            [
+              "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+              34
+            ]
+          ],
+          "variable_payload_offsets": [
+            2
+          ],
+          "offset2_value_counts": {
+            "1": 35,
+            "2": 34,
+            "3": 34
+          },
+          "cycle_1_2_3_pairs": 102,
+          "same_segment_pairs": 102
+        },
+        "0x201 DF>52 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 104,
+          "median_interval_ms": 100.011,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 FF FF FF 7F 00 00 00 00 00 00 00 00",
+              104
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "2147483647": 104
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.066646,
+              "int32_le_offset3": 2147483647,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 1.266
+              }
+            }
+          ]
+        },
+        "0x232 BF>32 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 104,
+          "median_interval_ms": 100.009,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              104
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x232 BF>32 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 104,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 FF FF FF 7F 00 00 00 00 00 00 00 00",
+              104
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "2147483647": 104
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.064557,
+              "int32_le_offset3": 2147483647,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 9.298
+              }
+            }
+          ]
+        },
+        "0x232 BF>32 flags=20 cmd=24:20 len=3 subtype=5a 41 01": {
+          "packets": 104,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "5A 41 01",
+              104
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x232 BF>32 flags=20 cmd=24:20 len=3 subtype=5d 41 01": {
+          "packets": 104,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "5D 41 01",
+              104
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x232 BF>52 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 104,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              104
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x232 BF>52 flags=00 cmd=04:2F len=13 subtype=13 00": {
+          "packets": 103,
+          "median_interval_ms": 100.006,
+          "unique_payloads": 3,
+          "payload_counts": [
+            [
+              "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+              35
+            ],
+            [
+              "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+              34
+            ],
+            [
+              "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+              34
+            ]
+          ],
+          "variable_payload_offsets": [
+            2
+          ],
+          "offset2_value_counts": {
+            "1": 35,
+            "2": 34,
+            "3": 34
+          },
+          "cycle_1_2_3_pairs": 102,
+          "same_segment_pairs": 102
+        },
+        "0x232 BF>52 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 104,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 FF FF FF 7F 00 00 00 00 00 00 00 00",
+              104
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "2147483647": 104
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.065697,
+              "int32_le_offset3": 2147483647,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 0.317
+              }
+            }
+          ]
+        },
+        "0x504 BF>02 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 104,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 FF FF FF 7F 00 00 00 00 00 00 00 00",
+              104
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "2147483647": 104
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.064104,
+              "int32_le_offset3": 2147483647,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 8.845
+              }
+            }
+          ]
+        },
+        "0x504 BF>04 flags=00 cmd=00:0E len=0 subtype=": {
+          "packets": 103,
+          "median_interval_ms": 100.006,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "",
+              103
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>52 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 104,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              104
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>52 flags=00 cmd=04:2F len=13 subtype=13 00": {
+          "packets": 104,
+          "median_interval_ms": 100.006,
+          "unique_payloads": 3,
+          "payload_counts": [
+            [
+              "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+              35
+            ],
+            [
+              "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+              35
+            ],
+            [
+              "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+              34
+            ]
+          ],
+          "variable_payload_offsets": [
+            2
+          ],
+          "offset2_value_counts": {
+            "1": 35,
+            "2": 35,
+            "3": 34
+          },
+          "cycle_1_2_3_pairs": 103,
+          "same_segment_pairs": 103
+        },
+        "0x504 BF>52 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 104,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 FF FF FF 7F 00 00 00 00 00 00 00 00",
+              104
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "2147483647": 104
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.06501,
+              "int32_le_offset3": 2147483647,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 9.751
+              }
+            }
+          ]
+        },
+        "0x504 BF>E5 flags=00 cmd=00:0E len=0 subtype=": {
+          "packets": 103,
+          "median_interval_ms": 100.006,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "",
+              103
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=2 subtype=19 03": {
+          "packets": 103,
+          "median_interval_ms": 100.006,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "19 03",
+              103
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=3 subtype=1b 4b": {
+          "packets": 103,
+          "median_interval_ms": 100.0055,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "1B 4B 00",
+              103
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=6 subtype=18 01": {
+          "packets": 103,
+          "median_interval_ms": 100.0065,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "18 01 00 00 00 00",
+              103
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 104,
+          "median_interval_ms": 100.009,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              104
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=13 subtype=13 00": {
+          "packets": 104,
+          "median_interval_ms": 100.005,
+          "unique_payloads": 3,
+          "payload_counts": [
+            [
+              "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+              35
+            ],
+            [
+              "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+              35
+            ],
+            [
+              "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+              34
+            ]
+          ],
+          "variable_payload_offsets": [
+            2
+          ],
+          "offset2_value_counts": {
+            "1": 35,
+            "2": 35,
+            "3": 34
+          },
+          "cycle_1_2_3_pairs": 103,
+          "same_segment_pairs": 103
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 104,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 FF FF FF 7F 00 00 00 00 00 00 00 00",
+              104
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "2147483647": 104
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.063648,
+              "int32_le_offset3": 2147483647,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 8.389
+              }
+            }
+          ]
+        },
+        "0x504 BF>E5 flags=80 cmd=04:2F len=7 subtype=00 1a": {
+          "packets": 103,
+          "median_interval_ms": 100.0055,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "00 1A 00 00 00 00 00",
+              103
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "opposite_address_same_sequence_request_matches": 0
+        }
+      },
+      "copy_0x504_BF_to_0x232_BF": {
+        "pairs": 311,
+        "same_entire_packet": 311,
+        "same_payload": 311,
+        "same_packet_except_sender_and_crc": 311,
+        "changed_packet_offsets": [],
+        "unpaired_left": 1,
+        "unpaired_right": 0
+      },
+      "copy_0x232_BF_to_0x201_DF": {
+        "pairs": 311,
+        "same_entire_packet": 0,
+        "same_payload": 311,
+        "same_packet_except_sender_and_crc": 311,
+        "changed_packet_offsets": [
+          4,
+          19,
+          20,
+          24,
+          25,
+          26,
+          27
+        ],
+        "unpaired_left": 0,
+        "unpaired_right": 0
+      }
+    },
+    {
+      "raw_log": "J:\\New soft project\\FM03\\captures\\20261007_185515_591414_slow_forward.log",
+      "sha256": "db57a53d4eb3c9a91f48c132086650be3433e40c04ab77391229a860101cb444",
+      "integrity": {
+        "frames": 34777,
+        "ids": {
+          "S:00000503": 6005,
+          "S:00000201": 8210,
+          "S:00000106": 8120,
+          "S:00000232": 4418,
+          "S:00000504": 8024
+        },
+        "sequence_gaps": 0,
+        "sequence_resets": 0,
+        "non_frame_lines": 2,
+        "first_t_us": 34884389,
+        "last_t_us": 54976630,
+        "status_first": {
+          "t_us": 34912409,
+          "bitrate": 1000000,
+          "rx": 39250,
+          "logger_dropped": 0,
+          "rx_missed": 0,
+          "rx_overrun": 0,
+          "bus_errors": 16,
+          "pending": 0,
+          "logger_pending": 32
+        },
+        "status_last": {
+          "t_us": 54943784,
+          "bitrate": 1000000,
+          "rx": 73908,
+          "logger_dropped": 0,
+          "rx_missed": 0,
+          "rx_overrun": 0,
+          "bus_errors": 16,
+          "pending": 0,
+          "logger_pending": 0
+        },
+        "firmware_errors": []
+      },
+      "crc_valid_packets": 9661,
+      "groups": {
+        "0x106 04>C9 flags=00 cmd=04:10 len=3 subtype=": {
+          "packets": 40,
+          "median_interval_ms": 500.034,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "7A 01 01",
+              40
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x106 04>F1 flags=00 cmd=04:05 len=45 subtype=": {
+          "packets": 1005,
+          "median_interval_ms": 20.003,
+          "unique_payloads": 1005,
+          "payload_counts": [
+            [
+              "11 00 26 02 09 00 82 00 F8 FF 00 01 09 1F 59 01 61 00 00 00 22 02 81 03 1C FD 62 3F E0 77 EC 3E 7D 36 8C 3C 23 31 6C 3C 00 00 00 00 00",
+              1
+            ],
+            [
+              "10 00 26 02 09 00 82 00 F8 FF 00 01 23 6D 59 01 62 00 00 00 22 02 81 03 ED FD 62 3F B8 74 EC 3E 30 FD 8B 3C A1 E7 6C 3C 00 00 00 00 00",
+              1
+            ],
+            [
+              "10 00 26 02 09 00 82 00 F8 FF 00 01 4C BB 59 01 63 00 00 00 22 02 81 03 49 FE 62 3F 1D 73 EC 3E B7 10 8C 3C 69 74 6D 3C 00 00 00 00 00",
+              1
+            ],
+            [
+              "10 00 26 02 09 00 82 00 F8 FF 00 01 6C 09 5A 01 63 00 00 00 23 02 81 03 37 FE 62 3F 17 73 EC 3E 17 6F 8C 3C F5 CE 6D 3C 00 00 00 00 00",
+              1
+            ],
+            [
+              "11 00 26 02 09 00 82 00 F8 FF 00 01 8F 57 5A 01 62 00 00 00 22 02 81 03 27 FE 62 3F E8 72 EC 3E 4C 0C 8D 3C 53 FF 6D 3C 00 00 00 00 00",
+              1
+            ]
+          ],
+          "variable_payload_offsets": [
+            0,
+            2,
+            4,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            20,
+            22,
+            24,
+            25,
+            26,
+            28,
+            29,
+            30,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39
+          ],
+          "four_float32_le_payload_offset24": {
+            "finite_packets": 1005,
+            "norm_squared_min": 0.9999997273377468,
+            "norm_squared_max": 1.0000002144105793,
+            "maximum_error_from_one": 2.7266225322009063e-07
+          },
+          "uint32_le_payload_offset12_increment": {
+            "median": 20002.0,
+            "minimum": 19806,
+            "maximum": 20200
+          }
+        },
+        "0x201 DF>52 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 201,
+          "median_interval_ms": 100.009,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              201
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x201 DF>52 flags=00 cmd=04:2F len=13 subtype=13 00": {
+          "packets": 200,
+          "median_interval_ms": 100.009,
+          "unique_payloads": 3,
+          "payload_counts": [
+            [
+              "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+              67
+            ],
+            [
+              "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+              67
+            ],
+            [
+              "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+              66
+            ]
+          ],
+          "variable_payload_offsets": [
+            2
+          ],
+          "offset2_value_counts": {
+            "1": 67,
+            "2": 67,
+            "3": 66
+          },
+          "cycle_1_2_3_pairs": 199,
+          "same_segment_pairs": 199
+        },
+        "0x201 DF>52 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 201,
+          "median_interval_ms": 100.01,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              201
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 201
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.089057,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 9.031
+              }
+            }
+          ]
+        },
+        "0x232 BF>32 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 201,
+          "median_interval_ms": 100.009,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              201
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x232 BF>32 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 201,
+          "median_interval_ms": 100.01,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              201
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 201
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.087254,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 7.228
+              }
+            }
+          ]
+        },
+        "0x232 BF>32 flags=20 cmd=24:20 len=3 subtype=5a 41 01": {
+          "packets": 201,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "5A 41 01",
+              201
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x232 BF>32 flags=20 cmd=24:20 len=3 subtype=5d 41 01": {
+          "packets": 201,
+          "median_interval_ms": 100.009,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "5D 41 01",
+              201
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x232 BF>52 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 201,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              201
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x232 BF>52 flags=00 cmd=04:2F len=13 subtype=13 00": {
+          "packets": 200,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 3,
+          "payload_counts": [
+            [
+              "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+              67
+            ],
+            [
+              "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+              67
+            ],
+            [
+              "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+              66
+            ]
+          ],
+          "variable_payload_offsets": [
+            2
+          ],
+          "offset2_value_counts": {
+            "1": 67,
+            "2": 67,
+            "3": 66
+          },
+          "cycle_1_2_3_pairs": 199,
+          "same_segment_pairs": 199
+        },
+        "0x232 BF>52 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 201,
+          "median_interval_ms": 100.009,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              201
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 201
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.088154,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 8.128
+              }
+            }
+          ]
+        },
+        "0x504 BF>02 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 201,
+          "median_interval_ms": 100.009,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              201
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 201
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.0868,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 6.774
+              }
+            }
+          ]
+        },
+        "0x504 BF>04 flags=00 cmd=00:0E len=0 subtype=": {
+          "packets": 200,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "",
+              200
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>52 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 201,
+          "median_interval_ms": 100.009,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              201
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>52 flags=00 cmd=04:2F len=13 subtype=13 00": {
+          "packets": 200,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 3,
+          "payload_counts": [
+            [
+              "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+              67
+            ],
+            [
+              "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+              67
+            ],
+            [
+              "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+              66
+            ]
+          ],
+          "variable_payload_offsets": [
+            2
+          ],
+          "offset2_value_counts": {
+            "1": 67,
+            "2": 67,
+            "3": 66
+          },
+          "cycle_1_2_3_pairs": 199,
+          "same_segment_pairs": 199
+        },
+        "0x504 BF>52 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 201,
+          "median_interval_ms": 100.009,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              201
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 201
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.087704,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 7.678
+              }
+            }
+          ]
+        },
+        "0x504 BF>E5 flags=00 cmd=00:0E len=0 subtype=": {
+          "packets": 200,
+          "median_interval_ms": 100.005,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "",
+              200
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=2 subtype=19 03": {
+          "packets": 200,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "19 03",
+              200
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=3 subtype=1b 4b": {
+          "packets": 200,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "1B 4B 00",
+              200
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=6 subtype=18 01": {
+          "packets": 200,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "18 01 00 00 00 00",
+              200
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 201,
+          "median_interval_ms": 100.009,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              201
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=13 subtype=13 00": {
+          "packets": 201,
+          "median_interval_ms": 100.0075,
+          "unique_payloads": 3,
+          "payload_counts": [
+            [
+              "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+              67
+            ],
+            [
+              "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+              67
+            ],
+            [
+              "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+              67
+            ]
+          ],
+          "variable_payload_offsets": [
+            2
+          ],
+          "offset2_value_counts": {
+            "1": 67,
+            "2": 67,
+            "3": 67
+          },
+          "cycle_1_2_3_pairs": 200,
+          "same_segment_pairs": 200
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 201,
+          "median_interval_ms": 100.009,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              201
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 201
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.086346,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 6.32
+              }
+            }
+          ]
+        },
+        "0x504 BF>E5 flags=80 cmd=04:2F len=7 subtype=00 1a": {
+          "packets": 200,
+          "median_interval_ms": 100.006,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "00 1A 00 00 00 00 00",
+              200
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "opposite_address_same_sequence_request_matches": 0
+        }
+      },
+      "copy_0x504_BF_to_0x232_BF": {
+        "pairs": 602,
+        "same_entire_packet": 602,
+        "same_payload": 602,
+        "same_packet_except_sender_and_crc": 602,
+        "changed_packet_offsets": [],
+        "unpaired_left": 0,
+        "unpaired_right": 0
+      },
+      "copy_0x232_BF_to_0x201_DF": {
+        "pairs": 602,
+        "same_entire_packet": 0,
+        "same_payload": 602,
+        "same_packet_except_sender_and_crc": 602,
+        "changed_packet_offsets": [
+          4,
+          19,
+          20,
+          24,
+          25,
+          26,
+          27
+        ],
+        "unpaired_left": 0,
+        "unpaired_right": 0
+      }
+    },
+    {
+      "raw_log": "J:\\New soft project\\FM03\\captures\\20261007_185554_700204_slow_reverse.log",
+      "sha256": "36d34e2d2e4c47d0b5d4f51292127944f97906e65fb613ba02a14d7d541fd994",
+      "integrity": {
+        "frames": 25968,
+        "ids": {
+          "S:00000106": 6054,
+          "S:00000503": 4482,
+          "S:00000201": 6132,
+          "S:00000232": 3300,
+          "S:00000504": 6000
+        },
+        "sequence_gaps": 0,
+        "sequence_resets": 0,
+        "non_frame_lines": 2,
+        "first_t_us": 73992629,
+        "last_t_us": 88990032,
+        "status_first": {
+          "t_us": 74022628,
+          "bitrate": 1000000,
+          "rx": 107007,
+          "logger_dropped": 0,
+          "rx_missed": 0,
+          "rx_overrun": 0,
+          "bus_errors": 16,
+          "pending": 0,
+          "logger_pending": 26
+        },
+        "status_last": {
+          "t_us": 88044238,
+          "bitrate": 1000000,
+          "rx": 131267,
+          "logger_dropped": 0,
+          "rx_missed": 0,
+          "rx_overrun": 0,
+          "bus_errors": 16,
+          "pending": 0,
+          "logger_pending": 2
+        },
+        "firmware_errors": []
+      },
+      "crc_valid_packets": 7217,
+      "groups": {
+        "0x106 04>C9 flags=00 cmd=04:10 len=3 subtype=": {
+          "packets": 30,
+          "median_interval_ms": 500.033,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "7A 01 01",
+              30
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x106 04>F1 flags=00 cmd=04:05 len=45 subtype=": {
+          "packets": 749,
+          "median_interval_ms": 20.002,
+          "unique_payloads": 749,
+          "payload_counts": [
+            [
+              "1A 00 24 02 42 00 86 00 F8 FF 00 01 F0 13 AE 03 97 02 00 00 23 02 80 03 B0 A1 62 3F 39 B9 EA 3E 15 24 42 3D 4A 8D 7E 3D 00 00 00 00 00",
+              1
+            ],
+            [
+              "1A 00 24 02 42 00 86 00 F8 FF 00 01 1B 62 AE 03 98 02 00 00 22 02 81 03 51 A1 62 3F F9 B9 EA 3E 69 37 42 3D 3A A7 7E 3D 00 00 00 00 00",
+              1
+            ],
+            [
+              "1A 00 24 02 42 00 86 00 F8 FF 00 01 37 B0 AE 03 98 02 00 00 23 02 81 03 60 A1 62 3F 23 B9 EA 3E 26 36 42 3D 6C CC 7E 3D 00 00 00 00 00",
+              1
+            ],
+            [
+              "1A 00 24 02 42 00 86 00 F8 FF 00 01 5E FE AE 03 99 02 00 00 22 02 81 03 FF A1 62 3F 4D B6 EA 3E FD 22 42 3D AB F4 7E 3D 00 00 00 00 00",
+              1
+            ],
+            [
+              "1A 00 24 02 42 00 86 00 F8 FF 00 01 7C 4C AF 03 9A 02 00 00 22 02 81 03 19 A2 62 3F 48 B5 EA 3E D2 2A 42 3D 11 14 7F 3D 00 00 00 00 00",
+              1
+            ]
+          ],
+          "variable_payload_offsets": [
+            0,
+            2,
+            4,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            20,
+            22,
+            24,
+            25,
+            28,
+            29,
+            32,
+            33,
+            34,
+            36,
+            37,
+            38
+          ],
+          "four_float32_le_payload_offset24": {
+            "finite_packets": 749,
+            "norm_squared_min": 0.9999997427176386,
+            "norm_squared_max": 1.0000002245316566,
+            "maximum_error_from_one": 2.5728236141553396e-07
+          },
+          "uint32_le_payload_offset12_increment": {
+            "median": 20001.0,
+            "minimum": 19817,
+            "maximum": 20188
+          }
+        },
+        "0x201 DF>52 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 150,
+          "median_interval_ms": 100.011,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              150
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x201 DF>52 flags=00 cmd=04:2F len=13 subtype=13 00": {
+          "packets": 150,
+          "median_interval_ms": 100.013,
+          "unique_payloads": 3,
+          "payload_counts": [
+            [
+              "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+              50
+            ],
+            [
+              "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+              50
+            ],
+            [
+              "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+              50
+            ]
+          ],
+          "variable_payload_offsets": [
+            2
+          ],
+          "offset2_value_counts": {
+            "2": 50,
+            "3": 50,
+            "1": 50
+          },
+          "cycle_1_2_3_pairs": 149,
+          "same_segment_pairs": 149
+        },
+        "0x201 DF>52 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 150,
+          "median_interval_ms": 100.01,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              150
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 150
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.082691,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 7.131
+              }
+            }
+          ]
+        },
+        "0x232 BF>32 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 150,
+          "median_interval_ms": 100.009,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              150
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x232 BF>32 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 150,
+          "median_interval_ms": 100.009,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              150
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 150
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.080144,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 4.584
+              }
+            }
+          ]
+        },
+        "0x232 BF>32 flags=20 cmd=24:20 len=3 subtype=5a 41 01": {
+          "packets": 150,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "5A 41 01",
+              150
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x232 BF>32 flags=20 cmd=24:20 len=3 subtype=5d 41 01": {
+          "packets": 150,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "5D 41 01",
+              150
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x232 BF>52 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 150,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              150
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x232 BF>52 flags=00 cmd=04:2F len=13 subtype=13 00": {
+          "packets": 150,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 3,
+          "payload_counts": [
+            [
+              "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+              50
+            ],
+            [
+              "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+              50
+            ],
+            [
+              "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+              50
+            ]
+          ],
+          "variable_payload_offsets": [
+            2
+          ],
+          "offset2_value_counts": {
+            "2": 50,
+            "3": 50,
+            "1": 50
+          },
+          "cycle_1_2_3_pairs": 149,
+          "same_segment_pairs": 149
+        },
+        "0x232 BF>52 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 150,
+          "median_interval_ms": 100.009,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              150
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 150
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.081463,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 5.903
+              }
+            }
+          ]
+        },
+        "0x504 BF>02 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 150,
+          "median_interval_ms": 100.009,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              150
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 150
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.079219,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 3.659
+              }
+            }
+          ]
+        },
+        "0x504 BF>04 flags=00 cmd=00:0E len=0 subtype=": {
+          "packets": 150,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "",
+              150
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>52 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 150,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              150
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>52 flags=00 cmd=04:2F len=13 subtype=13 00": {
+          "packets": 150,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 3,
+          "payload_counts": [
+            [
+              "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+              50
+            ],
+            [
+              "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+              50
+            ],
+            [
+              "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+              50
+            ]
+          ],
+          "variable_payload_offsets": [
+            2
+          ],
+          "offset2_value_counts": {
+            "2": 50,
+            "3": 50,
+            "1": 50
+          },
+          "cycle_1_2_3_pairs": 149,
+          "same_segment_pairs": 149
+        },
+        "0x504 BF>52 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 150,
+          "median_interval_ms": 100.01,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              150
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 150
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.081009,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 5.449
+              }
+            }
+          ]
+        },
+        "0x504 BF>E5 flags=00 cmd=00:0E len=0 subtype=": {
+          "packets": 150,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "",
+              150
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=2 subtype=19 03": {
+          "packets": 150,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "19 03",
+              150
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=3 subtype=1b 4b": {
+          "packets": 150,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "1B 4B 00",
+              150
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=6 subtype=18 01": {
+          "packets": 150,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "18 01 00 00 00 00",
+              150
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 150,
+          "median_interval_ms": 100.009,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              150
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=13 subtype=13 00": {
+          "packets": 150,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 3,
+          "payload_counts": [
+            [
+              "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+              50
+            ],
+            [
+              "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+              50
+            ],
+            [
+              "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+              50
+            ]
+          ],
+          "variable_payload_offsets": [
+            2
+          ],
+          "offset2_value_counts": {
+            "2": 50,
+            "3": 50,
+            "1": 50
+          },
+          "cycle_1_2_3_pairs": 149,
+          "same_segment_pairs": 149
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 150,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              150
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 150
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.078766,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 3.206
+              }
+            }
+          ]
+        },
+        "0x504 BF>E5 flags=80 cmd=04:2F len=7 subtype=00 1a": {
+          "packets": 150,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "00 1A 00 00 00 00 00",
+              150
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "opposite_address_same_sequence_request_matches": 0
+        }
+      },
+      "copy_0x504_BF_to_0x232_BF": {
+        "pairs": 450,
+        "same_entire_packet": 450,
+        "same_payload": 450,
+        "same_packet_except_sender_and_crc": 450,
+        "changed_packet_offsets": [],
+        "unpaired_left": 0,
+        "unpaired_right": 0
+      },
+      "copy_0x232_BF_to_0x201_DF": {
+        "pairs": 450,
+        "same_entire_packet": 0,
+        "same_payload": 450,
+        "same_packet_except_sender_and_crc": 450,
+        "changed_packet_offsets": [
+          4,
+          19,
+          20,
+          24,
+          25,
+          26,
+          27
+        ],
+        "unpaired_left": 0,
+        "unpaired_right": 0
+      }
+    },
+    {
+      "raw_log": "J:\\New soft project\\FM03\\captures\\20261007_194635_586843_fast_forward.log",
+      "sha256": "7ba071d28d1632ed7e84aaccf182c4f0ba78f406f12ddcf0625277877714ec6d",
+      "integrity": {
+        "frames": 26395,
+        "ids": {
+          "S:00000503": 4547,
+          "S:00000201": 6224,
+          "S:00000106": 6166,
+          "S:00000232": 3360,
+          "S:00000504": 6098
+        },
+        "sequence_gaps": 0,
+        "sequence_resets": 0,
+        "non_frame_lines": 2,
+        "first_t_us": 3114477348,
+        "last_t_us": 3129735792,
+        "status_first": {
+          "t_us": 3114495803,
+          "bitrate": 1000000,
+          "rx": 1575157,
+          "logger_dropped": 50,
+          "rx_missed": 0,
+          "rx_overrun": 0,
+          "bus_errors": 48,
+          "pending": 0,
+          "logger_pending": 18
+        },
+        "status_last": {
+          "t_us": 3129518857,
+          "bitrate": 1000000,
+          "rx": 1601130,
+          "logger_dropped": 50,
+          "rx_missed": 0,
+          "rx_overrun": 0,
+          "bus_errors": 48,
+          "pending": 0,
+          "logger_pending": 2
+        },
+        "firmware_errors": []
+      },
+      "crc_valid_packets": 7332,
+      "groups": {
+        "0x106 04>C9 flags=00 cmd=04:10 len=3 subtype=": {
+          "packets": 31,
+          "median_interval_ms": 500.0535,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "7A 01 01",
+              31
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x106 04>F1 flags=00 cmd=04:05 len=45 subtype=": {
+          "packets": 763,
+          "median_interval_ms": 20.003,
+          "unique_payloads": 763,
+          "payload_counts": [
+            [
+              "15 00 29 02 39 00 82 00 F8 FF 00 01 51 5B 7E 01 3E 02 00 00 23 02 81 03 76 3E 62 3F F4 29 ED 3E 8E DC 22 3D 21 42 59 3D 00 00 00 00 00",
+              1
+            ],
+            [
+              "15 00 29 02 39 00 82 00 F7 FF 00 01 74 A9 7E 01 3F 02 00 00 23 02 81 03 9D 3E 62 3F D4 28 ED 3E 23 EC 22 3D DD 5B 59 3D 00 00 00 00 00",
+              1
+            ],
+            [
+              "15 00 29 02 39 00 82 00 F7 FF 00 01 9D F7 7E 01 3F 02 00 00 23 02 81 03 CA 3E 62 3F B0 27 ED 3E 4D FA 22 3D 37 72 59 3D 00 00 00 00 00",
+              1
+            ],
+            [
+              "15 00 29 02 39 00 82 00 F7 FF 00 01 B0 45 7F 01 3F 02 00 00 23 02 81 03 94 3E 62 3F 1C 28 ED 3E E5 04 23 3D DD 84 59 3D 00 00 00 00 00",
+              1
+            ],
+            [
+              "15 00 29 02 39 00 82 00 F8 FF 00 01 CE 93 7F 01 3F 02 00 00 23 02 81 03 7C 3E 62 3F E6 27 ED 3E C1 20 23 3D B2 96 59 3D 00 00 00 00 00",
+              1
+            ]
+          ],
+          "variable_payload_offsets": [
+            0,
+            2,
+            4,
+            8,
+            12,
+            13,
+            14,
+            15,
+            16,
+            20,
+            22,
+            24,
+            25,
+            28,
+            29,
+            30,
+            32,
+            33,
+            34,
+            36,
+            37,
+            38
+          ],
+          "four_float32_le_payload_offset24": {
+            "finite_packets": 763,
+            "norm_squared_min": 0.999999876672739,
+            "norm_squared_max": 1.0000002229610137,
+            "maximum_error_from_one": 2.229610136517124e-07
+          },
+          "uint32_le_payload_offset12_increment": {
+            "median": 20001.0,
+            "minimum": 19850,
+            "maximum": 20145
+          }
+        },
+        "0x201 DF>52 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 152,
+          "median_interval_ms": 100.009,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              152
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x201 DF>52 flags=00 cmd=04:2F len=13 subtype=13 00": {
+          "packets": 152,
+          "median_interval_ms": 100.01,
+          "unique_payloads": 3,
+          "payload_counts": [
+            [
+              "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+              51
+            ],
+            [
+              "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+              51
+            ],
+            [
+              "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+              50
+            ]
+          ],
+          "variable_payload_offsets": [
+            2
+          ],
+          "offset2_value_counts": {
+            "1": 51,
+            "2": 51,
+            "3": 50
+          },
+          "cycle_1_2_3_pairs": 151,
+          "same_segment_pairs": 151
+        },
+        "0x201 DF>52 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 153,
+          "median_interval_ms": 100.01,
+          "unique_payloads": 2,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              107
+            ],
+            [
+              "09 00 00 FF FF FF 7F 00 00 00 00 00 00 00 00",
+              46
+            ]
+          ],
+          "variable_payload_offsets": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "int32_le_payload_offset3_counts": {
+            "2147483647": 46,
+            "-2147483648": 107
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.057006,
+              "int32_le_offset3": 2147483647,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 7.109
+              }
+            },
+            {
+              "segment": 0,
+              "relative_s": 4.656829,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": -390,
+                "age_ms": 6.621
+              }
+            }
+          ]
+        },
+        "0x232 BF>32 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 153,
+          "median_interval_ms": 100.0085,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              153
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x232 BF>32 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 153,
+          "median_interval_ms": 100.009,
+          "unique_payloads": 2,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              107
+            ],
+            [
+              "09 00 00 FF FF FF 7F 00 00 00 00 00 00 00 00",
+              46
+            ]
+          ],
+          "variable_payload_offsets": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "int32_le_payload_offset3_counts": {
+            "2147483647": 46,
+            "-2147483648": 107
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.054526,
+              "int32_le_offset3": 2147483647,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 4.629
+              }
+            },
+            {
+              "segment": 0,
+              "relative_s": 4.654591,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": -390,
+                "age_ms": 4.383
+              }
+            }
+          ]
+        },
+        "0x232 BF>32 flags=20 cmd=24:20 len=3 subtype=5a 41 01": {
+          "packets": 153,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "5A 41 01",
+              153
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x232 BF>32 flags=20 cmd=24:20 len=3 subtype=5d 41 01": {
+          "packets": 153,
+          "median_interval_ms": 100.009,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "5D 41 01",
+              153
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x232 BF>52 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 152,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              152
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x232 BF>52 flags=00 cmd=04:2F len=13 subtype=13 00": {
+          "packets": 152,
+          "median_interval_ms": 100.006,
+          "unique_payloads": 3,
+          "payload_counts": [
+            [
+              "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+              51
+            ],
+            [
+              "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+              51
+            ],
+            [
+              "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+              50
+            ]
+          ],
+          "variable_payload_offsets": [
+            2
+          ],
+          "offset2_value_counts": {
+            "1": 51,
+            "2": 51,
+            "3": 50
+          },
+          "cycle_1_2_3_pairs": 151,
+          "same_segment_pairs": 151
+        },
+        "0x232 BF>52 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 153,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 2,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              107
+            ],
+            [
+              "09 00 00 FF FF FF 7F 00 00 00 00 00 00 00 00",
+              46
+            ]
+          ],
+          "variable_payload_offsets": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "int32_le_payload_offset3_counts": {
+            "2147483647": 46,
+            "-2147483648": 107
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.056253,
+              "int32_le_offset3": 2147483647,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 6.356
+              }
+            },
+            {
+              "segment": 0,
+              "relative_s": 4.65608,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": -390,
+                "age_ms": 5.872
+              }
+            }
+          ]
+        },
+        "0x504 BF>02 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 153,
+          "median_interval_ms": 100.009,
+          "unique_payloads": 2,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              107
+            ],
+            [
+              "09 00 00 FF FF FF 7F 00 00 00 00 00 00 00 00",
+              46
+            ]
+          ],
+          "variable_payload_offsets": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "int32_le_payload_offset3_counts": {
+            "2147483647": 46,
+            "-2147483648": 107
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.054073,
+              "int32_le_offset3": 2147483647,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 4.176
+              }
+            },
+            {
+              "segment": 0,
+              "relative_s": 4.654137,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": -390,
+                "age_ms": 3.929
+              }
+            }
+          ]
+        },
+        "0x504 BF>04 flags=00 cmd=00:0E len=0 subtype=": {
+          "packets": 152,
+          "median_interval_ms": 100.006,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "",
+              152
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>52 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 153,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              153
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>52 flags=00 cmd=04:2F len=13 subtype=13 00": {
+          "packets": 152,
+          "median_interval_ms": 100.005,
+          "unique_payloads": 3,
+          "payload_counts": [
+            [
+              "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+              51
+            ],
+            [
+              "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+              51
+            ],
+            [
+              "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+              50
+            ]
+          ],
+          "variable_payload_offsets": [
+            2
+          ],
+          "offset2_value_counts": {
+            "1": 51,
+            "2": 51,
+            "3": 50
+          },
+          "cycle_1_2_3_pairs": 151,
+          "same_segment_pairs": 151
+        },
+        "0x504 BF>52 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 153,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 2,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              107
+            ],
+            [
+              "09 00 00 FF FF FF 7F 00 00 00 00 00 00 00 00",
+              46
+            ]
+          ],
+          "variable_payload_offsets": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "int32_le_payload_offset3_counts": {
+            "2147483647": 46,
+            "-2147483648": 107
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.055329,
+              "int32_le_offset3": 2147483647,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 5.432
+              }
+            },
+            {
+              "segment": 0,
+              "relative_s": 4.655155,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": -390,
+                "age_ms": 4.947
+              }
+            }
+          ]
+        },
+        "0x504 BF>E5 flags=00 cmd=00:0E len=0 subtype=": {
+          "packets": 152,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "",
+              152
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=2 subtype=19 03": {
+          "packets": 152,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "19 03",
+              152
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=3 subtype=1b 4b": {
+          "packets": 152,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "1B 4B 00",
+              152
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=6 subtype=18 01": {
+          "packets": 152,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "18 01 00 00 00 00",
+              152
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 153,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              153
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=13 subtype=13 00": {
+          "packets": 152,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 3,
+          "payload_counts": [
+            [
+              "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+              51
+            ],
+            [
+              "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+              51
+            ],
+            [
+              "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+              50
+            ]
+          ],
+          "variable_payload_offsets": [
+            2
+          ],
+          "offset2_value_counts": {
+            "1": 51,
+            "2": 51,
+            "3": 50
+          },
+          "cycle_1_2_3_pairs": 151,
+          "same_segment_pairs": 151
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 153,
+          "median_interval_ms": 100.009,
+          "unique_payloads": 2,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              107
+            ],
+            [
+              "09 00 00 FF FF FF 7F 00 00 00 00 00 00 00 00",
+              46
+            ]
+          ],
+          "variable_payload_offsets": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "int32_le_payload_offset3_counts": {
+            "2147483647": 46,
+            "-2147483648": 107
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.053619,
+              "int32_le_offset3": 2147483647,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 3.722
+              }
+            },
+            {
+              "segment": 0,
+              "relative_s": 4.653682,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": -390,
+                "age_ms": 3.474
+              }
+            }
+          ]
+        },
+        "0x504 BF>E5 flags=80 cmd=04:2F len=7 subtype=00 1a": {
+          "packets": 152,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "00 1A 00 00 00 00 00",
+              152
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "opposite_address_same_sequence_request_matches": 0
+        }
+      },
+      "copy_0x504_BF_to_0x232_BF": {
+        "pairs": 457,
+        "same_entire_packet": 457,
+        "same_payload": 457,
+        "same_packet_except_sender_and_crc": 457,
+        "changed_packet_offsets": [],
+        "unpaired_left": 1,
+        "unpaired_right": 0
+      },
+      "copy_0x232_BF_to_0x201_DF": {
+        "pairs": 457,
+        "same_entire_packet": 0,
+        "same_payload": 457,
+        "same_packet_except_sender_and_crc": 457,
+        "changed_packet_offsets": [
+          4,
+          19,
+          20,
+          24,
+          25,
+          26,
+          27
+        ],
+        "unpaired_left": 0,
+        "unpaired_right": 0
+      }
+    },
+    {
+      "raw_log": "J:\\New soft project\\FM03\\captures\\20261007_194656_333607_fast_reverse.log",
+      "sha256": "2eed5d338c10427a442f4ded54a669db4ae1052f5c6397dca3e35d2661efc451",
+      "integrity": {
+        "frames": 32327,
+        "ids": {
+          "S:00000232": 4106,
+          "S:00000504": 7468,
+          "S:00000106": 7554,
+          "S:00000201": 7628,
+          "S:00000503": 5571
+        },
+        "sequence_gaps": 0,
+        "sequence_resets": 0,
+        "non_frame_lines": 2,
+        "first_t_us": 3135233120,
+        "last_t_us": 3153922054,
+        "status_first": {
+          "t_us": 3135244554,
+          "bitrate": 1000000,
+          "rx": 1611111,
+          "logger_dropped": 50,
+          "rx_missed": 0,
+          "rx_overrun": 0,
+          "bus_errors": 48,
+          "pending": 0,
+          "logger_pending": 64
+        },
+        "status_last": {
+          "t_us": 3153270320,
+          "bitrate": 1000000,
+          "rx": 1642271,
+          "logger_dropped": 50,
+          "rx_missed": 0,
+          "rx_overrun": 0,
+          "bus_errors": 48,
+          "pending": 0,
+          "logger_pending": 38
+        },
+        "firmware_errors": []
+      },
+      "crc_valid_packets": 8981,
+      "groups": {
+        "0x106 04>C9 flags=00 cmd=04:10 len=3 subtype=": {
+          "packets": 37,
+          "median_interval_ms": 500.058,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "7A 01 01",
+              37
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x106 04>F1 flags=00 cmd=04:05 len=45 subtype=": {
+          "packets": 935,
+          "median_interval_ms": 20.004,
+          "unique_payloads": 935,
+          "payload_counts": [
+            [
+              "19 00 27 02 52 00 82 00 F7 FF 00 01 EC D6 BA 02 34 03 00 00 22 02 81 03 6A 0D 62 3F 00 C5 EB 3E B7 98 58 3D FB FE 96 3D 00 00 00 00 00",
+              1
+            ],
+            [
+              "19 00 27 02 52 00 82 00 F7 FF 00 01 09 25 BB 02 35 03 00 00 22 02 81 03 62 0D 62 3F 7E C4 EB 3E E9 9A 58 3D 99 0D 97 3D 00 00 00 00 00",
+              1
+            ],
+            [
+              "19 00 27 02 52 00 82 00 F7 FF 00 01 21 73 BB 02 35 03 00 00 22 02 81 03 39 0D 62 3F 98 C4 EB 3E 70 A1 58 3D 78 17 97 3D 00 00 00 00 00",
+              1
+            ],
+            [
+              "19 00 27 02 52 00 82 00 F7 FF 00 01 4A C1 BB 02 35 03 00 00 22 02 81 03 F5 0C 62 3F 0F C5 EB 3E B5 B4 58 3D 47 1F 97 3D 00 00 00 00 00",
+              1
+            ],
+            [
+              "19 00 27 02 52 00 82 00 F7 FF 00 01 6F 0F BC 02 35 03 00 00 22 02 81 03 BD 0C 62 3F 2E C5 EB 3E A3 C5 58 3D 50 2A 97 3D 00 00 00 00 00",
+              1
+            ]
+          ],
+          "variable_payload_offsets": [
+            0,
+            2,
+            4,
+            8,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            20,
+            22,
+            24,
+            25,
+            26,
+            28,
+            29,
+            30,
+            32,
+            33,
+            34,
+            36,
+            37,
+            38
+          ],
+          "four_float32_le_payload_offset24": {
+            "finite_packets": 935,
+            "norm_squared_min": 0.9999997629244743,
+            "norm_squared_max": 1.000000222091391,
+            "maximum_error_from_one": 2.3707552565532808e-07
+          },
+          "uint32_le_payload_offset12_increment": {
+            "median": 20002.0,
+            "minimum": 19804,
+            "maximum": 20200
+          }
+        },
+        "0x201 DF>52 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 187,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              187
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x201 DF>52 flags=00 cmd=04:2F len=13 subtype=13 00": {
+          "packets": 187,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 3,
+          "payload_counts": [
+            [
+              "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+              63
+            ],
+            [
+              "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+              62
+            ],
+            [
+              "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+              62
+            ]
+          ],
+          "variable_payload_offsets": [
+            2
+          ],
+          "offset2_value_counts": {
+            "1": 63,
+            "2": 62,
+            "3": 62
+          },
+          "cycle_1_2_3_pairs": 186,
+          "same_segment_pairs": 186
+        },
+        "0x201 DF>52 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 187,
+          "median_interval_ms": 100.0095,
+          "unique_payloads": 2,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              117
+            ],
+            [
+              "09 00 00 FF FF FF 7F 00 00 00 00 00 00 00 00",
+              70
+            ]
+          ],
+          "variable_payload_offsets": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 117,
+            "2147483647": 70
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.002597,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": null
+            },
+            {
+              "segment": 0,
+              "relative_s": 11.70121,
+              "int32_le_offset3": 2147483647,
+              "preceding_04_69": {
+                "value": 1825,
+                "age_ms": 4.012
+              }
+            }
+          ]
+        },
+        "0x232 BF>32 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 187,
+          "median_interval_ms": 100.009,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              187
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x232 BF>32 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 186,
+          "median_interval_ms": 100.009,
+          "unique_payloads": 2,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              116
+            ],
+            [
+              "09 00 00 FF FF FF 7F 00 00 00 00 00 00 00 00",
+              70
+            ]
+          ],
+          "variable_payload_offsets": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 116,
+            "2147483647": 70
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.099103,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 3.083
+              }
+            },
+            {
+              "segment": 0,
+              "relative_s": 11.699287,
+              "int32_le_offset3": 2147483647,
+              "preceding_04_69": {
+                "value": 1825,
+                "age_ms": 2.089
+              }
+            }
+          ]
+        },
+        "0x232 BF>32 flags=20 cmd=24:20 len=3 subtype=5a 41 01": {
+          "packets": 186,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "5A 41 01",
+              186
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x232 BF>32 flags=20 cmd=24:20 len=3 subtype=5d 41 01": {
+          "packets": 186,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "5D 41 01",
+              186
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x232 BF>52 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 187,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              187
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x232 BF>52 flags=00 cmd=04:2F len=13 subtype=13 00": {
+          "packets": 187,
+          "median_interval_ms": 100.006,
+          "unique_payloads": 3,
+          "payload_counts": [
+            [
+              "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+              63
+            ],
+            [
+              "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+              62
+            ],
+            [
+              "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+              62
+            ]
+          ],
+          "variable_payload_offsets": [
+            2
+          ],
+          "offset2_value_counts": {
+            "1": 63,
+            "2": 62,
+            "3": 62
+          },
+          "cycle_1_2_3_pairs": 186,
+          "same_segment_pairs": 186
+        },
+        "0x232 BF>52 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 187,
+          "median_interval_ms": 100.0085,
+          "unique_payloads": 2,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              117
+            ],
+            [
+              "09 00 00 FF FF FF 7F 00 00 00 00 00 00 00 00",
+              70
+            ]
+          ],
+          "variable_payload_offsets": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 117,
+            "2147483647": 70
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.0,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": null
+            },
+            {
+              "segment": 0,
+              "relative_s": 11.700187,
+              "int32_le_offset3": 2147483647,
+              "preceding_04_69": {
+                "value": 1825,
+                "age_ms": 2.989
+              }
+            }
+          ]
+        },
+        "0x504 BF>02 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 186,
+          "median_interval_ms": 100.009,
+          "unique_payloads": 2,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              116
+            ],
+            [
+              "09 00 00 FF FF FF 7F 00 00 00 00 00 00 00 00",
+              70
+            ]
+          ],
+          "variable_payload_offsets": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 116,
+            "2147483647": 70
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.098651,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 2.631
+              }
+            },
+            {
+              "segment": 0,
+              "relative_s": 11.698836,
+              "int32_le_offset3": 2147483647,
+              "preceding_04_69": {
+                "value": 1825,
+                "age_ms": 1.638
+              }
+            }
+          ]
+        },
+        "0x504 BF>04 flags=00 cmd=00:0E len=0 subtype=": {
+          "packets": 187,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "",
+              187
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>52 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 187,
+          "median_interval_ms": 100.0085,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              187
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>52 flags=00 cmd=04:2F len=13 subtype=13 00": {
+          "packets": 187,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 3,
+          "payload_counts": [
+            [
+              "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+              63
+            ],
+            [
+              "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+              62
+            ],
+            [
+              "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+              62
+            ]
+          ],
+          "variable_payload_offsets": [
+            2
+          ],
+          "offset2_value_counts": {
+            "1": 63,
+            "2": 62,
+            "3": 62
+          },
+          "cycle_1_2_3_pairs": 186,
+          "same_segment_pairs": 186
+        },
+        "0x504 BF>52 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 186,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 2,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              116
+            ],
+            [
+              "09 00 00 FF FF FF 7F 00 00 00 00 00 00 00 00",
+              70
+            ]
+          ],
+          "variable_payload_offsets": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 116,
+            "2147483647": 70
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.099557,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 3.537
+              }
+            },
+            {
+              "segment": 0,
+              "relative_s": 11.699736,
+              "int32_le_offset3": 2147483647,
+              "preceding_04_69": {
+                "value": 1825,
+                "age_ms": 2.538
+              }
+            }
+          ]
+        },
+        "0x504 BF>E5 flags=00 cmd=00:0E len=0 subtype=": {
+          "packets": 187,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "",
+              187
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=2 subtype=19 03": {
+          "packets": 187,
+          "median_interval_ms": 100.006,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "19 03",
+              187
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=3 subtype=1b 4b": {
+          "packets": 187,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "1B 4B 00",
+              187
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=6 subtype=18 01": {
+          "packets": 187,
+          "median_interval_ms": 100.0065,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "18 01 00 00 00 00",
+              187
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 187,
+          "median_interval_ms": 100.009,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              187
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=13 subtype=13 00": {
+          "packets": 187,
+          "median_interval_ms": 100.006,
+          "unique_payloads": 3,
+          "payload_counts": [
+            [
+              "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+              63
+            ],
+            [
+              "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+              62
+            ],
+            [
+              "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+              62
+            ]
+          ],
+          "variable_payload_offsets": [
+            2
+          ],
+          "offset2_value_counts": {
+            "1": 63,
+            "2": 62,
+            "3": 62
+          },
+          "cycle_1_2_3_pairs": 186,
+          "same_segment_pairs": 186
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 186,
+          "median_interval_ms": 100.009,
+          "unique_payloads": 2,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              116
+            ],
+            [
+              "09 00 00 FF FF FF 7F 00 00 00 00 00 00 00 00",
+              70
+            ]
+          ],
+          "variable_payload_offsets": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 116,
+            "2147483647": 70
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.098196,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 2.176
+              }
+            },
+            {
+              "segment": 0,
+              "relative_s": 11.69838,
+              "int32_le_offset3": 2147483647,
+              "preceding_04_69": {
+                "value": 1825,
+                "age_ms": 1.182
+              }
+            }
+          ]
+        },
+        "0x504 BF>E5 flags=80 cmd=04:2F len=7 subtype=00 1a": {
+          "packets": 187,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "00 1A 00 00 00 00 00",
+              187
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "opposite_address_same_sequence_request_matches": 0
+        }
+      },
+      "copy_0x504_BF_to_0x232_BF": {
+        "pairs": 560,
+        "same_entire_packet": 560,
+        "same_payload": 560,
+        "same_packet_except_sender_and_crc": 560,
+        "changed_packet_offsets": [],
+        "unpaired_left": 0,
+        "unpaired_right": 1
+      },
+      "copy_0x232_BF_to_0x201_DF": {
+        "pairs": 561,
+        "same_entire_packet": 0,
+        "same_payload": 561,
+        "same_packet_except_sender_and_crc": 561,
+        "changed_packet_offsets": [
+          4,
+          19,
+          20,
+          24,
+          25,
+          26,
+          27
+        ],
+        "unpaired_left": 0,
+        "unpaired_right": 0
+      }
+    },
+    {
+      "raw_log": "J:\\New soft project\\FM03\\captures\\20261007_201035_353525_capture.log",
+      "sha256": "525605e50126e0268de5efdca01dc33bc96e97e7e8990ca84e4c1d518ae2ab41",
+      "integrity": {
+        "frames": 19872,
+        "ids": {
+          "S:00000106": 4625,
+          "S:00000503": 3426,
+          "S:00000201": 4691,
+          "S:00000232": 2530,
+          "S:00000504": 4600
+        },
+        "sequence_gaps": 0,
+        "sequence_resets": 0,
+        "non_frame_lines": 2,
+        "first_t_us": 4554319431,
+        "last_t_us": 4565760821,
+        "status_first": {
+          "t_us": 4554326561,
+          "bitrate": 1000000,
+          "rx": 3184216,
+          "logger_dropped": 37357,
+          "rx_missed": 0,
+          "rx_overrun": 0,
+          "bus_errors": 198,
+          "pending": 0,
+          "logger_pending": 7
+        },
+        "status_last": {
+          "t_us": 4565348870,
+          "bitrate": 1000000,
+          "rx": 3203304,
+          "logger_dropped": 37357,
+          "rx_missed": 0,
+          "rx_overrun": 0,
+          "bus_errors": 198,
+          "pending": 0,
+          "logger_pending": 5
+        },
+        "firmware_errors": []
+      },
+      "crc_valid_packets": 5523,
+      "groups": {
+        "0x106 04>C9 flags=00 cmd=04:10 len=3 subtype=": {
+          "packets": 23,
+          "median_interval_ms": 500.063,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "7A 01 01",
+              23
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x106 04>F1 flags=00 cmd=04:05 len=45 subtype=": {
+          "packets": 571,
+          "median_interval_ms": 20.002,
+          "unique_payloads": 571,
+          "payload_counts": [
+            [
+              "48 00 29 02 52 00 82 00 FA FF 00 01 F1 D9 0D 03 34 03 00 00 59 02 81 03 C9 2E 61 3F FB 86 EA 3E 05 12 B6 3D E6 50 BD 3D 00 00 00 00 00",
+              1
+            ],
+            [
+              "48 00 29 02 52 00 82 00 FA FF 00 01 13 28 0E 03 34 03 00 00 59 02 81 03 DA 2D 61 3F 14 89 EA 3E 6D 1D B6 3D 3D 63 BD 3D 00 00 00 00 00",
+              1
+            ],
+            [
+              "48 00 29 02 52 00 82 00 F9 FF 00 01 2F 76 0E 03 34 03 00 00 59 02 81 03 EF 2D 61 3F C2 87 EA 3E FF 21 B6 3D 08 73 BD 3D 00 00 00 00 00",
+              1
+            ],
+            [
+              "48 00 29 02 52 00 82 00 FA FF 00 01 55 C4 0E 03 35 03 00 00 59 02 81 03 DD 2D 61 3F 6D 86 EA 3E 27 29 B6 3D 5B 8B BD 3D 00 00 00 00 00",
+              1
+            ],
+            [
+              "48 00 29 02 52 00 82 00 FA FF 00 01 7A 12 0F 03 36 03 00 00 59 02 81 03 05 2D 61 3F E7 88 EA 3E 59 23 B6 3D 6E A0 BD 3D 00 00 00 00 00",
+              1
+            ]
+          ],
+          "variable_payload_offsets": [
+            0,
+            2,
+            4,
+            8,
+            12,
+            13,
+            14,
+            16,
+            17,
+            20,
+            22,
+            24,
+            25,
+            26,
+            28,
+            29,
+            30,
+            32,
+            33,
+            34,
+            36,
+            37,
+            38
+          ],
+          "four_float32_le_payload_offset24": {
+            "finite_packets": 571,
+            "norm_squared_min": 0.9999997310137492,
+            "norm_squared_max": 1.0000002279895004,
+            "maximum_error_from_one": 2.6898625082871774e-07
+          },
+          "uint32_le_payload_offset12_increment": {
+            "median": 20002.0,
+            "minimum": 19841,
+            "maximum": 20169
+          }
+        },
+        "0x201 DF>52 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 115,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              115
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x201 DF>52 flags=00 cmd=04:2F len=13 subtype=13 00": {
+          "packets": 115,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 3,
+          "payload_counts": [
+            [
+              "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+              39
+            ],
+            [
+              "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+              38
+            ],
+            [
+              "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+              38
+            ]
+          ],
+          "variable_payload_offsets": [
+            2
+          ],
+          "offset2_value_counts": {
+            "1": 39,
+            "2": 38,
+            "3": 38
+          },
+          "cycle_1_2_3_pairs": 114,
+          "same_segment_pairs": 114
+        },
+        "0x201 DF>52 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 115,
+          "median_interval_ms": 100.009,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              115
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 115
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.032131,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 1.271
+              }
+            }
+          ]
+        },
+        "0x232 BF>32 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 115,
+          "median_interval_ms": 100.006,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              115
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x232 BF>32 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 115,
+          "median_interval_ms": 100.0075,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              115
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 115
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.030041,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 9.27
+              }
+            }
+          ]
+        },
+        "0x232 BF>32 flags=20 cmd=24:20 len=3 subtype=5a 41 01": {
+          "packets": 115,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "5A 41 01",
+              115
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x232 BF>32 flags=20 cmd=24:20 len=3 subtype=5d 41 01": {
+          "packets": 115,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "5D 41 01",
+              115
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x232 BF>52 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 115,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              115
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x232 BF>52 flags=00 cmd=04:2F len=13 subtype=13 00": {
+          "packets": 115,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 3,
+          "payload_counts": [
+            [
+              "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+              39
+            ],
+            [
+              "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+              38
+            ],
+            [
+              "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+              38
+            ]
+          ],
+          "variable_payload_offsets": [
+            2
+          ],
+          "offset2_value_counts": {
+            "1": 39,
+            "2": 38,
+            "3": 38
+          },
+          "cycle_1_2_3_pairs": 114,
+          "same_segment_pairs": 114
+        },
+        "0x232 BF>52 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 115,
+          "median_interval_ms": 100.0055,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              115
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 115
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.03118,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 0.32
+              }
+            }
+          ]
+        },
+        "0x504 BF>02 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 115,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              115
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 115
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.029588,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 8.817
+              }
+            }
+          ]
+        },
+        "0x504 BF>04 flags=00 cmd=00:0E len=0 subtype=": {
+          "packets": 115,
+          "median_interval_ms": 100.0055,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "",
+              115
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>52 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 115,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              115
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>52 flags=00 cmd=04:2F len=13 subtype=13 00": {
+          "packets": 115,
+          "median_interval_ms": 100.0055,
+          "unique_payloads": 3,
+          "payload_counts": [
+            [
+              "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+              39
+            ],
+            [
+              "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+              38
+            ],
+            [
+              "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+              38
+            ]
+          ],
+          "variable_payload_offsets": [
+            2
+          ],
+          "offset2_value_counts": {
+            "1": 39,
+            "2": 38,
+            "3": 38
+          },
+          "cycle_1_2_3_pairs": 114,
+          "same_segment_pairs": 114
+        },
+        "0x504 BF>52 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 115,
+          "median_interval_ms": 100.006,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              115
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 115
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.030496,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 9.725
+              }
+            }
+          ]
+        },
+        "0x504 BF>E5 flags=00 cmd=00:0E len=0 subtype=": {
+          "packets": 115,
+          "median_interval_ms": 100.0055,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "",
+              115
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=2 subtype=19 03": {
+          "packets": 115,
+          "median_interval_ms": 100.004,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "19 03",
+              115
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=3 subtype=1b 4b": {
+          "packets": 115,
+          "median_interval_ms": 100.0075,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "1B 4B 00",
+              115
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=6 subtype=18 01": {
+          "packets": 115,
+          "median_interval_ms": 100.0055,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "18 01 00 00 00 00",
+              115
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 115,
+          "median_interval_ms": 100.00450000000001,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              115
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=13 subtype=13 00": {
+          "packets": 115,
+          "median_interval_ms": 100.006,
+          "unique_payloads": 3,
+          "payload_counts": [
+            [
+              "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+              39
+            ],
+            [
+              "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+              38
+            ],
+            [
+              "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+              38
+            ]
+          ],
+          "variable_payload_offsets": [
+            2
+          ],
+          "offset2_value_counts": {
+            "1": 39,
+            "2": 38,
+            "3": 38
+          },
+          "cycle_1_2_3_pairs": 114,
+          "same_segment_pairs": 114
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 115,
+          "median_interval_ms": 100.0065,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              115
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 115
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.029132,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 8.361
+              }
+            }
+          ]
+        },
+        "0x504 BF>E5 flags=80 cmd=04:2F len=7 subtype=00 1a": {
+          "packets": 115,
+          "median_interval_ms": 100.004,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "00 1A 00 00 00 00 00",
+              115
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "opposite_address_same_sequence_request_matches": 0
+        }
+      },
+      "copy_0x504_BF_to_0x232_BF": {
+        "pairs": 345,
+        "same_entire_packet": 345,
+        "same_payload": 345,
+        "same_packet_except_sender_and_crc": 345,
+        "changed_packet_offsets": [],
+        "unpaired_left": 0,
+        "unpaired_right": 0
+      },
+      "copy_0x232_BF_to_0x201_DF": {
+        "pairs": 345,
+        "same_entire_packet": 0,
+        "same_payload": 345,
+        "same_packet_except_sender_and_crc": 345,
+        "changed_packet_offsets": [
+          4,
+          19,
+          20,
+          24,
+          25,
+          26,
+          27
+        ],
+        "unpaired_left": 0,
+        "unpaired_right": 0
+      }
+    },
+    {
+      "raw_log": "J:\\New soft project\\FM03\\captures\\20261007_203655_610426_capture.log",
+      "sha256": "241f74826eb40b27c0767adaae6ef56c1ad1cc7bded03db0ac599638886c2f3d",
+      "integrity": {
+        "frames": 34311,
+        "ids": {
+          "S:00000106": 8007,
+          "S:00000503": 5925,
+          "S:00000201": 8103,
+          "S:00000232": 4356,
+          "S:00000504": 7920
+        },
+        "sequence_gaps": 0,
+        "sequence_resets": 0,
+        "non_frame_lines": 2,
+        "first_t_us": 6134633530,
+        "last_t_us": 6154462476,
+        "status_first": {
+          "t_us": 6134651975,
+          "bitrate": 1000000,
+          "rx": 3715361,
+          "logger_dropped": 330779,
+          "rx_missed": 0,
+          "rx_overrun": 0,
+          "bus_errors": 3571842,
+          "pending": 0,
+          "logger_pending": 10
+        },
+        "status_last": {
+          "t_us": 6153683561,
+          "bitrate": 1000000,
+          "rx": 3748299,
+          "logger_dropped": 330779,
+          "rx_missed": 0,
+          "rx_overrun": 0,
+          "bus_errors": 3571842,
+          "pending": 0,
+          "logger_pending": 8
+        },
+        "firmware_errors": []
+      },
+      "crc_valid_packets": 9534,
+      "groups": {
+        "0x106 04>C9 flags=00 cmd=04:10 len=3 subtype=": {
+          "packets": 39,
+          "median_interval_ms": 500.0585,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "7A 01 01",
+              39
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x106 04>F1 flags=00 cmd=04:05 len=45 subtype=": {
+          "packets": 991,
+          "median_interval_ms": 20.002,
+          "unique_payloads": 991,
+          "payload_counts": [
+            [
+              "2B 00 AE 01 A2 00 82 00 0C 02 00 01 BD 8F 61 0A 5B 06 00 00 C3 00 34 02 49 10 6B 3F 9C 63 B7 3E AB 4C B1 3D FD B3 14 3E 00 00 00 00 00",
+              1
+            ],
+            [
+              "2B 00 AE 01 A2 00 82 00 0C 02 00 01 EF DD 61 0A 5A 06 00 00 C3 00 34 02 E7 0F 6B 3F EF 68 B7 3E E2 4C B1 3D 3E A3 14 3E 00 00 00 00 00",
+              1
+            ],
+            [
+              "2B 00 AE 01 A2 00 82 00 0C 02 00 01 04 2C 62 0A 58 06 00 00 C3 00 34 02 41 12 6B 3F CC 5F B7 3E C9 66 B1 3D 22 8D 14 3E 00 00 00 00 00",
+              1
+            ],
+            [
+              "2B 00 AE 01 A2 00 82 00 0C 02 00 01 24 7A 62 0A 57 06 00 00 C3 00 34 02 05 15 6B 3F 57 53 B7 3E 0D 84 B1 3D 10 7C 14 3E 00 00 00 00 00",
+              1
+            ],
+            [
+              "2B 00 AE 01 A2 00 82 00 0C 02 00 01 3E C8 62 0A 57 06 00 00 C3 00 34 02 13 17 6B 3F B2 46 B7 3E AF 99 B1 3D C6 7F 14 3E 00 00 00 00 00",
+              1
+            ]
+          ],
+          "variable_payload_offsets": [
+            0,
+            2,
+            4,
+            8,
+            12,
+            13,
+            14,
+            15,
+            16,
+            20,
+            22,
+            24,
+            25,
+            26,
+            28,
+            29,
+            30,
+            32,
+            33,
+            34,
+            36,
+            37,
+            38
+          ],
+          "four_float32_le_payload_offset24": {
+            "finite_packets": 991,
+            "norm_squared_min": 0.9999998284863649,
+            "norm_squared_max": 1.0000002208498082,
+            "maximum_error_from_one": 2.2084980821901468e-07
+          },
+          "uint32_le_payload_offset12_increment": {
+            "median": 20002.0,
+            "minimum": 19804,
+            "maximum": 20194
+          }
+        },
+        "0x201 DF>52 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 198,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              198
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x201 DF>52 flags=00 cmd=04:2F len=13 subtype=13 00": {
+          "packets": 198,
+          "median_interval_ms": 100.006,
+          "unique_payloads": 3,
+          "payload_counts": [
+            [
+              "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+              66
+            ],
+            [
+              "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+              66
+            ],
+            [
+              "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+              66
+            ]
+          ],
+          "variable_payload_offsets": [
+            2
+          ],
+          "offset2_value_counts": {
+            "1": 66,
+            "2": 66,
+            "3": 66
+          },
+          "cycle_1_2_3_pairs": 197,
+          "same_segment_pairs": 197
+        },
+        "0x201 DF>52 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 198,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              198
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 198
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.051556,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 5.024
+              }
+            }
+          ]
+        },
+        "0x232 BF>32 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 198,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              198
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x232 BF>32 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 198,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              198
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 198
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.050414,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 3.882
+              }
+            }
+          ]
+        },
+        "0x232 BF>32 flags=20 cmd=24:20 len=3 subtype=5a 41 01": {
+          "packets": 198,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "5A 41 01",
+              198
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x232 BF>32 flags=20 cmd=24:20 len=3 subtype=5d 41 01": {
+          "packets": 198,
+          "median_interval_ms": 100.008,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "5D 41 01",
+              198
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x232 BF>52 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 198,
+          "median_interval_ms": 100.005,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              198
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x232 BF>52 flags=00 cmd=04:2F len=13 subtype=13 00": {
+          "packets": 198,
+          "median_interval_ms": 100.004,
+          "unique_payloads": 3,
+          "payload_counts": [
+            [
+              "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+              66
+            ],
+            [
+              "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+              66
+            ],
+            [
+              "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+              66
+            ]
+          ],
+          "variable_payload_offsets": [
+            2
+          ],
+          "offset2_value_counts": {
+            "1": 66,
+            "2": 66,
+            "3": 66
+          },
+          "cycle_1_2_3_pairs": 197,
+          "same_segment_pairs": 197
+        },
+        "0x232 BF>52 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 198,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              198
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 198
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.051317,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 4.785
+              }
+            }
+          ]
+        },
+        "0x504 BF>02 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 198,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              198
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 198
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.049962,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 3.43
+              }
+            }
+          ]
+        },
+        "0x504 BF>04 flags=00 cmd=00:0E len=0 subtype=": {
+          "packets": 198,
+          "median_interval_ms": 100.004,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "",
+              198
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>52 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 198,
+          "median_interval_ms": 100.006,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              198
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>52 flags=00 cmd=04:2F len=13 subtype=13 00": {
+          "packets": 198,
+          "median_interval_ms": 100.005,
+          "unique_payloads": 3,
+          "payload_counts": [
+            [
+              "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+              66
+            ],
+            [
+              "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+              66
+            ],
+            [
+              "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+              66
+            ]
+          ],
+          "variable_payload_offsets": [
+            2
+          ],
+          "offset2_value_counts": {
+            "1": 66,
+            "2": 66,
+            "3": 66
+          },
+          "cycle_1_2_3_pairs": 197,
+          "same_segment_pairs": 197
+        },
+        "0x504 BF>52 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 198,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              198
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 198
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.050865,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 4.333
+              }
+            }
+          ]
+        },
+        "0x504 BF>E5 flags=00 cmd=00:0E len=0 subtype=": {
+          "packets": 198,
+          "median_interval_ms": 100.002,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "",
+              198
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=2 subtype=19 03": {
+          "packets": 198,
+          "median_interval_ms": 100.004,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "19 03",
+              198
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=3 subtype=1b 4b": {
+          "packets": 198,
+          "median_interval_ms": 100.004,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "1B 4B 00",
+              198
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=6 subtype=18 01": {
+          "packets": 198,
+          "median_interval_ms": 100.004,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "18 01 00 00 00 00",
+              198
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=8 subtype=12 00": {
+          "packets": 198,
+          "median_interval_ms": 100.006,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "12 00 01 04 00 00 00 00",
+              198
+            ]
+          ],
+          "variable_payload_offsets": []
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=13 subtype=13 00": {
+          "packets": 198,
+          "median_interval_ms": 100.005,
+          "unique_payloads": 3,
+          "payload_counts": [
+            [
+              "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+              66
+            ],
+            [
+              "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+              66
+            ],
+            [
+              "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+              66
+            ]
+          ],
+          "variable_payload_offsets": [
+            2
+          ],
+          "offset2_value_counts": {
+            "1": 66,
+            "2": 66,
+            "3": 66
+          },
+          "cycle_1_2_3_pairs": 197,
+          "same_segment_pairs": 197
+        },
+        "0x504 BF>E5 flags=00 cmd=04:2F len=15 subtype=09 00": {
+          "packets": 198,
+          "median_interval_ms": 100.007,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "09 00 00 00 00 00 80 00 00 00 00 00 00 00 00",
+              198
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "int32_le_payload_offset3_counts": {
+            "-2147483648": 198
+          },
+          "state_changes": [
+            {
+              "segment": 0,
+              "relative_s": 0.049504,
+              "int32_le_offset3": -2147483648,
+              "preceding_04_69": {
+                "value": 0,
+                "age_ms": 2.972
+              }
+            }
+          ]
+        },
+        "0x504 BF>E5 flags=80 cmd=04:2F len=7 subtype=00 1a": {
+          "packets": 198,
+          "median_interval_ms": 100.004,
+          "unique_payloads": 1,
+          "payload_counts": [
+            [
+              "00 1A 00 00 00 00 00",
+              198
+            ]
+          ],
+          "variable_payload_offsets": [],
+          "opposite_address_same_sequence_request_matches": 0
+        }
+      },
+      "copy_0x504_BF_to_0x232_BF": {
+        "pairs": 594,
+        "same_entire_packet": 594,
+        "same_payload": 594,
+        "same_packet_except_sender_and_crc": 594,
+        "changed_packet_offsets": [],
+        "unpaired_left": 0,
+        "unpaired_right": 0
+      },
+      "copy_0x232_BF_to_0x201_DF": {
+        "pairs": 594,
+        "same_entire_packet": 0,
+        "same_payload": 594,
+        "same_packet_except_sender_and_crc": 594,
+        "changed_packet_offsets": [
+          4,
+          19,
+          20,
+          24,
+          25,
+          26,
+          27
+        ],
+        "unpaired_left": 0,
+        "unpaired_right": 0
+      }
+    }
+  ],
+  "external_reference": {
+    "checked_on": "2026-10-07",
+    "provenance": "Original community DUML dissector source, not DJI RS3/FM03 documentation.",
+    "header_source": "https://raw.githubusercontent.com/o-gs/dji-firmware-tools/master/comm_dissector/wireshark/dji-dumlv1-proto.lua",
+    "gimbal_source": "https://raw.githubusercontent.com/o-gs/dji-firmware-tools/master/comm_dissector/wireshark/dji-dumlv1-gimbal.lua",
+    "scope": "Generic request/response flag bit 0x80 only; inspected gimbal definitions do not define 0x2F or 0x69. No device-specific units imported."
+  },
+  "offset_convention": "zero-based application payload, excluding 11-byte DUML header and CRC",
+  "limitations": [
+    "CAN IDs and logical addresses do not establish physical direction or relay topology.",
+    "Normalized four-float vector is a quaternion candidate only; axes/device/frame are unknown.",
+    "Periodic state and copying do not prove a required heartbeat or startup handshake.",
+    "04:69 context is a preceding field sample within 50ms, not a measured motor/dial motion state."
+  ]
+}
