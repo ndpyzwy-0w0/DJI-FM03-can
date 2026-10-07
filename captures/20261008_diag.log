@@ -1,0 +1,15 @@
+# DIAG button held, switching to transmit
+# DIAG begin
+# before tec=0 rec=0 bus_errors=0 arb_lost=0 tx_failed=0 rx_missed=0 state=1 msgs_to_tx=0
+# DIAG send1 result=ESP_OK
+# after_send1 tec=0 rec=0 bus_errors=0 arb_lost=0 tx_failed=0 rx_missed=67 state=1 msgs_to_tx=0
+# DIAG delta tec=0 rec=0 bus_errors=0 arb_lost=0 tx_failed=0
+# DIAG repeat 0 result=ESP_OK
+# DIAG repeat 1 result=ESP_OK
+# DIAG repeat 2 result=ESP_OK
+# DIAG repeat 3 result=ESP_OK
+# DIAG repeat 4 result=ESP_OK
+# after_repeats tec=0 rec=0 bus_errors=0 arb_lost=0 tx_failed=0 rx_missed=515 state=1 msgs_to_tx=0
+# DIAG total tec=0 bus_errors=0 arb_lost=0 tx_failed=0
+# DIAG tec rising in steps of 8 with bus_errors tracking it means no acknowledgement; bit or stuff errors instead point at the physical layer or bit timing
+# DIAG done, back to listen only

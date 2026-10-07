@@ -101,6 +101,21 @@ static uint16_t crc16(const uint8_t *data, unsigned length) {
 #define REPLAY_HANDSHAKE_UNTIL_MS 3000
 #endif
 
+// Restart the whole boot sequence this often, in milliseconds.
+//
+// This exists because of how the status LED behaved. The only runs in which the
+// operator ever saw it go green were the ones where the firmware was crashing and
+// rebooting every 0.02-0.9 s, i.e. where the boot sequence was being re-sent over and
+// over, and the green came and went with varying duration. Once the crash was fixed
+// and the sequence was sent exactly once per window, the LED stayed red. That points
+// at the repetition itself being what the motor wants: a peer that keeps re-announcing
+// rather than one that announces once and then streams steadily.
+//
+// Set to 0 to keep the previous behaviour of sending the sequence once per window.
+#ifndef REPLAY_SEQUENCE_PERIOD_MS
+#define REPLAY_SEQUENCE_PERIOD_MS 0
+#endif
+
 // One-shot handshake milestones, so each boot packet goes out exactly once per window.
 static bool handshake_sent_announce = false;
 static bool handshake_sent_startup = false;
@@ -545,6 +560,22 @@ static void run_replay_window() {
             last_send = millis();
             bool ok = true;
             unsigned long elapsed = millis() - started;
+#if REPLAY_SEQUENCE_PERIOD_MS > 0
+            // Restart the boot sequence periodically: this is the behaviour that
+            // coincided with the LED going green.
+            static unsigned long sequence_started = 0;
+            if (elapsed - sequence_started >= REPLAY_SEQUENCE_PERIOD_MS) {
+                sequence_started = elapsed;
+                handshake_sent_announce = false;
+                handshake_sent_startup = false;
+                handshake_sent_gb53 = false;
+                handshake_sent_request = false;
+                Serial.printf("# REPLAY sequence_restart at %lu ms\n", elapsed);
+            }
+            unsigned long since_restart = elapsed - sequence_started;
+#else
+            unsigned long since_restart = elapsed;
+#endif
 #if REPLAY_HANDSHAKE
             // Power-on sequence, reproducing the measured boot: announce, then the
             // attitude burst stepping its sequence by 20 every ~20 ms, then the
@@ -553,9 +584,10 @@ static void run_replay_window() {
             // motor answering from about 97 ms.
             static unsigned long last_attitude = 0;
             static uint16_t boot_attitude_seq = 62;
-            if (elapsed < REPLAY_HANDSHAKE_UNTIL_MS) {
+            if (since_restart < REPLAY_HANDSHAKE_UNTIL_MS) {
                 if (!handshake_sent_announce) {
                     handshake_sent_announce = true;
+                    boot_attitude_seq = 62;    // each restart begins the sequence at 62
                     ok = send_packet(0x106, BOOT_ANNOUNCE, BOOT_ANNOUNCE_FRAMES, 2) && ok;
                     Serial.println("# HANDSHAKE announce_sent");
                 }
@@ -574,7 +606,7 @@ static void run_replay_window() {
                     ok = send_packet(0x106, attitude, BOOT_0405_FRAMES, 8) && ok;
                 }
             }
-            if (elapsed >= 65 && !handshake_sent_startup) {
+            if (since_restart >= 65 && !handshake_sent_startup) {
                 handshake_sent_startup = true;
                 ok = send_packet(0x201, BOOT_0469, BOOT_0469_FRAMES, 3) && ok;
                 Serial.println("# HANDSHAKE boot_dial_sent");
@@ -589,7 +621,7 @@ static void run_replay_window() {
 #if REPLAY_HANDSHAKE
             // The steady stream starts once the boot sequence is done, matching the
             // capture where the motor answers from about 97 ms.
-            bool steady_time = elapsed >= 100;
+            bool steady_time = since_restart >= 100;
 #else
             bool steady_time = true;
 #endif
