@@ -1,6 +1,6 @@
 {
   "raw_log": "J:\\New soft project\\FM03\\captures\\20261007_185554_700204_slow_reverse.log",
-  "crc_valid_packets": 7217,
+  "crc_valid_packets": 7212,
   "integrity": {
     "frames": 25968,
     "ids": {
@@ -65,8 +65,8 @@
       "sample_packet": "55 10 04 56 04 c9 67 02 00 04 10 7a 01 01 d0 9c"
     },
     "S:0x106 04>F1 flags=00 cmd=04:05 payload_len=45": {
-      "packets": 749,
-      "unique_payloads": 749,
+      "packets": 744,
+      "unique_payloads": 744,
       "variable_payload_offsets": [
         0,
         2,
@@ -490,7 +490,6 @@
           82,
           83,
           84,
-          85,
           86,
           87,
           88,
@@ -1647,7 +1646,6 @@
           119,
           120,
           121,
-          122,
           123,
           124,
           125,
@@ -1782,7 +1780,6 @@
           82,
           83,
           84,
-          85,
           86,
           87,
           88,
@@ -2734,7 +2731,6 @@
           82,
           83,
           84,
-          85,
           86,
           87,
           88,
@@ -2833,7 +2829,6 @@
           184,
           185,
           186,
-          188,
           189,
           190,
           191,

@@ -1,5 +1,5 @@
 {
-  "reference": "J:\\New soft project\\FM03\\captures\\20261007_154729_002678_idle.log",
+  "reference": "J:\\New soft project\\FM03\\captures\\20261007_154446_862533_capture.log",
   "other": "J:\\New soft project\\FM03\\captures\\20261007_194635_586843_fast_forward.log",
   "offset_convention": "zero-based DUML payload offset, excluding header and CRC",
   "groups": [
@@ -13,11 +13,10 @@
     },
     {
       "group": "S:0x106 04>F1 flags=00 cmd=04:05 payload_len=45",
-      "idle_unique_payloads": 519,
-      "other_unique_payloads": 763,
+      "idle_unique_payloads": 1510,
+      "other_unique_payloads": 755,
       "variable_only_in_other": [
-        15,
-        22
+        38
       ],
       "idle_variable_offsets": [
         0,
@@ -27,8 +26,10 @@
         12,
         13,
         14,
+        15,
         16,
         20,
+        22,
         24,
         25,
         26,
@@ -39,8 +40,7 @@
         33,
         34,
         36,
-        37,
-        38
+        37
       ],
       "other_variable_offsets": [
         0,
@@ -107,13 +107,13 @@
     },
     {
       "group": "S:0x201 E5>52 flags=00 cmd=04:69 payload_len=6",
-      "idle_unique_payloads": 1,
+      "idle_unique_payloads": 428,
       "other_unique_payloads": 202,
-      "variable_only_in_other": [
+      "variable_only_in_other": [],
+      "idle_variable_offsets": [
         4,
         5
       ],
-      "idle_variable_offsets": [],
       "other_variable_offsets": [
         4,
         5
@@ -197,13 +197,13 @@
     },
     {
       "group": "S:0x503 E5>BF flags=00 cmd=04:69 payload_len=6",
-      "idle_unique_payloads": 1,
+      "idle_unique_payloads": 428,
       "other_unique_payloads": 202,
-      "variable_only_in_other": [
+      "variable_only_in_other": [],
+      "idle_variable_offsets": [
         4,
         5
       ],
-      "idle_variable_offsets": [],
       "other_variable_offsets": [
         4,
         5

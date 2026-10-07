@@ -1,6 +1,6 @@
 {
   "raw_log": "J:\\New soft project\\FM03\\captures\\20261007_203655_610426_capture.log",
-  "crc_valid_packets": 9534,
+  "crc_valid_packets": 9523,
   "integrity": {
     "frames": 34311,
     "ids": {
@@ -65,8 +65,8 @@
       "sample_packet": "55 10 04 56 04 c9 cc 06 00 04 10 7a 01 01 d8 29"
     },
     "S:0x106 04>F1 flags=00 cmd=04:05 payload_len=45": {
-      "packets": 991,
-      "unique_payloads": 991,
+      "packets": 980,
+      "unique_payloads": 980,
       "variable_payload_offsets": [
         0,
         2,
@@ -500,7 +500,6 @@
           81,
           82,
           83,
-          85,
           86,
           87,
           88,
@@ -1396,7 +1395,6 @@
           204,
           208,
           212,
-          214,
           215,
           237,
           247,
@@ -1603,7 +1601,6 @@
           194,
           195,
           196,
-          197,
           198,
           199,
           200,
@@ -1764,7 +1761,6 @@
           136,
           138,
           142,
-          143,
           144,
           147,
           156,
@@ -2721,7 +2717,6 @@
           82,
           83,
           84,
-          85,
           86,
           87,
           88,

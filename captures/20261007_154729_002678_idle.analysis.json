@@ -1,6 +1,6 @@
 {
   "raw_log": "J:\\New soft project\\FM03\\captures\\20261007_154729_002678_idle.log",
-  "crc_valid_packets": 4998,
+  "crc_valid_packets": 4996,
   "integrity": {
     "frames": 17987,
     "ids": {
@@ -65,8 +65,8 @@
       "sample_packet": "55 10 04 56 04 c9 d9 0d 00 04 10 7a 01 01 43 93"
     },
     "S:0x106 04>F1 flags=00 cmd=04:05 payload_len=45": {
-      "packets": 519,
-      "unique_payloads": 519,
+      "packets": 517,
+      "unique_payloads": 517,
       "variable_payload_offsets": [
         0,
         2,
@@ -429,7 +429,6 @@
           81,
           82,
           84,
-          85,
           86,
           87,
           89,
@@ -1437,7 +1436,6 @@
           78,
           79,
           81,
-          85,
           86,
           87,
           88,
@@ -1844,7 +1842,6 @@
           120,
           121,
           122,
-          123,
           124,
           125,
           126,
