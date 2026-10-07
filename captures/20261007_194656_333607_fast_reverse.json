@@ -1,0 +1,1447 @@
+{
+  "product": "fm03_capture",
+  "phase": "stopped",
+  "port": "COM17",
+  "label": "fast_reverse",
+  "started_at": "2026-10-07T19:46:56.333607+08:00",
+  "elapsed": 18.72,
+  "frames": 32327,
+  "fps": 1693,
+  "bytes_saved": 1573420,
+  "unique_ids": 5,
+  "sequence_gaps": 0,
+  "sequence_resets": 0,
+  "non_frame_lines": 1,
+  "trailing_bytes": 1,
+  "status_first": {
+    "t_us": 3135244554,
+    "bitrate": 1000000,
+    "rx": 1611111,
+    "logger_dropped": 50,
+    "rx_missed": 0,
+    "rx_overrun": 0,
+    "bus_errors": 48,
+    "pending": 0,
+    "logger_pending": 64
+  },
+  "status": {
+    "t_us": 3153270320,
+    "bitrate": 1000000,
+    "rx": 1642271,
+    "logger_dropped": 50,
+    "rx_missed": 0,
+    "rx_overrun": 0,
+    "bus_errors": 48,
+    "pending": 0,
+    "logger_pending": 38
+  },
+  "counter_deltas": {
+    "logger_dropped": 0,
+    "rx_missed": 0,
+    "rx_overrun": 0,
+    "bus_errors": 0
+  },
+  "status_age": 0.7,
+  "serial_age": 0.0,
+  "latest": [
+    {
+      "t_us": 3153922054,
+      "sequence": 1643371,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 3,
+      "data": "00 0A 3F"
+    },
+    {
+      "t_us": 3153921975,
+      "sequence": 1643370,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 69 0F 04 08 19 00"
+    },
+    {
+      "t_us": 3153921851,
+      "sequence": 1643369,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 13 04 03 E5 52 7E 32"
+    },
+    {
+      "t_us": 3153921066,
+      "sequence": 1643368,
+      "id": "0x503",
+      "extended": false,
+      "rtr": false,
+      "dlc": 3,
+      "data": "00 66 99"
+    },
+    {
+      "t_us": 3153920994,
+      "sequence": 1643367,
+      "id": "0x503",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 69 0F 04 08 19 00"
+    },
+    {
+      "t_us": 3153920868,
+      "sequence": 1643366,
+      "id": "0x503",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 13 04 03 E5 BF 7D 32"
+    },
+    {
+      "t_us": 3153916430,
+      "sequence": 1643365,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 2,
+      "data": "B5 F2"
+    },
+    {
+      "t_us": 3153916358,
+      "sequence": 1643364,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "AC C0 3D 00 00 00 00 00"
+    },
+    {
+      "t_us": 3153916229,
+      "sequence": 1643363,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "46 EB 3E C9 79 7F 3D A8"
+    },
+    {
+      "t_us": 3153916111,
+      "sequence": 1643362,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "02 81 03 EE 86 61 3F 50"
+    },
+    {
+      "t_us": 3153915994,
+      "sequence": 1643361,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "E3 D7 03 47 04 00 00 23"
+    },
+    {
+      "t_us": 3153915873,
+      "sequence": 1643360,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 82 00 F7 FF 00 01 8C"
+    },
+    {
+      "t_us": 3153915750,
+      "sequence": 1643359,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 05 17 00 28 02 6D"
+    },
+    {
+      "t_us": 3153915630,
+      "sequence": 1643358,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 3A 04 70 04 F1 B2 F9"
+    },
+    {
+      "t_us": 3153911398,
+      "sequence": 1643357,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 3,
+      "data": "00 28 94"
+    },
+    {
+      "t_us": 3153911315,
+      "sequence": 1643356,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 69 0F 04 08 19 00"
+    },
+    {
+      "t_us": 3153911195,
+      "sequence": 1643355,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 13 04 03 E5 52 7C 32"
+    },
+    {
+      "t_us": 3153911081,
+      "sequence": 1643354,
+      "id": "0x503",
+      "extended": false,
+      "rtr": false,
+      "dlc": 3,
+      "data": "00 11 6C"
+    },
+    {
+      "t_us": 3153911002,
+      "sequence": 1643353,
+      "id": "0x503",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 69 0F 04 08 19 00"
+    },
+    {
+      "t_us": 3153910876,
+      "sequence": 1643352,
+      "id": "0x503",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 13 04 03 E5 BF 7B 32"
+    },
+    {
+      "t_us": 3153901369,
+      "sequence": 1643351,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 3,
+      "data": "00 5F 61"
+    },
+    {
+      "t_us": 3153901291,
+      "sequence": 1643350,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 69 0F 04 08 19 00"
+    },
+    {
+      "t_us": 3153901169,
+      "sequence": 1643349,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 13 04 03 E5 52 7A 32"
+    },
+    {
+      "t_us": 3153901052,
+      "sequence": 1643348,
+      "id": "0x503",
+      "extended": false,
+      "rtr": false,
+      "dlc": 3,
+      "data": "00 33 C7"
+    },
+    {
+      "t_us": 3153900976,
+      "sequence": 1643347,
+      "id": "0x503",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 69 0F 04 08 19 00"
+    },
+    {
+      "t_us": 3153900855,
+      "sequence": 1643346,
+      "id": "0x503",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 13 04 03 E5 BF 79 32"
+    },
+    {
+      "t_us": 3153896397,
+      "sequence": 1643345,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 2,
+      "data": "55 70"
+    },
+    {
+      "t_us": 3153896327,
+      "sequence": 1643344,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "A2 C0 3D 00 00 00 00 00"
+    },
+    {
+      "t_us": 3153896206,
+      "sequence": 1643343,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "49 EB 3E B4 70 7F 3D A2"
+    },
+    {
+      "t_us": 3153896089,
+      "sequence": 1643342,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "02 81 03 48 86 61 3F 72"
+    },
+    {
+      "t_us": 3153895968,
+      "sequence": 1643341,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "95 D7 03 47 04 00 00 22"
+    },
+    {
+      "t_us": 3153895848,
+      "sequence": 1643340,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 82 00 F7 FF 00 01 65"
+    },
+    {
+      "t_us": 3153895724,
+      "sequence": 1643339,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 05 17 00 28 02 6D"
+    },
+    {
+      "t_us": 3153895603,
+      "sequence": 1643338,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 3A 04 70 04 F1 9E F9"
+    },
+    {
+      "t_us": 3153892376,
+      "sequence": 1643337,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 3,
+      "data": "00 7D CA"
+    },
+    {
+      "t_us": 3153892299,
+      "sequence": 1643336,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 69 0F 04 08 19 00"
+    },
+    {
+      "t_us": 3153892179,
+      "sequence": 1643335,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 13 04 03 E5 52 78 32"
+    },
+    {
+      "t_us": 3153892061,
+      "sequence": 1643334,
+      "id": "0x503",
+      "extended": false,
+      "rtr": false,
+      "dlc": 3,
+      "data": "00 EE 8E"
+    },
+    {
+      "t_us": 3153891984,
+      "sequence": 1643333,
+      "id": "0x503",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 69 0F 04 08 19 00"
+    },
+    {
+      "t_us": 3153891863,
+      "sequence": 1643332,
+      "id": "0x503",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 13 04 03 E5 BF 77 32"
+    },
+    {
+      "t_us": 3153882053,
+      "sequence": 1643331,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 3,
+      "data": "00 A0 83"
+    },
+    {
+      "t_us": 3153881975,
+      "sequence": 1643330,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 69 0F 04 08 19 00"
+    },
+    {
+      "t_us": 3153881851,
+      "sequence": 1643329,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 13 04 03 E5 52 76 32"
+    },
+    {
+      "t_us": 3153881069,
+      "sequence": 1643328,
+      "id": "0x503",
+      "extended": false,
+      "rtr": false,
+      "dlc": 3,
+      "data": "00 CC 25"
+    },
+    {
+      "t_us": 3153880993,
+      "sequence": 1643327,
+      "id": "0x503",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 69 0F 04 08 19 00"
+    },
+    {
+      "t_us": 3153880870,
+      "sequence": 1643326,
+      "id": "0x503",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 13 04 03 E5 BF 75 32"
+    },
+    {
+      "t_us": 3153876403,
+      "sequence": 1643325,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 2,
+      "data": "A9 FF"
+    },
+    {
+      "t_us": 3153876334,
+      "sequence": 1643324,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "95 C0 3D 00 00 00 00 00"
+    },
+    {
+      "t_us": 3153876209,
+      "sequence": 1643323,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "4A EB 3E 3F 62 7F 3D 56"
+    },
+    {
+      "t_us": 3153876092,
+      "sequence": 1643322,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "02 81 03 3E 86 61 3F 8C"
+    },
+    {
+      "t_us": 3153875973,
+      "sequence": 1643321,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "47 D7 03 47 04 00 00 23"
+    },
+    {
+      "t_us": 3153875852,
+      "sequence": 1643320,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 82 00 F7 FF 00 01 48"
+    },
+    {
+      "t_us": 3153875729,
+      "sequence": 1643319,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 05 17 00 28 02 6D"
+    },
+    {
+      "t_us": 3153875606,
+      "sequence": 1643318,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 3A 04 70 04 F1 8A F9"
+    },
+    {
+      "t_us": 3153872373,
+      "sequence": 1643317,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 3,
+      "data": "00 82 28"
+    },
+    {
+      "t_us": 3153872296,
+      "sequence": 1643316,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 69 0F 04 08 19 00"
+    },
+    {
+      "t_us": 3153872178,
+      "sequence": 1643315,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 13 04 03 E5 52 74 32"
+    },
+    {
+      "t_us": 3153872061,
+      "sequence": 1643314,
+      "id": "0x503",
+      "extended": false,
+      "rtr": false,
+      "dlc": 3,
+      "data": "00 BB D0"
+    },
+    {
+      "t_us": 3153871981,
+      "sequence": 1643313,
+      "id": "0x503",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 69 0F 04 08 19 00"
+    },
+    {
+      "t_us": 3153871858,
+      "sequence": 1643312,
+      "id": "0x503",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 13 04 03 E5 BF 73 32"
+    },
+    {
+      "t_us": 3153862368,
+      "sequence": 1643311,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 3,
+      "data": "00 F5 DD"
+    },
+    {
+      "t_us": 3153862292,
+      "sequence": 1643310,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 69 0F 04 08 19 00"
+    },
+    {
+      "t_us": 3153862171,
+      "sequence": 1643309,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 13 04 03 E5 52 72 32"
+    },
+    {
+      "t_us": 3153862055,
+      "sequence": 1643308,
+      "id": "0x503",
+      "extended": false,
+      "rtr": false,
+      "dlc": 3,
+      "data": "00 99 7B"
+    },
+    {
+      "t_us": 3153861979,
+      "sequence": 1643307,
+      "id": "0x503",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 69 0F 04 08 19 00"
+    },
+    {
+      "t_us": 3153861855,
+      "sequence": 1643306,
+      "id": "0x503",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 13 04 03 E5 BF 71 32"
+    },
+    {
+      "t_us": 3153856411,
+      "sequence": 1643305,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 2,
+      "data": "F5 7F"
+    },
+    {
+      "t_us": 3153856343,
+      "sequence": 1643304,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "8C C0 3D 00 00 00 00 00"
+    },
+    {
+      "t_us": 3153856220,
+      "sequence": 1643303,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "47 EB 3E F5 5D 7F 3D 6C"
+    },
+    {
+      "t_us": 3153856104,
+      "sequence": 1643302,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "02 81 03 2A 87 61 3F 84"
+    },
+    {
+      "t_us": 3153855986,
+      "sequence": 1643301,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "F9 D6 03 47 04 00 00 23"
+    },
+    {
+      "t_us": 3153855866,
+      "sequence": 1643300,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 82 00 F7 FF 00 01 28"
+    },
+    {
+      "t_us": 3153855740,
+      "sequence": 1643299,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 05 17 00 28 02 6D"
+    },
+    {
+      "t_us": 3153855618,
+      "sequence": 1643298,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 3A 04 70 04 F1 76 F9"
+    },
+    {
+      "t_us": 3153852365,
+      "sequence": 1643297,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 3,
+      "data": "00 D7 76"
+    },
+    {
+      "t_us": 3153852288,
+      "sequence": 1643296,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 69 0F 04 08 19 00"
+    },
+    {
+      "t_us": 3153852168,
+      "sequence": 1643295,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 13 04 03 E5 52 70 32"
+    },
+    {
+      "t_us": 3153852051,
+      "sequence": 1643294,
+      "id": "0x503",
+      "extended": false,
+      "rtr": false,
+      "dlc": 3,
+      "data": "00 01 43"
+    },
+    {
+      "t_us": 3153851973,
+      "sequence": 1643293,
+      "id": "0x503",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 69 0F 04 08 19 00"
+    },
+    {
+      "t_us": 3153851850,
+      "sequence": 1643292,
+      "id": "0x503",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 13 04 03 E5 BF 6F 32"
+    },
+    {
+      "t_us": 3153842350,
+      "sequence": 1643291,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 3,
+      "data": "00 4F 4E"
+    },
+    {
+      "t_us": 3153842276,
+      "sequence": 1643290,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 69 0F 04 08 19 00"
+    },
+    {
+      "t_us": 3153842154,
+      "sequence": 1643289,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 13 04 03 E5 52 6E 32"
+    },
+    {
+      "t_us": 3153842037,
+      "sequence": 1643288,
+      "id": "0x503",
+      "extended": false,
+      "rtr": false,
+      "dlc": 3,
+      "data": "00 23 E8"
+    },
+    {
+      "t_us": 3153841960,
+      "sequence": 1643287,
+      "id": "0x503",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 69 0F 04 08 19 00"
+    },
+    {
+      "t_us": 3153841837,
+      "sequence": 1643286,
+      "id": "0x503",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 13 04 03 E5 BF 6D 32"
+    },
+    {
+      "t_us": 3153840333,
+      "sequence": 1643285,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 5,
+      "data": "00 00 0E 68 EE"
+    },
+    {
+      "t_us": 3153840238,
+      "sequence": 1643284,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 0D 04 33 BF E5 B8 2C"
+    },
+    {
+      "t_us": 3153840119,
+      "sequence": 1643283,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 5,
+      "data": "00 00 0E AC 02"
+    },
+    {
+      "t_us": 3153840023,
+      "sequence": 1643282,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 0D 04 33 BF 04 B7 2C"
+    },
+    {
+      "t_us": 3153839905,
+      "sequence": 1643281,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 2F 1B 4B 00 E4 70"
+    },
+    {
+      "t_us": 3153839787,
+      "sequence": 1643280,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 10 04 56 BF E5 B6 2C"
+    },
+    {
+      "t_us": 3153839670,
+      "sequence": 1643279,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 4,
+      "data": "00 00 AA C2"
+    },
+    {
+      "t_us": 3153839585,
+      "sequence": 1643278,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 2,
+      "data": "31 E6"
+    },
+    {
+      "t_us": 3153839520,
+      "sequence": 1643277,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "80 04 2F 00 1A 00 00 00"
+    },
+    {
+      "t_us": 3153839398,
+      "sequence": 1643276,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "FF FF FF FF FF FF FF FF"
+    },
+    {
+      "t_us": 3153839276,
+      "sequence": 1643275,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 14 04 6D BF E5 B5 2C"
+    },
+    {
+      "t_us": 3153839159,
+      "sequence": 1643274,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 2F 13 00 01 00 00"
+    },
+    {
+      "t_us": 3153839036,
+      "sequence": 1643273,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 7,
+      "data": "00 04 2F 19 03 5E 11"
+    },
+    {
+      "t_us": 3153838930,
+      "sequence": 1643272,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 DF 52 B2 2C"
+    },
+    {
+      "t_us": 3153838815,
+      "sequence": 1643271,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 0F 04 A2 BF E5 B4 2C"
+    },
+    {
+      "t_us": 3153838696,
+      "sequence": 1643270,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 3,
+      "data": "00 FD 92"
+    },
+    {
+      "t_us": 3153838619,
+      "sequence": 1643269,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 2F 18 01 00 00 00"
+    },
+    {
+      "t_us": 3153838495,
+      "sequence": 1643268,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 13 04 03 BF E5 B3 2C"
+    },
+    {
+      "t_us": 3153838378,
+      "sequence": 1643267,
+      "id": "0x232",
+      "extended": false,
+      "rtr": false,
+      "dlc": 2,
+      "data": "8C B3"
+    },
+    {
+      "t_us": 3153838313,
+      "sequence": 1643266,
+      "id": "0x232",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "FF FF FF FF FF FF FF FF"
+    },
+    {
+      "t_us": 3153838188,
+      "sequence": 1643265,
+      "id": "0x232",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 2F 13 00 01 00 00"
+    },
+    {
+      "t_us": 3153838066,
+      "sequence": 1643264,
+      "id": "0x232",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF 52 B2 2C"
+    },
+    {
+      "t_us": 3153837950,
+      "sequence": 1643263,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 2,
+      "data": "8C B3"
+    },
+    {
+      "t_us": 3153837885,
+      "sequence": 1643262,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 5,
+      "data": "00 00 00 EA 9F"
+    },
+    {
+      "t_us": 3153837792,
+      "sequence": 1643261,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "FF FF FF FF FF FF FF FF"
+    },
+    {
+      "t_us": 3153837667,
+      "sequence": 1643260,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 2F 12 00 01 04 00"
+    },
+    {
+      "t_us": 3153837545,
+      "sequence": 1643259,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 2F 13 00 01 00 00"
+    },
+    {
+      "t_us": 3153837425,
+      "sequence": 1643258,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 15 04 A9 DF 52 B0 2C"
+    },
+    {
+      "t_us": 3153837311,
+      "sequence": 1643257,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF 52 B2 2C"
+    },
+    {
+      "t_us": 3153837192,
+      "sequence": 1643256,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 2,
+      "data": "93 C5"
+    },
+    {
+      "t_us": 3153837126,
+      "sequence": 1643255,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 2,
+      "data": "18 2E"
+    },
+    {
+      "t_us": 3153837060,
+      "sequence": 1643254,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "81 C0 3D 00 00 00 00 00"
+    },
+    {
+      "t_us": 3153836937,
+      "sequence": 1643253,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "FF FF FF FF FF FF FF FF"
+    },
+    {
+      "t_us": 3153836811,
+      "sequence": 1643252,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "44 EB 3E BF 50 7F 3D 96"
+    },
+    {
+      "t_us": 3153836695,
+      "sequence": 1643251,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 2F 13 00 01 00 00"
+    },
+    {
+      "t_us": 3153836573,
+      "sequence": 1643250,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "02 81 03 15 88 61 3F C5"
+    },
+    {
+      "t_us": 3153836457,
+      "sequence": 1643249,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 B1 2C"
+    },
+    {
+      "t_us": 3153836341,
+      "sequence": 1643248,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "AB D6 03 46 04 00 00 22"
+    },
+    {
+      "t_us": 3153836222,
+      "sequence": 1643247,
+      "id": "0x232",
+      "extended": false,
+      "rtr": false,
+      "dlc": 5,
+      "data": "00 00 00 81 49"
+    },
+    {
+      "t_us": 3153836129,
+      "sequence": 1643246,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 82 00 F7 FF 00 01 61"
+    },
+    {
+      "t_us": 3153836008,
+      "sequence": 1643245,
+      "id": "0x232",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 2F 12 00 01 04 00"
+    },
+    {
+      "t_us": 3153835888,
+      "sequence": 1643244,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 05 17 00 28 02 6D"
+    },
+    {
+      "t_us": 3153835770,
+      "sequence": 1643243,
+      "id": "0x232",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 15 04 A9 BF 52 B0 2C"
+    },
+    {
+      "t_us": 3153835655,
+      "sequence": 1643242,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 3A 04 70 04 F1 62 F9"
+    },
+    {
+      "t_us": 3153835538,
+      "sequence": 1643241,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 5,
+      "data": "00 00 00 81 49"
+    },
+    {
+      "t_us": 3153835442,
+      "sequence": 1643240,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 2F 12 00 01 04 00"
+    },
+    {
+      "t_us": 3153835317,
+      "sequence": 1643239,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 15 04 A9 BF 52 B0 2C"
+    },
+    {
+      "t_us": 3153835200,
+      "sequence": 1643238,
+      "id": "0x232",
+      "extended": false,
+      "rtr": false,
+      "dlc": 5,
+      "data": "00 00 00 AA C0"
+    },
+    {
+      "t_us": 3153835105,
+      "sequence": 1643237,
+      "id": "0x232",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 2F 12 00 01 04 00"
+    },
+    {
+      "t_us": 3153834983,
+      "sequence": 1643236,
+      "id": "0x232",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 15 04 A9 BF 32 AF 2C"
+    },
+    {
+      "t_us": 3153834868,
+      "sequence": 1643235,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 5,
+      "data": "00 00 00 E6 A6"
+    },
+    {
+      "t_us": 3153834773,
+      "sequence": 1643234,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 2F 12 00 01 04 00"
+    },
+    {
+      "t_us": 3153834648,
+      "sequence": 1643233,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 4,
+      "data": "00 00 FF 30"
+    },
+    {
+      "t_us": 3153834564,
+      "sequence": 1643232,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 15 04 A9 BF E5 AE 2C"
+    },
+    {
+      "t_us": 3153834448,
+      "sequence": 1643231,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "FF 7F 00 00 00 00 00 00"
+    },
+    {
+      "t_us": 3153834324,
+      "sequence": 1643230,
+      "id": "0x232",
+      "extended": false,
+      "rtr": false,
+      "dlc": 4,
+      "data": "00 00 C1 BF"
+    },
+    {
+      "t_us": 3153834241,
+      "sequence": 1643229,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 2F 09 00 00 FF FF"
+    },
+    {
+      "t_us": 3153834120,
+      "sequence": 1643228,
+      "id": "0x232",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "FF 7F 00 00 00 00 00 00"
+    },
+    {
+      "t_us": 3153833995,
+      "sequence": 1643227,
+      "id": "0x201",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1C 04 1B DF 52 AD 2C"
+    },
+    {
+      "t_us": 3153833880,
+      "sequence": 1643226,
+      "id": "0x232",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 2F 09 00 00 FF FF"
+    },
+    {
+      "t_us": 3153833758,
+      "sequence": 1643225,
+      "id": "0x232",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1C 04 1B BF 52 AD 2C"
+    },
+    {
+      "t_us": 3153833642,
+      "sequence": 1643224,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 4,
+      "data": "00 00 C1 BF"
+    },
+    {
+      "t_us": 3153833555,
+      "sequence": 1643223,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "FF 7F 00 00 00 00 00 00"
+    },
+    {
+      "t_us": 3153833428,
+      "sequence": 1643222,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 04 2F 09 00 00 FF FF"
+    }
+  ],
+  "ids": [
+    {
+      "id": "0x201",
+      "extended": false,
+      "count": 7628,
+      "data": "00 0A 3F",
+      "rtr": false,
+      "dlc": 3
+    },
+    {
+      "id": "0x106",
+      "extended": false,
+      "count": 7554,
+      "data": "B5 F2",
+      "rtr": false,
+      "dlc": 2
+    },
+    {
+      "id": "0x504",
+      "extended": false,
+      "count": 7468,
+      "data": "00 00 0E 68 EE",
+      "rtr": false,
+      "dlc": 5
+    },
+    {
+      "id": "0x503",
+      "extended": false,
+      "count": 5571,
+      "data": "00 66 99",
+      "rtr": false,
+      "dlc": 3
+    },
+    {
+      "id": "0x232",
+      "extended": false,
+      "count": 4106,
+      "data": "8C B3",
+      "rtr": false,
+      "dlc": 2
+    }
+  ],
+  "messages": [],
+  "error": "",
+  "raw_file": "20261007_194656_333607_fast_reverse.log",
+  "summary_file": null,
+  "saved_directory": "J:\\New soft project\\FM03\\captures",
+  "serial_baud": 921600,
+  "stopped_at": "2026-10-07T19:47:15.055607+08:00"
+}

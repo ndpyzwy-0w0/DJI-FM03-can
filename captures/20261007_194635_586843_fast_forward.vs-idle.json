@@ -1,0 +1,355 @@
+{
+  "reference": "J:\\New soft project\\FM03\\captures\\20261007_154729_002678_idle.log",
+  "other": "J:\\New soft project\\FM03\\captures\\20261007_194635_586843_fast_forward.log",
+  "offset_convention": "zero-based DUML payload offset, excluding header and CRC",
+  "groups": [
+    {
+      "group": "S:0x106 04>C9 flags=00 cmd=04:10 payload_len=3",
+      "idle_unique_payloads": 1,
+      "other_unique_payloads": 1,
+      "variable_only_in_other": [],
+      "idle_variable_offsets": [],
+      "other_variable_offsets": []
+    },
+    {
+      "group": "S:0x106 04>F1 flags=00 cmd=04:05 payload_len=45",
+      "idle_unique_payloads": 519,
+      "other_unique_payloads": 763,
+      "variable_only_in_other": [
+        15,
+        22
+      ],
+      "idle_variable_offsets": [
+        0,
+        2,
+        4,
+        8,
+        12,
+        13,
+        14,
+        16,
+        20,
+        24,
+        25,
+        26,
+        28,
+        29,
+        30,
+        32,
+        33,
+        34,
+        36,
+        37,
+        38
+      ],
+      "other_variable_offsets": [
+        0,
+        2,
+        4,
+        8,
+        12,
+        13,
+        14,
+        15,
+        16,
+        20,
+        22,
+        24,
+        25,
+        28,
+        29,
+        30,
+        32,
+        33,
+        34,
+        36,
+        37,
+        38
+      ]
+    },
+    {
+      "group": "S:0x201 DF>52 flags=00 cmd=04:2F payload_len=13",
+      "idle_unique_payloads": 3,
+      "other_unique_payloads": 3,
+      "variable_only_in_other": [],
+      "idle_variable_offsets": [
+        2
+      ],
+      "other_variable_offsets": [
+        2
+      ]
+    },
+    {
+      "group": "S:0x201 DF>52 flags=00 cmd=04:2F payload_len=15",
+      "idle_unique_payloads": 1,
+      "other_unique_payloads": 2,
+      "variable_only_in_other": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "idle_variable_offsets": [],
+      "other_variable_offsets": [
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "group": "S:0x201 DF>52 flags=00 cmd=04:2F payload_len=8",
+      "idle_unique_payloads": 1,
+      "other_unique_payloads": 1,
+      "variable_only_in_other": [],
+      "idle_variable_offsets": [],
+      "other_variable_offsets": []
+    },
+    {
+      "group": "S:0x201 E5>52 flags=00 cmd=04:69 payload_len=6",
+      "idle_unique_payloads": 1,
+      "other_unique_payloads": 202,
+      "variable_only_in_other": [
+        4,
+        5
+      ],
+      "idle_variable_offsets": [],
+      "other_variable_offsets": [
+        4,
+        5
+      ]
+    },
+    {
+      "group": "S:0x232 BF>32 flags=00 cmd=04:2F payload_len=15",
+      "idle_unique_payloads": 1,
+      "other_unique_payloads": 2,
+      "variable_only_in_other": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "idle_variable_offsets": [],
+      "other_variable_offsets": [
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "group": "S:0x232 BF>32 flags=00 cmd=04:2F payload_len=8",
+      "idle_unique_payloads": 1,
+      "other_unique_payloads": 1,
+      "variable_only_in_other": [],
+      "idle_variable_offsets": [],
+      "other_variable_offsets": []
+    },
+    {
+      "group": "S:0x232 BF>32 flags=20 cmd=24:20 payload_len=3",
+      "idle_unique_payloads": 2,
+      "other_unique_payloads": 2,
+      "variable_only_in_other": [],
+      "idle_variable_offsets": [
+        0
+      ],
+      "other_variable_offsets": [
+        0
+      ]
+    },
+    {
+      "group": "S:0x232 BF>52 flags=00 cmd=04:2F payload_len=13",
+      "idle_unique_payloads": 3,
+      "other_unique_payloads": 3,
+      "variable_only_in_other": [],
+      "idle_variable_offsets": [
+        2
+      ],
+      "other_variable_offsets": [
+        2
+      ]
+    },
+    {
+      "group": "S:0x232 BF>52 flags=00 cmd=04:2F payload_len=15",
+      "idle_unique_payloads": 1,
+      "other_unique_payloads": 2,
+      "variable_only_in_other": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "idle_variable_offsets": [],
+      "other_variable_offsets": [
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "group": "S:0x232 BF>52 flags=00 cmd=04:2F payload_len=8",
+      "idle_unique_payloads": 1,
+      "other_unique_payloads": 1,
+      "variable_only_in_other": [],
+      "idle_variable_offsets": [],
+      "other_variable_offsets": []
+    },
+    {
+      "group": "S:0x503 E5>BF flags=00 cmd=04:69 payload_len=6",
+      "idle_unique_payloads": 1,
+      "other_unique_payloads": 202,
+      "variable_only_in_other": [
+        4,
+        5
+      ],
+      "idle_variable_offsets": [],
+      "other_variable_offsets": [
+        4,
+        5
+      ]
+    },
+    {
+      "group": "S:0x504 BF>02 flags=00 cmd=04:2F payload_len=15",
+      "idle_unique_payloads": 1,
+      "other_unique_payloads": 2,
+      "variable_only_in_other": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "idle_variable_offsets": [],
+      "other_variable_offsets": [
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "group": "S:0x504 BF>04 flags=00 cmd=00:0E payload_len=0",
+      "idle_unique_payloads": 1,
+      "other_unique_payloads": 1,
+      "variable_only_in_other": [],
+      "idle_variable_offsets": [],
+      "other_variable_offsets": []
+    },
+    {
+      "group": "S:0x504 BF>52 flags=00 cmd=04:2F payload_len=13",
+      "idle_unique_payloads": 3,
+      "other_unique_payloads": 3,
+      "variable_only_in_other": [],
+      "idle_variable_offsets": [
+        2
+      ],
+      "other_variable_offsets": [
+        2
+      ]
+    },
+    {
+      "group": "S:0x504 BF>52 flags=00 cmd=04:2F payload_len=15",
+      "idle_unique_payloads": 1,
+      "other_unique_payloads": 2,
+      "variable_only_in_other": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "idle_variable_offsets": [],
+      "other_variable_offsets": [
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "group": "S:0x504 BF>52 flags=00 cmd=04:2F payload_len=8",
+      "idle_unique_payloads": 1,
+      "other_unique_payloads": 1,
+      "variable_only_in_other": [],
+      "idle_variable_offsets": [],
+      "other_variable_offsets": []
+    },
+    {
+      "group": "S:0x504 BF>E5 flags=00 cmd=00:0E payload_len=0",
+      "idle_unique_payloads": 1,
+      "other_unique_payloads": 1,
+      "variable_only_in_other": [],
+      "idle_variable_offsets": [],
+      "other_variable_offsets": []
+    },
+    {
+      "group": "S:0x504 BF>E5 flags=00 cmd=04:2F payload_len=13",
+      "idle_unique_payloads": 3,
+      "other_unique_payloads": 3,
+      "variable_only_in_other": [],
+      "idle_variable_offsets": [
+        2
+      ],
+      "other_variable_offsets": [
+        2
+      ]
+    },
+    {
+      "group": "S:0x504 BF>E5 flags=00 cmd=04:2F payload_len=15",
+      "idle_unique_payloads": 1,
+      "other_unique_payloads": 2,
+      "variable_only_in_other": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "idle_variable_offsets": [],
+      "other_variable_offsets": [
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "group": "S:0x504 BF>E5 flags=00 cmd=04:2F payload_len=2",
+      "idle_unique_payloads": 1,
+      "other_unique_payloads": 1,
+      "variable_only_in_other": [],
+      "idle_variable_offsets": [],
+      "other_variable_offsets": []
+    },
+    {
+      "group": "S:0x504 BF>E5 flags=00 cmd=04:2F payload_len=3",
+      "idle_unique_payloads": 1,
+      "other_unique_payloads": 1,
+      "variable_only_in_other": [],
+      "idle_variable_offsets": [],
+      "other_variable_offsets": []
+    },
+    {
+      "group": "S:0x504 BF>E5 flags=00 cmd=04:2F payload_len=6",
+      "idle_unique_payloads": 1,
+      "other_unique_payloads": 1,
+      "variable_only_in_other": [],
+      "idle_variable_offsets": [],
+      "other_variable_offsets": []
+    },
+    {
+      "group": "S:0x504 BF>E5 flags=00 cmd=04:2F payload_len=8",
+      "idle_unique_payloads": 1,
+      "other_unique_payloads": 1,
+      "variable_only_in_other": [],
+      "idle_variable_offsets": [],
+      "other_variable_offsets": []
+    },
+    {
+      "group": "S:0x504 BF>E5 flags=80 cmd=04:2F payload_len=7",
+      "idle_unique_payloads": 1,
+      "other_unique_payloads": 1,
+      "variable_only_in_other": [],
+      "idle_variable_offsets": [],
+      "other_variable_offsets": []
+    }
+  ]
+}
