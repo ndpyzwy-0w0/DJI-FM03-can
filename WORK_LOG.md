@@ -204,3 +204,13 @@
 - 部署：再次确认8765旧服务stopped/30011帧、saved_directory为本项目captures、对应pythonw/tools/gui_server.py进程，复查无活动采集后替换旧进程。新版idle关闭接口实测成功释放8765监听，再启动为idle/0帧/closing=false供用户使用；没有开始真实采集、没有新增captures、固件和CAN发送不变。open_in_codex页面请求为queued，未声称已刷新用户当前页面。
 - Git：本轮7个项目文件（README、HANDOFF、WORK_LOG、3个服务/UI文件及测试）按此前授权已本地提交，提交号以git log -1核实；交付工作区干净，未推送、未改写历史，原始抓包未编辑/覆盖。
 - 下一步：用户刷新现有页面后使用「关闭上位机」，重新使用运行启动上位机.cmd。串口超时可等停稳后重试；摘要保存错误保留服务和原始日志，应查看错误原因。本轮功能完成；协议工作仍在被动阶段，不借关闭按钮验证加入主动发送。
+
+## 2026-10-07 22:35起 北京时间 — 查看最新提交与可继续事项
+
+- 用户要求查看最新提交并说明现在能继续做什么。先读AGENTS/HANDOFF，核对 `git status --short --branch` 为 `## main` 干净、`git diff --check` 无输出；`git log -1` 为 e4ed46c（22:30:35「Add save-before-exit shutdown button to capture UI」），本轮无新抓包、未接串口、未发CAN、未改固件或服务。
+- 复核历史：`main` 共6个本地提交（a5db8a6初始化、ed5defc方向验证、a522988快慢对照、8379cc1实时UI/归零/序列证据、dc720c4启动与候选流程、e4ed46c关闭按钮），无远程、未推送。README与HANDOFF已含最新提交内容，文档未滞后。
+- 只读核查可继续事项的依据（用真正的正则检索修正，前次 `-SimpleMatch` 口径不算数）：ESP32固件及所有工具**没有任何CAN发送调用**——`twai_transmit` 零命中，固件仍为 Listen Only、发送队列为0，仅有的串口写入是 `src/main.cpp:109` 输出文本行，以及 `tools/capture.py:113`、`tools/gui_server.py:267` 请求状态用的 `connection.write(b"s")`（不是CAN帧）。但**DUML报文构造与CRC回算原语已存在**于测试/分析代码中：`tools/test_gui.py:60-66` 可构造含CRC8/CRC16的19字节04:69包，`tools/build_protocol_catalog.py:143,153` 与 `tools/analyze_startup.py:107` 也在伪造模板；因此主动阶段的主要缺口是“构造+回验+发送通道”的整合，而不是从零写编码。GUI路由为 `/api/state`、`/api/ports`、`/captures/`、`/api/start`、`/api/stop`、`/api/shutdown`，归零提示音已实现在 `tools/ui/app.js`（受浏览器 AudioContext 手势限制，启用失败会回退文字提示）；`tools/` 现有11个Python工具、`reports/` 21份报告。
+- 环境动态核实：COM17 为 `USB-Enhanced-SERIAL CH343`（VID:PID=1A86:55D3，SER=5C83447762）仍在位；8765 无监听进程、无 python/pythonw 在跑，即上位机当前未启动，需重新双击 `启动上位机.cmd`。
+- 本轮验证：`capture.py --self-check`、`analyze_protocol.py --self-check` 通过，`test_gui.py` 5项通过；均为只读自检，不占用真实串口。未提交（本轮只追加本文档，交付前另行确认范围）。
+- 可继续方向（均需用户先定范围，未执行）：①离线先写“报文构造+双CRC校验”工具，为主动阶段准备发送模板，不发帧；②建立重复性与覆盖度基线，在既有9段健康记录上做留一/稳定性复核，区分观测常量与协议常量；③排查已记录的异常与吞吐损失（131007序号缺口、累计巨大计数），评估换波特率或外接USB-CAN；④继续被动复采以增加启动/必要报文的重复证据。主动独立驱动仍是另立阶段，物理端点（逻辑E5/BF/52/32/02/04/DF对应哪台设备）、必要报文与序号分配、反馈语义（04:05仅为四元数候选）均未确认。
+- 未确定/下一步：等用户选择方向并说明CAN发送通道（改ESP32固件 / 独立USB-CAN适配器 / 暂不发送）。不确定事项维持未知，不据文件名或旧记录推测方向与必要报文。
