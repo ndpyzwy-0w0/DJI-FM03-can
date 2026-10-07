@@ -374,6 +374,27 @@ static const uint8_t H0405_SAMPLE[58] = {
 };
 static const uint8_t H0405_FRAMES[8] = {8, 8, 8, 8, 8, 8, 8, 2};
 
+// The 04:05 payload is RS3's live gimbal attitude: 15 bytes are fixed (header, type,
+// flags, and the 1.0 scale factor at payload[24..27]) while 30 bytes change every
+// sample, carrying a quaternion plus angular rates. Replaying one captured sample
+// therefore presents permanently stale attitude data. ANALYTIC mode animates that
+// changing region with a smooth synthetic motion so the stream looks alive.
+//
+// These values are NOT RS3's real attitude and are NOT a decode of the captured
+// fields; they only move plausibly. If the motor needs genuine data this will not
+// satisfy it, but the test separates "the motor wants this stream alive" from "the
+// motor needs the real RS3".
+#ifndef REPLAY_ANALYTIC_ATTITUDE
+#define REPLAY_ANALYTIC_ATTITUDE 0
+#endif
+
+// Offsets inside the 45 byte payload that hold changing values, measured across 824
+// captured samples.
+static const uint8_t H0405_VARYING[30] = {
+    0, 1, 2, 3, 4, 5, 8, 12, 13, 14, 15, 16, 17, 20, 22, 24, 25, 26, 28, 29,
+    30, 31, 32, 33, 34, 35, 36, 37, 38, 39,
+};
+
 // The 43 byte reply that carries "GB53" (ascii), six CAN frames.
 static const uint8_t H0001_GB53[43] = {
     0x55, 0x2b, 0x04, 0x58, 0xe5, 0xbf, 0x12, 0x00, 0x80, 0x00, 0x01,
@@ -389,6 +410,37 @@ static const uint8_t M0469_STARTUP[19] = {
     0x0f, 0x04, 0x00, 0x00, 0x00, 0x00, 0x90, 0x07,
 };
 static const uint8_t M0469_STARTUP_FRAMES[3] = {8, 8, 3};
+
+// Build the gimbal attitude packet for the current instant. In ANALYTIC mode the
+// changing region is animated with a slow synthetic motion; otherwise one captured
+// sample is sent verbatim.
+static unsigned long attitude_step = 0;
+
+static void build_attitude(uint8_t *out) {
+    memcpy(out, H0405_SAMPLE, 58);
+    out[6] = (uint8_t)(attitude_step & 0xFF);
+    out[7] = (uint8_t)((attitude_step >> 8) & 0xFF);
+    ++attitude_step;
+#if REPLAY_ANALYTIC_ATTITUDE
+    // A slow drift plus small jitter, so consecutive samples differ by a plausible
+    // amount rather than jumping.
+    float phase = (float)attitude_step * 0.02f;
+    int base = (int)(sinf(phase) * 40.0f);
+    for (unsigned index = 0; index < sizeof(H0405_VARYING); ++index) {
+        uint8_t offset = H0405_VARYING[index];
+        int jitter = (int)(sinf(phase * (1.0f + 0.13f * index) + index) * 12.0f);
+        out[11 + offset] = (uint8_t)(base + jitter);
+    }
+    // Keep the scale factor at 1.0 (payload[24..27]) that the capture always shows.
+    out[11 + 24] = 0x00; out[11 + 25] = 0x00;
+    out[11 + 26] = 0x80; out[11 + 27] = 0x3f;
+#endif
+    // Re-stamp both checksums because the header sequence and body changed.
+    out[3] = crc8(out, 3);
+    uint16_t packet_crc = crc16(out, 56);
+    out[56] = (uint8_t)(packet_crc & 0xFF);
+    out[57] = (uint8_t)(packet_crc >> 8);
+}
 
 static bool button_down() {
     return digitalRead(BUTTON_GPIO) == LOW;
@@ -475,7 +527,9 @@ static void run_replay_window() {
             if (elapsed < REPLAY_HANDSHAKE_UNTIL_MS) {
                 if (millis() - last_attitude >= 20) {
                     last_attitude = millis();
-                    ok = send_packet(0x106, H0405_SAMPLE, H0405_FRAMES, 8) && ok;
+                    uint8_t attitude[58];
+                    build_attitude(attitude);
+                    ok = send_packet(0x106, attitude, H0405_FRAMES, 8) && ok;
                 }
             }
             if (elapsed >= 60 && !handshake_sent_startup) {
