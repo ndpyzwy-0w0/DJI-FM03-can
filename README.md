@@ -56,6 +56,34 @@ PowerShell（项目目录）：
 
 主机工具自检：`.\.venv\Scripts\python.exe tools\capture.py --self-check`。成功编译只证明软件可构建，真实链路、速率和完整性必须通过抓包验证。
 
+### 模式切换：板上按键 + 内置灯（2026-10-07 23:20 起，尚未硬件验证）
+
+`src/main.cpp` 现在支持两种模式，**上电永远 Listen Only**：
+
+- **长按板上 BOOT 键（GPIO0）2 秒**切换 listen / transmit。
+- **内置可寻址 RGB 灯**指示模式：慢蓝脉冲 = 监听；快红脉冲 = 可发（切换后 1.6 秒常亮便于确认）。
+- `# STATUS` 增加 `mode=` 与 `mode_switches=` 字段；既有字段和帧行格式未变，上位机与解析脚本无需改动。
+- **transmit 模式只是让发送成为可能，固件里没有任何 `twai_transmit` 调用，一个 CAN 帧都不会自发。**
+
+切换模式会停止并重新安装 TWAI 驱动（`twai_stop` → `twai_driver_uninstall` → `twai_driver_install` → `twai_start`），因此切换只发生在主循环里，不与状态打印或帧写入重叠。
+
+灯所在引脚：本项目用的是 Arduino core 2.0.17，其 `esp32s3` 变体 `PIN_NEOPIXEL = 48`。若板子是 v1.1（灯移到 GPIO38）用 `-DLED_RGB_GPIO=38`；`-DLED_RGB_GPIO=-1` 可完全关灯。注意该核心提供的是 `neopixelWrite()`，**没有** core 3.x 的 `rgbLedWrite()`。
+
+```powershell
+# 默认（灯在 GPIO48）
+.\.venv\Scripts\python.exe -m platformio run -e listen_1m -t upload --upload-port COM17
+# v1.1 板（灯在 GPIO38）
+.\.venv\Scripts\python.exe -m platformio run -e listen_1m  # 需在 platformio.ini 的 build_flags 加 -DLED_RGB_GPIO=38
+```
+
+**接线契约（三条都必需）**：
+
+1. **监听模块的 Rs（SN65HVD230 引脚 8）接 3.3 V**，让它的驱动器在硅层面永久关断——这样即使固件处于 transmit 模式、即使插错了模块，也发不出去。别让这个 Rs 悬空。
+2. 收发模块的 Rs 接地或浮空。
+3. 同一时刻**只允许一个模块的 CANH/CANL 接到总线**（旁路点加第三个终端会把总线拉到约 40 Ω）。
+
+**尚未验证**：按钮判读、灯的实际颜色与可见性、切换对采集连续性的影响、GPIO0 空闲电平。固件启动时会打印 `# BUTTON idle_level=HIGH expected` 或 `unexpected_check_wiring`，上电即可核对。烧录前请确认当前没有在抓包；首次烧录后先按原流程抓一段确认监听正常，再试长按切换。
+
 ## 当前验证结果（2026-10-07）
 
 - `listen_1m` 和 `listen_500k` 均编译成功，抓包脚本自检通过。
