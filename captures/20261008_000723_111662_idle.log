@@ -1,0 +1,3 @@
+# STATUS t_us=1665930731 bitrate=1000000 mode=listen rx=188064 logger_dropped=138755 rx_missed=0 rx_overrun=0 bus_errors=0 pending=0 logger_pending=0 mode_switches=0 frames_in_mode=49309 button=ok
+# STATUS t_us=1666930688 bitrate=1000000 mode=listen rx=188064 logger_dropped=138755 rx_missed=0 rx_overrun=0 bus_errors=0 pending=0 logger_pending=0 mode_switches=0 frames_in_mode=49309 button=ok
+# STATUS t_us=1667931688 bitrate=1000000 mode=listen rx=188064 logger_dropped=138755 rx_missed=0 rx_overrun=0 bus_errors=0 pending=0 logger_pending=0 mode_switches=0 frames_in_mode=49309 button=ok

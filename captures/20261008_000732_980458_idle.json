@@ -1,0 +1,1445 @@
+{
+  "product": "fm03_capture",
+  "phase": "stopped",
+  "closing": false,
+  "port": "COM17",
+  "label": "idle",
+  "started_at": "2026-10-08T00:07:32.980458+08:00",
+  "elapsed": 14.08,
+  "frames": 19470,
+  "fps": 1804,
+  "bytes_saved": 976535,
+  "unique_ids": 1,
+  "sequence_gaps": 55333,
+  "sequence_resets": 0,
+  "non_frame_lines": 0,
+  "trailing_bytes": 36,
+  "status_first": {
+    "t_us": 1675799768,
+    "bitrate": 1000000,
+    "rx": 188064,
+    "logger_dropped": 138755,
+    "rx_missed": 0,
+    "rx_overrun": 0,
+    "bus_errors": 2,
+    "pending": 0,
+    "logger_pending": 0,
+    "mode_switches": 0,
+    "frames_in_mode": 49309
+  },
+  "status": {
+    "t_us": 1689804070,
+    "bitrate": 1000000,
+    "rx": 266753,
+    "logger_dropped": 197015,
+    "rx_missed": 0,
+    "rx_overrun": 0,
+    "bus_errors": 18,
+    "pending": 0,
+    "logger_pending": 1024,
+    "mode_switches": 0,
+    "frames_in_mode": 68714
+  },
+  "counter_deltas": {
+    "logger_dropped": 58260,
+    "rx_missed": 0,
+    "rx_overrun": 0,
+    "bus_errors": 16
+  },
+  "status_age": 0.1,
+  "serial_age": 0.0,
+  "candidate": {
+    "segment": 6335,
+    "channels": [
+      {
+        "can_id": "0x503",
+        "value": null,
+        "relative_s": null,
+        "packets": 0,
+        "zero_events": 0,
+        "last_zero_s": null,
+        "age_s": null,
+        "history": []
+      },
+      {
+        "can_id": "0x201",
+        "value": null,
+        "relative_s": null,
+        "packets": 0,
+        "zero_events": 0,
+        "last_zero_s": null,
+        "age_s": null,
+        "history": []
+      }
+    ]
+  },
+  "latest": [
+    {
+      "t_us": 1689283229,
+      "sequence": 262867,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689283096,
+      "sequence": 262866,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689281755,
+      "sequence": 262856,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689281622,
+      "sequence": 262855,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689281488,
+      "sequence": 262854,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689280148,
+      "sequence": 262844,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689280013,
+      "sequence": 262843,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689279880,
+      "sequence": 262842,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689278539,
+      "sequence": 262832,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689278406,
+      "sequence": 262831,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689277199,
+      "sequence": 262822,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689277065,
+      "sequence": 262821,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689276932,
+      "sequence": 262820,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689275591,
+      "sequence": 262810,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689275458,
+      "sequence": 262809,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689275323,
+      "sequence": 262808,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689273984,
+      "sequence": 262798,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689273852,
+      "sequence": 262797,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689273716,
+      "sequence": 262796,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689272508,
+      "sequence": 262787,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689272376,
+      "sequence": 262786,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689272242,
+      "sequence": 262785,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689270900,
+      "sequence": 262775,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689270768,
+      "sequence": 262774,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689270637,
+      "sequence": 262773,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689269159,
+      "sequence": 262762,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689269026,
+      "sequence": 262761,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689268891,
+      "sequence": 262760,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689267687,
+      "sequence": 262751,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689267552,
+      "sequence": 262750,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689267416,
+      "sequence": 262749,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689266077,
+      "sequence": 262739,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689265943,
+      "sequence": 262738,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689265810,
+      "sequence": 262737,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689264468,
+      "sequence": 262727,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689264336,
+      "sequence": 262726,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689262993,
+      "sequence": 262716,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689262861,
+      "sequence": 262715,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689262726,
+      "sequence": 262714,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689261520,
+      "sequence": 262705,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689261386,
+      "sequence": 262704,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689261254,
+      "sequence": 262703,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689259912,
+      "sequence": 262693,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689259779,
+      "sequence": 262692,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689259644,
+      "sequence": 262691,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689258305,
+      "sequence": 262681,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689258176,
+      "sequence": 262680,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689258037,
+      "sequence": 262679,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689256697,
+      "sequence": 262669,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689256563,
+      "sequence": 262668,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689256430,
+      "sequence": 262667,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689255222,
+      "sequence": 262658,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689255089,
+      "sequence": 262657,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689254954,
+      "sequence": 262656,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689253615,
+      "sequence": 262646,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689253480,
+      "sequence": 262645,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689253347,
+      "sequence": 262644,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689252007,
+      "sequence": 262634,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689251873,
+      "sequence": 262633,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689250533,
+      "sequence": 262623,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689250399,
+      "sequence": 262622,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689250264,
+      "sequence": 262621,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689249057,
+      "sequence": 262612,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689248925,
+      "sequence": 262611,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689248790,
+      "sequence": 262610,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689247449,
+      "sequence": 262600,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689247317,
+      "sequence": 262599,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689247185,
+      "sequence": 262598,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689245842,
+      "sequence": 262588,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689245712,
+      "sequence": 262587,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689245575,
+      "sequence": 262586,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689244236,
+      "sequence": 262576,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689244099,
+      "sequence": 262575,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689243966,
+      "sequence": 262574,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689242626,
+      "sequence": 262564,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689242492,
+      "sequence": 262563,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689242359,
+      "sequence": 262562,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689241151,
+      "sequence": 262553,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689241017,
+      "sequence": 262552,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689240885,
+      "sequence": 262551,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689239543,
+      "sequence": 262541,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689239410,
+      "sequence": 262540,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689238069,
+      "sequence": 262530,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689237936,
+      "sequence": 262529,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689237801,
+      "sequence": 262528,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689236462,
+      "sequence": 262518,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689236327,
+      "sequence": 262517,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689236194,
+      "sequence": 262516,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689234987,
+      "sequence": 262507,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689234853,
+      "sequence": 262506,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689234720,
+      "sequence": 262505,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689233379,
+      "sequence": 262495,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689233246,
+      "sequence": 262494,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689233112,
+      "sequence": 262493,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689231772,
+      "sequence": 262483,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689231637,
+      "sequence": 262482,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689231504,
+      "sequence": 262481,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689230170,
+      "sequence": 262471,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689230030,
+      "sequence": 262470,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689229895,
+      "sequence": 262469,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689228688,
+      "sequence": 262460,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689228556,
+      "sequence": 262459,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689228421,
+      "sequence": 262458,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689227082,
+      "sequence": 262448,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689226947,
+      "sequence": 262447,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689225606,
+      "sequence": 262437,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689225474,
+      "sequence": 262436,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689225339,
+      "sequence": 262435,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689224000,
+      "sequence": 262425,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689223865,
+      "sequence": 262424,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689223732,
+      "sequence": 262423,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689222524,
+      "sequence": 262414,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689222391,
+      "sequence": 262413,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689222258,
+      "sequence": 262412,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689220916,
+      "sequence": 262402,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689220784,
+      "sequence": 262401,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689220653,
+      "sequence": 262400,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689219309,
+      "sequence": 262390,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689219178,
+      "sequence": 262389,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689219042,
+      "sequence": 262388,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689217700,
+      "sequence": 262378,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689217568,
+      "sequence": 262377,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689217433,
+      "sequence": 262376,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689216093,
+      "sequence": 262366,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689215959,
+      "sequence": 262365,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689215825,
+      "sequence": 262364,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689214618,
+      "sequence": 262355,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689214486,
+      "sequence": 262354,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689214352,
+      "sequence": 262353,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689212878,
+      "sequence": 262342,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689212743,
+      "sequence": 262341,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689211536,
+      "sequence": 262332,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689211404,
+      "sequence": 262331,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689211269,
+      "sequence": 262330,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689209929,
+      "sequence": 262320,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689209794,
+      "sequence": 262319,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689209660,
+      "sequence": 262318,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689208324,
+      "sequence": 262308,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689208186,
+      "sequence": 262307,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689208053,
+      "sequence": 262306,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689206846,
+      "sequence": 262297,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689206712,
+      "sequence": 262296,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689206579,
+      "sequence": 262295,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689205238,
+      "sequence": 262285,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689205105,
+      "sequence": 262284,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689204970,
+      "sequence": 262283,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689203631,
+      "sequence": 262273,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689203496,
+      "sequence": 262272,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689203363,
+      "sequence": 262271,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    },
+    {
+      "t_us": 1689202156,
+      "sequence": 262262,
+      "id": "0x106",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "00 02 00 E4 FF 7F 3F 66"
+    }
+  ],
+  "ids": [
+    {
+      "id": "0x106",
+      "extended": false,
+      "count": 19470,
+      "data": "00 02 00 E4 FF 7F 3F 66",
+      "rtr": false,
+      "dlc": 8
+    }
+  ],
+  "messages": [],
+  "error": "",
+  "raw_file": "20261008_000732_980458_idle.log",
+  "summary_file": null,
+  "saved_directory": "J:\\New soft project\\FM03\\captures",
+  "serial_baud": 921600,
+  "stopped_at": "2026-10-08T00:07:47.051782+08:00"
+}

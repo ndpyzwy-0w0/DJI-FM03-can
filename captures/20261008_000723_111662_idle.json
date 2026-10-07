@@ -1,0 +1,85 @@
+{
+  "product": "fm03_capture",
+  "phase": "stopped",
+  "closing": false,
+  "port": "COM17",
+  "label": "idle",
+  "started_at": "2026-10-08T00:07:23.111662+08:00",
+  "elapsed": 2.2,
+  "frames": 0,
+  "fps": 0,
+  "bytes_saved": 591,
+  "unique_ids": 0,
+  "sequence_gaps": 0,
+  "sequence_resets": 0,
+  "non_frame_lines": 0,
+  "trailing_bytes": 0,
+  "status_first": {
+    "t_us": 1665930731,
+    "bitrate": 1000000,
+    "rx": 188064,
+    "logger_dropped": 138755,
+    "rx_missed": 0,
+    "rx_overrun": 0,
+    "bus_errors": 0,
+    "pending": 0,
+    "logger_pending": 0,
+    "mode_switches": 0,
+    "frames_in_mode": 49309
+  },
+  "status": {
+    "t_us": 1667931688,
+    "bitrate": 1000000,
+    "rx": 188064,
+    "logger_dropped": 138755,
+    "rx_missed": 0,
+    "rx_overrun": 0,
+    "bus_errors": 0,
+    "pending": 0,
+    "logger_pending": 0,
+    "mode_switches": 0,
+    "frames_in_mode": 49309
+  },
+  "counter_deltas": {
+    "logger_dropped": 0,
+    "rx_missed": 0,
+    "rx_overrun": 0,
+    "bus_errors": 0
+  },
+  "status_age": 0.2,
+  "serial_age": 0.2,
+  "candidate": {
+    "segment": 0,
+    "channels": [
+      {
+        "can_id": "0x503",
+        "value": null,
+        "relative_s": null,
+        "packets": 0,
+        "zero_events": 0,
+        "last_zero_s": null,
+        "age_s": null,
+        "history": []
+      },
+      {
+        "can_id": "0x201",
+        "value": null,
+        "relative_s": null,
+        "packets": 0,
+        "zero_events": 0,
+        "last_zero_s": null,
+        "age_s": null,
+        "history": []
+      }
+    ]
+  },
+  "latest": [],
+  "ids": [],
+  "messages": [],
+  "error": "",
+  "raw_file": "20261008_000723_111662_idle.log",
+  "summary_file": null,
+  "saved_directory": "J:\\New soft project\\FM03\\captures",
+  "serial_baud": 921600,
+  "stopped_at": "2026-10-08T00:07:25.311403+08:00"
+}
