@@ -1,0 +1,126 @@
+{
+  "product": "fm03_capture",
+  "phase": "stopped",
+  "port": "COM17",
+  "label": "capture",
+  "started_at": "2026-10-07T20:34:20.904569+08:00",
+  "elapsed": 11.53,
+  "frames": 4,
+  "fps": 1,
+  "bytes_saved": 1927,
+  "unique_ids": 1,
+  "sequence_gaps": 0,
+  "sequence_resets": 0,
+  "non_frame_lines": 0,
+  "trailing_bytes": 0,
+  "status_first": {
+    "t_us": 5979938817,
+    "bitrate": 1000000,
+    "rx": 3228917,
+    "logger_dropped": 37399,
+    "rx_missed": 0,
+    "rx_overrun": 0,
+    "bus_errors": 806004,
+    "pending": 0,
+    "logger_pending": 0
+  },
+  "status": {
+    "t_us": 5990966784,
+    "bitrate": 1000000,
+    "rx": 3228921,
+    "logger_dropped": 37399,
+    "rx_missed": 0,
+    "rx_overrun": 0,
+    "bus_errors": 1560968,
+    "pending": 0,
+    "logger_pending": 0
+  },
+  "counter_deltas": {
+    "logger_dropped": 0,
+    "rx_missed": 0,
+    "rx_overrun": 0,
+    "bus_errors": 754964
+  },
+  "status_age": 0.5,
+  "serial_age": 0.5,
+  "candidate": {
+    "segment": 0,
+    "channels": [
+      {
+        "can_id": "0x503",
+        "value": null,
+        "relative_s": null,
+        "packets": 0,
+        "zero_events": 0,
+        "last_zero_s": null,
+        "age_s": null,
+        "history": []
+      },
+      {
+        "can_id": "0x201",
+        "value": null,
+        "relative_s": null,
+        "packets": 0,
+        "zero_events": 0,
+        "last_zero_s": null,
+        "age_s": null,
+        "history": []
+      }
+    ]
+  },
+  "latest": [
+    {
+      "t_us": 5990656321,
+      "sequence": 3228921,
+      "id": "0x232",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 10 04 56 BF 32 75 10"
+    },
+    {
+      "t_us": 5989757786,
+      "sequence": 3228920,
+      "id": "0x232",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 10 04 56 BF 32 75 10"
+    },
+    {
+      "t_us": 5989257393,
+      "sequence": 3228919,
+      "id": "0x232",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 10 04 56 BF 32 75 10"
+    },
+    {
+      "t_us": 5988876514,
+      "sequence": 3228918,
+      "id": "0x232",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 10 04 56 BF 32 75 10"
+    }
+  ],
+  "ids": [
+    {
+      "id": "0x232",
+      "extended": false,
+      "count": 4,
+      "data": "55 10 04 56 BF 32 75 10",
+      "rtr": false,
+      "dlc": 8
+    }
+  ],
+  "messages": [],
+  "error": "",
+  "raw_file": "20261007_203420_904569_capture.log",
+  "summary_file": null,
+  "saved_directory": "J:\\New soft project\\FM03\\captures",
+  "serial_baud": 921600,
+  "stopped_at": "2026-10-07T20:34:32.444196+08:00"
+}

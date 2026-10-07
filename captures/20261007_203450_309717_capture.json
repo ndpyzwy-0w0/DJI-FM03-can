@@ -1,0 +1,1472 @@
+{
+  "product": "fm03_capture",
+  "phase": "stopped",
+  "port": "COM17",
+  "label": "capture",
+  "started_at": "2026-10-07T20:34:50.309717+08:00",
+  "elapsed": 28.05,
+  "frames": 18626,
+  "fps": 1770,
+  "bytes_saved": 951547,
+  "unique_ids": 5,
+  "sequence_gaps": 53299,
+  "sequence_resets": 0,
+  "non_frame_lines": 0,
+  "trailing_bytes": 48,
+  "status_first": {
+    "t_us": 6009345803,
+    "bitrate": 1000000,
+    "rx": 3228929,
+    "logger_dropped": 37399,
+    "rx_missed": 0,
+    "rx_overrun": 0,
+    "bus_errors": 2724155,
+    "pending": 0,
+    "logger_pending": 0
+  },
+  "status": {
+    "t_us": 6036404051,
+    "bitrate": 1000000,
+    "rx": 3297752,
+    "logger_dropped": 88317,
+    "rx_missed": 0,
+    "rx_overrun": 0,
+    "bus_errors": 3571685,
+    "pending": 0,
+    "logger_pending": 1024
+  },
+  "counter_deltas": {
+    "logger_dropped": 50918,
+    "rx_missed": 0,
+    "rx_overrun": 0,
+    "bus_errors": 847530
+  },
+  "status_age": 1.0,
+  "serial_age": 0.0,
+  "candidate": {
+    "segment": 5850,
+    "channels": [
+      {
+        "can_id": "0x503",
+        "value": null,
+        "relative_s": null,
+        "packets": 0,
+        "zero_events": 0,
+        "last_zero_s": null,
+        "age_s": null,
+        "history": []
+      },
+      {
+        "can_id": "0x201",
+        "value": null,
+        "relative_s": null,
+        "packets": 0,
+        "zero_events": 0,
+        "last_zero_s": null,
+        "age_s": null,
+        "history": []
+      }
+    ]
+  },
+  "latest": [
+    {
+      "t_us": 6036804212,
+      "sequence": 3300854,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036802923,
+      "sequence": 3300844,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036802794,
+      "sequence": 3300843,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036802664,
+      "sequence": 3300842,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036801375,
+      "sequence": 3300832,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036801250,
+      "sequence": 3300831,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036801116,
+      "sequence": 3300830,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036799827,
+      "sequence": 3300820,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036799699,
+      "sequence": 3300819,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036799568,
+      "sequence": 3300818,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036798283,
+      "sequence": 3300808,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036798150,
+      "sequence": 3300807,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036798021,
+      "sequence": 3300806,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036796731,
+      "sequence": 3300796,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036796602,
+      "sequence": 3300795,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036795311,
+      "sequence": 3300785,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036795183,
+      "sequence": 3300784,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036795054,
+      "sequence": 3300783,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036793763,
+      "sequence": 3300773,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036793635,
+      "sequence": 3300772,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036793507,
+      "sequence": 3300771,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036792216,
+      "sequence": 3300761,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036792087,
+      "sequence": 3300760,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036791959,
+      "sequence": 3300759,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036790666,
+      "sequence": 3300749,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036790539,
+      "sequence": 3300748,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036789247,
+      "sequence": 3300738,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036789119,
+      "sequence": 3300737,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036788991,
+      "sequence": 3300736,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036787571,
+      "sequence": 3300725,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036787443,
+      "sequence": 3300724,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036787314,
+      "sequence": 3300723,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036786023,
+      "sequence": 3300713,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036785895,
+      "sequence": 3300712,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036785765,
+      "sequence": 3300711,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036784477,
+      "sequence": 3300701,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036784346,
+      "sequence": 3300700,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036783056,
+      "sequence": 3300690,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036782928,
+      "sequence": 3300689,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036782797,
+      "sequence": 3300688,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036781508,
+      "sequence": 3300678,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036781380,
+      "sequence": 3300677,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036781250,
+      "sequence": 3300676,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036779960,
+      "sequence": 3300666,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036779832,
+      "sequence": 3300665,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036779702,
+      "sequence": 3300664,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036778412,
+      "sequence": 3300654,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036778284,
+      "sequence": 3300653,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036778156,
+      "sequence": 3300652,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036776736,
+      "sequence": 3300641,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036776606,
+      "sequence": 3300640,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036775320,
+      "sequence": 3300630,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036775186,
+      "sequence": 3300629,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036775058,
+      "sequence": 3300628,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036773769,
+      "sequence": 3300618,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036773638,
+      "sequence": 3300617,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036773511,
+      "sequence": 3300616,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036772221,
+      "sequence": 3300606,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036772091,
+      "sequence": 3300605,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036771962,
+      "sequence": 3300604,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036770673,
+      "sequence": 3300594,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036770542,
+      "sequence": 3300593,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036769253,
+      "sequence": 3300583,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036769125,
+      "sequence": 3300582,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036768994,
+      "sequence": 3300581,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036767705,
+      "sequence": 3300571,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036767577,
+      "sequence": 3300570,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036767447,
+      "sequence": 3300569,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036766157,
+      "sequence": 3300559,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036766029,
+      "sequence": 3300558,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036765899,
+      "sequence": 3300557,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036764609,
+      "sequence": 3300547,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036764481,
+      "sequence": 3300546,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036763067,
+      "sequence": 3300535,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036762933,
+      "sequence": 3300534,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036762802,
+      "sequence": 3300533,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036761517,
+      "sequence": 3300523,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036761385,
+      "sequence": 3300522,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036761254,
+      "sequence": 3300521,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036759965,
+      "sequence": 3300511,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036759837,
+      "sequence": 3300510,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036759706,
+      "sequence": 3300509,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036758417,
+      "sequence": 3300499,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036758291,
+      "sequence": 3300498,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036758158,
+      "sequence": 3300497,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036756869,
+      "sequence": 3300487,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036756740,
+      "sequence": 3300486,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036755449,
+      "sequence": 3300476,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036755321,
+      "sequence": 3300475,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036755194,
+      "sequence": 3300474,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036753901,
+      "sequence": 3300464,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036753773,
+      "sequence": 3300463,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036753645,
+      "sequence": 3300462,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036752353,
+      "sequence": 3300452,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036752225,
+      "sequence": 3300451,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036752097,
+      "sequence": 3300450,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036750805,
+      "sequence": 3300440,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036750678,
+      "sequence": 3300439,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036750548,
+      "sequence": 3300438,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036749130,
+      "sequence": 3300427,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036748999,
+      "sequence": 3300426,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036747710,
+      "sequence": 3300416,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036747585,
+      "sequence": 3300415,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036747451,
+      "sequence": 3300414,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036746162,
+      "sequence": 3300404,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036746034,
+      "sequence": 3300403,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036745903,
+      "sequence": 3300402,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036744614,
+      "sequence": 3300392,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036744486,
+      "sequence": 3300391,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036744356,
+      "sequence": 3300390,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036743066,
+      "sequence": 3300380,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036742939,
+      "sequence": 3300379,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036741647,
+      "sequence": 3300369,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036741518,
+      "sequence": 3300368,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036741391,
+      "sequence": 3300367,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036740099,
+      "sequence": 3300357,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036739970,
+      "sequence": 3300356,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036739842,
+      "sequence": 3300355,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036738550,
+      "sequence": 3300345,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036738422,
+      "sequence": 3300344,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036738294,
+      "sequence": 3300343,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036736874,
+      "sequence": 3300332,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036736744,
+      "sequence": 3300331,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036735455,
+      "sequence": 3300321,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036735326,
+      "sequence": 3300320,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036735196,
+      "sequence": 3300319,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036733907,
+      "sequence": 3300309,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036733780,
+      "sequence": 3300308,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036733648,
+      "sequence": 3300307,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036732359,
+      "sequence": 3300297,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036732230,
+      "sequence": 3300296,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036732100,
+      "sequence": 3300295,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036730811,
+      "sequence": 3300285,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036730683,
+      "sequence": 3300284,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036730553,
+      "sequence": 3300283,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036729268,
+      "sequence": 3300273,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036729133,
+      "sequence": 3300272,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036727842,
+      "sequence": 3300262,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036727715,
+      "sequence": 3300261,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036727587,
+      "sequence": 3300260,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036726294,
+      "sequence": 3300250,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036726167,
+      "sequence": 3300249,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036726039,
+      "sequence": 3300248,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036724746,
+      "sequence": 3300238,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036724619,
+      "sequence": 3300237,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036724490,
+      "sequence": 3300236,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036723071,
+      "sequence": 3300225,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036722941,
+      "sequence": 3300224,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036721655,
+      "sequence": 3300214,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    },
+    {
+      "t_us": 6036721521,
+      "sequence": 3300213,
+      "id": "0x504",
+      "extended": false,
+      "rtr": false,
+      "dlc": 8,
+      "data": "55 1A 04 B1 BF E5 27 2F"
+    }
+  ],
+  "ids": [
+    {
+      "id": "0x504",
+      "extended": false,
+      "count": 15641,
+      "data": "55 1A 04 B1 BF E5 27 2F",
+      "rtr": false,
+      "dlc": 8
+    },
+    {
+      "id": "0x232",
+      "extended": false,
+      "count": 2302,
+      "data": "00 00 00 F3 4F",
+      "rtr": false,
+      "dlc": 5
+    },
+    {
+      "id": "0x201",
+      "extended": false,
+      "count": 254,
+      "data": "00 00 3F 5A",
+      "rtr": false,
+      "dlc": 4
+    },
+    {
+      "id": "0x106",
+      "extended": false,
+      "count": 247,
+      "data": "58 21",
+      "rtr": false,
+      "dlc": 2
+    },
+    {
+      "id": "0x503",
+      "extended": false,
+      "count": 182,
+      "data": "00 91 A8",
+      "rtr": false,
+      "dlc": 3
+    }
+  ],
+  "messages": [],
+  "error": "",
+  "raw_file": "20261007_203450_309717_capture.log",
+  "summary_file": null,
+  "saved_directory": "J:\\New soft project\\FM03\\captures",
+  "serial_baud": 921600,
+  "stopped_at": "2026-10-07T20:35:18.365022+08:00"
+}

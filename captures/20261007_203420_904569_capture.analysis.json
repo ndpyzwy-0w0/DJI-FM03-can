@@ -1,0 +1,46 @@
+{
+  "raw_log": "J:\\New soft project\\FM03\\captures\\20261007_203420_904569_capture.log",
+  "crc_valid_packets": 0,
+  "integrity": {
+    "frames": 4,
+    "ids": {
+      "S:00000232": 4
+    },
+    "sequence_gaps": 0,
+    "sequence_resets": 0,
+    "non_frame_lines": 0,
+    "first_t_us": 5988876514,
+    "last_t_us": 5990656321,
+    "status_first": {
+      "t_us": 5979938817,
+      "bitrate": 1000000,
+      "rx": 3228917,
+      "logger_dropped": 37399,
+      "rx_missed": 0,
+      "rx_overrun": 0,
+      "bus_errors": 806004,
+      "pending": 0,
+      "logger_pending": 0
+    },
+    "status_last": {
+      "t_us": 5990966784,
+      "bitrate": 1000000,
+      "rx": 3228921,
+      "logger_dropped": 37399,
+      "rx_missed": 0,
+      "rx_overrun": 0,
+      "bus_errors": 1560968,
+      "pending": 0,
+      "logger_pending": 0
+    },
+    "firmware_errors": []
+  },
+  "groups": {},
+  "notes": [
+    "CAN payload streams are separate by ID and extended flag.",
+    "Reassembly boundaries reset at observed sequence gaps, reboots or changed firmware drop counters.",
+    "Timestamps are driver-dequeue timestamps, not hardware frame-edge times.",
+    "Variable payload bytes are candidates, not identified motor control fields.",
+    "Incomplete final UART line is excluded from packet reconstruction."
+  ]
+}

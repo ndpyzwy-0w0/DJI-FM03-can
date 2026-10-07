@@ -1,0 +1,16 @@
+# STATUS t_us=5979938817 bitrate=1000000 rx=3228917 logger_dropped=37399 rx_missed=0 rx_overrun=0 bus_errors=806004 pending=0 logger_pending=0
+# STATUS t_us=5980941784 bitrate=1000000 rx=3228917 logger_dropped=37399 rx_missed=0 rx_overrun=0 bus_errors=845087 pending=0 logger_pending=0
+# STATUS t_us=5981943784 bitrate=1000000 rx=3228917 logger_dropped=37399 rx_missed=0 rx_overrun=0 bus_errors=885441 pending=0 logger_pending=0
+# STATUS t_us=5982946784 bitrate=1000000 rx=3228917 logger_dropped=37399 rx_missed=0 rx_overrun=0 bus_errors=924061 pending=0 logger_pending=0
+# STATUS t_us=5983949784 bitrate=1000000 rx=3228917 logger_dropped=37399 rx_missed=0 rx_overrun=0 bus_errors=965281 pending=0 logger_pending=0
+# STATUS t_us=5984951784 bitrate=1000000 rx=3228917 logger_dropped=37399 rx_missed=0 rx_overrun=0 bus_errors=1013040 pending=0 logger_pending=0
+# STATUS t_us=5985954796 bitrate=1000000 rx=3228917 logger_dropped=37399 rx_missed=0 rx_overrun=0 bus_errors=1099209 pending=0 logger_pending=0
+# STATUS t_us=5986957140 bitrate=1000000 rx=3228917 logger_dropped=37399 rx_missed=0 rx_overrun=0 bus_errors=1191890 pending=0 logger_pending=0
+# STATUS t_us=5987959792 bitrate=1000000 rx=3228917 logger_dropped=37399 rx_missed=0 rx_overrun=0 bus_errors=1283858 pending=0 logger_pending=0
+5988876514,3228918,00000232,0,0,8,55100456BF327510
+# STATUS t_us=5988961794 bitrate=1000000 rx=3228918 logger_dropped=37399 rx_missed=0 rx_overrun=0 bus_errors=1374391 pending=0 logger_pending=0
+5989257393,3228919,00000232,0,0,8,55100456BF327510
+5989757786,3228920,00000232,0,0,8,55100456BF327510
+# STATUS t_us=5989963784 bitrate=1000000 rx=3228920 logger_dropped=37399 rx_missed=0 rx_overrun=0 bus_errors=1468845 pending=0 logger_pending=0
+5990656321,3228921,00000232,0,0,8,55100456BF327510
+# STATUS t_us=5990966784 bitrate=1000000 rx=3228921 logger_dropped=37399 rx_missed=0 rx_overrun=0 bus_errors=1560968 pending=0 logger_pending=0

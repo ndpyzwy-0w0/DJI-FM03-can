@@ -16,6 +16,8 @@ import webbrowser
 import serial
 from serial.tools import list_ports
 from capture import parse_frame
+from analyze_protocol import crc
+from analyze_direction import candidate_value
 
 ROOT = Path(__file__).resolve().parents[1]
 DROP_KEYS = ("logger_dropped", "rx_missed", "rx_overrun", "bus_errors")
@@ -25,6 +27,67 @@ BEIJING = timezone(timedelta(hours=8))
 def available_ports():
     return [{"port": p.device, "description": p.description,
              "usb": p.vid is not None} for p in list_ports.comports()]
+
+
+class LiveCandidate:
+    """Bounded incremental DUML decoding; capture bytes are never changed."""
+    def __init__(self):
+        self.segment = -1
+        self.reset()
+
+    def reset(self):
+        self.segment += 1
+        self.first_stamp = None
+        self.last_stamp = None
+        self.streams = {identifier: (bytearray(), []) for identifier in (0x503, 0x201)}
+        self.channels = {identifier: {"value": None, "seen": None, "relative_s": None,
+                                     "packets": 0, "zero_events": 0, "last_zero_s": None,
+                                     "history": deque(maxlen=1000)} for identifier in self.streams}
+
+    def feed(self, frame, now):
+        stamp, _, identifier, extended, rtr, _, data = frame
+        if self.last_stamp is not None and stamp < self.last_stamp:
+            self.reset()
+        self.last_stamp = stamp
+        if self.first_stamp is None:
+            self.first_stamp = stamp
+        if extended or rtr or identifier not in self.streams:
+            return
+        stream, stamps = self.streams[identifier]
+        stream.extend(data)
+        stamps.extend([stamp] * len(data))
+        while len(stream) >= 4:
+            length = stream[1] | ((stream[2] & 3) << 8)
+            if stream[0] != 0x55 or crc(stream[:3], 0x77, 0x8C) != stream[3] or not 13 <= length <= 1023:
+                del stream[:1], stamps[:1]
+                continue
+            if len(stream) < length:
+                break
+            packet = bytes(stream[:length])
+            if crc(packet[:-2], 0x3692, 0x8408) != int.from_bytes(packet[-2:], "little"):
+                del stream[:1], stamps[:1]
+                continue
+            if (length == 19 and packet[4] == 0xE5
+                    and packet[5] == {0x503: 0xBF, 0x201: 0x52}[identifier]
+                    and packet[8:11] == bytes.fromhex("000469")
+                    and packet[11:15] == bytes.fromhex("0F040819")):
+                value = candidate_value(packet[11:-2])
+                channel = self.channels[identifier]
+                relative = round((stamps[0] - self.first_stamp) / 1e6, 6)
+                if value == 0 and channel["value"] not in (None, 0):
+                    channel["zero_events"] += 1
+                    channel["last_zero_s"] = relative
+                channel.update(value=value, seen=now, relative_s=relative, packets=channel["packets"] + 1)
+                channel["history"].append([relative, value])
+            del stream[:length], stamps[:length]
+
+    def snapshot(self, now):
+        return {"segment": self.segment,
+                "channels": [{"can_id": f"0x{identifier:03X}",
+                              **{key: value for key, value in channel.items() if key not in ("seen", "history")},
+                              "age_s": round(now - channel["seen"], 3) if channel["seen"] is not None else None,
+                              "history": list(channel["history"])}
+                             for identifier, channel in self.channels.items()]}
 
 
 class CaptureSession:
@@ -58,6 +121,7 @@ class CaptureSession:
         self.counter_deltas = {key: 0 for key in DROP_KEYS}
         self.last_serial = None
         self.last_status = None
+        self.candidate = LiveCandidate()
 
     def start(self, port, label):
         if not isinstance(port, str) or not isinstance(label, str):
@@ -97,12 +161,18 @@ class CaptureSession:
             if len(self.buffer) > 4096:
                 self.buffer = b""
                 self.non_frame_lines += 1
+                self.candidate.reset()
             batch_count = 0
             for raw in lines:
                 line = raw.decode("ascii", errors="replace").strip()
                 if line.startswith("# STATUS "):
                     current = {key: int(value) for key, value in
                                re.findall(r"(\w+)=(\d+)", line)}
+                    if self.status is not None and (
+                            current.get("t_us", 0) < self.status.get("t_us", 0)
+                            or any(current.get(key, 0) != self.status.get(key, 0)
+                                   for key in ("logger_dropped", "rx_missed", "rx_overrun"))):
+                        self.candidate.reset()
                     for key in DROP_KEYS:
                         if self.status is not None and key in current and key in self.status:
                             before, after = self.status[key], current[key]
@@ -119,11 +189,14 @@ class CaptureSession:
                     self.frames += 1
                     batch_count += 1
                     if self.previous_sequence is not None:
+                        if sequence != self.previous_sequence + 1:
+                            self.candidate.reset()
                         if sequence > self.previous_sequence:
                             self.gaps += sequence - self.previous_sequence - 1
                         else:
                             self.resets += 1
                     self.previous_sequence = sequence
+                    self.candidate.feed(frame, now)
                     key = f"{'E' if extended else 'S'}:{identifier:08X}"
                     row = {"t_us": stamp, "sequence": sequence,
                            "id": f"0x{identifier:08X}" if extended else f"0x{identifier:03X}",
@@ -158,6 +231,7 @@ class CaptureSession:
                     "counter_deltas": self.counter_deltas.copy(),
                     "status_age": round(now - self.last_status, 1) if self.last_status else None,
                     "serial_age": round(now - self.last_serial, 1) if self.last_serial else None,
+                    "candidate": self.candidate.snapshot(now),
                     "latest": list(reversed(self.latest)),
                     "ids": sorted((dict(item) for item in self.ids.values()), key=lambda x: -x["count"]),
                     "messages": list(self.messages), "error": self.error,

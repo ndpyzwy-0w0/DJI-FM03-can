@@ -29,6 +29,17 @@
       <div class="metric"><span>不同 CAN ID</span><strong id="unique">0</strong><small id="bitrate">CAN 速率待确认</small></div>
     </section>
 
+    <section class="panel candidate-panel" aria-label="04:69 候选字段实时观察">
+      <div class="panel-title"><h2>04:69 候选字段</h2><label class="sound-option"><input type="checkbox" id="zeroSound">归零时提示音</label></div>
+      <div class="candidate-channels">
+        <div id="candidate503" class="candidate-channel"><span>CAN 0x503</span><strong id="value503">—</strong><b id="state503" role="status">等待有效数据</b><small id="zero503">尚未观察到非零 → 零</small></div>
+        <div id="candidate201" class="candidate-channel"><span>CAN 0x201</span><strong id="value201">—</strong><b id="state201" role="status">等待有效数据</b><small id="zero201">尚未观察到非零 → 零</small></div>
+      </div>
+      <div class="candidate-chart"><canvas id="candidateChart" width="1000" height="160" role="img" aria-label="两路04:69原始字段值随时间变化"></canvas></div>
+      <p id="candidateDetail">快速拨一下后停手，观察字段归零时电机是否还在转。字段含义和物理单位尚未确认。</p>
+      <p class="candidate-caption">曲线：0x503 实线 / 0x201 虚线 · 横轴：距本连续段首帧的秒数 · 纵轴：有符号原始值，单位未知</p>
+    </section>
+
     <section class="health" aria-label="接收完整性">
       <div><span>固件丢帧增量</span><strong id="drops">—</strong></div>
       <div><span>序号缺口</span><strong id="gaps">0</strong></div>

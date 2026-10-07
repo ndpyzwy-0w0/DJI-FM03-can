@@ -1,0 +1,317 @@
+{
+  "capture": {
+    "label": "single_flick_stop",
+    "raw_log": "J:\\New soft project\\FM03\\captures\\20261007_201035_353525_capture.log",
+    "sha256": "525605e50126e0268de5efdca01dc33bc96e97e7e8990ca84e4c1d518ae2ab41",
+    "elapsed_s": 11.5,
+    "can_frames": 19872,
+    "packets_0x503": 1142,
+    "packets_0x201": 1142,
+    "minimum": -2048,
+    "maximum": 0,
+    "negative_packets": 49,
+    "positive_packets": 0,
+    "zero_packets": 1093,
+    "first_value": 0,
+    "last_value": 0,
+    "nonzero_first_s": 5.291303,
+    "nonzero_last_s": 5.791383,
+    "two_id_payload_sequences_equal": true,
+    "sequence_gaps": 0,
+    "sequence_resets": 0,
+    "trailing_bytes": 17,
+    "status_first": {
+      "t_us": 4554326561,
+      "bitrate": 1000000,
+      "rx": 3184216,
+      "logger_dropped": 37357,
+      "rx_missed": 0,
+      "rx_overrun": 0,
+      "bus_errors": 198,
+      "pending": 0,
+      "logger_pending": 7
+    },
+    "status_last": {
+      "t_us": 4565348870,
+      "bitrate": 1000000,
+      "rx": 3203304,
+      "logger_dropped": 37357,
+      "rx_missed": 0,
+      "rx_overrun": 0,
+      "bus_errors": 198,
+      "pending": 0,
+      "logger_pending": 5
+    },
+    "counter_deltas": {
+      "logger_dropped": 0,
+      "rx_missed": 0,
+      "rx_overrun": 0,
+      "bus_errors": 0
+    },
+    "capture_error": ""
+  },
+  "timing_by_id": {
+    "0x503": {
+      "runs": [
+        {
+          "kind": "zero",
+          "segment": 0,
+          "first_s": 0.000782,
+          "last_s": 5.281325,
+          "packets": 529
+        },
+        {
+          "kind": "nonzero",
+          "segment": 0,
+          "first_s": 5.291303,
+          "last_s": 5.791383,
+          "packets": 49
+        },
+        {
+          "kind": "zero",
+          "segment": 0,
+          "first_s": 5.801395,
+          "last_s": 11.432805,
+          "packets": 564
+        }
+      ],
+      "final_zero_first_s": 5.801395,
+      "final_zero_observed_s": 5.63141,
+      "median_interval_s": 0.010002,
+      "maximum_interval_s": 0.030003
+    },
+    "0x201": {
+      "runs": [
+        {
+          "kind": "zero",
+          "segment": 0,
+          "first_s": 0.001101,
+          "last_s": 5.281644,
+          "packets": 529
+        },
+        {
+          "kind": "nonzero",
+          "segment": 0,
+          "first_s": 5.29162,
+          "last_s": 5.791698,
+          "packets": 49
+        },
+        {
+          "kind": "zero",
+          "segment": 0,
+          "first_s": 5.801712,
+          "last_s": 11.433445,
+          "packets": 564
+        }
+      ],
+      "final_zero_first_s": 5.801712,
+      "final_zero_observed_s": 5.631733,
+      "median_interval_s": 0.010002,
+      "maximum_interval_s": 0.030006
+    }
+  },
+  "crc_valid_packets": 5523,
+  "groups_after_field_zero": {
+    "S:0x106 04>C9 flags=00 cmd=04:10 payload_len=3": {
+      "packets": 12,
+      "unique_payloads": 1,
+      "last_s": 11.388808,
+      "changed_payload_offsets": []
+    },
+    "S:0x106 04>F1 flags=00 cmd=04:05 payload_len=45": {
+      "packets": 281,
+      "unique_payloads": 281,
+      "last_s": 11.420566,
+      "changed_payload_offsets": [
+        0,
+        2,
+        4,
+        8,
+        12,
+        13,
+        14,
+        16,
+        17,
+        20,
+        24,
+        25,
+        28,
+        29,
+        30,
+        32,
+        33,
+        34,
+        36,
+        37,
+        38
+      ]
+    },
+    "S:0x201 DF>52 flags=00 cmd=04:2F payload_len=13": {
+      "packets": 57,
+      "unique_payloads": 3,
+      "last_s": 11.436025,
+      "changed_payload_offsets": [
+        2
+      ]
+    },
+    "S:0x201 DF>52 flags=00 cmd=04:2F payload_len=15": {
+      "packets": 57,
+      "unique_payloads": 1,
+      "last_s": 11.431915,
+      "changed_payload_offsets": []
+    },
+    "S:0x201 DF>52 flags=00 cmd=04:2F payload_len=8": {
+      "packets": 57,
+      "unique_payloads": 1,
+      "last_s": 11.434085,
+      "changed_payload_offsets": []
+    },
+    "S:0x201 E5>52 flags=00 cmd=04:69 payload_len=6": {
+      "packets": 564,
+      "unique_payloads": 1,
+      "last_s": 11.433445,
+      "changed_payload_offsets": []
+    },
+    "S:0x232 BF>32 flags=00 cmd=04:2F payload_len=15": {
+      "packets": 57,
+      "unique_payloads": 1,
+      "last_s": 11.430227,
+      "changed_payload_offsets": []
+    },
+    "S:0x232 BF>32 flags=00 cmd=04:2F payload_len=8": {
+      "packets": 57,
+      "unique_payloads": 1,
+      "last_s": 11.432029,
+      "changed_payload_offsets": []
+    },
+    "S:0x232 BF>32 flags=20 cmd=24:20 payload_len=3": {
+      "packets": 114,
+      "unique_payloads": 2,
+      "last_s": 11.429084,
+      "changed_payload_offsets": [
+        0
+      ]
+    },
+    "S:0x232 BF>52 flags=00 cmd=04:2F payload_len=13": {
+      "packets": 57,
+      "unique_payloads": 3,
+      "last_s": 11.43516,
+      "changed_payload_offsets": [
+        2
+      ]
+    },
+    "S:0x232 BF>52 flags=00 cmd=04:2F payload_len=15": {
+      "packets": 57,
+      "unique_payloads": 1,
+      "last_s": 11.43113,
+      "changed_payload_offsets": []
+    },
+    "S:0x232 BF>52 flags=00 cmd=04:2F payload_len=8": {
+      "packets": 57,
+      "unique_payloads": 1,
+      "last_s": 11.43333,
+      "changed_payload_offsets": []
+    },
+    "S:0x503 E5>BF flags=00 cmd=04:69 payload_len=6": {
+      "packets": 564,
+      "unique_payloads": 1,
+      "last_s": 11.432805,
+      "changed_payload_offsets": []
+    },
+    "S:0x504 BF>02 flags=00 cmd=04:2F payload_len=15": {
+      "packets": 57,
+      "unique_payloads": 1,
+      "last_s": 11.429776,
+      "changed_payload_offsets": []
+    },
+    "S:0x504 BF>04 flags=00 cmd=00:0E payload_len=0": {
+      "packets": 57,
+      "unique_payloads": 1,
+      "last_s": 11.437127,
+      "changed_payload_offsets": []
+    },
+    "S:0x504 BF>52 flags=00 cmd=04:2F payload_len=13": {
+      "packets": 57,
+      "unique_payloads": 3,
+      "last_s": 11.434729,
+      "changed_payload_offsets": [
+        2
+      ]
+    },
+    "S:0x504 BF>52 flags=00 cmd=04:2F payload_len=15": {
+      "packets": 57,
+      "unique_payloads": 1,
+      "last_s": 11.430678,
+      "changed_payload_offsets": []
+    },
+    "S:0x504 BF>52 flags=00 cmd=04:2F payload_len=8": {
+      "packets": 57,
+      "unique_payloads": 1,
+      "last_s": 11.43269,
+      "changed_payload_offsets": []
+    },
+    "S:0x504 BF>E5 flags=00 cmd=00:0E payload_len=0": {
+      "packets": 57,
+      "unique_payloads": 1,
+      "last_s": 11.437342,
+      "changed_payload_offsets": []
+    },
+    "S:0x504 BF>E5 flags=00 cmd=04:2F payload_len=13": {
+      "packets": 57,
+      "unique_payloads": 3,
+      "last_s": 11.433969,
+      "changed_payload_offsets": [
+        2
+      ]
+    },
+    "S:0x504 BF>E5 flags=00 cmd=04:2F payload_len=15": {
+      "packets": 57,
+      "unique_payloads": 1,
+      "last_s": 11.429321,
+      "changed_payload_offsets": []
+    },
+    "S:0x504 BF>E5 flags=00 cmd=04:2F payload_len=2": {
+      "packets": 57,
+      "unique_payloads": 1,
+      "last_s": 11.435911,
+      "changed_payload_offsets": []
+    },
+    "S:0x504 BF>E5 flags=00 cmd=04:2F payload_len=3": {
+      "packets": 57,
+      "unique_payloads": 1,
+      "last_s": 11.436889,
+      "changed_payload_offsets": []
+    },
+    "S:0x504 BF>E5 flags=00 cmd=04:2F payload_len=6": {
+      "packets": 57,
+      "unique_payloads": 1,
+      "last_s": 11.435594,
+      "changed_payload_offsets": []
+    },
+    "S:0x504 BF>E5 flags=00 cmd=04:2F payload_len=8": {
+      "packets": 57,
+      "unique_payloads": 1,
+      "last_s": 11.431577,
+      "changed_payload_offsets": []
+    },
+    "S:0x504 BF>E5 flags=80 cmd=04:2F payload_len=7": {
+      "packets": 57,
+      "unique_payloads": 1,
+      "last_s": 11.436372,
+      "changed_payload_offsets": []
+    }
+  },
+  "physical_observation": {
+    "user_confirmation": "User replied that the requested experiment was completed in the latest Other capture; physical action times were not supplied.",
+    "direction": null,
+    "dial_stop_s": null,
+    "motor_stop_s": null
+  },
+  "limitations": [
+    "Relative times begin at first captured CAN frame, not the GUI start click.",
+    "Packet timestamps belong to the first constituent CAN frame, at driver dequeue.",
+    "Final zero identifies a field, not independently timed physical motion.",
+    "Other changing packets can also change at idle; they do not establish motor feedback.",
+    "Counters cover first-to-last recorded status only; partial capture boundaries remain."
+  ]
+}

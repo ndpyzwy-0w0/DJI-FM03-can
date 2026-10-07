@@ -1,0 +1,1947 @@
+{
+  "scope": "Passive structure evidence; this is not a motor-control implementation.",
+  "captures": [
+    {
+      "raw_log": "J:\\New soft project\\FM03\\captures\\20261007_154729_002678_idle.log",
+      "sha256": "22e4d08ce478a0bb8a44e466bc0cae2801aa911858e5ff1e0410b0b3fef47a1d",
+      "integrity": {
+        "frames": 17987,
+        "ids": {
+          "S:00000106": 4194,
+          "S:00000503": 3111,
+          "S:00000201": 4251,
+          "S:00000232": 2285,
+          "S:00000504": 4146
+        },
+        "sequence_gaps": 0,
+        "sequence_resets": 0,
+        "non_frame_lines": 2,
+        "first_t_us": 171237894,
+        "last_t_us": 181607561,
+        "status_first": {
+          "t_us": 171255792,
+          "bitrate": 1000000,
+          "rx": 138155,
+          "logger_dropped": 273,
+          "rx_missed": 0,
+          "rx_overrun": 0,
+          "bus_errors": 1,
+          "pending": 0,
+          "logger_pending": 18
+        },
+        "status_last": {
+          "t_us": 181271819,
+          "bitrate": 1000000,
+          "rx": 155509,
+          "logger_dropped": 273,
+          "rx_missed": 0,
+          "rx_overrun": 0,
+          "bus_errors": 1,
+          "pending": 0,
+          "logger_pending": 2
+        },
+        "firmware_errors": []
+      },
+      "elapsed_s": 10.41,
+      "counter_deltas": {
+        "logger_dropped": 0,
+        "rx_missed": 0,
+        "rx_overrun": 0,
+        "bus_errors": 0
+      },
+      "channels": {
+        "0x503": {
+          "candidate_packets": 1037,
+          "sequence_step_counts": {
+            "2": 1026,
+            "4": 10
+          },
+          "non_two_sequence_steps": [
+            {
+              "sequence_step": 4,
+              "relative_s": 0.445314,
+              "interval_ms": 9.983
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 1.445455,
+              "interval_ms": 10.005
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 2.445608,
+              "interval_ms": 10.016
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 3.445697,
+              "interval_ms": 9.999
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 4.445686,
+              "interval_ms": 10.016
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 5.445821,
+              "interval_ms": 10.002
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 6.445927,
+              "interval_ms": 9.995
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 7.446056,
+              "interval_ms": 9.999
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 8.446068,
+              "interval_ms": 10.017
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 9.446158,
+              "interval_ms": 10.004
+            }
+          ],
+          "variable_packet_offsets": [
+            6,
+            7,
+            17,
+            18
+          ],
+          "can_frames": 3111,
+          "dlc_counts": {
+            "8": 2074,
+            "3": 1037
+          },
+          "can_data_bytes": 19703,
+          "crc_valid_bytes_all_commands": 19703,
+          "first_packet_hex": "55 13 04 03 E5 BF 96 17 00 04 69 0F 04 08 19 00 00 E5 56"
+        },
+        "0x201": {
+          "candidate_packets": 1037,
+          "sequence_step_counts": {
+            "2": 1026,
+            "4": 10
+          },
+          "non_two_sequence_steps": [
+            {
+              "sequence_step": 4,
+              "relative_s": 0.445634,
+              "interval_ms": 9.983
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 1.44577,
+              "interval_ms": 9.999
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 2.445929,
+              "interval_ms": 10.016
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 3.446012,
+              "interval_ms": 9.998
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 4.446003,
+              "interval_ms": 10.013
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 5.446143,
+              "interval_ms": 9.992
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 6.446247,
+              "interval_ms": 9.995
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 7.446383,
+              "interval_ms": 10.001
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 8.446395,
+              "interval_ms": 10.016
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 9.44648,
+              "interval_ms": 10.005
+            }
+          ],
+          "variable_packet_offsets": [
+            6,
+            7,
+            17,
+            18
+          ],
+          "can_frames": 4251,
+          "dlc_counts": {
+            "8": 2903,
+            "3": 1037,
+            "4": 104,
+            "5": 104,
+            "2": 103
+          },
+          "can_data_bytes": 27477,
+          "crc_valid_bytes_all_commands": 27477,
+          "first_packet_hex": "55 13 04 03 E5 52 97 17 00 04 69 0F 04 08 19 00 00 AB 5B"
+        }
+      },
+      "pairing_rule": "Same reconstruction segment; 0x201 DUML sequence = 0x503 sequence + 1 modulo 65536.",
+      "paired_packets": 1037,
+      "equal_payload_pairs": 1037,
+      "unpaired_0x503": 0,
+      "unpaired_0x201": 0,
+      "driver_timestamp_delta_ms": {
+        "minimum": 0.308,
+        "median": 0.319,
+        "maximum": 1.01
+      }
+    },
+    {
+      "raw_log": "J:\\New soft project\\FM03\\captures\\20261007_185515_591414_slow_forward.log",
+      "sha256": "db57a53d4eb3c9a91f48c132086650be3433e40c04ab77391229a860101cb444",
+      "integrity": {
+        "frames": 34777,
+        "ids": {
+          "S:00000503": 6005,
+          "S:00000201": 8210,
+          "S:00000106": 8120,
+          "S:00000232": 4418,
+          "S:00000504": 8024
+        },
+        "sequence_gaps": 0,
+        "sequence_resets": 0,
+        "non_frame_lines": 2,
+        "first_t_us": 34884389,
+        "last_t_us": 54976630,
+        "status_first": {
+          "t_us": 34912409,
+          "bitrate": 1000000,
+          "rx": 39250,
+          "logger_dropped": 0,
+          "rx_missed": 0,
+          "rx_overrun": 0,
+          "bus_errors": 16,
+          "pending": 0,
+          "logger_pending": 32
+        },
+        "status_last": {
+          "t_us": 54943784,
+          "bitrate": 1000000,
+          "rx": 73908,
+          "logger_dropped": 0,
+          "rx_missed": 0,
+          "rx_overrun": 0,
+          "bus_errors": 16,
+          "pending": 0,
+          "logger_pending": 0
+        },
+        "firmware_errors": []
+      },
+      "elapsed_s": 20.11,
+      "counter_deltas": {
+        "logger_dropped": 0,
+        "rx_missed": 0,
+        "rx_overrun": 0,
+        "bus_errors": 0
+      },
+      "channels": {
+        "0x503": {
+          "candidate_packets": 2001,
+          "sequence_step_counts": {
+            "2": 1980,
+            "4": 20
+          },
+          "non_two_sequence_steps": [
+            {
+              "sequence_step": 4,
+              "relative_s": 0.730108,
+              "interval_ms": 10.0
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 1.730208,
+              "interval_ms": 9.985
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 2.730236,
+              "interval_ms": 10.019
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 3.730315,
+              "interval_ms": 10.009
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 4.730435,
+              "interval_ms": 10.002
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 5.730599,
+              "interval_ms": 10.002
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 6.730595,
+              "interval_ms": 10.002
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 7.73071,
+              "interval_ms": 10.013
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 8.7308,
+              "interval_ms": 9.993
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 9.730949,
+              "interval_ms": 9.994
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 10.73106,
+              "interval_ms": 9.998
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 11.731081,
+              "interval_ms": 10.019
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 12.731184,
+              "interval_ms": 10.014
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 13.731298,
+              "interval_ms": 10.006
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 14.731444,
+              "interval_ms": 10.005
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 15.731567,
+              "interval_ms": 10.014
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 16.731545,
+              "interval_ms": 9.993
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 17.73165,
+              "interval_ms": 9.999
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 18.731795,
+              "interval_ms": 10.005
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 19.73194,
+              "interval_ms": 10.011
+            }
+          ],
+          "variable_packet_offsets": [
+            6,
+            7,
+            15,
+            16,
+            17,
+            18
+          ],
+          "can_frames": 6005,
+          "dlc_counts": {
+            "8": 4004,
+            "3": 2001
+          },
+          "can_data_bytes": 38035,
+          "crc_valid_bytes_all_commands": 38019,
+          "first_packet_hex": "55 13 04 03 E5 BF 9F 11 00 04 69 0F 04 08 19 00 00 0C 57"
+        },
+        "0x201": {
+          "candidate_packets": 2001,
+          "sequence_step_counts": {
+            "2": 1980,
+            "4": 20
+          },
+          "non_two_sequence_steps": [
+            {
+              "sequence_step": 4,
+              "relative_s": 0.730428,
+              "interval_ms": 10.001
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 1.730525,
+              "interval_ms": 9.986
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 2.730555,
+              "interval_ms": 10.02
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 3.730628,
+              "interval_ms": 10.004
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 4.730753,
+              "interval_ms": 10.004
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 5.730912,
+              "interval_ms": 9.999
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 6.730912,
+              "interval_ms": 9.999
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 7.731028,
+              "interval_ms": 10.019
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 8.731121,
+              "interval_ms": 9.998
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 9.731267,
+              "interval_ms": 9.994
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 10.731377,
+              "interval_ms": 10.0
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 11.731398,
+              "interval_ms": 10.02
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 12.731499,
+              "interval_ms": 10.015
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 13.731615,
+              "interval_ms": 10.009
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 14.731759,
+              "interval_ms": 10.005
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 15.731885,
+              "interval_ms": 10.017
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 16.731862,
+              "interval_ms": 9.992
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 17.731966,
+              "interval_ms": 9.994
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 18.732112,
+              "interval_ms": 10.006
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 19.732253,
+              "interval_ms": 10.011
+            }
+          ],
+          "variable_packet_offsets": [
+            6,
+            7,
+            15,
+            16,
+            17,
+            18
+          ],
+          "can_frames": 8210,
+          "dlc_counts": {
+            "8": 5607,
+            "3": 2001,
+            "4": 201,
+            "5": 201,
+            "2": 200
+          },
+          "can_data_bytes": 53068,
+          "crc_valid_bytes_all_commands": 53068,
+          "first_packet_hex": "55 13 04 03 E5 52 A0 11 00 04 69 0F 04 08 19 00 00 50 80"
+        }
+      },
+      "pairing_rule": "Same reconstruction segment; 0x201 DUML sequence = 0x503 sequence + 1 modulo 65536.",
+      "paired_packets": 2001,
+      "equal_payload_pairs": 2001,
+      "unpaired_0x503": 0,
+      "unpaired_0x201": 0,
+      "driver_timestamp_delta_ms": {
+        "minimum": 0.307,
+        "median": 0.318,
+        "maximum": 1.994
+      }
+    },
+    {
+      "raw_log": "J:\\New soft project\\FM03\\captures\\20261007_185554_700204_slow_reverse.log",
+      "sha256": "36d34e2d2e4c47d0b5d4f51292127944f97906e65fb613ba02a14d7d541fd994",
+      "integrity": {
+        "frames": 25968,
+        "ids": {
+          "S:00000106": 6054,
+          "S:00000503": 4482,
+          "S:00000201": 6132,
+          "S:00000232": 3300,
+          "S:00000504": 6000
+        },
+        "sequence_gaps": 0,
+        "sequence_resets": 0,
+        "non_frame_lines": 2,
+        "first_t_us": 73992629,
+        "last_t_us": 88990032,
+        "status_first": {
+          "t_us": 74022628,
+          "bitrate": 1000000,
+          "rx": 107007,
+          "logger_dropped": 0,
+          "rx_missed": 0,
+          "rx_overrun": 0,
+          "bus_errors": 16,
+          "pending": 0,
+          "logger_pending": 26
+        },
+        "status_last": {
+          "t_us": 88044238,
+          "bitrate": 1000000,
+          "rx": 131267,
+          "logger_dropped": 0,
+          "rx_missed": 0,
+          "rx_overrun": 0,
+          "bus_errors": 16,
+          "pending": 0,
+          "logger_pending": 2
+        },
+        "firmware_errors": []
+      },
+      "elapsed_s": 15.03,
+      "counter_deltas": {
+        "logger_dropped": 0,
+        "rx_missed": 0,
+        "rx_overrun": 0,
+        "bus_errors": 0
+      },
+      "channels": {
+        "0x503": {
+          "candidate_packets": 1494,
+          "sequence_step_counts": {
+            "2": 1478,
+            "4": 15
+          },
+          "non_two_sequence_steps": [
+            {
+              "sequence_step": 4,
+              "relative_s": 0.625508,
+              "interval_ms": 10.003
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 1.6256,
+              "interval_ms": 9.992
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 2.625731,
+              "interval_ms": 10.018
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 3.625862,
+              "interval_ms": 9.996
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 4.625999,
+              "interval_ms": 10.012
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 5.625991,
+              "interval_ms": 9.981
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 6.62609,
+              "interval_ms": 9.987
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 7.626208,
+              "interval_ms": 10.003
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 8.626361,
+              "interval_ms": 10.008
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 9.626464,
+              "interval_ms": 10.002
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 10.626474,
+              "interval_ms": 10.002
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 11.62656,
+              "interval_ms": 9.993
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 12.62672,
+              "interval_ms": 10.002
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 13.626853,
+              "interval_ms": 9.987
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 14.626858,
+              "interval_ms": 10.013
+            }
+          ],
+          "variable_packet_offsets": [
+            6,
+            7,
+            15,
+            16,
+            17,
+            18
+          ],
+          "can_frames": 4482,
+          "dlc_counts": {
+            "8": 2988,
+            "3": 1494
+          },
+          "can_data_bytes": 28386,
+          "crc_valid_bytes_all_commands": 28386,
+          "first_packet_hex": "55 13 04 03 E5 BF 6B 30 00 04 69 0F 04 08 19 00 00 1A 45"
+        },
+        "0x201": {
+          "candidate_packets": 1494,
+          "sequence_step_counts": {
+            "2": 1478,
+            "4": 15
+          },
+          "non_two_sequence_steps": [
+            {
+              "sequence_step": 4,
+              "relative_s": 0.625826,
+              "interval_ms": 10.001
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 1.625914,
+              "interval_ms": 9.993
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 2.626046,
+              "interval_ms": 10.018
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 3.626179,
+              "interval_ms": 10.0
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 4.626315,
+              "interval_ms": 10.012
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 5.626308,
+              "interval_ms": 9.987
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 6.626409,
+              "interval_ms": 9.995
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 7.626526,
+              "interval_ms": 10.003
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 8.626675,
+              "interval_ms": 10.004
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 9.626778,
+              "interval_ms": 9.993
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 10.62679,
+              "interval_ms": 10.003
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 11.626875,
+              "interval_ms": 9.997
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 12.627039,
+              "interval_ms": 10.005
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 13.627171,
+              "interval_ms": 9.991
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 14.627175,
+              "interval_ms": 10.017
+            }
+          ],
+          "variable_packet_offsets": [
+            6,
+            7,
+            15,
+            16,
+            17,
+            18
+          ],
+          "can_frames": 6132,
+          "dlc_counts": {
+            "8": 4188,
+            "3": 1494,
+            "4": 150,
+            "5": 150,
+            "2": 150
+          },
+          "can_data_bytes": 39636,
+          "crc_valid_bytes_all_commands": 39636,
+          "first_packet_hex": "55 13 04 03 E5 52 6C 30 00 04 69 0F 04 08 19 00 00 23 BD"
+        }
+      },
+      "pairing_rule": "Same reconstruction segment; 0x201 DUML sequence = 0x503 sequence + 1 modulo 65536.",
+      "paired_packets": 1494,
+      "equal_payload_pairs": 1494,
+      "unpaired_0x503": 0,
+      "unpaired_0x201": 0,
+      "driver_timestamp_delta_ms": {
+        "minimum": 0.308,
+        "median": 0.317,
+        "maximum": 1.01
+      }
+    },
+    {
+      "raw_log": "J:\\New soft project\\FM03\\captures\\20261007_194635_586843_fast_forward.log",
+      "sha256": "7ba071d28d1632ed7e84aaccf182c4f0ba78f406f12ddcf0625277877714ec6d",
+      "integrity": {
+        "frames": 26395,
+        "ids": {
+          "S:00000503": 4547,
+          "S:00000201": 6224,
+          "S:00000106": 6166,
+          "S:00000232": 3360,
+          "S:00000504": 6098
+        },
+        "sequence_gaps": 0,
+        "sequence_resets": 0,
+        "non_frame_lines": 2,
+        "first_t_us": 3114477348,
+        "last_t_us": 3129735792,
+        "status_first": {
+          "t_us": 3114495803,
+          "bitrate": 1000000,
+          "rx": 1575157,
+          "logger_dropped": 50,
+          "rx_missed": 0,
+          "rx_overrun": 0,
+          "bus_errors": 48,
+          "pending": 0,
+          "logger_pending": 18
+        },
+        "status_last": {
+          "t_us": 3129518857,
+          "bitrate": 1000000,
+          "rx": 1601130,
+          "logger_dropped": 50,
+          "rx_missed": 0,
+          "rx_overrun": 0,
+          "bus_errors": 48,
+          "pending": 0,
+          "logger_pending": 2
+        },
+        "firmware_errors": []
+      },
+      "elapsed_s": 15.3,
+      "counter_deltas": {
+        "logger_dropped": 0,
+        "rx_missed": 0,
+        "rx_overrun": 0,
+        "bus_errors": 0
+      },
+      "channels": {
+        "0x503": {
+          "candidate_packets": 1515,
+          "sequence_step_counts": {
+            "2": 1499,
+            "4": 15
+          },
+          "non_two_sequence_steps": [
+            {
+              "sequence_step": 4,
+              "relative_s": 0.29981,
+              "interval_ms": 10.005
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 1.299926,
+              "interval_ms": 10.003
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 2.30002,
+              "interval_ms": 10.0
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 3.30018,
+              "interval_ms": 10.001
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 4.300278,
+              "interval_ms": 9.996
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 5.300279,
+              "interval_ms": 9.999
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 6.300368,
+              "interval_ms": 9.995
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 7.310509,
+              "interval_ms": 29.907
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 8.300641,
+              "interval_ms": 9.994
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 9.300757,
+              "interval_ms": 9.11
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 10.300751,
+              "interval_ms": 9.995
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 11.300855,
+              "interval_ms": 9.999
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 12.301032,
+              "interval_ms": 10.025
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 13.301131,
+              "interval_ms": 9.998
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 14.301128,
+              "interval_ms": 9.997
+            }
+          ],
+          "variable_packet_offsets": [
+            6,
+            7,
+            15,
+            16,
+            17,
+            18
+          ],
+          "can_frames": 4547,
+          "dlc_counts": {
+            "8": 3031,
+            "3": 1516
+          },
+          "can_data_bytes": 28796,
+          "crc_valid_bytes_all_commands": 28785,
+          "first_packet_hex": "55 13 04 03 E5 BF 8B 13 00 04 69 0F 04 08 19 00 00 52 20"
+        },
+        "0x201": {
+          "candidate_packets": 1516,
+          "sequence_step_counts": {
+            "2": 1500,
+            "4": 15
+          },
+          "non_two_sequence_steps": [
+            {
+              "sequence_step": 4,
+              "relative_s": 0.300129,
+              "interval_ms": 9.995
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 1.300886,
+              "interval_ms": 10.013
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 2.300342,
+              "interval_ms": 9.996
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 3.300496,
+              "interval_ms": 10.001
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 4.300596,
+              "interval_ms": 9.999
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 5.300601,
+              "interval_ms": 10.002
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 6.301352,
+              "interval_ms": 9.99
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 7.310831,
+              "interval_ms": 29.907
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 8.300962,
+              "interval_ms": 9.328
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 9.301075,
+              "interval_ms": 9.109
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 10.30107,
+              "interval_ms": 9.999
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 11.30117,
+              "interval_ms": 9.994
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 12.30135,
+              "interval_ms": 10.025
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 13.301447,
+              "interval_ms": 9.992
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 14.301451,
+              "interval_ms": 9.999
+            }
+          ],
+          "variable_packet_offsets": [
+            6,
+            7,
+            15,
+            16,
+            17,
+            18
+          ],
+          "can_frames": 6224,
+          "dlc_counts": {
+            "8": 4251,
+            "3": 1516,
+            "4": 153,
+            "5": 152,
+            "2": 152
+          },
+          "can_data_bytes": 40232,
+          "crc_valid_bytes_all_commands": 40232,
+          "first_packet_hex": "55 13 04 03 E5 52 8A 13 00 04 69 0F 04 08 19 00 00 1C 2D"
+        }
+      },
+      "pairing_rule": "Same reconstruction segment; 0x201 DUML sequence = 0x503 sequence + 1 modulo 65536.",
+      "paired_packets": 1515,
+      "equal_payload_pairs": 1515,
+      "unpaired_0x503": 0,
+      "unpaired_0x201": 1,
+      "driver_timestamp_delta_ms": {
+        "minimum": 0.308,
+        "median": 0.32,
+        "maximum": 1.054
+      }
+    },
+    {
+      "raw_log": "J:\\New soft project\\FM03\\captures\\20261007_194656_333607_fast_reverse.log",
+      "sha256": "2eed5d338c10427a442f4ded54a669db4ae1052f5c6397dca3e35d2661efc451",
+      "integrity": {
+        "frames": 32327,
+        "ids": {
+          "S:00000232": 4106,
+          "S:00000504": 7468,
+          "S:00000106": 7554,
+          "S:00000201": 7628,
+          "S:00000503": 5571
+        },
+        "sequence_gaps": 0,
+        "sequence_resets": 0,
+        "non_frame_lines": 2,
+        "first_t_us": 3135233120,
+        "last_t_us": 3153922054,
+        "status_first": {
+          "t_us": 3135244554,
+          "bitrate": 1000000,
+          "rx": 1611111,
+          "logger_dropped": 50,
+          "rx_missed": 0,
+          "rx_overrun": 0,
+          "bus_errors": 48,
+          "pending": 0,
+          "logger_pending": 64
+        },
+        "status_last": {
+          "t_us": 3153270320,
+          "bitrate": 1000000,
+          "rx": 1642271,
+          "logger_dropped": 50,
+          "rx_missed": 0,
+          "rx_overrun": 0,
+          "bus_errors": 48,
+          "pending": 0,
+          "logger_pending": 38
+        },
+        "firmware_errors": []
+      },
+      "elapsed_s": 18.72,
+      "counter_deltas": {
+        "logger_dropped": 0,
+        "rx_missed": 0,
+        "rx_overrun": 0,
+        "bus_errors": 0
+      },
+      "channels": {
+        "0x503": {
+          "candidate_packets": 1857,
+          "sequence_step_counts": {
+            "2": 1837,
+            "4": 19
+          },
+          "non_two_sequence_steps": [
+            {
+              "sequence_step": 4,
+              "relative_s": 0.54605,
+              "interval_ms": 9.985
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 1.546201,
+              "interval_ms": 9.997
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 2.546304,
+              "interval_ms": 9.984
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 3.546314,
+              "interval_ms": 10.012
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 4.546409,
+              "interval_ms": 10.01
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 5.546547,
+              "interval_ms": 9.993
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 6.547679,
+              "interval_ms": 10.981
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 7.546678,
+              "interval_ms": 9.98
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 8.546778,
+              "interval_ms": 9.99
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 9.546897,
+              "interval_ms": 9.982
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 10.547049,
+              "interval_ms": 10.008
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 11.55717,
+              "interval_ms": 29.996
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 12.547159,
+              "interval_ms": 9.007
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 13.547247,
+              "interval_ms": 9.99
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 14.547385,
+              "interval_ms": 9.984
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 15.547547,
+              "interval_ms": 10.013
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 16.547533,
+              "interval_ms": 9.002
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 17.547635,
+              "interval_ms": 9.966
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 18.547739,
+              "interval_ms": 9.995
+            }
+          ],
+          "variable_packet_offsets": [
+            6,
+            7,
+            15,
+            16,
+            17,
+            18
+          ],
+          "can_frames": 5571,
+          "dlc_counts": {
+            "8": 3714,
+            "3": 1857
+          },
+          "can_data_bytes": 35283,
+          "crc_valid_bytes_all_commands": 35283,
+          "first_packet_hex": "55 13 04 03 E5 BF D7 23 00 04 69 0F 04 08 19 00 00 0A 00"
+        },
+        "0x201": {
+          "candidate_packets": 1857,
+          "sequence_step_counts": {
+            "2": 1837,
+            "4": 19
+          },
+          "non_two_sequence_steps": [
+            {
+              "sequence_step": 4,
+              "relative_s": 0.546366,
+              "interval_ms": 9.983
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 1.54652,
+              "interval_ms": 10.0
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 2.546622,
+              "interval_ms": 9.411
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 3.54663,
+              "interval_ms": 10.012
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 4.546727,
+              "interval_ms": 10.012
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 5.546863,
+              "interval_ms": 9.995
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 6.547994,
+              "interval_ms": 10.981
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 7.547676,
+              "interval_ms": 10.663
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 8.547094,
+              "interval_ms": 9.99
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 9.547876,
+              "interval_ms": 9.989
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 10.547374,
+              "interval_ms": 10.018
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 11.557485,
+              "interval_ms": 29.998
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 12.547475,
+              "interval_ms": 9.015
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 13.547565,
+              "interval_ms": 9.992
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 14.547701,
+              "interval_ms": 9.981
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 15.547866,
+              "interval_ms": 10.015
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 16.547853,
+              "interval_ms": 9.003
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 17.548626,
+              "interval_ms": 10.644
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 18.54805,
+              "interval_ms": 9.992
+            }
+          ],
+          "variable_packet_offsets": [
+            6,
+            7,
+            15,
+            16,
+            17,
+            18
+          ],
+          "can_frames": 7628,
+          "dlc_counts": {
+            "8": 5210,
+            "4": 187,
+            "5": 187,
+            "2": 187,
+            "3": 1857
+          },
+          "can_data_bytes": 49308,
+          "crc_valid_bytes_all_commands": 49308,
+          "first_packet_hex": "55 13 04 03 E5 52 D8 23 00 04 69 0F 04 08 19 00 00 99 44"
+        }
+      },
+      "pairing_rule": "Same reconstruction segment; 0x201 DUML sequence = 0x503 sequence + 1 modulo 65536.",
+      "paired_packets": 1857,
+      "equal_payload_pairs": 1857,
+      "unpaired_0x503": 0,
+      "unpaired_0x201": 0,
+      "driver_timestamp_delta_ms": {
+        "minimum": 0.308,
+        "median": 0.318,
+        "maximum": 2.958
+      }
+    },
+    {
+      "raw_log": "J:\\New soft project\\FM03\\captures\\20261007_201035_353525_capture.log",
+      "sha256": "525605e50126e0268de5efdca01dc33bc96e97e7e8990ca84e4c1d518ae2ab41",
+      "integrity": {
+        "frames": 19872,
+        "ids": {
+          "S:00000106": 4625,
+          "S:00000503": 3426,
+          "S:00000201": 4691,
+          "S:00000232": 2530,
+          "S:00000504": 4600
+        },
+        "sequence_gaps": 0,
+        "sequence_resets": 0,
+        "non_frame_lines": 2,
+        "first_t_us": 4554319431,
+        "last_t_us": 4565760821,
+        "status_first": {
+          "t_us": 4554326561,
+          "bitrate": 1000000,
+          "rx": 3184216,
+          "logger_dropped": 37357,
+          "rx_missed": 0,
+          "rx_overrun": 0,
+          "bus_errors": 198,
+          "pending": 0,
+          "logger_pending": 7
+        },
+        "status_last": {
+          "t_us": 4565348870,
+          "bitrate": 1000000,
+          "rx": 3203304,
+          "logger_dropped": 37357,
+          "rx_missed": 0,
+          "rx_overrun": 0,
+          "bus_errors": 198,
+          "pending": 0,
+          "logger_pending": 5
+        },
+        "firmware_errors": []
+      },
+      "elapsed_s": 11.5,
+      "counter_deltas": {
+        "logger_dropped": 0,
+        "rx_missed": 0,
+        "rx_overrun": 0,
+        "bus_errors": 0
+      },
+      "channels": {
+        "0x503": {
+          "candidate_packets": 1142,
+          "sequence_step_counts": {
+            "2": 1129,
+            "4": 12
+          },
+          "non_two_sequence_steps": [
+            {
+              "sequence_step": 4,
+              "relative_s": 0.130842,
+              "interval_ms": 10.059
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 1.130958,
+              "interval_ms": 10.033
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 2.130976,
+              "interval_ms": 10.044
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 3.131108,
+              "interval_ms": 10.082
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 4.132128,
+              "interval_ms": 10.972
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 5.132243,
+              "interval_ms": 10.965
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 6.132398,
+              "interval_ms": 10.984
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 7.132296,
+              "interval_ms": 10.883
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 8.132422,
+              "interval_ms": 10.911
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 9.132539,
+              "interval_ms": 10.904
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 10.132662,
+              "interval_ms": 10.875
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 11.132812,
+              "interval_ms": 10.909
+            }
+          ],
+          "variable_packet_offsets": [
+            6,
+            7,
+            15,
+            16,
+            17,
+            18
+          ],
+          "can_frames": 3426,
+          "dlc_counts": {
+            "8": 2284,
+            "3": 1142
+          },
+          "can_data_bytes": 21698,
+          "crc_valid_bytes_all_commands": 21698,
+          "first_packet_hex": "55 13 04 03 E5 BF 2F 28 00 04 69 0F 04 08 19 00 00 31 6D"
+        },
+        "0x201": {
+          "candidate_packets": 1142,
+          "sequence_step_counts": {
+            "2": 1129,
+            "4": 12
+          },
+          "non_two_sequence_steps": [
+            {
+              "sequence_step": 4,
+              "relative_s": 0.131469,
+              "interval_ms": 10.367
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 1.131629,
+              "interval_ms": 10.388
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 2.13165,
+              "interval_ms": 10.401
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 3.13175,
+              "interval_ms": 10.409
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 4.132767,
+              "interval_ms": 11.297
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 5.132883,
+              "interval_ms": 11.288
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 6.133044,
+              "interval_ms": 11.313
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 7.132936,
+              "interval_ms": 11.209
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 8.133062,
+              "interval_ms": 11.234
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 9.133181,
+              "interval_ms": 11.227
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 10.133307,
+              "interval_ms": 11.197
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 11.133456,
+              "interval_ms": 11.239
+            }
+          ],
+          "variable_packet_offsets": [
+            6,
+            7,
+            15,
+            16,
+            17,
+            18
+          ],
+          "can_frames": 4691,
+          "dlc_counts": {
+            "8": 3204,
+            "3": 1142,
+            "4": 115,
+            "5": 115,
+            "2": 115
+          },
+          "can_data_bytes": 30323,
+          "crc_valid_bytes_all_commands": 30323,
+          "first_packet_hex": "55 13 04 03 E5 52 30 28 00 04 69 0F 04 08 19 00 00 E7 58"
+        }
+      },
+      "pairing_rule": "Same reconstruction segment; 0x201 DUML sequence = 0x503 sequence + 1 modulo 65536.",
+      "paired_packets": 1142,
+      "equal_payload_pairs": 1142,
+      "unpaired_0x503": 0,
+      "unpaired_0x201": 0,
+      "driver_timestamp_delta_ms": {
+        "minimum": 0.307,
+        "median": 0.318,
+        "maximum": 2.125
+      }
+    },
+    {
+      "raw_log": "J:\\New soft project\\FM03\\captures\\20261007_203655_610426_capture.log",
+      "sha256": "241f74826eb40b27c0767adaae6ef56c1ad1cc7bded03db0ac599638886c2f3d",
+      "integrity": {
+        "frames": 34311,
+        "ids": {
+          "S:00000106": 8007,
+          "S:00000503": 5925,
+          "S:00000201": 8103,
+          "S:00000232": 4356,
+          "S:00000504": 7920
+        },
+        "sequence_gaps": 0,
+        "sequence_resets": 0,
+        "non_frame_lines": 2,
+        "first_t_us": 6134633530,
+        "last_t_us": 6154462476,
+        "status_first": {
+          "t_us": 6134651975,
+          "bitrate": 1000000,
+          "rx": 3715361,
+          "logger_dropped": 330779,
+          "rx_missed": 0,
+          "rx_overrun": 0,
+          "bus_errors": 3571842,
+          "pending": 0,
+          "logger_pending": 10
+        },
+        "status_last": {
+          "t_us": 6153683561,
+          "bitrate": 1000000,
+          "rx": 3748299,
+          "logger_dropped": 330779,
+          "rx_missed": 0,
+          "rx_overrun": 0,
+          "bus_errors": 3571842,
+          "pending": 0,
+          "logger_pending": 8
+        },
+        "firmware_errors": []
+      },
+      "elapsed_s": 19.84,
+      "counter_deltas": {
+        "logger_dropped": 0,
+        "rx_missed": 0,
+        "rx_overrun": 0,
+        "bus_errors": 0
+      },
+      "channels": {
+        "0x503": {
+          "candidate_packets": 1975,
+          "sequence_step_counts": {
+            "2": 1954,
+            "4": 20
+          },
+          "non_two_sequence_steps": [
+            {
+              "sequence_step": 4,
+              "relative_s": 0.206531,
+              "interval_ms": 9.987
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 1.206653,
+              "interval_ms": 9.997
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 2.206648,
+              "interval_ms": 10.004
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 3.206745,
+              "interval_ms": 9.998
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 4.206891,
+              "interval_ms": 10.01
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 5.207026,
+              "interval_ms": 9.998
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 6.208113,
+              "interval_ms": 10.969
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 7.207125,
+              "interval_ms": 10.008
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 8.207241,
+              "interval_ms": 10.011
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 9.207351,
+              "interval_ms": 9.972
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 10.207507,
+              "interval_ms": 9.998
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 11.2075,
+              "interval_ms": 10.004
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 12.207608,
+              "interval_ms": 9.989
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 13.207713,
+              "interval_ms": 9.992
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 14.207866,
+              "interval_ms": 10.004
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 15.208004,
+              "interval_ms": 9.024
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 16.207972,
+              "interval_ms": 8.985
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 17.208057,
+              "interval_ms": 9.986
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 18.208205,
+              "interval_ms": 10.001
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 19.208361,
+              "interval_ms": 10.012
+            }
+          ],
+          "variable_packet_offsets": [
+            6,
+            7,
+            15,
+            16,
+            17,
+            18
+          ],
+          "can_frames": 5925,
+          "dlc_counts": {
+            "8": 3950,
+            "3": 1975
+          },
+          "can_data_bytes": 37525,
+          "crc_valid_bytes_all_commands": 37525,
+          "first_packet_hex": "55 13 04 03 E5 BF 31 89 00 04 69 0F 04 08 19 00 00 CD 77"
+        },
+        "0x201": {
+          "candidate_packets": 1975,
+          "sequence_step_counts": {
+            "2": 1954,
+            "4": 20
+          },
+          "non_two_sequence_steps": [
+            {
+              "sequence_step": 4,
+              "relative_s": 0.206849,
+              "interval_ms": 9.987
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 1.206972,
+              "interval_ms": 9.999
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 2.206964,
+              "interval_ms": 10.002
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 3.207058,
+              "interval_ms": 9.996
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 4.207208,
+              "interval_ms": 10.005
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 5.207343,
+              "interval_ms": 10.001
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 6.208432,
+              "interval_ms": 10.967
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 7.207444,
+              "interval_ms": 10.01
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 8.207559,
+              "interval_ms": 10.008
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 9.207668,
+              "interval_ms": 9.97
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 10.207823,
+              "interval_ms": 9.997
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 11.207819,
+              "interval_ms": 10.004
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 12.207922,
+              "interval_ms": 9.986
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 13.208034,
+              "interval_ms": 9.996
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 14.208184,
+              "interval_ms": 10.009
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 15.208323,
+              "interval_ms": 9.024
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 16.208291,
+              "interval_ms": 8.988
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 17.208374,
+              "interval_ms": 9.99
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 18.208523,
+              "interval_ms": 10.002
+            },
+            {
+              "sequence_step": 4,
+              "relative_s": 19.208681,
+              "interval_ms": 10.015
+            }
+          ],
+          "variable_packet_offsets": [
+            6,
+            7,
+            15,
+            16,
+            17,
+            18
+          ],
+          "can_frames": 8103,
+          "dlc_counts": {
+            "8": 5534,
+            "3": 1975,
+            "4": 198,
+            "5": 198,
+            "2": 198
+          },
+          "can_data_bytes": 52375,
+          "crc_valid_bytes_all_commands": 52375,
+          "first_packet_hex": "55 13 04 03 E5 52 32 89 00 04 69 0F 04 08 19 00 00 A1 D1"
+        }
+      },
+      "pairing_rule": "Same reconstruction segment; 0x201 DUML sequence = 0x503 sequence + 1 modulo 65536.",
+      "paired_packets": 1975,
+      "equal_payload_pairs": 1975,
+      "unpaired_0x503": 0,
+      "unpaired_0x201": 0,
+      "driver_timestamp_delta_ms": {
+        "minimum": 0.31,
+        "median": 0.318,
+        "maximum": 2.018
+      }
+    }
+  ],
+  "total_paired_packets": 11021,
+  "total_equal_payload_pairs": 11021,
+  "packet_template_0x503": "55 13 04 03 E5 BF SS SS 00 04 69 0F 04 08 19 VV VV CC CC",
+  "packet_template_0x201": "55 13 04 03 E5 52 SS SS 00 04 69 0F 04 08 19 VV VV CC CC",
+  "offsets": {
+    "header_crc8": 3,
+    "logical_sender": 4,
+    "logical_receiver": 5,
+    "sequence_uint16_le": [
+      6,
+      7
+    ],
+    "flags": 8,
+    "command": [
+      9,
+      10
+    ],
+    "payload_prefix": [
+      11,
+      12,
+      13,
+      14
+    ],
+    "candidate_int16_le": [
+      15,
+      16
+    ],
+    "packet_crc16_le": [
+      17,
+      18
+    ]
+  },
+  "limitations": [
+    "Logical addresses and CAN IDs do not establish physical transmission direction.",
+    "Sequence jumps are observations, not proof of missing CAN frames.",
+    "Pairing and fixed structure do not establish handshake, acknowledgements, required cadence or independent control.",
+    "Candidate units and rate/increment semantics remain unknown; user cannot perform fixed-angle experiment."
+  ]
+}

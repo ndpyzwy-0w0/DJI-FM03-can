@@ -4,6 +4,57 @@ let token = "", busy = false, latestState = null, timer = null;
 const count = (n) => Number(n || 0).toLocaleString("zh-CN");
 const size = (n) => n < 1024 ? `${n} B` : n < 1048576 ? `${(n / 1024).toFixed(1)} KB` : `${(n / 1048576).toFixed(2)} MB`;
 const duration = (seconds) => {const n = Math.floor(seconds);return `${String(Math.floor(n / 60)).padStart(2, "0")}:${String(n % 60).padStart(2, "0")}`;};
+let audio = null, candidateKey = "", zeroEvents = null;
+
+function drawCandidate(channels) {
+  const canvas = byId("candidateChart"), ctx = canvas.getContext("2d");
+  const width = canvas.clientWidth || 1000, scale = window.devicePixelRatio || 1;
+  canvas.width = Math.round(width * scale);canvas.height = Math.round(160 * scale);ctx.scale(scale,scale);
+  ctx.clearRect(0, 0, width, 160);
+  const all = channels.flatMap((c) => c.history || []);
+  if (!all.length) return;
+  const end = Math.max(...all.map((p) => p[0])), start = Math.max(0, end - 10);
+  const bound = Math.max(100, ...all.map((p) => Math.abs(p[1])));
+  const x = (t) => 55 + (t - start) / Math.max(1, end - start) * (width - 70);
+  const y = (v) => 15 + (bound - v) / (2 * bound) * 110;
+  const style = getComputedStyle(document.documentElement);
+  ctx.font = "11px Segoe UI";
+  for (const v of [-bound, 0, bound]) {
+    ctx.strokeStyle = style.getPropertyValue("--line");ctx.setLineDash([]);ctx.beginPath();ctx.moveTo(55,y(v));ctx.lineTo(width-15,y(v));ctx.stroke();
+    ctx.fillStyle = style.getPropertyValue("--muted");ctx.fillText(String(v),5,y(v)+4);
+  }
+  ctx.fillText(`${start.toFixed(1)} s`,55,148);ctx.fillText(`${end.toFixed(1)} s`,width-65,148);
+  channels.forEach((channel,index) => {
+    ctx.strokeStyle = style.getPropertyValue(index ? "--muted" : "--accent");ctx.setLineDash(index ? [4,3] : []);ctx.lineWidth = 1.5;ctx.beginPath();
+    let first = true;
+    for (const [t,v] of channel.history || []) {if (t < start) continue;if(first)ctx.moveTo(x(t),y(v));else ctx.lineTo(x(t),y(v));first = false;}
+    ctx.stroke();
+  });
+}
+
+function renderCandidate(state, active) {
+  const channels = state?.candidate?.channels || [];
+  const key = `${state?.started_at || ""}:${state?.candidate?.segment ?? ""}`;
+  if (key !== candidateKey) {candidateKey = key;zeroEvents = null;}
+  for (const suffix of ["503","201"]) {
+    const channel = channels.find((c) => c.can_id === `0x${suffix}`);
+    const fresh = active && channel?.value != null && channel.age_s <= 0.5;
+    byId(`value${suffix}`).textContent = channel?.value == null || (active && !fresh) ? "—" : String(channel.value);
+    byId(`candidate${suffix}`).className = `candidate-channel ${fresh && channel.value === 0 ? "zero" : !fresh ? "stale" : ""}`;
+    byId(`state${suffix}`).textContent = channel?.value == null ? "等待有效数据" : !active ? "已停止 · 末次快照" : !fresh ? "数据超时 · 无法判断" : channel.value !== 0 ? "字段非零" : channel.last_zero_s != null ? "已归零 · 观察电机是否还在转" : "字段为零";
+    byId(`zero${suffix}`).textContent = channel?.last_zero_s == null ? "尚未观察到非零 → 零" : `最近归零：本段 ${channel.last_zero_s.toFixed(3)} 秒 · ${channel.zero_events} 次`;
+  }
+  const main = channels.find((c) => c.can_id === "0x503");
+  if (main) {
+    if (zeroEvents !== null && main.zero_events > zeroEvents && active && main.value === 0 && main.age_s <= 0.5 && byId("zeroSound").checked && audio?.state === "running") {
+      const oscillator = audio.createOscillator(), gain = audio.createGain();oscillator.frequency.value = 880;gain.gain.value = 0.08;
+      oscillator.connect(gain);gain.connect(audio.destination);oscillator.start();oscillator.stop(audio.currentTime + 0.12);oscillator.onended = () => {oscillator.disconnect();gain.disconnect();};
+    }
+    zeroEvents = main.zero_events;
+  }
+  drawCandidate(channels);
+  byId("candidateDetail").textContent = !state?.candidate ? "实时解析尚未连接，请重启上位机服务。" : `快速拨一下后停手，观察字段归零时电机是否还在转。提示略有延迟，字段含义和单位尚未确认。${state.candidate.segment ? " 检测到数据断点，曲线与归零计时已重新开始。" : ""}`;
+}
 
 async function api(path, body) {
   const options = body === undefined ? {} : {method:"POST", headers:{"Content-Type":"application/json", "X-FM03-Token":token}, body:JSON.stringify(body)};
@@ -73,6 +124,7 @@ function render(state) {
   else if (state.phase === "stopped") notice("本次抓包已结束，串口已释放。可以下载日志，或切换场景开始下一次抓包。");
   else notice("选择串口后点击开始。未接 CAN 总线时，可以先检查固件状态。");
   renderFrames(state.latest);renderIds(state.ids, state.frames);
+  renderCandidate(state, state.phase === "capturing");
   byId("saveTitle").textContent = state.raw_file ? active ? "原始日志正在写入" : "本次日志" : "原始日志自动保存";
   byId("savePath").textContent = state.raw_file ? `${state.saved_directory}\\${state.raw_file}` : state.saved_directory;
   download("downloadLog", state.raw_file, !active);download("downloadSummary", state.summary_file, !active);
@@ -100,11 +152,16 @@ byId("refresh").addEventListener("click", () => refreshPorts().catch((error) => 
 byId("port").addEventListener("change", () => latestState && render(latestState));
 byId("start").addEventListener("click", () => action("/api/start", {port:byId("port").value, label:byId("label").value}));
 byId("stop").addEventListener("click", () => action("/api/stop", {}));
+byId("zeroSound").addEventListener("change", async () => {
+  if (!byId("zeroSound").checked) return;
+  try {audio ||= new AudioContext();await audio.resume();}
+  catch (_) {byId("zeroSound").checked = false;notice("浏览器未能启用提示音，仍可观察归零文字。","warning");}
+});
 
 async function poll() {
   try {if (!busy) render(await api("/api/state"));}
-  catch (error) {byId("phaseText").textContent = "上位机服务未连接";byId("phase").className = "badge error";byId("start").disabled = true;byId("stop").disabled = true;token = "";notice("无法连接本机上位机服务，请重新运行「启动上位机.cmd」。", "error");}
-  timer = setTimeout(poll, 500);
+  catch (error) {byId("phaseText").textContent = "上位机服务未连接";byId("phase").className = "badge error";byId("start").disabled = true;byId("stop").disabled = true;token = "";renderCandidate(null,false);notice("无法连接本机上位机服务，请重新运行「启动上位机.cmd」。", "error");}
+  timer = setTimeout(poll, latestState?.phase === "capturing" ? 250 : 500);
 }
 async function init() {await poll();try {await refreshPorts();}catch(error){notice(error.message,"error");}}
 init();

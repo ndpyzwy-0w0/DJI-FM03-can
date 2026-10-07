@@ -11,6 +11,8 @@ from urllib.request import Request, urlopen
 
 import serial
 from gui_server import CaptureSession, Handler, ThreadingHTTPServer
+from analyze_protocol import crc
+from analyze_direction import extract
 
 
 RAW = (b"# STATUS t_us=100 bitrate=1000000 rx=5 logger_dropped=2 rx_missed=0 rx_overrun=0 bus_errors=1\n"
@@ -55,6 +57,14 @@ def wait_for(predicate):
             return
         time.sleep(0.01)
     raise AssertionError("capture did not reach expected state")
+
+
+def candidate_packet(value, receiver=0xBF):
+    packet = bytearray.fromhex("55 13 04 03 E5 BF C2 97 00 04 69 0F 04 08 19 00 00")
+    packet[5] = receiver
+    packet[15:17] = value.to_bytes(2, "little", signed=True)
+    packet.extend(crc(packet, 0x3692, 0x8408).to_bytes(2, "little"))
+    return bytes(packet)
 
 
 class GuiTests(unittest.TestCase):
@@ -132,6 +142,66 @@ class GuiTests(unittest.TestCase):
         for port, label in (("missing", "idle"), ("COM_TEST", "../oops"), ("COM_TEST", None)):
             with self.assertRaises(ValueError):
                 session.start(port, label)
+
+    def test_candidate_crc_fragmentation_zero_and_timeout(self):
+        session = self.session()
+        sequence = 0
+        def feed(packet, identifier=0x503):
+            nonlocal sequence
+            for offset in range(0, len(packet), 8):
+                sequence += 1
+                data = packet[offset:offset+8]
+                line = f"{sequence*1000},{sequence},{identifier:08X},0,0,{len(data)},{data.hex()}\n".encode()
+                session._consume(line[:11]);session._consume(line[11:])
+        feed(candidate_packet(0))
+        self.assertEqual(session.snapshot()["candidate"]["channels"][0]["zero_events"], 0)
+        feed(candidate_packet(-2048))
+        bad = bytearray(candidate_packet(0));bad[-1] ^= 1
+        feed(bad)
+        self.assertEqual(session.snapshot()["candidate"]["channels"][0]["value"], -2048)
+        feed(candidate_packet(0))
+        channel = session.snapshot()["candidate"]["channels"][0]
+        self.assertEqual(channel["zero_events"], 1)
+        self.assertEqual(channel["last_zero_s"], 0.009)
+        feed(candidate_packet(256, 0x52), 0x201)
+        self.assertEqual(session.snapshot()["candidate"]["channels"][1]["value"], 256)
+        with patch("gui_server.time.monotonic", return_value=time.monotonic()+1):
+            self.assertGreater(session.snapshot()["candidate"]["channels"][0]["age_s"], 0.5)
+
+    def test_candidate_breaks_at_gaps_and_drop_changes(self):
+        for boundary in (b"101,9,00000123,0,0,1,AA\n",
+                         b"# STATUS t_us=200 logger_dropped=1 rx_missed=0 rx_overrun=0\n",
+                         b"# STATUS t_us=1 logger_dropped=0 rx_missed=0 rx_overrun=0\n"):
+            with self.subTest(boundary=boundary):
+                session = self.session()
+                session._consume(b"# STATUS t_us=100 logger_dropped=0 rx_missed=0 rx_overrun=0\n")
+                packet = candidate_packet(-100)
+                session._consume(f"100,1,00000503,0,0,8,{packet[:8].hex()}\n".encode())
+                session._consume(boundary)
+                next_sequence = 10 if boundary.startswith(b"101") else 2
+                for offset in (8,16):
+                    data = packet[offset:offset+8]
+                    session._consume(f"{300+offset},{next_sequence},00000503,0,0,{len(data)},{data.hex()}\n".encode())
+                    next_sequence += 1
+                state = session.snapshot()["candidate"]
+                self.assertIsNone(state["channels"][0]["value"])
+                self.assertGreater(state["segment"],0)
+
+    def test_candidate_live_matches_saved_capture(self):
+        path = Path(__file__).resolve().parents[1] / "captures/20261007_201035_353525_capture.log"
+        session = self.session()
+        raw = path.read_bytes()
+        for offset in range(0,len(raw),997):
+            session._consume(raw[offset:offset+997])
+        stats, rows, _ = extract(path,"replay_test")
+        state = session.snapshot()["candidate"]
+        self.assertEqual(state["segment"],0)
+        for channel in state["channels"]:
+            expected = [r for r in rows if r["can_id"] == channel["can_id"]]
+            self.assertEqual(channel["packets"],len(expected))
+            self.assertEqual(list(channel["history"]),[[r["relative_s"],r["value_int16_le"]] for r in expected[-1000:]])
+            self.assertEqual(channel["zero_events"],1)
+        self.assertEqual(state["channels"][0]["last_zero_s"],5.801395)
 
     def test_http_controls_and_download_guard(self):
         session = self.session()

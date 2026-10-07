@@ -1,0 +1,793 @@
+{
+  "capture": {
+    "label": "live_zero_motor_stopped_observation",
+    "raw_log": "J:\\New soft project\\FM03\\captures\\20261007_203655_610426_capture.log",
+    "sha256": "241f74826eb40b27c0767adaae6ef56c1ad1cc7bded03db0ac599638886c2f3d",
+    "elapsed_s": 19.84,
+    "can_frames": 34311,
+    "packets_0x503": 1975,
+    "packets_0x201": 1975,
+    "minimum": -2048,
+    "maximum": 8,
+    "negative_packets": 263,
+    "positive_packets": 1,
+    "zero_packets": 1711,
+    "first_value": 0,
+    "last_value": 0,
+    "nonzero_first_s": 0.946639,
+    "nonzero_last_s": 16.848071,
+    "two_id_payload_sequences_equal": true,
+    "sequence_gaps": 0,
+    "sequence_resets": 0,
+    "trailing_bytes": 1,
+    "status_first": {
+      "t_us": 6134651975,
+      "bitrate": 1000000,
+      "rx": 3715361,
+      "logger_dropped": 330779,
+      "rx_missed": 0,
+      "rx_overrun": 0,
+      "bus_errors": 3571842,
+      "pending": 0,
+      "logger_pending": 10
+    },
+    "status_last": {
+      "t_us": 6153683561,
+      "bitrate": 1000000,
+      "rx": 3748299,
+      "logger_dropped": 330779,
+      "rx_missed": 0,
+      "rx_overrun": 0,
+      "bus_errors": 3571842,
+      "pending": 0,
+      "logger_pending": 8
+    },
+    "counter_deltas": {
+      "logger_dropped": 0,
+      "rx_missed": 0,
+      "rx_overrun": 0,
+      "bus_errors": 0
+    },
+    "capture_error": ""
+  },
+  "timing_by_id": {
+    "0x503": {
+      "runs": [
+        {
+          "kind": "zero",
+          "segment": 0,
+          "first_s": 0.006508,
+          "last_s": 0.936624,
+          "packets": 94
+        },
+        {
+          "kind": "nonzero",
+          "segment": 0,
+          "first_s": 0.946639,
+          "last_s": 0.946639,
+          "packets": 1
+        },
+        {
+          "kind": "zero",
+          "segment": 0,
+          "first_s": 0.9567,
+          "last_s": 3.736817,
+          "packets": 279
+        },
+        {
+          "kind": "nonzero",
+          "segment": 0,
+          "first_s": 3.746811,
+          "last_s": 4.646952,
+          "packets": 89
+        },
+        {
+          "kind": "zero",
+          "segment": 0,
+          "first_s": 4.656997,
+          "last_s": 7.39715,
+          "packets": 275
+        },
+        {
+          "kind": "nonzero",
+          "segment": 0,
+          "first_s": 7.407128,
+          "last_s": 8.017243,
+          "packets": 60
+        },
+        {
+          "kind": "zero",
+          "segment": 0,
+          "first_s": 8.027208,
+          "last_s": 9.297366,
+          "packets": 128
+        },
+        {
+          "kind": "nonzero",
+          "segment": 0,
+          "first_s": 9.307383,
+          "last_s": 9.487399,
+          "packets": 19
+        },
+        {
+          "kind": "zero",
+          "segment": 0,
+          "first_s": 9.497416,
+          "last_s": 10.137501,
+          "packets": 65
+        },
+        {
+          "kind": "nonzero",
+          "segment": 0,
+          "first_s": 10.1475,
+          "last_s": 10.277506,
+          "packets": 14
+        },
+        {
+          "kind": "zero",
+          "segment": 0,
+          "first_s": 10.287522,
+          "last_s": 10.947568,
+          "packets": 67
+        },
+        {
+          "kind": "nonzero",
+          "segment": 0,
+          "first_s": 10.957587,
+          "last_s": 11.107591,
+          "packets": 16
+        },
+        {
+          "kind": "zero",
+          "segment": 0,
+          "first_s": 11.117596,
+          "last_s": 11.77757,
+          "packets": 67
+        },
+        {
+          "kind": "nonzero",
+          "segment": 0,
+          "first_s": 11.787548,
+          "last_s": 12.007568,
+          "packets": 23
+        },
+        {
+          "kind": "zero",
+          "segment": 0,
+          "first_s": 12.017588,
+          "last_s": 12.697646,
+          "packets": 69
+        },
+        {
+          "kind": "nonzero",
+          "segment": 0,
+          "first_s": 12.707673,
+          "last_s": 12.877676,
+          "packets": 16
+        },
+        {
+          "kind": "zero",
+          "segment": 0,
+          "first_s": 12.887664,
+          "last_s": 16.568019,
+          "packets": 369
+        },
+        {
+          "kind": "nonzero",
+          "segment": 0,
+          "first_s": 16.578019,
+          "last_s": 16.848071,
+          "packets": 26
+        },
+        {
+          "kind": "zero",
+          "segment": 0,
+          "first_s": 16.858071,
+          "last_s": 19.828432,
+          "packets": 298
+        }
+      ],
+      "final_zero_first_s": 16.858071,
+      "final_zero_observed_s": 2.970361,
+      "median_interval_s": 0.010001,
+      "maximum_interval_s": 0.031962
+    },
+    "0x201": {
+      "runs": [
+        {
+          "kind": "zero",
+          "segment": 0,
+          "first_s": 0.006823,
+          "last_s": 0.936939,
+          "packets": 94
+        },
+        {
+          "kind": "nonzero",
+          "segment": 0,
+          "first_s": 0.946955,
+          "last_s": 0.946955,
+          "packets": 1
+        },
+        {
+          "kind": "zero",
+          "segment": 0,
+          "first_s": 0.957337,
+          "last_s": 3.737134,
+          "packets": 279
+        },
+        {
+          "kind": "nonzero",
+          "segment": 0,
+          "first_s": 3.747134,
+          "last_s": 4.647275,
+          "packets": 89
+        },
+        {
+          "kind": "zero",
+          "segment": 0,
+          "first_s": 4.657521,
+          "last_s": 7.397467,
+          "packets": 275
+        },
+        {
+          "kind": "nonzero",
+          "segment": 0,
+          "first_s": 7.407448,
+          "last_s": 8.017561,
+          "packets": 60
+        },
+        {
+          "kind": "zero",
+          "segment": 0,
+          "first_s": 8.027527,
+          "last_s": 9.297683,
+          "packets": 128
+        },
+        {
+          "kind": "nonzero",
+          "segment": 0,
+          "first_s": 9.307703,
+          "last_s": 9.487723,
+          "packets": 19
+        },
+        {
+          "kind": "zero",
+          "segment": 0,
+          "first_s": 9.49774,
+          "last_s": 10.137824,
+          "packets": 65
+        },
+        {
+          "kind": "nonzero",
+          "segment": 0,
+          "first_s": 10.147816,
+          "last_s": 10.277819,
+          "packets": 14
+        },
+        {
+          "kind": "zero",
+          "segment": 0,
+          "first_s": 10.28784,
+          "last_s": 10.948457,
+          "packets": 67
+        },
+        {
+          "kind": "nonzero",
+          "segment": 0,
+          "first_s": 10.957907,
+          "last_s": 11.10791,
+          "packets": 16
+        },
+        {
+          "kind": "zero",
+          "segment": 0,
+          "first_s": 11.11792,
+          "last_s": 11.777888,
+          "packets": 67
+        },
+        {
+          "kind": "nonzero",
+          "segment": 0,
+          "first_s": 11.787866,
+          "last_s": 12.007889,
+          "packets": 23
+        },
+        {
+          "kind": "zero",
+          "segment": 0,
+          "first_s": 12.017912,
+          "last_s": 12.697964,
+          "packets": 69
+        },
+        {
+          "kind": "nonzero",
+          "segment": 0,
+          "first_s": 12.708,
+          "last_s": 12.877991,
+          "packets": 16
+        },
+        {
+          "kind": "zero",
+          "segment": 0,
+          "first_s": 12.887982,
+          "last_s": 16.568338,
+          "packets": 369
+        },
+        {
+          "kind": "nonzero",
+          "segment": 0,
+          "first_s": 16.578336,
+          "last_s": 16.848398,
+          "packets": 26
+        },
+        {
+          "kind": "zero",
+          "segment": 0,
+          "first_s": 16.858387,
+          "last_s": 19.828746,
+          "packets": 298
+        }
+      ],
+      "final_zero_first_s": 16.858387,
+      "final_zero_observed_s": 2.970359,
+      "median_interval_s": 0.010001,
+      "maximum_interval_s": 0.031964
+    }
+  },
+  "crc_valid_packets": 9534,
+  "groups_after_field_zero": {
+    "S:0x106 04>C9 flags=00 cmd=04:10 payload_len=3": {
+      "packets": 6,
+      "unique_payloads": 1,
+      "last_s": 19.469147,
+      "changed_payload_offsets": []
+    },
+    "S:0x106 04>F1 flags=00 cmd=04:05 payload_len=45": {
+      "packets": 149,
+      "unique_payloads": 149,
+      "last_s": 19.821033,
+      "changed_payload_offsets": [
+        0,
+        2,
+        4,
+        8,
+        12,
+        13,
+        14,
+        16,
+        20,
+        22,
+        24,
+        25,
+        26,
+        28,
+        29,
+        30,
+        32,
+        33,
+        34,
+        36,
+        37,
+        38
+      ]
+    },
+    "S:0x201 DF>52 flags=00 cmd=04:2F payload_len=13": {
+      "packets": 29,
+      "unique_payloads": 3,
+      "last_s": 19.755451,
+      "changed_payload_offsets": [
+        2
+      ]
+    },
+    "S:0x201 DF>52 flags=00 cmd=04:2F payload_len=15": {
+      "packets": 29,
+      "unique_payloads": 1,
+      "last_s": 19.752449,
+      "changed_payload_offsets": []
+    },
+    "S:0x201 DF>52 flags=00 cmd=04:2F payload_len=8": {
+      "packets": 29,
+      "unique_payloads": 1,
+      "last_s": 19.754446,
+      "changed_payload_offsets": []
+    },
+    "S:0x201 E5>52 flags=00 cmd=04:69 payload_len=6": {
+      "packets": 298,
+      "unique_payloads": 1,
+      "last_s": 19.828746,
+      "changed_payload_offsets": []
+    },
+    "S:0x232 BF>32 flags=00 cmd=04:2F payload_len=15": {
+      "packets": 29,
+      "unique_payloads": 1,
+      "last_s": 19.750757,
+      "changed_payload_offsets": []
+    },
+    "S:0x232 BF>32 flags=00 cmd=04:2F payload_len=8": {
+      "packets": 29,
+      "unique_payloads": 1,
+      "last_s": 19.752564,
+      "changed_payload_offsets": []
+    },
+    "S:0x232 BF>32 flags=20 cmd=24:20 payload_len=3": {
+      "packets": 58,
+      "unique_payloads": 2,
+      "last_s": 19.749614,
+      "changed_payload_offsets": [
+        0
+      ]
+    },
+    "S:0x232 BF>52 flags=00 cmd=04:2F payload_len=13": {
+      "packets": 29,
+      "unique_payloads": 3,
+      "last_s": 19.755089,
+      "changed_payload_offsets": [
+        2
+      ]
+    },
+    "S:0x232 BF>52 flags=00 cmd=04:2F payload_len=15": {
+      "packets": 29,
+      "unique_payloads": 1,
+      "last_s": 19.75166,
+      "changed_payload_offsets": []
+    },
+    "S:0x232 BF>52 flags=00 cmd=04:2F payload_len=8": {
+      "packets": 29,
+      "unique_payloads": 1,
+      "last_s": 19.753562,
+      "changed_payload_offsets": []
+    },
+    "S:0x503 E5>BF flags=00 cmd=04:69 payload_len=6": {
+      "packets": 298,
+      "unique_payloads": 1,
+      "last_s": 19.828432,
+      "changed_payload_offsets": []
+    },
+    "S:0x504 BF>02 flags=00 cmd=04:2F payload_len=15": {
+      "packets": 29,
+      "unique_payloads": 1,
+      "last_s": 19.750306,
+      "changed_payload_offsets": []
+    },
+    "S:0x504 BF>04 flags=00 cmd=00:0E payload_len=0": {
+      "packets": 29,
+      "unique_payloads": 1,
+      "last_s": 19.757047,
+      "changed_payload_offsets": []
+    },
+    "S:0x504 BF>52 flags=00 cmd=04:2F payload_len=13": {
+      "packets": 29,
+      "unique_payloads": 3,
+      "last_s": 19.75433,
+      "changed_payload_offsets": [
+        2
+      ]
+    },
+    "S:0x504 BF>52 flags=00 cmd=04:2F payload_len=15": {
+      "packets": 29,
+      "unique_payloads": 1,
+      "last_s": 19.751207,
+      "changed_payload_offsets": []
+    },
+    "S:0x504 BF>52 flags=00 cmd=04:2F payload_len=8": {
+      "packets": 29,
+      "unique_payloads": 1,
+      "last_s": 19.753228,
+      "changed_payload_offsets": []
+    },
+    "S:0x504 BF>E5 flags=00 cmd=00:0E payload_len=0": {
+      "packets": 29,
+      "unique_payloads": 1,
+      "last_s": 19.757261,
+      "changed_payload_offsets": []
+    },
+    "S:0x504 BF>E5 flags=00 cmd=04:2F payload_len=13": {
+      "packets": 29,
+      "unique_payloads": 3,
+      "last_s": 19.753898,
+      "changed_payload_offsets": [
+        2
+      ]
+    },
+    "S:0x504 BF>E5 flags=00 cmd=04:2F payload_len=15": {
+      "packets": 29,
+      "unique_payloads": 1,
+      "last_s": 19.749848,
+      "changed_payload_offsets": []
+    },
+    "S:0x504 BF>E5 flags=00 cmd=04:2F payload_len=2": {
+      "packets": 29,
+      "unique_payloads": 1,
+      "last_s": 19.756259,
+      "changed_payload_offsets": []
+    },
+    "S:0x504 BF>E5 flags=00 cmd=04:2F payload_len=3": {
+      "packets": 29,
+      "unique_payloads": 1,
+      "last_s": 19.756809,
+      "changed_payload_offsets": []
+    },
+    "S:0x504 BF>E5 flags=00 cmd=04:2F payload_len=6": {
+      "packets": 29,
+      "unique_payloads": 1,
+      "last_s": 19.755753,
+      "changed_payload_offsets": []
+    },
+    "S:0x504 BF>E5 flags=00 cmd=04:2F payload_len=8": {
+      "packets": 29,
+      "unique_payloads": 1,
+      "last_s": 19.752111,
+      "changed_payload_offsets": []
+    },
+    "S:0x504 BF>E5 flags=80 cmd=04:2F payload_len=7": {
+      "packets": 29,
+      "unique_payloads": 1,
+      "last_s": 19.756486,
+      "changed_payload_offsets": []
+    }
+  },
+  "physical_observation": {
+    "user_confirmation": "好了 最新日志是 观察为0时不转了",
+    "meaning": "User observed the motor was no longer turning when the displayed candidate field was zero.",
+    "scope": "Latest 20:36:55 capture only; no independent physical timestamps and no confirmation for each of the nine field transitions.",
+    "direction": null,
+    "dial_stop_s": null,
+    "motor_stop_s": null,
+    "motor_state_when_displayed_zero": "stopped"
+  },
+  "limitations": [
+    "Relative times begin at first captured CAN frame, not the GUI start click.",
+    "Packet timestamps belong to the first constituent CAN frame, at driver dequeue.",
+    "Final zero identifies a field, not independently timed physical motion.",
+    "Other changing packets can also change at idle; they do not establish motor feedback.",
+    "Counters cover first-to-last recorded status only; partial capture boundaries remain."
+  ],
+  "interpretation": "Displayed zero was observed while the motor was stopped. This does not prove simultaneous stops or that the field equals actual motor speed; UI/UART delay and input-rate/increment alternatives remain.",
+  "generated_at": "2026-10-07T20:39:50.621809+08:00",
+  "adjacent_captures": [
+    {
+      "raw_log": "captures\\20261007_203342_162180_capture.log",
+      "sha256": "735be331dfbca4231431947f899450e0bbf0da034a38a2a0dc5bd9a0731eb04a",
+      "elapsed_s": 3.69,
+      "frames": 0,
+      "sequence_gaps": 0,
+      "sequence_resets": 0,
+      "status_first": {
+        "t_us": 5941195804,
+        "bitrate": 1000000,
+        "rx": 3223696,
+        "logger_dropped": 37357,
+        "rx_missed": 0,
+        "rx_overrun": 0,
+        "bus_errors": 207,
+        "pending": 0,
+        "logger_pending": 0
+      },
+      "status_last": {
+        "t_us": 5944204784,
+        "bitrate": 1000000,
+        "rx": 3223696,
+        "logger_dropped": 37357,
+        "rx_missed": 0,
+        "rx_overrun": 0,
+        "bus_errors": 207,
+        "pending": 0,
+        "logger_pending": 0
+      },
+      "counter_deltas": {
+        "logger_dropped": 0,
+        "rx_missed": 0,
+        "rx_overrun": 0,
+        "bus_errors": 0
+      },
+      "trailing_bytes": 0,
+      "non_frame_lines": 0,
+      "capture_error": "",
+      "phase": "stopped",
+      "physical_action": "User confirmation applies to latest capture only; other actions and hardware changes unknown.",
+      "crc_valid_packets": 0
+    },
+    {
+      "raw_log": "captures\\20261007_203350_291932_capture.log",
+      "sha256": "7f9fe17e47a87acd7ff93179492572ad6ea465f01c9bdbb014ce4344d976e771",
+      "elapsed_s": 1.67,
+      "frames": 0,
+      "sequence_gaps": 0,
+      "sequence_resets": 0,
+      "status_first": {
+        "t_us": 5949324802,
+        "bitrate": 1000000,
+        "rx": 3223696,
+        "logger_dropped": 37357,
+        "rx_missed": 0,
+        "rx_overrun": 0,
+        "bus_errors": 207,
+        "pending": 0,
+        "logger_pending": 0
+      },
+      "status_last": {
+        "t_us": 5950327784,
+        "bitrate": 1000000,
+        "rx": 3223696,
+        "logger_dropped": 37357,
+        "rx_missed": 0,
+        "rx_overrun": 0,
+        "bus_errors": 207,
+        "pending": 0,
+        "logger_pending": 0
+      },
+      "counter_deltas": {
+        "logger_dropped": 0,
+        "rx_missed": 0,
+        "rx_overrun": 0,
+        "bus_errors": 0
+      },
+      "trailing_bytes": 0,
+      "non_frame_lines": 0,
+      "capture_error": "",
+      "phase": "stopped",
+      "physical_action": "User confirmation applies to latest capture only; other actions and hardware changes unknown.",
+      "crc_valid_packets": 0
+    },
+    {
+      "raw_log": "captures\\20261007_203420_904569_capture.log",
+      "sha256": "bf3abef3ea4fb1026471b19679048e5acdf6954b0166b9999d62dcf6677d493d",
+      "elapsed_s": 11.53,
+      "frames": 4,
+      "sequence_gaps": 0,
+      "sequence_resets": 0,
+      "status_first": {
+        "t_us": 5979938817,
+        "bitrate": 1000000,
+        "rx": 3228917,
+        "logger_dropped": 37399,
+        "rx_missed": 0,
+        "rx_overrun": 0,
+        "bus_errors": 806004,
+        "pending": 0,
+        "logger_pending": 0
+      },
+      "status_last": {
+        "t_us": 5990966784,
+        "bitrate": 1000000,
+        "rx": 3228921,
+        "logger_dropped": 37399,
+        "rx_missed": 0,
+        "rx_overrun": 0,
+        "bus_errors": 1560968,
+        "pending": 0,
+        "logger_pending": 0
+      },
+      "counter_deltas": {
+        "logger_dropped": 0,
+        "rx_missed": 0,
+        "rx_overrun": 0,
+        "bus_errors": 754964
+      },
+      "trailing_bytes": 0,
+      "non_frame_lines": 0,
+      "capture_error": "",
+      "phase": "stopped",
+      "physical_action": "User confirmation applies to latest capture only; other actions and hardware changes unknown.",
+      "crc_valid_packets": 0
+    },
+    {
+      "raw_log": "captures\\20261007_203450_309717_capture.log",
+      "sha256": "2ba9cc2a9af68213b4820de2b2abd6a5aa34506befbfeb627663c572af3b0290",
+      "elapsed_s": 28.05,
+      "frames": 18626,
+      "sequence_gaps": 53299,
+      "sequence_resets": 0,
+      "status_first": {
+        "t_us": 6009345803,
+        "bitrate": 1000000,
+        "rx": 3228929,
+        "logger_dropped": 37399,
+        "rx_missed": 0,
+        "rx_overrun": 0,
+        "bus_errors": 2724155,
+        "pending": 0,
+        "logger_pending": 0
+      },
+      "status_last": {
+        "t_us": 6036404051,
+        "bitrate": 1000000,
+        "rx": 3297752,
+        "logger_dropped": 88317,
+        "rx_missed": 0,
+        "rx_overrun": 0,
+        "bus_errors": 3571685,
+        "pending": 0,
+        "logger_pending": 1024
+      },
+      "counter_deltas": {
+        "logger_dropped": 50918,
+        "rx_missed": 0,
+        "rx_overrun": 0,
+        "bus_errors": 847530
+      },
+      "trailing_bytes": 48,
+      "non_frame_lines": 0,
+      "capture_error": "",
+      "phase": "stopped",
+      "physical_action": "User confirmation applies to latest capture only; other actions and hardware changes unknown.",
+      "crc_valid_packets": 266
+    },
+    {
+      "raw_log": "captures\\20261007_203655_610426_capture.log",
+      "sha256": "241f74826eb40b27c0767adaae6ef56c1ad1cc7bded03db0ac599638886c2f3d",
+      "elapsed_s": 19.84,
+      "frames": 34311,
+      "sequence_gaps": 0,
+      "sequence_resets": 0,
+      "status_first": {
+        "t_us": 6134651975,
+        "bitrate": 1000000,
+        "rx": 3715361,
+        "logger_dropped": 330779,
+        "rx_missed": 0,
+        "rx_overrun": 0,
+        "bus_errors": 3571842,
+        "pending": 0,
+        "logger_pending": 10
+      },
+      "status_last": {
+        "t_us": 6153683561,
+        "bitrate": 1000000,
+        "rx": 3748299,
+        "logger_dropped": 330779,
+        "rx_missed": 0,
+        "rx_overrun": 0,
+        "bus_errors": 3571842,
+        "pending": 0,
+        "logger_pending": 8
+      },
+      "counter_deltas": {
+        "logger_dropped": 0,
+        "rx_missed": 0,
+        "rx_overrun": 0,
+        "bus_errors": 0
+      },
+      "trailing_bytes": 1,
+      "non_frame_lines": 1,
+      "capture_error": "",
+      "phase": "stopped",
+      "physical_action": "User confirmation applies to latest capture only; other actions and hardware changes unknown.",
+      "crc_valid_packets": 9534
+    }
+  ],
+  "live_summary_matches_offline": [
+    {
+      "can_id": "0x503",
+      "packets": 1975,
+      "zero_transitions_s": [
+        0.9567,
+        4.656997,
+        8.027208,
+        9.497416,
+        10.287522,
+        11.117596,
+        12.017588,
+        12.887664,
+        16.858071
+      ],
+      "history_values_and_timestamps_equal": true
+    },
+    {
+      "can_id": "0x201",
+      "packets": 1975,
+      "zero_transitions_s": [
+        0.957337,
+        4.657521,
+        8.027527,
+        9.49774,
+        10.28784,
+        11.11792,
+        12.017912,
+        12.887982,
+        16.858387
+      ],
+      "history_values_and_timestamps_equal": true
+    }
+  ]
+}

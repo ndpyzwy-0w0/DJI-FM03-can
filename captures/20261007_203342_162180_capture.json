@@ -1,0 +1,80 @@
+{
+  "product": "fm03_capture",
+  "phase": "stopped",
+  "port": "COM17",
+  "label": "capture",
+  "started_at": "2026-10-07T20:33:42.162180+08:00",
+  "elapsed": 3.69,
+  "frames": 0,
+  "fps": 0,
+  "bytes_saved": 560,
+  "unique_ids": 0,
+  "sequence_gaps": 0,
+  "sequence_resets": 0,
+  "non_frame_lines": 0,
+  "trailing_bytes": 0,
+  "status_first": {
+    "t_us": 5941195804,
+    "bitrate": 1000000,
+    "rx": 3223696,
+    "logger_dropped": 37357,
+    "rx_missed": 0,
+    "rx_overrun": 0,
+    "bus_errors": 207,
+    "pending": 0,
+    "logger_pending": 0
+  },
+  "status": {
+    "t_us": 5944204784,
+    "bitrate": 1000000,
+    "rx": 3223696,
+    "logger_dropped": 37357,
+    "rx_missed": 0,
+    "rx_overrun": 0,
+    "bus_errors": 207,
+    "pending": 0,
+    "logger_pending": 0
+  },
+  "counter_deltas": {
+    "logger_dropped": 0,
+    "rx_missed": 0,
+    "rx_overrun": 0,
+    "bus_errors": 0
+  },
+  "status_age": 0.7,
+  "serial_age": 0.7,
+  "candidate": {
+    "segment": 0,
+    "channels": [
+      {
+        "can_id": "0x503",
+        "value": null,
+        "relative_s": null,
+        "packets": 0,
+        "zero_events": 0,
+        "last_zero_s": null,
+        "age_s": null,
+        "history": []
+      },
+      {
+        "can_id": "0x201",
+        "value": null,
+        "relative_s": null,
+        "packets": 0,
+        "zero_events": 0,
+        "last_zero_s": null,
+        "age_s": null,
+        "history": []
+      }
+    ]
+  },
+  "latest": [],
+  "ids": [],
+  "messages": [],
+  "error": "",
+  "raw_file": "20261007_203342_162180_capture.log",
+  "summary_file": null,
+  "saved_directory": "J:\\New soft project\\FM03\\captures",
+  "serial_baud": 921600,
+  "stopped_at": "2026-10-07T20:33:45.848649+08:00"
+}
