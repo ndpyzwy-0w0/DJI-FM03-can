@@ -29,11 +29,14 @@
 #include "driver/twai.h"
 #include "esp_timer.h"
 
-// The DevKitC-1 already pulls BOOT up, so this stays off by default. Enable it
-// only after measuring the idle level and confirming the button pulls the pin
-// LOW: a button wired to 3.3 V instead of GND would otherwise read as
-// permanently pressed and could silently switch the node into transmit mode.
-// #define BUTTON_USES_INTERNAL_PULLUP 1
+// The DevKitC-1 has an external pull-up on BOOT, but a breadboard setup may leave
+// GPIO0 floating, which reads LOW and would look like a permanent key press. The
+// internal pull-up is therefore enabled by default so a floating pin reads HIGH.
+// Disable with -DBUTTON_USES_INTERNAL_PULLUP=0 only if the button is wired in a
+// way that conflicts with a pull-up.
+#ifndef BUTTON_USES_INTERNAL_PULLUP
+#define BUTTON_USES_INTERNAL_PULLUP 1
+#endif
 
 // Board revisions moved the addressable LED: ESP32-S3-DevKitC-1 v1.0 uses GPIO48
 // while v1.1 uses GPIO38. This core variant (esp32s3/pins_arduino.h) sets
@@ -68,6 +71,12 @@ static std::atomic<uint8_t> can_mode{MODE_LISTEN};
 // Cleared around twai_driver_uninstall()/install() so the receive task never
 // calls twai_receive() against a driver that is not installed.
 static std::atomic<bool> driver_installed{false};
+
+// Set at boot when the button pin does not rest at the expected level. A pin that
+// already reads "pressed" before any interaction cannot be trusted to distinguish
+// press from idle, so mode switching is disabled entirely and the node stays in
+// listen-only rather than risk enabling transmission by accident.
+static bool button_usable = true;
 
 static uint32_t mode_switches = 0;
 static uint32_t frames_in_mode = 0;
@@ -158,6 +167,10 @@ static void service_button() {
     static bool was_down = false;
     static bool long_press_fired = false;
     static unsigned long pressed_at = 0;
+    // Fail closed: an untrusted button can never enable transmission. The mode is
+    // deliberately kept at listen-only and only an explicit fix plus reflash
+    // changes that.
+    if (!button_usable) return;
     bool down = button_down();
     if (down && !was_down) {
         pressed_at = millis();
@@ -183,6 +196,11 @@ static void service_led() {
         changed_at = now;
     }
 #if LED_ENABLED
+    if (!button_usable) {
+        // Solid dim red: mode switching is disabled, the node cannot transmit.
+        neopixelWrite(LED_RGB_GPIO, 32, 0, 0);
+        return;
+    }
     if (mode == MODE_TRANSMIT) {
         // Fast red pulse, solid for the first 1.5 s after switching so the change
         // is unmistakable even at a glance.
@@ -213,14 +231,15 @@ static void service_serial_commands() {
         }
         Serial.printf("# STATUS t_us=%llu bitrate=%u mode=%s rx=%u logger_dropped=%u "
                       "rx_missed=%u rx_overrun=%u bus_errors=%u pending=%u "
-                      "logger_pending=%u mode_switches=%u frames_in_mode=%u\n",
+                      "logger_pending=%u mode_switches=%u frames_in_mode=%u "
+                      "button=%s\n",
                       (unsigned long long)esp_timer_get_time(), CAN_BITRATE,
                       can_mode.load() == MODE_TRANSMIT ? "transmit" : "listen",
                       received.load(), logger_dropped.load(),
                       status.rx_missed_count, status.rx_overrun_count,
                       status.bus_error_count, status.msgs_to_rx,
                       (unsigned)uxQueueMessagesWaiting(log_queue), mode_switches,
-                      frames_in_mode);
+                      frames_in_mode, button_usable ? "ok" : "fault_switching_disabled");
     }
 }
 
@@ -236,7 +255,9 @@ void setup() {
     );
     Serial.begin(921600);
     delay(1000);
+    // Evaluate the button only after the pull-up is configured.
     bool idle_pressed = button_down();
+    button_usable = !idle_pressed;
     Serial.printf("# START listen_only bitrate=%u tx_gpio=4 rx_gpio=5 button_gpio=%u "
                   "led_rgb_gpio=%u mode=listen\n",
                   CAN_BITRATE, BUTTON_GPIO, LED_RGB_GPIO);
@@ -244,9 +265,15 @@ void setup() {
     Serial.println("# timestamp=driver_dequeue_us_since_boot; command=s_status");
     Serial.printf("# BUTTON hold_ms=%lu toggles_mode; boot_always=listen_only\n",
                   LONG_PRESS_MS);
-    Serial.printf("# BUTTON idle_level=%s%s\n",
-                  idle_pressed ? "LOW" : "HIGH",
-                  idle_pressed ? " unexpected_check_wiring" : " expected");
+    Serial.printf("# BUTTON idle_level=%s pullup=%u\n", idle_pressed ? "LOW" : "HIGH",
+                  (unsigned)BUTTON_USES_INTERNAL_PULLUP);
+    if (!button_usable) {
+        Serial.println("# ERROR button_idle_low mode_switching_disabled "
+                       "staying=listen_only led=solid_red");
+        Serial.println("# ERROR check_gpio0_wiring; a pin that rests LOW cannot "
+                       "distinguish a press from idle, so transmit mode would be "
+                       "reachable by accident");
+    }
 
     log_queue = xQueueCreate(1024, sizeof(CapturedFrame));
     if (!log_queue) {

@@ -268,3 +268,13 @@
 - 验证：`listen_1m`、`listen_500k` 均编译成功且**无 warning**；`-DLED_RGB_GPIO=38`、`-DLED_RGB_GPIO=-1` 两种覆盖也能编译；`src/main.cpp` 中 `twai_transmit` 检索为空。**未做任何硬件验证**：按钮判读、灯的颜色/可见性、切换对采集连续性的影响、GPIO0 空闲电平都未确认。固件启动会打印 `# BUTTON idle_level=...` 供上电即查。
 - 接线契约写进固件头注释（三条都必需）：监听模块 Rs(脚8) 接 3.3 V 使驱动器永久关断；收发模块 Rs 接地/浮空；同一时刻只有一块模块的 CANH/CANL 上总线。**这条与"不用 Rs"的取舍说明一致：不用 Rs 也能工作，但把监听模块的 Rs 焊高是唯一能保证"插错也发不出去"的免费保险。**
 - 待办/风险：烧录前必须确认未在抓包；`driver_installed` 若卡在 false 会导致抓包静默停止，首次烧录后应先按原流程抓一段确认监听正常，再试长按切换。本轮改动未提交前工作区会显示 `src/main.cpp` 与三份文档修改。
+
+## 2026-10-07 23:35起 北京时间 — 烧录按键版固件，发现并修复"自动进入发送模式"缺陷
+
+- 用户同意后执行首次烧录。前置检查：git干净、COM17在位、8765无监听（上位机未运行，故无采集在跑）、无python进程；`pio run -e listen_1m -t upload --upload-port COM17` 四次 `Hash of data verified` 全部通过。
+- **发现严重缺陷（本 agent 引入）**：首版固件**从未给 GPIO0 配置上拉**，芯片内部上拉默认关闭，该脚浮空被读成 LOW。上电自检因此打印 `idle_level=LOW unexpected_check_wiring`，而按键逻辑把"当前就是按下"当成一次按压起点，**开机 2 秒后自动切到 transmit 模式且无人操作**；随后实测 `mode=transmit mode_switches=1` 持续保持。即设计上要防的"误进可发模式"被自己的实现触发了。所幸当时总线未接入（rx=0）、且**固件仍无任何 `twai_transmit` 调用**，未向总线发出任何帧。
+- 修复（fail-closed 两处）：①`BUTTON_USES_INTERNAL_PULLUP` **默认改为 1**，在 `pinMode` 时配置上拉，浮空脚现在读 HIGH；②新增 `button_usable` 启动自检——若按键脚在启动时即读作按下，则**彻底禁用模式切换**、恒定 Listen Only、LED 常亮暗红、状态行输出 `button=fault_switching_disabled` 并打印 `# ERROR button_idle_low ...`。原则：自检失败时**宁可永远不能发**，也不允许靠一个不可信的按键进入发送模式。
+- 复烧后验证（用**不拉 DTR/RTS**的只读探针，确认不会复位板子）：`2.09s` 起连续 8 条状态全部 `mode=listen mode_switches=0 button=ok`，**不再自动切换**；rx=0（当前未接总线）。探针临时文件写在忽略目录 `.pio/` 并已删除，未进仓库。
+- 附带发现：`pio device monitor` 会触发板子复位（拉 DTR/RTS），因此**不能用它做"不打扰"的观察**；本项目的 `tools/capture.py`、`tools/gui_server.py` 都先把 DTR/RTS 置 false 再开串口，这一点是对的，诊断时也照此办理。
+- 本轮验证：`listen_1m`、`listen_500k` 均编译成功无 warning；烧录成功并复读。**仍未由用户确认**：LED 是否真的显示蓝色慢闪、真实长按 2 秒后能否切到红灯、切换对采集连续性的影响。`src/main.cpp` 有未提交修改。
+- 下一步：请用户目视确认灯色，并在**确认总线接线正确**的前提下试一次长按切换；之后按原流程抓一段确认监听正常。
