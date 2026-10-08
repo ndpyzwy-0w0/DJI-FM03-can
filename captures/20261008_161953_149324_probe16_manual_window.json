@@ -1,0 +1,67 @@
+{
+  "port": "COM17",
+  "serial_baud": 921600,
+  "label": "probe16_manual_window",
+  "started_at": "2026-10-08T16:19:53.149324+08:00",
+  "elapsed_seconds": 375.156,
+  "interrupted": true,
+  "raw_log": "J:\\New soft project\\FM03\\captures\\20261008_161953_149324_probe16_manual_window.log",
+  "frames": 210499,
+  "ids": {
+    "S:00000232": 194898,
+    "S:00000504": 12605,
+    "S:00000503": 2996
+  },
+  "sequence_gaps": 546769,
+  "sequence_resets": 2,
+  "non_frame_lines": 4,
+  "first_t_us": 1106461,
+  "last_t_us": 104846005,
+  "status_first": {
+    "t_us": 1108389,
+    "stage": 4,
+    "rx": 16,
+    "sent": 0,
+    "windows": 0,
+    "logger_dropped": 0,
+    "rx_missed": 0,
+    "bus_errors": 0,
+    "pending": 0
+  },
+  "status_last": {
+    "t_us": 105141317,
+    "stage": 4,
+    "rx": 597066,
+    "sent": 300,
+    "windows": 2,
+    "logger_dropped": 429234,
+    "rx_missed": 0,
+    "bus_errors": 15,
+    "pending": 0
+  },
+  "firmware_errors": [],
+  "sha256": "604941e23210107c728d8e6184615661309b06819bf544e93c8c537d9134e899",
+  "dtr": false,
+  "rts": false,
+  "uart_bytes_written": 1,
+  "uart_hex": "73",
+  "expected_environment": "replay_gate0_probe16_echo",
+  "expected_elf_sha256": "d223469c46eaf3a39336107798a081c016c703d55bf5a1231a90bac20255c46b",
+  "upload_verified": true,
+  "upload_after": "no_reset; user RST reported blue, then BOOT started",
+  "stop_note": "Operator Ctrl-C after both window_done and listen; interruption ended UART recording only",
+  "user_confirmations": {
+    "raw_user_text": "是蓝灯 我按了boot 电机灯变绿了转了一下",
+    "followup": "对 我一共按了两次 转了一下是板子变红后 不是立马 现在板子灯是蓝色 电机灯红色 没转了 当时转了一下就没转了 电机转的时候是绿灯",
+    "scope": "User observation is not synchronized to either of the two captured windows",
+    "bus": "RS3 physically absent and single test transceiver plus motor, inherited prior confirmation"
+  },
+  "unknown": [
+    "operations/cause producing three firmware STARTs; no panic signature",
+    "exact motion onset relative to +16; user says not immediately on board red",
+    "physical direction/angle/speed/units",
+    "per-window independent visual outcome",
+    "steady/flashing LED mode during motion and after stop",
+    "exact power parameters"
+  ]
+}

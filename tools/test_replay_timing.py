@@ -50,7 +50,14 @@ def selected_gate(env, overrides=()):
 
 class ReplayTimingTests(unittest.TestCase):
     def test_motion_probe_boundaries_and_manual_start_guard(self):
+        _, plus_flags = settings("replay_gate0_probe16_echo")
+        _, minus_flags = settings("replay_gate0_probe_minus16_echo")
+        trim = lambda flags: [f for f in flags if not f.startswith("-DREPLAY_DIAL_PROBE_VALUE=")]
+        self.assertEqual(trim(plus_flags), trim(minus_flags))
+        self.assertIn("-DREPLAY_DIAL_PROBE_VALUE=-16", minus_flags)
+        self.assertNotIn("-DREPLAY_DIAL_PROBE_VALUE=16", minus_flags)
         for env, value in (("replay_gate0_probe16_echo", 16),
+                           ("replay_gate0_probe_minus16_echo", -16),
                            ("replay_gate0_stable_50ms_echo", 0)):
             with self.subTest(env=env):
                 _, output = selected_gate(env)

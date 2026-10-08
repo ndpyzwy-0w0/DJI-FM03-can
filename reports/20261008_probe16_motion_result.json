@@ -1,0 +1,905 @@
+{
+  "recorded_at": "2026-10-08T16:35:44.791878+08:00",
+  "capture": {
+    "port": "COM17",
+    "serial_baud": 921600,
+    "label": "probe16_manual_window",
+    "started_at": "2026-10-08T16:19:53.149324+08:00",
+    "elapsed_seconds": 375.156,
+    "interrupted": true,
+    "raw_log": "J:\\New soft project\\FM03\\captures\\20261008_161953_149324_probe16_manual_window.log",
+    "frames": 210499,
+    "ids": {
+      "S:00000232": 194898,
+      "S:00000504": 12605,
+      "S:00000503": 2996
+    },
+    "sequence_gaps": 546769,
+    "sequence_resets": 2,
+    "non_frame_lines": 4,
+    "first_t_us": 1106461,
+    "last_t_us": 104846005,
+    "status_first": {
+      "t_us": 1108389,
+      "stage": 4,
+      "rx": 16,
+      "sent": 0,
+      "windows": 0,
+      "logger_dropped": 0,
+      "rx_missed": 0,
+      "bus_errors": 0,
+      "pending": 0
+    },
+    "status_last": {
+      "t_us": 105141317,
+      "stage": 4,
+      "rx": 597066,
+      "sent": 300,
+      "windows": 2,
+      "logger_dropped": 429234,
+      "rx_missed": 0,
+      "bus_errors": 15,
+      "pending": 0
+    },
+    "firmware_errors": [],
+    "sha256": "604941e23210107c728d8e6184615661309b06819bf544e93c8c537d9134e899",
+    "dtr": false,
+    "rts": false,
+    "uart_bytes_written": 1,
+    "uart_hex": "73",
+    "expected_environment": "replay_gate0_probe16_echo",
+    "expected_elf_sha256": "d223469c46eaf3a39336107798a081c016c703d55bf5a1231a90bac20255c46b",
+    "upload_verified": true,
+    "upload_after": "no_reset; user RST reported blue, then BOOT started",
+    "stop_note": "Operator Ctrl-C after both window_done and listen; interruption ended UART recording only",
+    "user_confirmations": {
+      "raw_user_text": "是蓝灯 我按了boot 电机灯变绿了转了一下",
+      "followup": "对 我一共按了两次 转了一下是板子变红后 不是立马 现在板子灯是蓝色 电机灯红色 没转了 当时转了一下就没转了 电机转的时候是绿灯",
+      "scope": "User observation is not synchronized to either of the two captured windows",
+      "bus": "RS3 physically absent and single test transceiver plus motor, inherited prior confirmation"
+    },
+    "unknown": [
+      "operations/cause producing three firmware STARTs; no panic signature",
+      "exact motion onset relative to +16; user says not immediately on board red",
+      "physical direction/angle/speed/units",
+      "per-window independent visual outcome",
+      "steady/flashing LED mode during motion and after stop",
+      "exact power parameters"
+    ]
+  },
+  "markers": {
+    "firmware_start": 3,
+    "manual_start": 2,
+    "auto_start": 0,
+    "window_done": 2,
+    "panic": 0,
+    "abnormal_reboot": 0,
+    "warn": 0,
+    "error": 0,
+    "stopped_by_button": 0
+  },
+  "tail_bytes": 45,
+  "configs": [
+    {
+      "tx_queue_len": 0,
+      "echo": 1,
+      "handshake": 1,
+      "skip_boot": 1,
+      "steady_delay_ms": 0,
+      "legacy_send": 0,
+      "seq_start": 0,
+      "seq_step": 0,
+      "sync_rx": 1
+    },
+    {
+      "tx_queue_len": 0,
+      "echo": 1,
+      "handshake": 1,
+      "skip_boot": 1,
+      "steady_delay_ms": 0,
+      "legacy_send": 0,
+      "seq_start": 0,
+      "seq_step": 0,
+      "sync_rx": 1
+    },
+    {
+      "tx_queue_len": 0,
+      "echo": 1,
+      "handshake": 1,
+      "skip_boot": 1,
+      "steady_delay_ms": 0,
+      "legacy_send": 0,
+      "seq_start": 0,
+      "seq_step": 0,
+      "sync_rx": 1
+    }
+  ],
+  "probe_configs": [
+    {
+      "value": 16,
+      "start_ms": 5000,
+      "duration_ms": 200,
+      "auto_start": 0
+    },
+    {
+      "value": 16,
+      "start_ms": 5000,
+      "duration_ms": 200,
+      "auto_start": 0
+    },
+    {
+      "value": 16,
+      "start_ms": 5000,
+      "duration_ms": 200,
+      "auto_start": 0
+    }
+  ],
+  "windows": [
+    {
+      "number": 1,
+      "raw_byte_range": [
+        3033897,
+        3581984
+      ],
+      "firmware_boot_byte": 2002621,
+      "active": {
+        "integrity": {
+          "frames": 12129,
+          "ids": {
+            "S:00000232": 4328,
+            "S:00000504": 6306,
+            "S:00000503": 1495
+          },
+          "sequence_gaps": 3164,
+          "sequence_resets": 0,
+          "non_frame_lines": 0,
+          "first_t_us": 11761928,
+          "last_t_us": 27254636,
+          "status_first": {
+            "t_us": 13112407,
+            "stage": 4,
+            "rx": 88690,
+            "sent": 17,
+            "windows": 1,
+            "logger_dropped": 64674,
+            "rx_missed": 0,
+            "bus_errors": 0,
+            "pending": 0
+          },
+          "status_last": {
+            "t_us": 27113994,
+            "stage": 4,
+            "rx": 99050,
+            "sent": 297,
+            "windows": 1,
+            "logger_dropped": 64674,
+            "rx_missed": 0,
+            "bus_errors": 0,
+            "pending": 0
+          },
+          "firmware_errors": []
+        },
+        "reconstruction_stats": {
+          "truncated": 1026,
+          "not_a_packet_start": 1,
+          "complete": 3750
+        },
+        "segments": 349,
+        "crc_valid_packets": 3750,
+        "invalid_crc8_among_crc16_valid": 0,
+        "can503_packets": {
+          "00:01": 299,
+          "04:69": 299
+        },
+        "can503_timing": {
+          "00:01": {
+            "first_t_us": 12336800,
+            "last_t_us": 27247351,
+            "median_interval_ms": 50.4015,
+            "frames_per_packet": {
+              "2": 299
+            },
+            "packet_hex_counts": {
+              "550d0433e5bf0000400001ddfe": 299
+            }
+          },
+          "04:69": {
+            "first_t_us": 12339066,
+            "last_t_us": 27249068,
+            "median_interval_ms": 50.881,
+            "frames_per_packet": {
+              "3": 299
+            },
+            "packet_hex_counts": {
+              "55130403e5bf00000004690f04081900006b56": 295,
+              "55130403e5bf00000004690f0408191000fac3": 4
+            }
+          }
+        },
+        "first_can503_packets": [
+          {
+            "t_us": 12336800,
+            "segment": 348,
+            "frames_used": 2,
+            "packet_hex": "550d0433e5bf0000400001ddfe"
+          },
+          {
+            "t_us": 12339066,
+            "segment": 348,
+            "frames_used": 3,
+            "packet_hex": "55130403e5bf00000004690f04081900006b56"
+          },
+          {
+            "t_us": 12386183,
+            "segment": 348,
+            "frames_used": 2,
+            "packet_hex": "550d0433e5bf0000400001ddfe"
+          },
+          {
+            "t_us": 12388065,
+            "segment": 348,
+            "frames_used": 3,
+            "packet_hex": "55130403e5bf00000004690f04081900006b56"
+          }
+        ],
+        "can503_frames": 1495,
+        "statuses_count": 15,
+        "status_first": {
+          "t_us": 13112407,
+          "stage": 4,
+          "rx": 88690,
+          "sent": 17,
+          "windows": 1,
+          "logger_dropped": 64674,
+          "rx_missed": 0,
+          "bus_errors": 0,
+          "pending": 0,
+          "mode": "replay"
+        },
+        "status_last": {
+          "t_us": 27113994,
+          "stage": 4,
+          "rx": 99050,
+          "sent": 297,
+          "windows": 1,
+          "logger_dropped": 64674,
+          "rx_missed": 0,
+          "bus_errors": 0,
+          "pending": 0,
+          "mode": "replay"
+        },
+        "status_delta": {
+          "t_us": 14001587,
+          "stage": 0,
+          "rx": 10360,
+          "sent": 280,
+          "windows": 0,
+          "logger_dropped": 0,
+          "rx_missed": 0,
+          "bus_errors": 0,
+          "pending": 0
+        },
+        "tx_alert_histogram": {
+          "0x00000002": 15
+        },
+        "tx_status_first": {
+          "tx_pending": 0,
+          "tx_errors": 0,
+          "rx_errors": 0,
+          "tx_failed": 0
+        },
+        "tx_status_last": {
+          "tx_pending": 0,
+          "tx_errors": 0,
+          "rx_errors": 0,
+          "tx_failed": 0
+        },
+        "tx_status_max": {
+          "tx_pending": 0,
+          "tx_errors": 0,
+          "rx_errors": 0,
+          "tx_failed": 0
+        }
+      },
+      "prior_listen_status": {
+        "t_us": 12111251,
+        "stage": 4,
+        "rx": 86651,
+        "sent": 0,
+        "windows": 0,
+        "logger_dropped": 63575,
+        "rx_missed": 0,
+        "bus_errors": 0,
+        "pending": 0,
+        "mode": "listen"
+      },
+      "window_done": {
+        "sent": 300,
+        "rejected": 0,
+        "rx": 99196,
+        "bus_errors": 0,
+        "tx_errors": 0,
+        "rx_missed": 0,
+        "logger_dropped": 64674
+      },
+      "delta_since_last_prior_listen_status": {
+        "rx": 12545,
+        "logger_dropped": 1099
+      },
+      "post_stop": {
+        "integrity": {
+          "frames": 57280,
+          "ids": {
+            "S:00000503": 3,
+            "S:00000232": 57277
+          },
+          "sequence_gaps": 168337,
+          "sequence_resets": 0,
+          "non_frame_lines": 0,
+          "first_t_us": 27288082,
+          "last_t_us": 56679182,
+          "status_first": {
+            "t_us": 28113474,
+            "stage": 4,
+            "rx": 105077,
+            "sent": 300,
+            "windows": 1,
+            "logger_dropped": 68045,
+            "rx_missed": 0,
+            "bus_errors": 15,
+            "pending": 0
+          },
+          "status_last": {
+            "t_us": 57115503,
+            "stage": 4,
+            "rx": 328166,
+            "sent": 300,
+            "windows": 1,
+            "logger_dropped": 235530,
+            "rx_missed": 0,
+            "bus_errors": 15,
+            "pending": 1
+          },
+          "firmware_errors": []
+        },
+        "reconstruction_stats": {
+          "complete": 1,
+          "truncated": 57277
+        },
+        "segments": 19299,
+        "crc_valid_packets": 1,
+        "invalid_crc8_among_crc16_valid": 0,
+        "can503_packets": {
+          "04:69": 1
+        },
+        "can503_timing": {
+          "04:69": {
+            "first_t_us": 27288082,
+            "last_t_us": 27288082,
+            "median_interval_ms": null,
+            "frames_per_packet": {
+              "3": 1
+            },
+            "packet_hex_counts": {
+              "55130403e5bf00000004690f04081900006b56": 1
+            }
+          }
+        },
+        "first_can503_packets": [
+          {
+            "t_us": 27288082,
+            "segment": 0,
+            "frames_used": 3,
+            "packet_hex": "55130403e5bf00000004690f04081900006b56"
+          }
+        ],
+        "can503_frames": 3,
+        "statuses_count": 30,
+        "status_first": {
+          "t_us": 28113474,
+          "stage": 4,
+          "rx": 105077,
+          "sent": 300,
+          "windows": 1,
+          "logger_dropped": 68045,
+          "rx_missed": 0,
+          "bus_errors": 15,
+          "pending": 0,
+          "mode": "listen"
+        },
+        "status_last": {
+          "t_us": 57115503,
+          "stage": 4,
+          "rx": 328166,
+          "sent": 300,
+          "windows": 1,
+          "logger_dropped": 235530,
+          "rx_missed": 0,
+          "bus_errors": 15,
+          "pending": 1,
+          "mode": "listen"
+        },
+        "status_delta": {
+          "t_us": 29002029,
+          "stage": 0,
+          "rx": 223089,
+          "sent": 0,
+          "windows": 0,
+          "logger_dropped": 167485,
+          "rx_missed": 0,
+          "bus_errors": 0,
+          "pending": 1
+        },
+        "tx_alert_histogram": {
+          "0x00000200": 1
+        },
+        "tx_status_first": {
+          "tx_pending": 0,
+          "tx_errors": 0,
+          "rx_errors": 0,
+          "tx_failed": 0
+        },
+        "tx_status_last": {
+          "tx_pending": 0,
+          "tx_errors": 0,
+          "rx_errors": 0,
+          "tx_failed": 0
+        },
+        "tx_status_max": {
+          "tx_pending": 0,
+          "tx_errors": 0,
+          "rx_errors": 0,
+          "tx_failed": 0
+        }
+      },
+      "dial_value_counts": {
+        "0": 295,
+        "16": 4
+      },
+      "nonzero_packets": [
+        {
+          "t_us": 17300066,
+          "value": 16,
+          "frames": 3,
+          "packet_hex": "55130403e5bf00000004690f0408191000fac3"
+        },
+        {
+          "t_us": 17349104,
+          "value": 16,
+          "frames": 3,
+          "packet_hex": "55130403e5bf00000004690f0408191000fac3"
+        },
+        {
+          "t_us": 17400065,
+          "value": 16,
+          "frames": 3,
+          "packet_hex": "55130403e5bf00000004690f0408191000fac3"
+        },
+        {
+          "t_us": 17449123,
+          "value": 16,
+          "frames": 3,
+          "packet_hex": "55130403e5bf00000004690f0408191000fac3"
+        }
+      ],
+      "first_zero_after_pulse": {
+        "t_us": 17500066,
+        "value": 0,
+        "frames": 3,
+        "packet_hex": "55130403e5bf00000004690f04081900006b56"
+      },
+      "extra_final_zero_logged_after_window_done": {
+        "t_us": 27288082,
+        "packet_hex": "55130403e5bf00000004690f04081900006b56",
+        "frames": 3
+      },
+      "pulse_interval_integrity": {
+        "frames": 149,
+        "ids": {
+          "S:00000503": 21,
+          "S:00000232": 44,
+          "S:00000504": 84
+        },
+        "sequence_gaps": 0,
+        "sequence_resets": 0,
+        "non_frame_lines": 0,
+        "first_t_us": 17300066,
+        "last_t_us": 17500066,
+        "status_first": null,
+        "status_last": null,
+        "firmware_errors": []
+      },
+      "counter_boundary_note": "The prior-listen delta includes an unknown part of the pre-start/switch boundary. Driver counters and sent reset on mode/window changes; not subtracted. Active first STATUS is after start.",
+      "pulse_first_to_first_zero_ms": 200.0,
+      "probe_lines": [
+        "# PROBE t_us=17298935 elapsed_ms=5012 value=16",
+        "# PROBE t_us=17498935 elapsed_ms=5212 value=0",
+        "# PROBE final_zero_submitted=1 final_tx_idle=1"
+      ]
+    },
+    {
+      "number": 2,
+      "raw_byte_range": [
+        6336359,
+        6896279
+      ],
+      "firmware_boot_byte": 2002621,
+      "active": {
+        "integrity": {
+          "frames": 12122,
+          "ids": {
+            "S:00000232": 4328,
+            "S:00000504": 6299,
+            "S:00000503": 1495
+          },
+          "sequence_gaps": 3169,
+          "sequence_resets": 0,
+          "non_frame_lines": 0,
+          "first_t_us": 56679312,
+          "last_t_us": 72173022,
+          "status_first": {
+            "t_us": 58119019,
+            "stage": 4,
+            "rx": 329671,
+            "sent": 19,
+            "windows": 2,
+            "logger_dropped": 236180,
+            "rx_missed": 0,
+            "bus_errors": 0,
+            "pending": 0
+          },
+          "status_last": {
+            "t_us": 72123992,
+            "stage": 4,
+            "rx": 340031,
+            "sent": 299,
+            "windows": 2,
+            "logger_dropped": 236180,
+            "rx_missed": 0,
+            "bus_errors": 0,
+            "pending": 0
+          },
+          "firmware_errors": []
+        },
+        "reconstruction_stats": {
+          "truncated": 1028,
+          "not_a_packet_start": 5,
+          "complete": 3745
+        },
+        "segments": 359,
+        "crc_valid_packets": 3745,
+        "invalid_crc8_among_crc16_valid": 0,
+        "can503_packets": {
+          "00:01": 299,
+          "04:69": 299
+        },
+        "can503_timing": {
+          "00:01": {
+            "first_t_us": 57265547,
+            "last_t_us": 72169380,
+            "median_interval_ms": 50.094,
+            "frames_per_packet": {
+              "2": 299
+            },
+            "packet_hex_counts": {
+              "550d0433e5bf0000400001ddfe": 299
+            }
+          },
+          "04:69": {
+            "first_t_us": 57267066,
+            "last_t_us": 72171065,
+            "median_interval_ms": 50.5,
+            "frames_per_packet": {
+              "3": 299
+            },
+            "packet_hex_counts": {
+              "55130403e5bf00000004690f04081900006b56": 295,
+              "55130403e5bf00000004690f0408191000fac3": 4
+            }
+          }
+        },
+        "first_can503_packets": [
+          {
+            "t_us": 57265547,
+            "segment": 358,
+            "frames_used": 2,
+            "packet_hex": "550d0433e5bf0000400001ddfe"
+          },
+          {
+            "t_us": 57267066,
+            "segment": 358,
+            "frames_used": 3,
+            "packet_hex": "55130403e5bf00000004690f04081900006b56"
+          },
+          {
+            "t_us": 57315593,
+            "segment": 358,
+            "frames_used": 2,
+            "packet_hex": "550d0433e5bf0000400001ddfe"
+          },
+          {
+            "t_us": 57318065,
+            "segment": 358,
+            "frames_used": 3,
+            "packet_hex": "55130403e5bf00000004690f04081900006b56"
+          }
+        ],
+        "can503_frames": 1495,
+        "statuses_count": 15,
+        "status_first": {
+          "t_us": 58119019,
+          "stage": 4,
+          "rx": 329671,
+          "sent": 19,
+          "windows": 2,
+          "logger_dropped": 236180,
+          "rx_missed": 0,
+          "bus_errors": 0,
+          "pending": 0,
+          "mode": "replay"
+        },
+        "status_last": {
+          "t_us": 72123992,
+          "stage": 4,
+          "rx": 340031,
+          "sent": 299,
+          "windows": 2,
+          "logger_dropped": 236180,
+          "rx_missed": 0,
+          "bus_errors": 0,
+          "pending": 0,
+          "mode": "replay"
+        },
+        "status_delta": {
+          "t_us": 14004973,
+          "stage": 0,
+          "rx": 10360,
+          "sent": 280,
+          "windows": 0,
+          "logger_dropped": 0,
+          "rx_missed": 0,
+          "bus_errors": 0,
+          "pending": 0
+        },
+        "tx_alert_histogram": {
+          "0x00000002": 15
+        },
+        "tx_status_first": {
+          "tx_pending": 1,
+          "tx_errors": 0,
+          "rx_errors": 0,
+          "tx_failed": 0
+        },
+        "tx_status_last": {
+          "tx_pending": 1,
+          "tx_errors": 0,
+          "rx_errors": 0,
+          "tx_failed": 0
+        },
+        "tx_status_max": {
+          "tx_pending": 1,
+          "tx_errors": 0,
+          "rx_errors": 0,
+          "tx_failed": 0
+        }
+      },
+      "prior_listen_status": {
+        "t_us": 57115503,
+        "stage": 4,
+        "rx": 328166,
+        "sent": 300,
+        "windows": 1,
+        "logger_dropped": 235530,
+        "rx_missed": 0,
+        "bus_errors": 15,
+        "pending": 1,
+        "mode": "listen"
+      },
+      "window_done": {
+        "sent": 300,
+        "rejected": 0,
+        "rx": 340104,
+        "bus_errors": 0,
+        "tx_errors": 0,
+        "rx_missed": 0,
+        "logger_dropped": 236180
+      },
+      "delta_since_last_prior_listen_status": {
+        "rx": 11938,
+        "logger_dropped": 650
+      },
+      "post_stop": {
+        "integrity": {
+          "frames": 63358,
+          "ids": {
+            "S:00000503": 3,
+            "S:00000232": 63355
+          },
+          "sequence_gaps": 191300,
+          "sequence_resets": 0,
+          "non_frame_lines": 0,
+          "first_t_us": 72220081,
+          "last_t_us": 104846005,
+          "status_first": {
+            "t_us": 73123953,
+            "stage": 4,
+            "rx": 346934,
+            "sent": 300,
+            "windows": 2,
+            "logger_dropped": 240306,
+            "rx_missed": 0,
+            "bus_errors": 15,
+            "pending": 0
+          },
+          "status_last": {
+            "t_us": 105141317,
+            "stage": 4,
+            "rx": 597066,
+            "sent": 300,
+            "windows": 2,
+            "logger_dropped": 429234,
+            "rx_missed": 0,
+            "bus_errors": 15,
+            "pending": 0
+          },
+          "firmware_errors": []
+        },
+        "reconstruction_stats": {
+          "complete": 1,
+          "truncated": 63355
+        },
+        "segments": 21453,
+        "crc_valid_packets": 1,
+        "invalid_crc8_among_crc16_valid": 0,
+        "can503_packets": {
+          "04:69": 1
+        },
+        "can503_timing": {
+          "04:69": {
+            "first_t_us": 72220081,
+            "last_t_us": 72220081,
+            "median_interval_ms": null,
+            "frames_per_packet": {
+              "3": 1
+            },
+            "packet_hex_counts": {
+              "55130403e5bf00000004690f04081900006b56": 1
+            }
+          }
+        },
+        "first_can503_packets": [
+          {
+            "t_us": 72220081,
+            "segment": 0,
+            "frames_used": 3,
+            "packet_hex": "55130403e5bf00000004690f04081900006b56"
+          }
+        ],
+        "can503_frames": 3,
+        "statuses_count": 33,
+        "status_first": {
+          "t_us": 73123953,
+          "stage": 4,
+          "rx": 346934,
+          "sent": 300,
+          "windows": 2,
+          "logger_dropped": 240306,
+          "rx_missed": 0,
+          "bus_errors": 15,
+          "pending": 0,
+          "mode": "listen"
+        },
+        "status_last": {
+          "t_us": 105141317,
+          "stage": 4,
+          "rx": 597066,
+          "sent": 300,
+          "windows": 2,
+          "logger_dropped": 429234,
+          "rx_missed": 0,
+          "bus_errors": 15,
+          "pending": 0,
+          "mode": "listen"
+        },
+        "status_delta": {
+          "t_us": 32017364,
+          "stage": 0,
+          "rx": 250132,
+          "sent": 0,
+          "windows": 0,
+          "logger_dropped": 188928,
+          "rx_missed": 0,
+          "bus_errors": 0,
+          "pending": 0
+        },
+        "tx_alert_histogram": {
+          "0x00000200": 1
+        },
+        "tx_status_first": {
+          "tx_pending": 0,
+          "tx_errors": 0,
+          "rx_errors": 0,
+          "tx_failed": 0
+        },
+        "tx_status_last": {
+          "tx_pending": 0,
+          "tx_errors": 0,
+          "rx_errors": 0,
+          "tx_failed": 0
+        },
+        "tx_status_max": {
+          "tx_pending": 0,
+          "tx_errors": 0,
+          "rx_errors": 0,
+          "tx_failed": 0
+        }
+      },
+      "dial_value_counts": {
+        "0": 295,
+        "16": 4
+      },
+      "nonzero_packets": [
+        {
+          "t_us": 62222066,
+          "value": 16,
+          "frames": 3,
+          "packet_hex": "55130403e5bf00000004690f0408191000fac3"
+        },
+        {
+          "t_us": 62271065,
+          "value": 16,
+          "frames": 3,
+          "packet_hex": "55130403e5bf00000004690f0408191000fac3"
+        },
+        {
+          "t_us": 62322065,
+          "value": 16,
+          "frames": 3,
+          "packet_hex": "55130403e5bf00000004690f0408191000fac3"
+        },
+        {
+          "t_us": 62371065,
+          "value": 16,
+          "frames": 3,
+          "packet_hex": "55130403e5bf00000004690f0408191000fac3"
+        }
+      ],
+      "first_zero_after_pulse": {
+        "t_us": 62422065,
+        "value": 0,
+        "frames": 3,
+        "packet_hex": "55130403e5bf00000004690f04081900006b56"
+      },
+      "extra_final_zero_logged_after_window_done": {
+        "t_us": 72220081,
+        "packet_hex": "55130403e5bf00000004690f04081900006b56",
+        "frames": 3
+      },
+      "pulse_interval_integrity": {
+        "frames": 149,
+        "ids": {
+          "S:00000503": 21,
+          "S:00000232": 44,
+          "S:00000504": 84
+        },
+        "sequence_gaps": 0,
+        "sequence_resets": 0,
+        "non_frame_lines": 0,
+        "first_t_us": 62222066,
+        "last_t_us": 62422065,
+        "status_first": null,
+        "status_last": null,
+        "firmware_errors": []
+      },
+      "counter_boundary_note": "The prior-listen delta includes an unknown part of the pre-start/switch boundary. Driver counters and sent reset on mode/window changes; not subtracted. Active first STATUS is after start.",
+      "pulse_first_to_first_zero_ms": 199.999,
+      "probe_lines": [
+        "# PROBE t_us=62220935 elapsed_ms=5005 value=16",
+        "# PROBE t_us=62420935 elapsed_ms=5205 value=0",
+        "# PROBE final_zero_submitted=1 final_tx_idle=1"
+      ]
+    }
+  ],
+  "conclusion": "User confirms two activations and green motor with brief delayed motion then physical stop; both captured +16 sequences return to zero after approximately 200ms. Direct motor-only motion evidence obtained, but timestamps are not visually synchronized and minimum enable set/direction/units remain unverified.",
+  "limits": "Driver timestamps and self echo are not physical edges or motor application acknowledgement. Split every boot and window; inherited logger_dropped totals cannot be called active-window losses. User motion observation has no timestamp binding."
+}
