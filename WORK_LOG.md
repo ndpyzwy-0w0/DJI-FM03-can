@@ -881,3 +881,14 @@
 - 起点HEAD40ae422；检查全部未提交内容均为本对话产生，未发现无关修改或既有暂存内容。使用明确文件清单暂存，backups及.pio忽略材料不纳Git，保留本机两版镜像备份。
 - 提交前核对原始log/视频磁盘SHA256与JSON、暂存对象原字节一致；原始log text unset，不改其换行/尾部字节/设备空白。对非原始log执行git diff --cached --check，核对JSON/证据路径与提交内容。此前新50ms编译、三项现有回放检查及真实数据断言均通过，不再重复未变化测试。
 - 本条随本次资料保存为本地Git提交，提交号以git log -1为准；成功与最终工作区状态以提交命令/后续检查为准。没有新烧录、采集、复位、发送、src改动或历史重写；常绿工作组合保全，最小报文集和非零控制仍未测试。
+
+## 2026-10-08 16:11:23 北京时间 — 新视频/一手资料/七日志分析，手动短时试探准备
+
+- 用户提供新视频要求“分析并继续”，可上网查现成资料、看各状态日志，并授权按需提交Git。起点70ba0af、main干净。本轮仅离线分析/实现/编译/备份，无新串口、烧录、RST或CAN发送；非零另立明确授权阶段。
+- 视频原样复制captures/media/20261008_50ms_current_state.mp4，与微信源SHA256同为c9146fedcf6b907667dfd97f21f93c7905e4bad30460d166bc8d610ad1abdaae。36.97秒/1280×720/名义30fps，抽帧直接见早板蓝/电机红、后板红/电机绿；1110名义帧/1109解码帧，固定ROI最长连续绿色像素171–859约22.97秒。相机移动/曝光缺口不可判LED物理闪烁；无CAN同步、力矩测量或受控运动结论。报告20261008_current_video_observation.json/green.png；.pio视频助手与样本帧忽略。
+- 浏览DJI官方灯语、R SDK页/文档与RS3 Pro发布说明、SDK实现原作者UmBsublime/DJI-Ronin-RS2。SDK0E:12、绝对0–4095、100Hz、223/222及0xAA/头CRC16+包CRC32面向云台；与电机直连04:69/0x55/CRC8+CRC16不同，不套其单位/地址。下载官方ZIP及精确成员PDF只读提取，sha见reports/20261008_external_research_and_probe_plan.md；原文件存.pio/research不进Git。有限搜索未找到已验证独立FM03实现，不声称不存在。
+- 七份已有动作raw按CAN ID重组0x503/19B/04:69，以build_packet独立重编码逐字节验证选中包全一致。静止1037全零；慢正向2001包[-195,0]、慢反向1494包[0,307]，+16实际7次、-16实际8次。快拨少量反向符号保留，物理顺逆方向/单位/速度含义未知。reports/20261008_motion_field_recheck.json保存7个raw哈希/计数及0/±16候选包、8+8+3分片；未改raw。
+- platformio.ini新增replay_gate0_probe16_echo，源新增int16小端写入后重算CRC、基于窗口当前时间的+16选择。手动BOOT2秒启动，零值5秒，5000≤elapsed<5200ms选择+16，之后零值至15秒停止；保留50ms/TX0/逐片等待/单路由seq0/RX同步。fresh BOOT可提前结束；结束尝试额外零包并最多50次1ms等待TX空闲，日志标明submitted/idle，不能当物理停止保证。选择时重新取时间，避免前一请求等待后使用过期非零时间。旧环境默认0，源码变化后的重编译镜像不是板上原始常绿镜像。
+- 编译static_assert限制±32、≤200ms、≥5s预热、回零早于结束、手动且≤20s窗口、TX0/单路由/RX同步。三环境probe16/stable_50ms/listen_1m编译全SUCCESS，.pio/probe16_build.txt；四项test_replay_timing通过，新增实际预处理selector的0/4999/5000/5199/5200/15000/ULONG_MAX边界及auto_start=1负向编译检查。没有硬件运动验证，不把软件200ms承诺为真实总线或物理运动时长。
+- 保存backups/probe16_prepared_20261008_161123_477101，bin b1208e6c5d95e02ef22ea7fbc4084b10a678892c72926450732a0585694bcb56、ELF d223469c46eaf3a39336107798a081c016c703d55bf5a1231a90bac20255c46b，源码/配置/镜像复制逐文件hash相同；reports/20261008_probe16_prepared.json。旧常绿备份四文件hash均复核不变。只本机backup，未推送。
+- 本条、HANDOFF和INDEX随本轮本地Git检查点提交；提交前diff --check、JSON/证据路径/新视频源及暂存字节核验；具体提交号与干净状态以后续Git命令为准。当前未上传试探，板上保留原50ms版。下一步直接向用户确认非零阶段+当前隔离工况；获准后先采集再提示RST/BOOT，覆盖零→非零→零→停发与用户实际灯色/动作，不重复索要已授权Git保存。

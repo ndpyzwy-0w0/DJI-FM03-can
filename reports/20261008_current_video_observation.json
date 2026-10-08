@@ -1,0 +1,53 @@
+{
+  "source_video": "J:\\New soft project\\FM03\\captures\\media\\20261008_50ms_current_state.mp4",
+  "sha256": "c9146fedcf6b907667dfd97f21f93c7905e4bad30460d166bc8d610ad1abdaae",
+  "frames": 1109,
+  "nominal_fps": 30,
+  "roi_xywh": [
+    400,
+    300,
+    160,
+    140
+  ],
+  "pixel_threshold": "g>100 and g>1.4r,g>1.4b; >=3 qualifying pixels",
+  "green_runs": [
+    {
+      "first_frame": 142,
+      "last_frame": 157
+    },
+    {
+      "first_frame": 159,
+      "last_frame": 163
+    },
+    {
+      "first_frame": 165,
+      "last_frame": 169
+    },
+    {
+      "first_frame": 171,
+      "last_frame": 859
+    },
+    {
+      "first_frame": 883,
+      "last_frame": 883
+    },
+    {
+      "first_frame": 886,
+      "last_frame": 889
+    },
+    {
+      "first_frame": 892,
+      "last_frame": 895
+    },
+    {
+      "first_frame": 898,
+      "last_frame": 1108
+    }
+  ],
+  "longest_recorded_green_run": {
+    "first_frame": 171,
+    "last_frame": 859
+  },
+  "visual_observation": "Early sample ESP32 blue/motor red; later sampled views ESP32 red/motor green. Finger appears near board; exact button time/torque cannot be measured from samples.",
+  "limits": "Pixel-color continuity is camera observation, not physical LED guarantee, force measurement or CAN synchronization."
+}

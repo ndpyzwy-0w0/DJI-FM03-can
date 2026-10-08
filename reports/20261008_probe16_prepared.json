@@ -1,0 +1,25 @@
+{
+  "environment": "replay_gate0_probe16_echo",
+  "saved_at": "2026-10-08T16:11:23.477101+08:00",
+  "uploaded_at_save": false,
+  "backup": "J:\\New soft project\\FM03\\backups\\probe16_prepared_20261008_161123_477101",
+  "files": {
+    "firmware.bin": {
+      "source": ".pio/build/replay_gate0_probe16_echo/firmware.bin",
+      "sha256": "b1208e6c5d95e02ef22ea7fbc4084b10a678892c72926450732a0585694bcb56"
+    },
+    "firmware.elf": {
+      "source": ".pio/build/replay_gate0_probe16_echo/firmware.elf",
+      "sha256": "d223469c46eaf3a39336107798a081c016c703d55bf5a1231a90bac20255c46b"
+    },
+    "transmit_replay.cpp": {
+      "source": "src/transmit_replay.cpp",
+      "sha256": "bb8a33e24a73242eb251b0371a5205f765e980b47785eb1edbd557b8ad091e19"
+    },
+    "platformio.ini": {
+      "source": "platformio.ini",
+      "sha256": "bef495bb7f0f6eeb719bcf2d9a5afacf6c02d9d414aa689ae5fb8abfebfe63c6"
+    }
+  },
+  "verified_steady_green_backup": "J:\\New soft project\\FM03\\backups\\stable_50ms_candidate_20261008_153208_442438"
+}

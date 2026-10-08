@@ -37,11 +37,11 @@ def settings(env):
                     if f not in shlex.split(section.get("build_unflags", ""))]
 
 
-def selected_gate(env):
+def selected_gate(env, overrides=()):
     source, flags = settings(env)
     text = "\n".join(line for line in source.read_text(encoding="utf-8").splitlines()
                      if not line.startswith("#include"))
-    result = subprocess.run([str(COMPILER), "-E", "-P", "-x", "c++", *flags, "-"],
+    result = subprocess.run([str(COMPILER), "-E", "-P", "-x", "c++", *flags, *overrides, "-"],
                             input=text, text=True, encoding="utf-8",
                             capture_output=True, check=True)
     match = re.search(r"bool steady_time = ([^;]+);", result.stdout)
@@ -49,6 +49,30 @@ def selected_gate(env):
 
 
 class ReplayTimingTests(unittest.TestCase):
+    def test_motion_probe_boundaries_and_manual_start_guard(self):
+        for env, value in (("replay_gate0_probe16_echo", 16),
+                           ("replay_gate0_stable_50ms_echo", 0)):
+            with self.subTest(env=env):
+                _, output = selected_gate(env)
+                selector = re.search(r"static constexpr int16_t replay_dial_value\([^}]+\}", output)[0]
+                guards = "\n".join(re.findall(r"^static_assert\([^\n]+", output, re.M))
+                code = "#include <stdint.h>\n" + guards + "\n" + selector
+                for elapsed, expected in ((0, 0), (4999, 0), (5000, value),
+                                          (5199, value), (5200, 0), (15000, 0),
+                                          (4294967295, 0)):
+                    code += (f'\nstatic_assert(replay_dial_value({elapsed}UL) == {expected}, '
+                             '"probe boundary");')
+                subprocess.run([str(COMPILER), "-std=c++11", "-fsyntax-only", "-x", "c++", "-"],
+                               input=code, text=True, encoding="utf-8",
+                               capture_output=True, check=True)
+        _, output = selected_gate("replay_gate0_probe16_echo",
+                                  ("-UREPLAY_AUTO_START", "-DREPLAY_AUTO_START=1"))
+        guards = "\n".join(re.findall(r"^static_assert\([^\n]+", output, re.M))
+        result = subprocess.run([str(COMPILER), "-std=c++11", "-fsyntax-only", "-x", "c++", "-"],
+                                input=guards, text=True, encoding="utf-8", capture_output=True)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("Motion probe requires manual start", result.stderr)
+
     def test_pair_changes_only_the_delay(self):
         source_a, flags_a = settings("replay_gate100_echo")
         source_b, flags_b = settings("replay_gate0_echo")

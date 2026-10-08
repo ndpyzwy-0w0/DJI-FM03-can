@@ -270,16 +270,42 @@ static const uint8_t M0469_FRAMES[3] = {8, 8, 3};
 #define REPLAY_LEGACY_SEND 0
 #endif
 
+// A separately authorized motion probe: all existing environments remain zero.
+#ifndef REPLAY_DIAL_PROBE_VALUE
+#define REPLAY_DIAL_PROBE_VALUE 0
+#endif
+#ifndef REPLAY_DIAL_PROBE_START_MS
+#define REPLAY_DIAL_PROBE_START_MS 5000
+#endif
+#ifndef REPLAY_DIAL_PROBE_DURATION_MS
+#define REPLAY_DIAL_PROBE_DURATION_MS 200
+#endif
+#if REPLAY_DIAL_PROBE_VALUE != 0
+static_assert(REPLAY_DIAL_PROBE_VALUE >= -32 && REPLAY_DIAL_PROBE_VALUE <= 32, "Probe value exceeds the prepared range");
+static_assert(REPLAY_DIAL_PROBE_DURATION_MS > 0 && REPLAY_DIAL_PROBE_DURATION_MS <= 200, "Probe duration must be at most 200ms");
+static_assert(REPLAY_DIAL_PROBE_START_MS >= 5000, "Allow five seconds of zero-value warmup");
+static_assert(REPLAY_DIAL_PROBE_START_MS + REPLAY_DIAL_PROBE_DURATION_MS < REPLAY_SECONDS * 1000UL, "Probe must return to zero before window end");
+static_assert(REPLAY_AUTO_START == 0 && REPLAY_SECONDS <= 20, "Motion probe requires manual start and a bounded window");
+static_assert(TX_QUEUE_LEN == 0 && REPLAY_SINGLE_ROUTE == 1 && REPLAY_SYNC_RX == 1, "Keep the verified stable motor-only path");
+#endif
+static constexpr int16_t replay_dial_value(unsigned long elapsed) {
+    return elapsed >= REPLAY_DIAL_PROBE_START_MS &&
+           elapsed - REPLAY_DIAL_PROBE_START_MS < REPLAY_DIAL_PROBE_DURATION_MS
+               ? (int16_t)REPLAY_DIAL_PROBE_VALUE : 0;
+}
+
 static uint16_t seq_to_motor = REPLAY_SEQ_START;
 static uint16_t seq_to_peer = (uint16_t)(REPLAY_SEQ_START + 1);
 
 // Copy a template packet and re-stamp it with a new sequence, recomputing the header
 // CRC8 and the packet CRC16. Without this the frames carry sequence 0 forever, and a
 // receiver that expects the sequence to advance can treat every frame as a duplicate.
-static void stamp_packet(const uint8_t *source, uint16_t sequence, uint8_t *out) {
+static void stamp_packet(const uint8_t *source, uint16_t sequence, uint8_t *out, int16_t value = 0) {
     memcpy(out, source, 19);
     out[6] = (uint8_t)(sequence & 0xFF);
     out[7] = (uint8_t)(sequence >> 8);
+    out[15] = (uint8_t)((uint16_t)value & 0xFF);
+    out[16] = (uint8_t)((uint16_t)value >> 8);
     out[3] = crc8(out, 3);
     uint16_t packet_crc = crc16(out, 17);
     out[17] = (uint8_t)(packet_crc & 0xFF);
@@ -458,13 +484,13 @@ static bool send_m0001_request() {
 
 // The dial command as its three real CAN frames, on both routes RS3 uses. Each route
 // advances its own sequence counter, so the frames are re-stamped every time.
-static bool send_m0469() {
+static bool send_m0469(int16_t value = 0) {
     uint8_t motor[19];
-    stamp_packet(M0469_TO_MOTOR, seq_to_motor, motor);
+    stamp_packet(M0469_TO_MOTOR, seq_to_motor, motor, value);
     bool ok = send_packet(0x503, motor, M0469_FRAMES, 3);
 #if !REPLAY_SINGLE_ROUTE
     uint8_t peer[19];
-    stamp_packet(M0469_TO_PEER, seq_to_peer, peer);
+    stamp_packet(M0469_TO_PEER, seq_to_peer, peer, value);
     ok = send_packet(0x201, peer, M0469_FRAMES, 3) && ok;
     seq_to_peer = (uint16_t)(seq_to_peer + REPLAY_SEQ_STEP);
 #endif
@@ -640,6 +666,7 @@ static void run_replay_window() {
     unsigned long released_at = 0;
     unsigned long rejected = 0;
     bool reported_rejection = false;
+    int16_t last_probe_value = 0;
     while (mode.load() == 1 && millis() - started < (unsigned long)REPLAY_SECONDS * 1000UL) {
         if (tx_backoff_ticks) {
             --tx_backoff_ticks;
@@ -732,7 +759,18 @@ static void run_replay_window() {
 #endif
             if (steady_time && millis() - last_dial >= REPLAY_0469_INTERVAL_MS) {
                 last_dial = millis();
-                ok = send_m0469() && ok;
+                // The preceding request may have waited for the hardware buffer.
+                // Select against the current time, never an expired pulse timestamp.
+                unsigned long dial_elapsed = millis() - started;
+                int16_t value = replay_dial_value(dial_elapsed);
+#if REPLAY_DIAL_PROBE_VALUE != 0
+                if (value != last_probe_value) {
+                    Serial.printf("# PROBE t_us=%llu elapsed_ms=%lu value=%d\n",
+                                  (unsigned long long)esp_timer_get_time(), dial_elapsed, (int)value);
+                    last_probe_value = value;
+                }
+#endif
+                ok = send_m0469(value) && ok;
             }
 #endif
             if (ok) {
@@ -769,6 +807,22 @@ static void run_replay_window() {
             Serial.write((const uint8_t *)line, length);
         }
     }
+#if REPLAY_DIAL_PROBE_VALUE != 0
+    // Attempt an explicit zero before stopping, including a button-aborted pulse.
+    bool final_zero = send_m0469(0);
+    bool final_tx_idle = false;
+    for (int spin = 0; spin < 50; ++spin) {
+        twai_status_info_t pending{};
+        if (twai_get_status_info(&pending) != ESP_OK || pending.state != TWAI_STATE_RUNNING) break;
+        if (pending.msgs_to_tx == 0) {
+            final_tx_idle = true;
+            break;
+        }
+        delay(1);
+    }
+    Serial.printf("# PROBE final_zero_submitted=%u final_tx_idle=%u\n",
+                  (unsigned)final_zero, (unsigned)final_tx_idle);
+#endif
     twai_status_info_t status{};
     twai_get_status_info(&status);
     Serial.printf("# REPLAY window_done sent=%u rejected=%u rx=%u bus_errors=%u "
@@ -825,6 +879,11 @@ void setup() {
                   (unsigned)REPLAY_STEADY_DELAY_MS, (unsigned)REPLAY_LEGACY_SEND,
                   (unsigned)REPLAY_SEQ_START, (unsigned)REPLAY_SEQ_STEP,
                   (unsigned)REPLAY_SYNC_RX);
+#endif
+#if REPLAY_DIAL_PROBE_VALUE != 0
+    Serial.printf("# PROBE_CONFIG value=%d start_ms=%u duration_ms=%u auto_start=%u\n",
+                  (int)REPLAY_DIAL_PROBE_VALUE, (unsigned)REPLAY_DIAL_PROBE_START_MS,
+                  (unsigned)REPLAY_DIAL_PROBE_DURATION_MS, (unsigned)REPLAY_AUTO_START);
 #endif
     Serial.println("# FRAME t_us,sequence,id_hex,extended,rtr,dlc,data_hex");
     Serial.println("# BUTTON hold 2s to start a replay window; hold again to stop");

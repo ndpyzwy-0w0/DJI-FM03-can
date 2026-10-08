@@ -195,3 +195,10 @@
 - 发送120条STATUS/alerts0x2，TX错误/失败0；首末STATUS约119.007799秒，rx+88082/sent+2377、错误/遗漏/日志丢帧增0，首状态已在第一轮后。window_done sent2398/rejected0/rx88861，bus_errors/tx_errors/rx_missed/logger_dropped全0。sent轮数/alerts事件位/self echo不等于应用接受或物理成功总帧数。
 - 停发后146338完整行全0x232、0CRC包，STATUS约77.046486秒rx+601915/logger_dropped+456117、sent/windows增0；首listen bus_errors15，后续增0，15在window_done→首listen边界，不能归主动发送或单独证明ACK问题。
 - 结果reports/20261008_stable_cadence_50ms_result.json；板子保留50ms常绿候选，末次listen，采集退出。已找到零值工作组合，最小必要性/非零运动尚未验证；本阶段外无新发送，未提交/推送。两版镜像本机backups另带。
+
+## 2026-10-08 16:11:23 北京时间 — 新视频与离线动作日志复核（无新CAN采集）
+
+- 用户视频原始路径D:/xwechat_files/wxid_h3cb46qr90t412_f0c8/temp/RWTemp/2026-10/21801991ac41115e11eb301fd75dfcf3/0d031f54a94587bfd2aeef020cbd41f2.mp4；副本media/20261008_50ms_current_state.mp4，源/副本SHA256同为c9146fedcf6b907667dfd97f21f93c7905e4bad30460d166bc8d610ad1abdaae。36.97秒，抽帧见板蓝/电机红→板红/电机绿，最长连续绿色像素约22.97秒。报告reports/20261008_current_video_observation.json/green.png；无CAN同步，按键墙钟、实际运动、力矩保持未知，不从视频文件时间补造。
+- 沿用用户既有RS3物理未接、单测试收发器+电机、正常监听时拨轮为跟焦电机的确认；未新核实当前电压/端口/接线，不把继承工况写成新采集确认。当前motor灯精确结束状态不强行推定。
+- 七份旧动作日志只读复核，raw路径/sha和04:69字段分布见reports/20261008_motion_field_recheck.json，未修改或覆盖raw。+16在slow_reverse出现7次，-16在slow_forward出现8次；顺逆时针/物理单位未知，离线候选不代表新动作。
+- 准备手动15秒试探环境（零5秒、+16选择200ms、回零），编译/四项回归通过、候选备份完成；未上传、未新开串口/复位/发送。板上仍原始50ms零值版。新阶段许可及逐项当前工况仍待用户确认，获准才生成新抓包。本轮按用户授权提交本地分析/代码检查点，不推送。
