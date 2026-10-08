@@ -47,8 +47,9 @@ def plausible_header(data):
 
     Used to tell a genuine packet start from a continuation frame whose payload
     happens to begin with 0x55 (the sync byte appears inside real bodies).
+    A start needs a valid header CRC8; continuation ownership uses the full CRC16.
     """
-    if not data or data[0] != 0x55 or len(data) < 3:
+    if len(data) < 4 or data[0] != 0x55 or crc(data[:3], 0x77, 0x8C) != data[3]:
         return None
     length = data[1] | ((data[2] & 3) << 8)
     return length if 13 <= length <= 1023 else None
@@ -114,34 +115,20 @@ def reconstruct_frames(raw):
             buffer = bytearray()
             first_stamp = frames[index][1]
             cursor = index
-            # Index just after the last frame that did NOT look like a header.
-            last_data_end = None
+            # A continuation can itself contain a valid-looking header. Only the
+            # complete packet CRC decides whether it belongs to the current packet.
             while cursor < len(frames) and len(buffer) < length:
-                _s2, _t2, data2 = frames[cursor]
-                if buffer and plausible_header(data2) is not None:
-                    break  # either the previous packet was truncated, or data2 is
-                           # a continuation that merely begins with 0x55
-                buffer += data2
-                last_data_end = cursor
+                buffer += frames[cursor][2]
                 cursor += 1
             candidate = bytes(buffer[:length])
-            accepted = (len(buffer) >= length
+            accepted = (len(buffer) == length
                         and crc(candidate[:-2], 0x3692, 0x8408)
                         == int.from_bytes(candidate[-2:], "little"))
             if not accepted:
-                # Distinguish "aborted packet" from "a 0x55-leading continuation
-                # frame was mistaken for a header": only the first frame is a real
-                # packet start, so rewind to just after the header and let the
-                # remaining frames be judged on their own.
-                if last_data_end is None:
-                    stats["truncated"] += 1
-                    index += 1
-                    continue
-                index = last_data_end + 1
-                if len(buffer) >= length:
-                    stats["crc_fail"] += 1
-                else:
-                    stats["truncated"] += 1
+                # Reconsider every following frame; a truncated or corrupt start
+                # must not consume the next healthy packet while seeking its tail.
+                stats["truncated" if len(buffer) < length else "crc_fail"] += 1
+                index += 1
                 continue
             stats["complete"] += 1
             packets.append({"can_id": identifier, "extended": extended,
@@ -304,10 +291,47 @@ def self_check():
     report = reconstruct_frames(stream.encode())
     assert any(entry["packet"] == good for entry in report["packets"]), report["stats"]
 
-    # An ambiguous continuation: the second frame begins with 0x55 and itself looks
-    # like a header, but the original packet is still the correct parse.
-    body = bytes([0x00, 0x0D, 0x00]) + good[11:]      # header tail + CRC
-    assert body[0] == 0x00 or body[0] == 0x55
+    # Real capture continuations can start with 55, with or without a valid
+    # header CRC8. Neither case may interrupt the outer packet.
+    for embedded_header in (bytes.fromhex("55 0D 04 00"), good[:8]):
+        payload = b"\x00" * 5 + embedded_header
+        outer = bytearray([0x55, 13 + len(payload), 0x04, 0, 0xE5, 0xBF,
+                           0, 0, 0, 0x04, 0x05])
+        outer[3] = crc(outer[:3], 0x77, 0x8C)
+        outer += payload
+        outer += crc(outer, 0x3692, 0x8408).to_bytes(2, "little")
+        rows = [f"{200+i},{i+1},00000106,0,0,{len(outer[i*8:i*8+8])},"
+                f"{outer[i*8:i*8+8].hex()}\n"
+                for i in range((len(outer)+7)//8)]
+        report = reconstruct_frames("".join(rows).encode())
+        assert [e["packet"] for e in report["packets"]] == [bytes(outer)]
+
+    # A bad CRC must not hide the next complete packet.
+    corrupt = bytearray(good); corrupt[-1] ^= 1
+    raw = b""; seq = 0
+    for p in (corrupt, good):
+        for offset in range(0, len(p), 8):
+            seq += 1; chunk = p[offset:offset+8]
+            raw += f"{300+seq},{seq},00000503,0,0,{len(chunk)},{chunk.hex()}\n".encode()
+    report = reconstruct_frames(raw)
+    assert [e["packet"] for e in report["packets"]] == [good]
+    assert report["stats"]["crc_fail"] == 1
+    # CRC16 alone cannot validate a damaged header CRC8.
+    bad_header = bytearray(good)
+    bad_header[3] ^= 1
+    bad_header[-2:] = crc(bad_header[:-2], 0x3692, 0x8408).to_bytes(2, "little")
+    rows = [f"{400+i},{i+1},00000503,0,0,{len(bad_header[i*8:i*8+8])},"
+            f"{bad_header[i*8:i*8+8].hex()}\n" for i in range(2)]
+    assert not reconstruct_frames("".join(rows).encode())["packets"]
+
+    # Firmware drop-counter changes must separate otherwise contiguous fragments.
+    fragments = [f"{500+i},{i+1},00000503,0,0,{len(packet[i*8:i*8+8])},"
+                 f"{packet[i*8:i*8+8].hex()}\n" for i in range(3)]
+    raw = ("# STATUS t_us=499 logger_dropped=0 rx_missed=0 rx_overrun=0\n"
+           + fragments[0]
+           + "# STATUS t_us=501 logger_dropped=1 rx_missed=0 rx_overrun=0\n"
+           + "".join(fragments[1:]))
+    assert not reconstruct_frames(raw.encode())["packets"]
     print("protocol analyzer self-check passed")
 
 

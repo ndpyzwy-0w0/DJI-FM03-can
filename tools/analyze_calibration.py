@@ -10,6 +10,7 @@ from pathlib import Path
 from statistics import median
 
 from analyze_protocol import crc, reconstruct_frames
+from analyze_state import analyze as analyze_periodic_state
 from build_protocol_catalog import identity
 from capture import parse_frame, summarize
 
@@ -64,15 +65,24 @@ def analyze(path):
         old_raw = reference.read_bytes()
         old_entries = reconstruct_frames(old_raw)['packets']
         states = Counter()
+        dial_context = {}
+        pairings = Counter()
         for e in old_entries:
             b = e['packet']
+            if e['can_id'] == 0x503 and b[4:6] == b'\xe5\xbf' and b[9:11] == b'\x04\x69' and b[11:15] == bytes.fromhex('0f040819'):
+                dial_context[e['segment']] = (e['stamp'], int.from_bytes(b[15:17], 'little', signed=True))
             key = identity((e['can_id'],e['extended'],e['segment'],e['stamp'],b))
             old_groups[key].add(b[11:-2])
             value = state09(b)
             if value is not None and e['can_id'] == 0x504 and b[4:6] == b'\xbf\xe5':
                 states[value] += 1
+                preceding = dial_context.get(e['segment'])
+                if preceding and 0 <= e['stamp'] - preceding[0] <= 50000:
+                    speed = preceding[1]
+                    pairings[((speed > 0) - (speed < 0), value[1])] += 1
         historical.append({'file':reference.name, 'sha256':hashlib.sha256(old_raw).hexdigest(),
                            'crc_valid_packets':len(old_entries),
+                           'preceding_dial_sign_vs_state09_int32': [{'dial_sign':sign,'int32_le_offset3':value,'samples':count} for (sign,value),count in sorted(pairings.items())],
                            'state09_combinations':[{'state':s,'int32_le_offset3':v,'packets':n}
                                                    for (s,v),n in sorted(states.items())]})
     groups = defaultdict(list)
@@ -136,6 +146,7 @@ def analyze(path):
             'reliable_segments':reconstruction['segment_count'],
             'offset_convention':'zero-based payload offsets, excluding 11-byte header and trailing CRC16',
             'historical_references':historical,'groups':comparison,'dial_routes':dial,
+            'periodic_state_validation':analyze_periodic_state(path),
             'e5bf_non_dial_commands':commands,'state09_bfe5_runs':runs,
             'limits':['Relative time uses the first complete parsed CAN frame, not the button press.',
                       'Physical senders, movement, limit-contact times and units are not inferred.',

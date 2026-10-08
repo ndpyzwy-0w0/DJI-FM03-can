@@ -47,11 +47,11 @@
     "firmware_errors": []
   },
   "trailing_bytes": 40,
-  "crc8_crc16_valid_packets": 10420,
+  "crc8_crc16_valid_packets": 10433,
   "reconstruction_stats": {
-    "not_a_packet_start": 2,
-    "complete": 10420,
-    "truncated": 28
+    "not_a_packet_start": 3,
+    "complete": 10433,
+    "truncated": 1
   },
   "reliable_segments": 1,
   "offset_convention": "zero-based payload offsets, excluding 11-byte header and trailing CRC16",
@@ -59,7 +59,24 @@
     {
       "file": "20261007_154446_862533_capture.log",
       "sha256": "1d1bf75462e3046c3d7b318c1484d054109e7bd2cd37e0eb48bf4bc48d208a91",
-      "crc_valid_packets": 14623,
+      "crc_valid_packets": 14633,
+      "preceding_dial_sign_vs_state09_int32": [
+        {
+          "dial_sign": -1,
+          "int32_le_offset3": -2147483648,
+          "samples": 96
+        },
+        {
+          "dial_sign": 0,
+          "int32_le_offset3": -2147483648,
+          "samples": 202
+        },
+        {
+          "dial_sign": 1,
+          "int32_le_offset3": -2147483648,
+          "samples": 6
+        }
+      ],
       "state09_combinations": [
         {
           "state": 0,
@@ -71,7 +88,14 @@
     {
       "file": "20261007_154729_002678_idle.log",
       "sha256": "22e4d08ce478a0bb8a44e466bc0cae2801aa911858e5ff1e0410b0b3fef47a1d",
-      "crc_valid_packets": 4996,
+      "crc_valid_packets": 4998,
+      "preceding_dial_sign_vs_state09_int32": [
+        {
+          "dial_sign": 0,
+          "int32_le_offset3": 2147483647,
+          "samples": 104
+        }
+      ],
       "state09_combinations": [
         {
           "state": 0,
@@ -83,7 +107,19 @@
     {
       "file": "20261007_185515_591414_slow_forward.log",
       "sha256": "db57a53d4eb3c9a91f48c132086650be3433e40c04ab77391229a860101cb444",
-      "crc_valid_packets": 9651,
+      "crc_valid_packets": 9661,
+      "preceding_dial_sign_vs_state09_int32": [
+        {
+          "dial_sign": -1,
+          "int32_le_offset3": -2147483648,
+          "samples": 151
+        },
+        {
+          "dial_sign": 0,
+          "int32_le_offset3": -2147483648,
+          "samples": 50
+        }
+      ],
       "state09_combinations": [
         {
           "state": 0,
@@ -95,7 +131,19 @@
     {
       "file": "20261007_185554_700204_slow_reverse.log",
       "sha256": "36d34e2d2e4c47d0b5d4f51292127944f97906e65fb613ba02a14d7d541fd994",
-      "crc_valid_packets": 7212,
+      "crc_valid_packets": 7217,
+      "preceding_dial_sign_vs_state09_int32": [
+        {
+          "dial_sign": 0,
+          "int32_le_offset3": -2147483648,
+          "samples": 26
+        },
+        {
+          "dial_sign": 1,
+          "int32_le_offset3": -2147483648,
+          "samples": 124
+        }
+      ],
       "state09_combinations": [
         {
           "state": 0,
@@ -107,7 +155,29 @@
     {
       "file": "20261007_194635_586843_fast_forward.log",
       "sha256": "7ba071d28d1632ed7e84aaccf182c4f0ba78f406f12ddcf0625277877714ec6d",
-      "crc_valid_packets": 7324,
+      "crc_valid_packets": 7332,
+      "preceding_dial_sign_vs_state09_int32": [
+        {
+          "dial_sign": -1,
+          "int32_le_offset3": -2147483648,
+          "samples": 23
+        },
+        {
+          "dial_sign": -1,
+          "int32_le_offset3": 2147483647,
+          "samples": 2
+        },
+        {
+          "dial_sign": 0,
+          "int32_le_offset3": -2147483648,
+          "samples": 84
+        },
+        {
+          "dial_sign": 0,
+          "int32_le_offset3": 2147483647,
+          "samples": 44
+        }
+      ],
       "state09_combinations": [
         {
           "state": 0,
@@ -124,7 +194,34 @@
     {
       "file": "20261007_194656_333607_fast_reverse.log",
       "sha256": "2eed5d338c10427a442f4ded54a669db4ae1052f5c6397dca3e35d2661efc451",
-      "crc_valid_packets": 8965,
+      "crc_valid_packets": 8981,
+      "preceding_dial_sign_vs_state09_int32": [
+        {
+          "dial_sign": -1,
+          "int32_le_offset3": -2147483648,
+          "samples": 2
+        },
+        {
+          "dial_sign": 0,
+          "int32_le_offset3": -2147483648,
+          "samples": 92
+        },
+        {
+          "dial_sign": 0,
+          "int32_le_offset3": 2147483647,
+          "samples": 68
+        },
+        {
+          "dial_sign": 1,
+          "int32_le_offset3": -2147483648,
+          "samples": 22
+        },
+        {
+          "dial_sign": 1,
+          "int32_le_offset3": 2147483647,
+          "samples": 2
+        }
+      ],
       "state09_combinations": [
         {
           "state": 0,
@@ -141,7 +238,19 @@
     {
       "file": "20261007_201035_353525_capture.log",
       "sha256": "525605e50126e0268de5efdca01dc33bc96e97e7e8990ca84e4c1d518ae2ab41",
-      "crc_valid_packets": 5518,
+      "crc_valid_packets": 5523,
+      "preceding_dial_sign_vs_state09_int32": [
+        {
+          "dial_sign": -1,
+          "int32_le_offset3": -2147483648,
+          "samples": 5
+        },
+        {
+          "dial_sign": 0,
+          "int32_le_offset3": -2147483648,
+          "samples": 110
+        }
+      ],
       "state09_combinations": [
         {
           "state": 0,
@@ -153,7 +262,24 @@
     {
       "file": "20261007_203655_610426_capture.log",
       "sha256": "241f74826eb40b27c0767adaae6ef56c1ad1cc7bded03db0ac599638886c2f3d",
-      "crc_valid_packets": 9523,
+      "crc_valid_packets": 9534,
+      "preceding_dial_sign_vs_state09_int32": [
+        {
+          "dial_sign": -1,
+          "int32_le_offset3": -2147483648,
+          "samples": 28
+        },
+        {
+          "dial_sign": 0,
+          "int32_le_offset3": -2147483648,
+          "samples": 169
+        },
+        {
+          "dial_sign": 1,
+          "int32_le_offset3": -2147483648,
+          "samples": 1
+        }
+      ],
       "state09_combinations": [
         {
           "state": 0,
@@ -165,7 +291,19 @@
     {
       "file": "20261007_214348_391693_capture.log",
       "sha256": "96bcc55efb0889e46124f6ffea6e4e9b30e0aaa53e9350aeae47d5b27f66e145",
-      "crc_valid_packets": 7953,
+      "crc_valid_packets": 7965,
+      "preceding_dial_sign_vs_state09_int32": [
+        {
+          "dial_sign": 0,
+          "int32_le_offset3": 0,
+          "samples": 15
+        },
+        {
+          "dial_sign": 0,
+          "int32_le_offset3": 2147483647,
+          "samples": 148
+        }
+      ],
       "state09_combinations": [
         {
           "state": 0,
@@ -218,8 +356,8 @@
       "route": "0x106 04>F1 flags=00 cmd=04:05",
       "payload_length": 45,
       "subtype": "",
-      "packets": 1069,
-      "unique_payloads": 1069,
+      "packets": 1082,
+      "unique_payloads": 1082,
       "variable_payload_offsets": [
         0,
         2,
@@ -600,6 +738,7 @@
           8,
           9,
           10,
+          11,
           12,
           13,
           14,
@@ -673,6 +812,7 @@
           82,
           83,
           84,
+          85,
           86,
           87,
           88,
@@ -1912,6 +2052,7 @@
           82,
           83,
           84,
+          85,
           86,
           87,
           88,
@@ -3012,6 +3153,7 @@
           82,
           83,
           84,
+          85,
           86,
           87,
           88,
@@ -3243,7 +3385,7 @@
       "last_relative_s": 21.627452,
       "sample_packet": "55 3A 04 70 04 F1 5A 33 00 04 05 4C 00 9D FF 7F FF 82 00 F7 FF 00 01 26 63 41 18 EF FA 00 00 F9 FF F7 FF 2B AF 7C 3F E3 F7 9F BD 8E D2 9A 3D 6D A2 F1 BD 00 00 00 00 00 F6 EA",
       "historical_layout_present": true,
-      "historical_unique_payloads": 7810,
+      "historical_unique_payloads": 7889,
       "new_byte_values_at_offsets": [
         0,
         2,
@@ -3259,7 +3401,7 @@
         30,
         39
       ],
-      "new_payload_count": 1069
+      "new_payload_count": 1082
     },
     {
       "route": "0x201 DF>52 flags=00 cmd=04:2F",
@@ -4789,6 +4931,875 @@
       "median_interval_ms": 10.001
     }
   ],
+  "periodic_state_validation": {
+    "raw_log": "J:\\New soft project\\FM03\\captures\\20261009_003846_528282_calibration.log",
+    "sha256": "e4d79051b8a2bf86c7e9ae453b88d0422b7a86273893c0018f349cd60aa48611",
+    "integrity": {
+      "frames": 37538,
+      "ids": {
+        "S:00000201": 8874,
+        "S:00000106": 8742,
+        "S:00000503": 6488,
+        "S:00000232": 4770,
+        "S:00000504": 8664
+      },
+      "sequence_gaps": 0,
+      "sequence_resets": 0,
+      "non_frame_lines": 2,
+      "first_t_us": 132272245,
+      "last_t_us": 153911691,
+      "status_first": {
+        "t_us": 132273692,
+        "bitrate": 1000000,
+        "rx": 135703,
+        "logger_dropped": 67847,
+        "rx_missed": 0,
+        "rx_overrun": 0,
+        "bus_errors": 65,
+        "pending": 0,
+        "logger_pending": 0,
+        "mode_switches": 0,
+        "frames_in_mode": 67856
+      },
+      "status_last": {
+        "t_us": 153278757,
+        "bitrate": 1000000,
+        "rx": 172116,
+        "logger_dropped": 67847,
+        "rx_missed": 0,
+        "rx_overrun": 0,
+        "bus_errors": 65,
+        "pending": 0,
+        "logger_pending": 0,
+        "mode_switches": 0,
+        "frames_in_mode": 104269
+      },
+      "firmware_errors": []
+    },
+    "crc_valid_packets": 10433,
+    "groups": {
+      "0x106 04>C9 flags=00 cmd=04:10 len=3 subtype=": {
+        "packets": 43,
+        "median_interval_ms": 500.0535,
+        "unique_payloads": 1,
+        "payload_counts": [
+          [
+            "7A 01 01",
+            43
+          ]
+        ],
+        "variable_payload_offsets": []
+      },
+      "0x106 04>F1 flags=00 cmd=04:05 len=45 subtype=": {
+        "packets": 1082,
+        "median_interval_ms": 20.002,
+        "unique_payloads": 1082,
+        "payload_counts": [
+          [
+            "4C 00 9D FF 7F FF 82 00 F7 FF 00 01 26 63 41 18 EF FA 00 00 F9 FF F7 FF 2B AF 7C 3F E3 F7 9F BD 8E D2 9A 3D 6D A2 F1 BD 00 00 00 00 00",
+            1
+          ],
+          [
+            "4C 00 9D FF 7F FF 82 00 F6 FF 00 01 4A B1 41 18 EF FA 00 00 FA FF F7 FF 4E AF 7C 3F D3 DB 9F BD 15 CB 9A 3D 5A B0 F1 BD 00 00 00 00 00",
+            1
+          ],
+          [
+            "4C 00 9E FF 7F FF 82 00 F7 FF 00 01 66 FF 41 18 EF FA 00 00 F9 FF F7 FF E8 AF 7C 3F A2 C1 9F BD B4 BF 9A 3D EF A0 F1 BD 00 00 00 00 00",
+            1
+          ],
+          [
+            "4C 00 9E FF 7F FF 82 00 F7 FF 00 01 8C 4D 42 18 F0 FA 00 00 F9 FF F7 FF 38 B0 7C 3F 98 AF 9F BD FB BD 9A 3D 1D 99 F1 BD 00 00 00 00 00",
+            1
+          ],
+          [
+            "4C 00 9E FF 7F FF 82 00 F6 FF 00 01 AD 9B 42 18 EF FA 00 00 F9 FF F7 FF 40 B0 7C 3F A1 9C 9F BD 5C C0 9A 3D F6 A1 F1 BD 00 00 00 00 00",
+            1
+          ]
+        ],
+        "variable_payload_offsets": [
+          0,
+          2,
+          4,
+          6,
+          8,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          20,
+          22,
+          24,
+          25,
+          26,
+          28,
+          29,
+          30,
+          32,
+          33,
+          34,
+          36,
+          37,
+          38
+        ],
+        "four_float32_le_payload_offset24": {
+          "finite_packets": 1082,
+          "norm_squared_min": 0.9999998872808631,
+          "norm_squared_max": 1.0000002004083046,
+          "maximum_error_from_one": 2.0040830461809378e-07
+        },
+        "uint32_le_payload_offset12_increment": {
+          "median": 20002,
+          "minimum": 19801,
+          "maximum": 20189
+        }
+      },
+      "0x201 DF>52 flags=00 cmd=04:2F len=8 subtype=12 00": {
+        "packets": 217,
+        "median_interval_ms": 100.008,
+        "unique_payloads": 1,
+        "payload_counts": [
+          [
+            "12 00 01 04 00 00 00 00",
+            217
+          ]
+        ],
+        "variable_payload_offsets": []
+      },
+      "0x201 DF>52 flags=00 cmd=04:2F len=13 subtype=13 00": {
+        "packets": 216,
+        "median_interval_ms": 100.009,
+        "unique_payloads": 3,
+        "payload_counts": [
+          [
+            "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+            72
+          ],
+          [
+            "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+            72
+          ],
+          [
+            "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+            72
+          ]
+        ],
+        "variable_payload_offsets": [
+          2
+        ],
+        "offset2_value_counts": {
+          "2": 72,
+          "3": 72,
+          "1": 72
+        },
+        "cycle_1_2_3_pairs": 215,
+        "same_segment_pairs": 215
+      },
+      "0x201 DF>52 flags=00 cmd=04:2F len=15 subtype=09 00": {
+        "packets": 217,
+        "median_interval_ms": 100.0095,
+        "unique_payloads": 4,
+        "payload_counts": [
+          [
+            "09 00 03 AD 0E 00 00 00 00 00 00 00 00 00 00",
+            84
+          ],
+          [
+            "09 00 02 FF FF FF 7F 00 00 00 00 00 00 00 00",
+            66
+          ],
+          [
+            "09 00 00 FF FF FF 7F 00 00 00 00 00 00 00 00",
+            49
+          ],
+          [
+            "09 00 01 FF FF FF 7F 00 00 00 00 00 00 00 00",
+            18
+          ]
+        ],
+        "variable_payload_offsets": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "int32_le_payload_offset3_counts": {
+          "2147483647": 133,
+          "3757": 84
+        },
+        "state_changes": [
+          {
+            "segment": 0,
+            "relative_s": 0.018646,
+            "int32_le_offset3": 2147483647,
+            "preceding_04_69": {
+              "value": 0,
+              "age_ms": 9.081
+            }
+          },
+          {
+            "segment": 0,
+            "relative_s": 4.919044,
+            "int32_le_offset3": 2147483647,
+            "preceding_04_69": {
+              "value": 0,
+              "age_ms": 9.025
+            }
+          },
+          {
+            "segment": 0,
+            "relative_s": 6.718286,
+            "int32_le_offset3": 2147483647,
+            "preceding_04_69": {
+              "value": 0,
+              "age_ms": 8.021
+            }
+          },
+          {
+            "segment": 0,
+            "relative_s": 13.336851,
+            "int32_le_offset3": 3757,
+            "preceding_04_69": {
+              "value": 0,
+              "age_ms": 6.03
+            }
+          }
+        ]
+      },
+      "0x232 BF>32 flags=00 cmd=04:2F len=8 subtype=12 00": {
+        "packets": 217,
+        "median_interval_ms": 100.007,
+        "unique_payloads": 1,
+        "payload_counts": [
+          [
+            "12 00 01 04 00 00 00 00",
+            217
+          ]
+        ],
+        "variable_payload_offsets": []
+      },
+      "0x232 BF>32 flags=00 cmd=04:2F len=15 subtype=09 00": {
+        "packets": 217,
+        "median_interval_ms": 100.007,
+        "unique_payloads": 4,
+        "payload_counts": [
+          [
+            "09 00 03 AD 0E 00 00 00 00 00 00 00 00 00 00",
+            84
+          ],
+          [
+            "09 00 02 FF FF FF 7F 00 00 00 00 00 00 00 00",
+            66
+          ],
+          [
+            "09 00 00 FF FF FF 7F 00 00 00 00 00 00 00 00",
+            49
+          ],
+          [
+            "09 00 01 FF FF FF 7F 00 00 00 00 00 00 00 00",
+            18
+          ]
+        ],
+        "variable_payload_offsets": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "int32_le_payload_offset3_counts": {
+          "2147483647": 133,
+          "3757": 84
+        },
+        "state_changes": [
+          {
+            "segment": 0,
+            "relative_s": 0.017056,
+            "int32_le_offset3": 2147483647,
+            "preceding_04_69": {
+              "value": 0,
+              "age_ms": 7.491
+            }
+          },
+          {
+            "segment": 0,
+            "relative_s": 4.917127,
+            "int32_le_offset3": 2147483647,
+            "preceding_04_69": {
+              "value": 0,
+              "age_ms": 7.108
+            }
+          },
+          {
+            "segment": 0,
+            "relative_s": 6.717152,
+            "int32_le_offset3": 2147483647,
+            "preceding_04_69": {
+              "value": 0,
+              "age_ms": 6.887
+            }
+          },
+          {
+            "segment": 0,
+            "relative_s": 13.335268,
+            "int32_le_offset3": 3757,
+            "preceding_04_69": {
+              "value": 0,
+              "age_ms": 4.447
+            }
+          }
+        ]
+      },
+      "0x232 BF>32 flags=20 cmd=24:20 len=3 subtype=5a 41 01": {
+        "packets": 217,
+        "median_interval_ms": 100.007,
+        "unique_payloads": 1,
+        "payload_counts": [
+          [
+            "5A 41 01",
+            217
+          ]
+        ],
+        "variable_payload_offsets": []
+      },
+      "0x232 BF>32 flags=20 cmd=24:20 len=3 subtype=5d 41 01": {
+        "packets": 217,
+        "median_interval_ms": 100.007,
+        "unique_payloads": 1,
+        "payload_counts": [
+          [
+            "5D 41 01",
+            217
+          ]
+        ],
+        "variable_payload_offsets": []
+      },
+      "0x232 BF>52 flags=00 cmd=04:2F len=8 subtype=12 00": {
+        "packets": 217,
+        "median_interval_ms": 100.006,
+        "unique_payloads": 1,
+        "payload_counts": [
+          [
+            "12 00 01 04 00 00 00 00",
+            217
+          ]
+        ],
+        "variable_payload_offsets": []
+      },
+      "0x232 BF>52 flags=00 cmd=04:2F len=13 subtype=13 00": {
+        "packets": 216,
+        "median_interval_ms": 100.006,
+        "unique_payloads": 3,
+        "payload_counts": [
+          [
+            "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+            72
+          ],
+          [
+            "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+            72
+          ],
+          [
+            "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+            72
+          ]
+        ],
+        "variable_payload_offsets": [
+          2
+        ],
+        "offset2_value_counts": {
+          "2": 72,
+          "3": 72,
+          "1": 72
+        },
+        "cycle_1_2_3_pairs": 215,
+        "same_segment_pairs": 215
+      },
+      "0x232 BF>52 flags=00 cmd=04:2F len=15 subtype=09 00": {
+        "packets": 217,
+        "median_interval_ms": 100.007,
+        "unique_payloads": 4,
+        "payload_counts": [
+          [
+            "09 00 03 AD 0E 00 00 00 00 00 00 00 00 00 00",
+            84
+          ],
+          [
+            "09 00 02 FF FF FF 7F 00 00 00 00 00 00 00 00",
+            66
+          ],
+          [
+            "09 00 00 FF FF FF 7F 00 00 00 00 00 00 00 00",
+            49
+          ],
+          [
+            "09 00 01 FF FF FF 7F 00 00 00 00 00 00 00 00",
+            18
+          ]
+        ],
+        "variable_payload_offsets": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "int32_le_payload_offset3_counts": {
+          "2147483647": 133,
+          "3757": 84
+        },
+        "state_changes": [
+          {
+            "segment": 0,
+            "relative_s": 0.017957,
+            "int32_le_offset3": 2147483647,
+            "preceding_04_69": {
+              "value": 0,
+              "age_ms": 8.392
+            }
+          },
+          {
+            "segment": 0,
+            "relative_s": 4.918027,
+            "int32_le_offset3": 2147483647,
+            "preceding_04_69": {
+              "value": 0,
+              "age_ms": 8.008
+            }
+          },
+          {
+            "segment": 0,
+            "relative_s": 6.718051,
+            "int32_le_offset3": 2147483647,
+            "preceding_04_69": {
+              "value": 0,
+              "age_ms": 7.786
+            }
+          },
+          {
+            "segment": 0,
+            "relative_s": 13.336162,
+            "int32_le_offset3": 3757,
+            "preceding_04_69": {
+              "value": 0,
+              "age_ms": 5.341
+            }
+          }
+        ]
+      },
+      "0x503 E5>BF flags=00 cmd=04:2F len=3 subtype=02 00": {
+        "packets": 1,
+        "median_interval_ms": null,
+        "unique_payloads": 1,
+        "payload_counts": [
+          [
+            "02 00 01",
+            1
+          ]
+        ],
+        "variable_payload_offsets": []
+      },
+      "0x504 BF>02 flags=00 cmd=04:2F len=15 subtype=09 00": {
+        "packets": 217,
+        "median_interval_ms": 100.007,
+        "unique_payloads": 4,
+        "payload_counts": [
+          [
+            "09 00 03 AD 0E 00 00 00 00 00 00 00 00 00 00",
+            84
+          ],
+          [
+            "09 00 02 FF FF FF 7F 00 00 00 00 00 00 00 00",
+            66
+          ],
+          [
+            "09 00 00 FF FF FF 7F 00 00 00 00 00 00 00 00",
+            49
+          ],
+          [
+            "09 00 01 FF FF FF 7F 00 00 00 00 00 00 00 00",
+            18
+          ]
+        ],
+        "variable_payload_offsets": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "int32_le_payload_offset3_counts": {
+          "2147483647": 133,
+          "3757": 84
+        },
+        "state_changes": [
+          {
+            "segment": 0,
+            "relative_s": 0.0166,
+            "int32_le_offset3": 2147483647,
+            "preceding_04_69": {
+              "value": 0,
+              "age_ms": 7.035
+            }
+          },
+          {
+            "segment": 0,
+            "relative_s": 4.916675,
+            "int32_le_offset3": 2147483647,
+            "preceding_04_69": {
+              "value": 0,
+              "age_ms": 6.656
+            }
+          },
+          {
+            "segment": 0,
+            "relative_s": 6.716701,
+            "int32_le_offset3": 2147483647,
+            "preceding_04_69": {
+              "value": 0,
+              "age_ms": 6.436
+            }
+          },
+          {
+            "segment": 0,
+            "relative_s": 13.334818,
+            "int32_le_offset3": 3757,
+            "preceding_04_69": {
+              "value": 0,
+              "age_ms": 3.997
+            }
+          }
+        ]
+      },
+      "0x504 BF>04 flags=00 cmd=00:0E len=0 subtype=": {
+        "packets": 216,
+        "median_interval_ms": 100.004,
+        "unique_payloads": 1,
+        "payload_counts": [
+          [
+            "",
+            216
+          ]
+        ],
+        "variable_payload_offsets": []
+      },
+      "0x504 BF>52 flags=00 cmd=04:2F len=8 subtype=12 00": {
+        "packets": 217,
+        "median_interval_ms": 100.007,
+        "unique_payloads": 1,
+        "payload_counts": [
+          [
+            "12 00 01 04 00 00 00 00",
+            217
+          ]
+        ],
+        "variable_payload_offsets": []
+      },
+      "0x504 BF>52 flags=00 cmd=04:2F len=13 subtype=13 00": {
+        "packets": 216,
+        "median_interval_ms": 100.006,
+        "unique_payloads": 3,
+        "payload_counts": [
+          [
+            "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+            72
+          ],
+          [
+            "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+            72
+          ],
+          [
+            "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+            72
+          ]
+        ],
+        "variable_payload_offsets": [
+          2
+        ],
+        "offset2_value_counts": {
+          "2": 72,
+          "3": 72,
+          "1": 72
+        },
+        "cycle_1_2_3_pairs": 215,
+        "same_segment_pairs": 215
+      },
+      "0x504 BF>52 flags=00 cmd=04:2F len=15 subtype=09 00": {
+        "packets": 217,
+        "median_interval_ms": 100.008,
+        "unique_payloads": 4,
+        "payload_counts": [
+          [
+            "09 00 03 AD 0E 00 00 00 00 00 00 00 00 00 00",
+            84
+          ],
+          [
+            "09 00 02 FF FF FF 7F 00 00 00 00 00 00 00 00",
+            66
+          ],
+          [
+            "09 00 00 FF FF FF 7F 00 00 00 00 00 00 00 00",
+            49
+          ],
+          [
+            "09 00 01 FF FF FF 7F 00 00 00 00 00 00 00 00",
+            18
+          ]
+        ],
+        "variable_payload_offsets": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "int32_le_payload_offset3_counts": {
+          "2147483647": 133,
+          "3757": 84
+        },
+        "state_changes": [
+          {
+            "segment": 0,
+            "relative_s": 0.01751,
+            "int32_le_offset3": 2147483647,
+            "preceding_04_69": {
+              "value": 0,
+              "age_ms": 7.945
+            }
+          },
+          {
+            "segment": 0,
+            "relative_s": 4.917576,
+            "int32_le_offset3": 2147483647,
+            "preceding_04_69": {
+              "value": 0,
+              "age_ms": 7.557
+            }
+          },
+          {
+            "segment": 0,
+            "relative_s": 6.717601,
+            "int32_le_offset3": 2147483647,
+            "preceding_04_69": {
+              "value": 0,
+              "age_ms": 7.336
+            }
+          },
+          {
+            "segment": 0,
+            "relative_s": 13.33572,
+            "int32_le_offset3": 3757,
+            "preceding_04_69": {
+              "value": 0,
+              "age_ms": 4.899
+            }
+          }
+        ]
+      },
+      "0x504 BF>E5 flags=00 cmd=00:0E len=0 subtype=": {
+        "packets": 216,
+        "median_interval_ms": 100.005,
+        "unique_payloads": 1,
+        "payload_counts": [
+          [
+            "",
+            216
+          ]
+        ],
+        "variable_payload_offsets": []
+      },
+      "0x504 BF>E5 flags=00 cmd=04:2F len=2 subtype=19 03": {
+        "packets": 216,
+        "median_interval_ms": 100.006,
+        "unique_payloads": 1,
+        "payload_counts": [
+          [
+            "19 03",
+            216
+          ]
+        ],
+        "variable_payload_offsets": []
+      },
+      "0x504 BF>E5 flags=00 cmd=04:2F len=3 subtype=1b 4b": {
+        "packets": 216,
+        "median_interval_ms": 100.005,
+        "unique_payloads": 1,
+        "payload_counts": [
+          [
+            "1B 4B 00",
+            216
+          ]
+        ],
+        "variable_payload_offsets": []
+      },
+      "0x504 BF>E5 flags=00 cmd=04:2F len=6 subtype=18 01": {
+        "packets": 216,
+        "median_interval_ms": 100.006,
+        "unique_payloads": 1,
+        "payload_counts": [
+          [
+            "18 01 00 00 00 00",
+            216
+          ]
+        ],
+        "variable_payload_offsets": []
+      },
+      "0x504 BF>E5 flags=00 cmd=04:2F len=8 subtype=12 00": {
+        "packets": 217,
+        "median_interval_ms": 100.0075,
+        "unique_payloads": 1,
+        "payload_counts": [
+          [
+            "12 00 01 04 00 00 00 00",
+            217
+          ]
+        ],
+        "variable_payload_offsets": []
+      },
+      "0x504 BF>E5 flags=00 cmd=04:2F len=13 subtype=13 00": {
+        "packets": 217,
+        "median_interval_ms": 100.006,
+        "unique_payloads": 3,
+        "payload_counts": [
+          [
+            "13 00 02 00 00 FF FF FF FF FF FF FF FF",
+            73
+          ],
+          [
+            "13 00 03 00 00 FF FF FF FF FF FF FF FF",
+            72
+          ],
+          [
+            "13 00 01 00 00 FF FF FF FF FF FF FF FF",
+            72
+          ]
+        ],
+        "variable_payload_offsets": [
+          2
+        ],
+        "offset2_value_counts": {
+          "2": 73,
+          "3": 72,
+          "1": 72
+        },
+        "cycle_1_2_3_pairs": 216,
+        "same_segment_pairs": 216
+      },
+      "0x504 BF>E5 flags=00 cmd=04:2F len=15 subtype=09 00": {
+        "packets": 217,
+        "median_interval_ms": 100.007,
+        "unique_payloads": 4,
+        "payload_counts": [
+          [
+            "09 00 03 AD 0E 00 00 00 00 00 00 00 00 00 00",
+            84
+          ],
+          [
+            "09 00 02 FF FF FF 7F 00 00 00 00 00 00 00 00",
+            66
+          ],
+          [
+            "09 00 00 FF FF FF 7F 00 00 00 00 00 00 00 00",
+            49
+          ],
+          [
+            "09 00 01 FF FF FF 7F 00 00 00 00 00 00 00 00",
+            18
+          ]
+        ],
+        "variable_payload_offsets": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "int32_le_payload_offset3_counts": {
+          "2147483647": 133,
+          "3757": 84
+        },
+        "state_changes": [
+          {
+            "segment": 0,
+            "relative_s": 0.016145,
+            "int32_le_offset3": 2147483647,
+            "preceding_04_69": {
+              "value": 0,
+              "age_ms": 6.58
+            }
+          },
+          {
+            "segment": 0,
+            "relative_s": 4.916217,
+            "int32_le_offset3": 2147483647,
+            "preceding_04_69": {
+              "value": 0,
+              "age_ms": 6.198
+            }
+          },
+          {
+            "segment": 0,
+            "relative_s": 6.716245,
+            "int32_le_offset3": 2147483647,
+            "preceding_04_69": {
+              "value": 0,
+              "age_ms": 5.98
+            }
+          },
+          {
+            "segment": 0,
+            "relative_s": 13.334367,
+            "int32_le_offset3": 3757,
+            "preceding_04_69": {
+              "value": 0,
+              "age_ms": 3.546
+            }
+          }
+        ]
+      },
+      "0x504 BF>E5 flags=80 cmd=04:2F len=7 subtype=00 1a": {
+        "packets": 216,
+        "median_interval_ms": 100.005,
+        "unique_payloads": 1,
+        "payload_counts": [
+          [
+            "00 1A 00 00 00 00 00",
+            216
+          ]
+        ],
+        "variable_payload_offsets": [],
+        "opposite_address_same_sequence_request_matches": 0
+      }
+    },
+    "copy_0x504_BF_to_0x232_BF": {
+      "pairs": 650,
+      "same_entire_packet": 650,
+      "same_payload": 650,
+      "same_packet_except_sender_and_crc": 650,
+      "changed_packet_offsets": [],
+      "unpaired_left": 0,
+      "unpaired_right": 0
+    },
+    "copy_0x232_BF_to_0x201_DF": {
+      "pairs": 650,
+      "same_entire_packet": 0,
+      "same_payload": 650,
+      "same_packet_except_sender_and_crc": 650,
+      "changed_packet_offsets": [
+        4,
+        19,
+        20,
+        24,
+        25,
+        26,
+        27
+      ],
+      "unpaired_left": 0,
+      "unpaired_right": 0
+    }
+  },
   "e5bf_non_dial_commands": [
     {
       "route": "0x503 E5>BF flags=00 cmd=04:2F",

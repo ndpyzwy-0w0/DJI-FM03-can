@@ -1,0 +1,199 @@
+{
+  "parser_before_git": "b229b26",
+  "captures": [
+    {
+      "file": "20261007_154446_862533_capture.log",
+      "sha256": "1d1bf75462e3046c3d7b318c1484d054109e7bd2cd37e0eb48bf4bc48d208a91",
+      "before_packets": 14623,
+      "after_packets": 14633,
+      "added_by_command": {
+        "04:05": 10
+      },
+      "removed_packets": 0,
+      "before_stats": {
+        "not_a_packet_start": 7,
+        "complete": 14623,
+        "truncated": 21
+      },
+      "after_stats": {
+        "not_a_packet_start": 11,
+        "complete": 14633,
+        "truncated": 1
+      }
+    },
+    {
+      "file": "20261007_154729_002678_idle.log",
+      "sha256": "22e4d08ce478a0bb8a44e466bc0cae2801aa911858e5ff1e0410b0b3fef47a1d",
+      "before_packets": 4996,
+      "after_packets": 4998,
+      "added_by_command": {
+        "04:05": 2
+      },
+      "removed_packets": 0,
+      "before_stats": {
+        "complete": 4996,
+        "truncated": 5
+      },
+      "after_stats": {
+        "complete": 4998,
+        "truncated": 1
+      }
+    },
+    {
+      "file": "20261007_185515_591414_slow_forward.log",
+      "sha256": "db57a53d4eb3c9a91f48c132086650be3433e40c04ab77391229a860101cb444",
+      "before_packets": 9651,
+      "after_packets": 9661,
+      "added_by_command": {
+        "04:05": 10
+      },
+      "removed_packets": 0,
+      "before_stats": {
+        "complete": 9651,
+        "truncated": 22
+      },
+      "after_stats": {
+        "complete": 9661,
+        "truncated": 2,
+        "not_a_packet_start": 2
+      }
+    },
+    {
+      "file": "20261007_185554_700204_slow_reverse.log",
+      "sha256": "36d34e2d2e4c47d0b5d4f51292127944f97906e65fb613ba02a14d7d541fd994",
+      "before_packets": 7212,
+      "after_packets": 7217,
+      "added_by_command": {
+        "04:05": 5
+      },
+      "removed_packets": 0,
+      "before_stats": {
+        "not_a_packet_start": 2,
+        "complete": 7212,
+        "truncated": 10
+      },
+      "after_stats": {
+        "not_a_packet_start": 2,
+        "complete": 7217
+      }
+    },
+    {
+      "file": "20261007_194635_586843_fast_forward.log",
+      "sha256": "7ba071d28d1632ed7e84aaccf182c4f0ba78f406f12ddcf0625277877714ec6d",
+      "before_packets": 7324,
+      "after_packets": 7332,
+      "added_by_command": {
+        "04:05": 8
+      },
+      "removed_packets": 0,
+      "before_stats": {
+        "not_a_packet_start": 2,
+        "complete": 7324,
+        "truncated": 17
+      },
+      "after_stats": {
+        "not_a_packet_start": 2,
+        "complete": 7332,
+        "truncated": 1
+      }
+    },
+    {
+      "file": "20261007_194656_333607_fast_reverse.log",
+      "sha256": "2eed5d338c10427a442f4ded54a669db4ae1052f5c6397dca3e35d2661efc451",
+      "before_packets": 8965,
+      "after_packets": 8981,
+      "added_by_command": {
+        "04:05": 16
+      },
+      "removed_packets": 0,
+      "before_stats": {
+        "complete": 8965,
+        "truncated": 32
+      },
+      "after_stats": {
+        "complete": 8981
+      }
+    },
+    {
+      "file": "20261007_201035_353525_capture.log",
+      "sha256": "525605e50126e0268de5efdca01dc33bc96e97e7e8990ca84e4c1d518ae2ab41",
+      "before_packets": 5518,
+      "after_packets": 5523,
+      "added_by_command": {
+        "04:05": 5
+      },
+      "removed_packets": 0,
+      "before_stats": {
+        "not_a_packet_start": 4,
+        "complete": 5518,
+        "truncated": 11
+      },
+      "after_stats": {
+        "not_a_packet_start": 10,
+        "complete": 5523,
+        "truncated": 1
+      }
+    },
+    {
+      "file": "20261007_203655_610426_capture.log",
+      "sha256": "241f74826eb40b27c0767adaae6ef56c1ad1cc7bded03db0ac599638886c2f3d",
+      "before_packets": 9523,
+      "after_packets": 9534,
+      "added_by_command": {
+        "04:05": 11
+      },
+      "removed_packets": 0,
+      "before_stats": {
+        "not_a_packet_start": 1,
+        "complete": 9523,
+        "truncated": 22
+      },
+      "after_stats": {
+        "not_a_packet_start": 1,
+        "complete": 9534
+      }
+    },
+    {
+      "file": "20261007_214348_391693_capture.log",
+      "sha256": "96bcc55efb0889e46124f6ffea6e4e9b30e0aaa53e9350aeae47d5b27f66e145",
+      "before_packets": 7953,
+      "after_packets": 7965,
+      "added_by_command": {
+        "04:05": 12
+      },
+      "removed_packets": 0,
+      "before_stats": {
+        "not_a_packet_start": 1287,
+        "complete": 7953,
+        "truncated": 24,
+        "crc_fail": 1
+      },
+      "after_stats": {
+        "not_a_packet_start": 1291,
+        "complete": 7965,
+        "truncated": 1
+      }
+    },
+    {
+      "file": "20261009_003846_528282_calibration.log",
+      "sha256": "e4d79051b8a2bf86c7e9ae453b88d0422b7a86273893c0018f349cd60aa48611",
+      "before_packets": 10420,
+      "after_packets": 10433,
+      "added_by_command": {
+        "04:05": 13
+      },
+      "removed_packets": 0,
+      "before_stats": {
+        "not_a_packet_start": 2,
+        "complete": 10420,
+        "truncated": 28
+      },
+      "after_stats": {
+        "not_a_packet_start": 3,
+        "complete": 10433,
+        "truncated": 1
+      }
+    }
+  ],
+  "scope": "One current calibration capture and nine historical reference logs; originals unchanged"
+}

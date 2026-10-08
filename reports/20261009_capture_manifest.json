@@ -75,9 +75,23 @@
       "summary_phase": "stopped",
       "gui_elapsed_s": 21.69,
       "frames": 37538,
-      "action": "RS3 automatic travel identification scene; exact motion and success not yet confirmed",
+      "action": "RS3 automatic travel identification; user confirms stop, retreat and re-contact at each end, then seek the other end",
       "output_family": "listener STATUS",
-      "unchanged_original": true
+      "unchanged_original": true,
+      "user_motion_confirmation": {
+        "reported_at_beijing": "2026-10-09 01:12:24",
+        "per_end": [
+          "reach physical stop",
+          "stop",
+          "retreat a short distance",
+          "re-contact the same stop"
+        ],
+        "both_ends_same_process": true,
+        "direction": null,
+        "retreat_amount": null,
+        "contact_times": null,
+        "rs3_success_display": null
+      }
     }
   ],
   "notes": [
