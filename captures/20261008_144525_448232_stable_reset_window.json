@@ -1,0 +1,66 @@
+{
+  "port": "COM17",
+  "serial_baud": 921600,
+  "label": "stable_reset_window",
+  "started_at": "2026-10-08T14:45:25.448232+08:00",
+  "elapsed_seconds": 162.281,
+  "interrupted": true,
+  "raw_log": "J:\\New soft project\\FM03\\captures\\20261008_144525_448232_stable_reset_window.log",
+  "frames": 154883,
+  "ids": {
+    "S:00000232": 103241,
+    "S:00000503": 1200,
+    "S:00000504": 50442
+  },
+  "sequence_gaps": 239882,
+  "sequence_resets": 1,
+  "non_frame_lines": 3,
+  "first_t_us": 169214724,
+  "last_t_us": 153877822,
+  "status_first": {
+    "t_us": 170143518,
+    "stage": 4,
+    "rx": 460818,
+    "sent": 240,
+    "windows": 1,
+    "logger_dropped": 289575,
+    "rx_missed": 0,
+    "bus_errors": 15,
+    "pending": 0
+  },
+  "status_last": {
+    "t_us": 154135604,
+    "stage": 4,
+    "rx": 337385,
+    "sent": 240,
+    "windows": 1,
+    "logger_dropped": 196304,
+    "rx_missed": 0,
+    "bus_errors": 15,
+    "pending": 0
+  },
+  "firmware_errors": [],
+  "dtr": false,
+  "rts": false,
+  "uart_bytes_written": 1,
+  "uart_hex": "73",
+  "sha256": "118297256b7c1cfdab4d1f82892f420016d3f11382d7ec983460df855b430faf",
+  "error": null,
+  "stop_note": "Operator Ctrl-C after window_done and listen evidence; interrupted=true is capture stop, not replay interruption",
+  "user_confirmations": {
+    "before": "电机红色；RS3整个过程中未接入；总线只有收发器和电机；正常监听时RS3拨轮设为跟焦电机",
+    "reset": "用户确认已按RST",
+    "during_after_led": {
+      "raw_user_text": "灯还在红色和绿色间闪 不过比最初的崩溃循环闪的样子要频繁了",
+      "phase": "User confirms motor red/green flashing after each RST while ESP32 red/replay; no explicit blue/listen-phase outcome",
+      "phase_confirmation": "我每次按完板子上的rst键 板子亮红灯的时候 会红绿闪"
+    }
+  },
+  "unknown": [
+    "initial red steady/flashing",
+    "motor movement",
+    "exact power parameters",
+    "exact LED changes/timestamps and blue/listen outcome",
+    "termination resistance"
+  ]
+}

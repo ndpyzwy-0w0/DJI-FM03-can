@@ -145,3 +145,53 @@
 - 更新HANDOFF第0节、归档入口、README、briefing、INDEX，保存本轮源代码/环境/测试和3组新实验原始证据及离线报告。两套本机备份逐hash核对；不进Git，不声称gate100/gate0旧镜像已备份。
 - 验证：test_replay_timing三项通过，capture/analyze_protocol自检通过；stable当前镜像此前已编译并上传成功，收尾未改代码。提交前执行git diff --check并核对原始log磁盘/暂存字节及所有新JSON。用户要求本轮本地Git提交；本轮全部修改属于本会话，无无关变更，不推送远程。
 - 下一步：新对话先核实动态设备/工况，按约定另获发送阶段确认，采集在发送前开启，覆盖CONFIG、完整首轮请求/拨轮、周期TX alerts/STATUS及120秒自动停止；先确认主动发送稳定和绿闪保留，不盲加字段，不做非零运动。M3未达成。
+
+## 2026-10-08 14:42:28 北京时间 — 新窗口前工况确认（尚无结果）
+
+- 用户确认电机当前红色；RS3整个过程中未接入系统；总线只有测试收发器和电机；正常监听时RS3前置拨轮设为跟焦电机。红灯常亮/闪烁、当前电机动作、精确供电参数及灯色变化时刻未知，不沿用旧记录补造。
+- 已授权本次120秒零值replay_gate0_stable_echo窗口；COM17=CH343在位，未发现采集进程。本机镜像/ELF匹配备份，但尚未读取到本次板上CONFIG/身份。准备先采集，再请用户按板上RST一次；不软件RTS复位，不烧录、不发送非零量。
+- 采集使用现有tools/capture.py，开前DTR/RTS=false；该工具写UART字节s一次，不是CAN消息，不能记作UART零写入。发送结束后继续记录listen边界，窗口与灯色结果将在实际获取后补充。
+
+## 2026-10-08 14:49:57 北京时间 — 稳定候选完整窗口与前段保留
+
+- 本次工况：电机原为红色；RS3全程不入系统，总线只有测试收发器与电机；正常监听时RS3拨轮设跟焦电机。用户授权本次120秒零值窗口，并在第二段采集开启后确认“已按”RST。红灯常亮/闪烁、发送期间及结束后灯色、当前动作/方向和精确电源参数仍未知；不从旧“闪绿更频繁”补造本次结果。
+- 两段均COM17/CH343、921600，DTR/RTS开前false、UART写1字节s（非CAN消息）；无软件RTS复位、无烧录、无非零量。采集结束的Ctrl-C是UART采集器人为停止，实际固件窗口均已有window_done；JSON interrupted=true不代表发送窗口异常中断。
+- `20261008_144317_512534_stable_full_window.log`/.json/.analysis.json：14:43:17.512534+08:00开始、116.469秒；raw SHA256 `98aa2062ec3674e05cd563ed8a833ac346d7f0cb54251a7126385135c29db315`。开始已处旧窗口t41.848134秒，缺START/CONFIG，启动原因未知；只构成发送后半段证据，158完整请求+158完整零值拨轮、790自收帧。window_done sent240/rejected0、错误/日志丢帧/遗漏0。全文件121278完整帧、215528序号缺口、0回退，停发后刷屏且日志大量丢帧；尾部15字节，0panic/Rebooting/WARN/ERROR。
+- `20261008_144525_448232_stable_reset_window.log`/.json/.analysis.json：14:45:25.448232+08:00开始、162.281秒；raw SHA256 `118297256b7c1cfdab4d1f82892f420016d3f11382d7ec983460df855b430faf`。复位前listen→用户一次RST→START/CONFIG/AUTO_START→完整120秒发送→window_done→listen；启动乱码含START嵌入行保持原样。154883完整帧、239882缺口/1回退（含停发后刷屏及用户RST），尾部20字节；0panic/异常Rebooting/WARN/ERROR。未观测活体ELF哈希，CONFIG匹配stable，预期本地文件hash不能代替活体身份。
+- 第二段CONFIG：TX0、echo1、delay0、legacy0、sync_rx1、seq0，500ms/120秒。分START/window_done后，发送段78020完整行、0序号缺口/回退；0x503共1200帧，240个00:01（8+5）+240个04:69（8+8+3）双CRC完整，模板/零值固定。首包设备t1.107396/1.109115秒，周期约500ms。全发送收包流有6个truncated候选，不影响0x503完整计数，不宣称所有物理收包绝对无损。
+- 发送STATUS 120条，首末t1.111134→120.111944，rx+77386、sent+238，logger_dropped/rx_missed/bus_errors增0；首状态在第一轮后。window_done sent240/rejected0/rx78064，bus_errors/tx_errors/rx_missed/logger_dropped全0。120条TX_ALERT全0x2，TX错误/失败0；alerts位、sent轮次及self echo不证明应用层使能或逐帧物理成功次数。
+- 停发后STATUS约33.007606秒，rx+259314/logger_dropped+196304/bus_errors+15，sent/windows增0；0x232刷屏，34帧0x504为结束边界残留。帧数不能代表总线总帧数，不跨复位或把停发后丢帧混入发送统计。
+- 衍生报告`reports/20261008_stable_full_window_result.json`保存阶段边界/双CRC/首包/TX/计数；本机辅助.pio/analyze_current_windows.py忽略，不假定跨机器存在。原始log不编辑；M3仍未达成，等待用户本次灯色/动作观察。采集已关闭，板子最后mode=listen；未重开新窗口，未提交/推送。
+
+## 2026-10-08 14:53:23 北京时间 — 本次红绿闪目视补充
+
+- 用户：“灯还在红色和绿色间闪，不过比最初的崩溃循环闪的样子要频繁了。”这是本次稳定候选后续反馈；记录到20261008_144525_448232_stable_reset_window.json和总报告。发送中还是ESP32蓝灯/停发后观察未知，灯色确切起止/频率及动作未知，不强行对齐日志时间，也不绑定首段缺启动记录。
+- 本次完整发送窗口0panic且480个完整控制包支撑稳定发送证据，用户观察支撑红绿闪保留，但尚非绿灯常亮/最小使能成功；补齐时段再分析。原始字节未改，无新采集、复位、烧录或发送阶段。
+
+## 2026-10-08 15:11:15 北京时间 — 红绿闪观察时段澄清及离线心跳检查
+
+- 用户明确每次按RST后，ESP32亮红灯时电机红绿闪。对齐为回放期间观察，已补第二段JSON与总报告；蓝灯停发后灯色、重复RST数量/准确时刻和运动仍未知，不补造新实验。无新抓包、agent复位、烧录或发送。
+- 离线报告reports/20261008_stable_feedback_phase.json使用完整窗口START→window_done、逐ID/可靠段并独立CRC8核验：240拨轮、2403个24:20心跳（CAN0x232、BF>32、flags20）。5A4101/5D4101各自约100.005ms重复，在500ms轮次多处成对出现，字段语义未知，不能映射为红/绿灯或证明发送间隔超时。本机助手.pio/check_feedback_phase.py忽略，不假定跨机器具备。
+- 稳定窗口完整发送同时保留红绿闪已有日志+目视支撑；仍非绿灯常亮或M3成功。原始两段log字节不改，下一步仅候选发送间隔对照，未实施新阶段；本轮未提交、未推送。
+
+## 2026-10-08 15:32:08 北京时间 — 用户RST效果视频与下一节奏对照
+
+- 用户视频原始路径D:/xwechat_files/wxid_h3cb46qr90t412_f0c8/temp/RWTemp/2026-10/21801991ac41115e11eb301fd75dfcf3/725890a69a040d3c7612628dd1423064.mp4；项目原样副本media/20261008_rst_motor_green_flash.mp4，SHA256 dbbfeaae84b3b49574b5e36b6db67767e27e6351218a0170bbe7488c9db93997，与源文件相同。用户确认这是手动RST后的当前效果并要求参照继续；RS3全程不接入、单收发器+电机的既有工况沿用，准确电压/物理动作及视频对应的RST/CAN时间未知。
+- 15.5秒、30fps、1280x720；直接视觉看峰值帧229（约7.633秒）电机绿、ESP32红，早段ESP32蓝且电机红/偏橙外观，不据此赋予橙灯官方意义。衍生reports/20261008_rst_green_peak.png、reports/20261008_rst_video_observation.json；绿色像素规则检测22个候选片段，中位起点间隔0.5秒，与500ms组合节奏相符，但无CAN同步且相机有曝光/滚动快门/压缩/移动，不证明实际灯占空比或超时。
+- 本次50ms单变量稳定候选准备和编译完成，保留120秒/零值限制及500ms基线备份。用户“参照此继续进行”承接此新对照子阶段；本条时点尚无50ms上传/抓包/灯色结果，不添加未经观测的绿色/稳定性结论。
+
+## 2026-10-08 15:36:15 北京时间 — 50ms采集进行中与目视常绿确认
+
+- 已上传50ms应用区并hash校验，esptool after=no_reset；采集先开启，随后提示用户板上RST，日志出现新CONFIG/AUTO_START。captures/20261008_153410_076110_stable_50ms_window.log于15:34:10.076110+08:00开始，COM17/921600/DTR&RTS开前false/UART写s一次；仍在采集，尚无最终hash/JSON/帧数。用户未单独回已按，RST精确时刻未知，不强填。
+- 用户本次新确认：“现在闪了几下绿，绿灯常亮了，而且手拧电机有阻力”。对齐50ms回放期间，记录reports/20261008_stable_50ms_led_observations.json；精确起点、力矩、非零动作及自动停发后结果未知。沿用RS3全程不接、单收发器+电机工况，零值/120秒限制不变。
+- device106秒末次STATUS仍replay，累计错误/遗漏/日志丢帧0；完整120秒和全部分片尚待结束分析，不提前宣布。收尾后补原始hash、计数边界、完整包/TX证据及停发后用户结果。
+
+## 2026-10-08 15:43:56 北京时间 — 50ms完整窗口常绿/阻力，停发回红
+
+- 用户回放中确认“闪了几下绿，绿灯常亮了，而且手拧电机有阻力”，停发后确认“变蓝后电机灯变红了”。目视reports/20261008_stable_50ms_led_observations.json；准确起点/持续时长、阻力大小原因及停发后阻力、非零运动未知。视频是此前500ms基线，无CAN同步，不把视频时间绑到本次CAN时间。
+- 原始20261008_153410_076110_stable_50ms_window.log/.json/.analysis.json，15:34:10.076110+08:00开始、220.219秒，COM17/CH343/921600/DTR&RTS开前false/UART写s一次。先采集再提示RST，START/CONFIG/AUTO_START完整；用户没另回已按，不补造按键墙钟时间。自动window_done后记录listen再Ctrl-C，interrupted=true不表示回放被中断。SHA25689b403984afca1161f3d80e5042b8f1cec57748a09b276ff74ba7a767770a354，尾部45字节，原字节不改。
+- 整份235199完整行、457823缺口/0回退；1START/1AUTO_START/1window_done，0panic/异常Rebooting/WARN/ERROR。START50ms/120秒，CONFIG TX0/echo1/delay0/legacy0/seq0/sync_rx1；应用上传hash verified，但未见活体ELF身份哈希。
+- 发送段88861完整行、0缺口，2398请求（两片）+2398零值拨轮（三片）=11990自收帧，独立双CRC全过，周期中位50.013/50.000ms。实际成功轮次全部完整，不将理论2400与2398差别认作漏包。全收包流另5个truncated候选，不宣称绝对物理无损。
+- 发送120条STATUS/alerts0x2，TX错误/失败0；首末STATUS约119.007799秒，rx+88082/sent+2377、错误/遗漏/日志丢帧增0，首状态已在第一轮后。window_done sent2398/rejected0/rx88861，bus_errors/tx_errors/rx_missed/logger_dropped全0。sent轮数/alerts事件位/self echo不等于应用接受或物理成功总帧数。
+- 停发后146338完整行全0x232、0CRC包，STATUS约77.046486秒rx+601915/logger_dropped+456117、sent/windows增0；首listen bus_errors15，后续增0，15在window_done→首listen边界，不能归主动发送或单独证明ACK问题。
+- 结果reports/20261008_stable_cadence_50ms_result.json；板子保留50ms常绿候选，末次listen，采集退出。已找到零值工作组合，最小必要性/非零运动尚未验证；本阶段外无新发送，未提交/推送。两版镜像本机backups另带。

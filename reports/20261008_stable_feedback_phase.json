@@ -1,0 +1,164 @@
+{
+  "raw_log": "J:\\New soft project\\FM03\\captures\\20261008_144525_448232_stable_reset_window.log",
+  "dial_count": 240,
+  "heartbeat_count": 2403,
+  "route_and_payload_counts": {
+    "BF>32 flags=20 payload=5a4101": 1202,
+    "BF>32 flags=20 payload=5d4101": 1201
+  },
+  "first_packet_hex": [
+    "55100456bf32bc042024205a4101c138",
+    "55100456bf32bd042024205d41017b35",
+    "55100456bf32cf042024205a4101683a",
+    "55100456bf327c2f2024205a4101d383",
+    "55100456bf327d2f2024205d4101698e",
+    "55100456bf328f2f2024205a4101984a"
+  ],
+  "interval_median_us_by_payload": {
+    "5a4101": 100005,
+    "5d4101": 100005.0
+  },
+  "heartbeat_payloads": {
+    "5a4101": {
+      "count": 1202,
+      "offset_min_us": 5834,
+      "offset_median_us": 289912,
+      "offset_max_us": 490493,
+      "phase_50ms_bins": {
+        "0": 1,
+        "1": 240,
+        "3": 240,
+        "5": 240,
+        "7": 240,
+        "9": 240
+      }
+    },
+    "5d4101": {
+      "count": 1201,
+      "offset_min_us": 89479,
+      "offset_median_us": 290148.0,
+      "offset_max_us": 490727,
+      "phase_50ms_bins": {
+        "1": 240,
+        "3": 240,
+        "5": 240,
+        "7": 240,
+        "9": 240
+      }
+    }
+  },
+  "transition_count": 2402,
+  "first_transitions": [
+    {
+      "t_us": 1107387,
+      "payload_hex": "5a4101",
+      "us_after_latest_dial": null
+    },
+    {
+      "t_us": 1107429,
+      "payload_hex": "5d4101",
+      "us_after_latest_dial": null
+    },
+    {
+      "t_us": 1114949,
+      "payload_hex": "5a4101",
+      "us_after_latest_dial": 5834
+    },
+    {
+      "t_us": 1198594,
+      "payload_hex": "5d4101",
+      "us_after_latest_dial": 89479
+    },
+    {
+      "t_us": 1298341,
+      "payload_hex": "5a4101",
+      "us_after_latest_dial": 189226
+    },
+    {
+      "t_us": 1298575,
+      "payload_hex": "5d4101",
+      "us_after_latest_dial": 189460
+    },
+    {
+      "t_us": 1398341,
+      "payload_hex": "5a4101",
+      "us_after_latest_dial": 289226
+    },
+    {
+      "t_us": 1398573,
+      "payload_hex": "5d4101",
+      "us_after_latest_dial": 289458
+    },
+    {
+      "t_us": 1498354,
+      "payload_hex": "5a4101",
+      "us_after_latest_dial": 389239
+    },
+    {
+      "t_us": 1498586,
+      "payload_hex": "5d4101",
+      "us_after_latest_dial": 389471
+    },
+    {
+      "t_us": 1598373,
+      "payload_hex": "5a4101",
+      "us_after_latest_dial": 489258
+    },
+    {
+      "t_us": 1598601,
+      "payload_hex": "5d4101",
+      "us_after_latest_dial": 489486
+    },
+    {
+      "t_us": 1698345,
+      "payload_hex": "5a4101",
+      "us_after_latest_dial": 90334
+    },
+    {
+      "t_us": 1698577,
+      "payload_hex": "5d4101",
+      "us_after_latest_dial": 90566
+    },
+    {
+      "t_us": 1798351,
+      "payload_hex": "5a4101",
+      "us_after_latest_dial": 190340
+    },
+    {
+      "t_us": 1798582,
+      "payload_hex": "5d4101",
+      "us_after_latest_dial": 190571
+    },
+    {
+      "t_us": 1898375,
+      "payload_hex": "5a4101",
+      "us_after_latest_dial": 290364
+    },
+    {
+      "t_us": 1898603,
+      "payload_hex": "5d4101",
+      "us_after_latest_dial": 290592
+    },
+    {
+      "t_us": 1998351,
+      "payload_hex": "5a4101",
+      "us_after_latest_dial": 390340
+    },
+    {
+      "t_us": 1998582,
+      "payload_hex": "5d4101",
+      "us_after_latest_dial": 390571
+    }
+  ],
+  "transition_offsets_by_payload": {
+    "5a4101": {
+      "count": 1200,
+      "median_us": 289914.5
+    },
+    "5d4101": {
+      "count": 1200,
+      "median_us": 290148.0
+    }
+  },
+  "limits": "Raw heartbeat byte semantics unknown; not LED telemetry or physical CAN timing. Association with 500ms dial and paired request cannot distinguish their effects or prove timeout."
+}

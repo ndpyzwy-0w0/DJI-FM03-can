@@ -1,0 +1,62 @@
+{
+  "port": "COM17",
+  "serial_baud": 921600,
+  "label": "stable_full_window",
+  "started_at": "2026-10-08T14:43:17.512534+08:00",
+  "elapsed_seconds": 116.469,
+  "interrupted": true,
+  "raw_log": "J:\\New soft project\\FM03\\captures\\20261008_144317_512534_stable_full_window.log",
+  "frames": 121278,
+  "ids": {
+    "S:00000232": 87182,
+    "S:00000504": 33306,
+    "S:00000503": 790
+  },
+  "sequence_gaps": 215528,
+  "sequence_resets": 0,
+  "non_frame_lines": 1,
+  "first_t_us": 41848134,
+  "last_t_us": 157665596,
+  "status_first": {
+    "t_us": 42122944,
+    "stage": 4,
+    "rx": 26726,
+    "sent": 83,
+    "windows": 1,
+    "logger_dropped": 0,
+    "rx_missed": 0,
+    "bus_errors": 0,
+    "pending": 0
+  },
+  "status_last": {
+    "t_us": 158142091,
+    "stage": 4,
+    "rx": 367058,
+    "sent": 240,
+    "windows": 1,
+    "logger_dropped": 218354,
+    "rx_missed": 0,
+    "bus_errors": 15,
+    "pending": 0
+  },
+  "firmware_errors": [],
+  "dtr": false,
+  "rts": false,
+  "uart_bytes_written": 1,
+  "uart_hex": "73",
+  "sha256": "98aa2062ec3674e05cd563ed8a833ac346d7f0cb54251a7126385135c29db315",
+  "error": null,
+  "stop_note": "Operator Ctrl-C after window_done and listen evidence; interrupted=true is capture stop, not replay interruption",
+  "user_confirmations": {
+    "before": "电机红色；RS3整个过程中未接入；总线只有收发器和电机；正常监听时RS3拨轮设为跟焦电机",
+    "reset": "Captured window already active at file start; cause/start time unknown",
+    "during_after_led": null
+  },
+  "unknown": [
+    "initial red steady/flashing",
+    "motor movement",
+    "exact power parameters",
+    "exact LED changes/timestamps and blue/listen outcome",
+    "termination resistance"
+  ]
+}

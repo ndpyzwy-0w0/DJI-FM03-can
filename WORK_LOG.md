@@ -781,3 +781,103 @@
 
 - 提交记录：本轮代码、验证、交接文档及原始证据作为一次本地Git提交保存（用户明确要求）。提交号以git log -1为准；未推送。原始日志和两套本机备份SHA256全部核对通过；提交后核对工作区状态。
 - 暂存检查补充：未筛选的git diff --cached --check会报告原始串口log内CRLF/panic寄存器行尾空格；这些是设备原始字节，按约定保留而不修剪。排除captures/*.log后的代码/文档/JSON检查通过；4份新log的暂存对象SHA256与磁盘/JSON完全相同，text属性unset。
+
+## 2026-10-08 14:33:36 北京时间 — 在当前对话接续工作区交接
+
+- 用户要求读取工作区交接并在本对话继续。已读HANDOFF当前入口、WORK_LOG和captures/INDEX末尾、AGENTS及reports/20261009_green_led_briefing.md；以14:23:52收尾入口为准，不把下文旧快照/旧下一步当作当前待办。
+- Git核实：HEAD为40ae422（Fix replay startup gate and preserve stable candidate test handoff），开始时main工作区干净。上一轮提交已实际存在，无需补交历史内容。
+- 动态只读检查：未发现python/pythonw/pio/platformio/esptool进程；WMI仅返回蓝牙端口，随后使用现有.venv的pyserial枚举确认COM17为USB-Enhanced-SERIAL CH343，VID1A86/PID55D3。枚举不打开串口，不能据此确认实时固件或独占端口可用。
+- 承接结论：100ms/0ms门槛对照支持取消门槛恢复首轮拨轮和绿闪；稳定候选用户观察闪绿更频繁，但45.219秒补采全部发生在发送结束后，不能证明主动发送无panic或报文完整，M3仍未达成。底层全部panic根因尚未证明，保留队列0经验规避及驱动生命周期同步修复。
+- 本轮没有新的硬件/灯色/动作确认，没有打开串口、抓包、烧录、复位或发送CAN；未修改源码、配置、原始抓包、备份及INDEX。仅更新HANDOFF和本日志。下一步用已准备的replay_gate0_stable_echo完整记录一个120秒零值窗口，覆盖发送前、CONFIG/首轮、STATUS/TX alerts、window_done/listen；需本次明确发送授权以及用户确认灯色、两端供电/物理接入、单模块接线、拨轮设置及动作，未知保持未知。
+- 环境：普通命令和node_repl均因sandbox helper setup refresh失败；require_escalated的已审查工作区命令可执行，未改全局沙箱配置。记忆检索无FM03相关条目，结论来自本轮工作区文档与只读检查。
+- 验证：本轮只改文档，收尾执行git diff --check、路径核对及Git状态检查；不重复固件编译或解析测试。本轮未提交、未推送。
+- 收尾结果：git diff --check通过；Git仅HANDOFF.md与WORK_LOG.md两份文档修改，原始抓包及源码未变。Git提示WORK_LOG未来会按既有属性转CRLF，不涉及原始log。发送阶段确认及当前工况仍待用户提供。
+
+## 2026-10-08 14:37:57 北京时间 — 获得本次稳定窗口授权并完成采集准备核对
+
+- 用户回复“好的继续吧”，承接上方具体的一次120秒零值replay_gate0_stable_echo验证方案，视为本次开始发送阶段明确授权，不再次索要授权。已异步请求本次灯色及常亮/闪烁、两端供电/RS3物理CAN断开、单模块接线、前置拨轮设置、动作和目视观察条件；截至本条尚未答复，保持未知。
+- Git起点40ae422，保留上一条HANDOFF/WORK_LOG未提交修改。pyserial枚举COM17为CH343，未发现python/pythonw/pio/platformio/esptool进程；枚举不打开串口，不能当作固件身份或端口独占证明。
+- 稳定候选bin/ELF/当前源码/配置SHA256逐项匹配backups/gate0_stable_candidate_20261008_141802_049785/manifest.json；bin为1bc002ae45a8d8497ffb7904de6e13f98830fb47cd8911529006f4a5ebca88c6，ELF为89bdeb5a81796a14e47fb03f239ccb55d309999321829f41e04d035bb69e6360。备份manifest uploaded=false表示备份时点，实际旧上传成功记录.pio/startup_gate0_stable_upload.txt与上一轮日志保留。本轮不据文件哈希宣称已核实板上实时身份。
+- 已读现有采集和固件触发代码：GPIO0长按2秒也可开窗口；板上RST可让自动启动配置重新打印CONFIG并开始120秒窗口，因此计划采集先开启，再提示用户按RST一次，覆盖发送前、START/CONFIG、完整首轮、周期STATUS/TX alerts和window_done后listen。按键尚未请求执行，本次没有复位。现有.pio/record_gate.py时长上限120秒不能容纳前后边界且硬编码历史工况，不直接套用为本次证据；正式tools/capture.py可采更长时长，开前DTR/RTS=false，但会写UART字节s（现回放源码没有UART接收处理），若使用需准确记录，不称UART零写入。
+- 本机IDF头已核对alerts位：TX_SUCCESS=0x2、ARB_LOST=0x80、BUS_ERROR=0x200、TX_FAILED=0x400、BUS_OFF=0x2000。这些是事件位而非帧计数，BUS_ERROR不单独证明ACK问题；下一分析仍须逐CAN ID/可靠段/双CRC重组及累计计数边界。
+- 本轮没有打开串口、采集、烧录、复位、发送CAN或修改固件/工具/原始抓包/备份。仅追加交接与本日志；INDEX无新增抓包条目。下一步等待本次工况确认后实施已授权窗口，灯色由用户提供，不按历史结果补造。
+- 验证：仅文档，收尾git diff --check及Git状态检查；无需重复已通过且未改动的编译/测试。本轮未提交、未推送。
+
+## 2026-10-08 14:42:28 北京时间 — 本次隔离台架工况确认
+
+- 用户原话：电机现在是红色；RS3整个过程中都没接入系统；总线上只有收发器和电机；监听电机正常工作时RS3设为了跟焦电机。由此确认隔离总线及既有正常监听设置，不将RS3误当本次节点。
+- 红灯常亮还是闪烁、当前动作、精确供电细节与目视持续观察条件未单独回答，按未知保留；电机有灯与供电有关，但不补造用户明确确认的电压/电源记录。
+- 本次120秒零值稳定候选发送授权沿用本对话“好的继续吧”。COM17=CH343动态枚举再次核实，未发现python/pythonw/pio/platformio/esptool进程；本机候选bin/ELF仍与备份哈希一致。本轮未烧录、未软件RTS复位。
+- 准备使用现有tools/capture.py采集，DTR/RTS开前false，准确注明工具会写一个UART字节s；回放固件无UART接收处理，该字节不是CAN命令。先开采集再提示用户按板上RST一次，捕获CONFIG及完整窗口。没有本轮采集结果前不声称绿色/稳定/完整发送。
+- 仅记录本次用户确认，保留此前未提交修改。当前未提交、未推送；实验完成后追加验证及结果，不覆盖本条。
+
+## 2026-10-08 14:49:57 北京时间 — 完整稳定零值窗口采集与离线验证
+
+- 用户确认工况见14:42:28条；继续授权见14:37:57条。本轮先用现有tools/capture.py启动COM17/921600，DTR/RTS开前false、UART写s一次（1字节，不是CAN命令）。没有烧录、软件RTS复位、非零量或RS3总线发送。
+- 首段20261008_144317_512534_stable_full_window.log/.json：14:43:17.512534开始、116.469秒；开始已在回放设备41.848134s，为什么先前已重启/启动未知，未猜测由串口或用户操作造成。缺START/CONFIG，不能作为完整窗口。捕获window_done与listen后，operator Ctrl-C终止UART采集，JSON interrupted=true指采集停止，不是固件窗口中断；shell退出码1是PTY中断，JSON及原始文件已成功保存。原始SHA256 98aa2062ec3674e05cd563ed8a833ac346d7f0cb54251a7126385135c29db315，尾部15字节保留。121278完整帧行、215528缺口、0序号回退，发送后半段158请求+158拨轮（双CRC）/790自收帧；window_done sent240/rejected0、错误/遗漏/丢日志均0。停发后37.003107秒STATUS区间rx+288986、logger_dropped+218354、bus_errors+15，故全文件不能当无损总线帧计数。
+- 随后关闭首段采集，再启动20261008_144525_448232_stable_reset_window.log/.json：14:45:25.448232开始、162.281秒；设置记录上限600秒仅为等按键留余量，固件发送窗口始终120秒。用户按一次板上RST并回复“已按”；采集覆盖复位前listen、START/CONFIG/AUTO_START、完整发送及listen后约33秒，结束后Ctrl-C停止采集，未延长发送。RST产生非ASCII启动字节，START嵌在同一完整行中，原字节不编辑；raw substring计数1START，1序号回退对应用户RST，不是异常重启。
+- 第二段原始SHA256 118297256b7c1cfdab4d1f82892f420016d3f11382d7ec983460df855b430faf；154883完整帧行、239882缺口/1回退（含复位前和停发后）、尾部20字节未完成行。全文件0Guru Meditation/Rebooting/WARN/ERROR。CONFIG TX0/echo1/handshake1/skip1/delay0/legacy0/seq0/sync_rx1；没有板上ELF哈希，身份范围仅配置匹配+事先本机bin/ELF/源码/配置匹配备份，不能冒充活体哈希验证。
+- 离线按START/window_done先分阶段，再复用reconstruct_frames逐CAN ID与可靠段重组，并独立验证CRC8（现有reconstruct_frames仅显式CRC16核验）。完整发送段78020帧、0缺口/回退，240完整00:01（2片）+240完整04:69（3片），合计1200自收帧，seq0零值与模板完全一致；first请求1.107396s/拨轮1.109115s，间隔中位约500ms。全收包流重组有6个truncated候选，不能把0遗漏增量当作证明所有物理帧绝对无损；0x503全部预期分片已覆盖。
+- 120条发送STATUS与TX_ALERT，alerts全0x2（TX_SUCCESS事件位），tx_errors/rx_errors/tx_failed均0，tx_pending采样为1不等于拒绝。首末发送STATUS t1.111134→120.111944，rx+77386/sent+238，logger_dropped/rx_missed/bus_errors增0；首状态已在首轮后，不把这个增量当全窗口轮数。window_done sent240/rejected0/rx78064/bus_errors0/tx_errors0/rx_missed0/logger_dropped0；发送提交轮次、echo和事件位不等于逐帧物理成功计数或电机应用接受。
+- 停发后STATUS t121.127998→154.135604，rx+259314/logger_dropped+196304/bus_errors+15，sent/windows不变。post段62578完整帧，其中0x232=62544、0x504=34（结束时边界残留）；logger大量丢帧，不能全日志混算发送质量。设备时间是驱动取帧时间，不是物理边沿或用户按键/灯色时间。
+- 产出两份旁.analysis.json及reports/20261008_stable_full_window_result.json，原始log未改，旁JSON补充准确控制线/UART写入/用户确认/未知项和hash。一次性分析助手.pio/analyze_current_windows.py（本机忽略）复用项目解析器，并对CONFIG/240+240/1200帧/0缺口及CRC8作真实数据断言，全部通过；未新增正式工具、依赖或固件修改。本次应用ponytail技能复用已有代码，不重复编译未改变的镜像。
+- 更新HANDOFF当前入口、INDEX及本日志。灯色变化/常亮或闪烁/动作尚无新确认，M3仍未达成；下一步先补齐本次目视结果再定新阶段，不重做NO_ACK等已失败方案，不自动重开窗口。当前板子listen，两个采集进程均已退出；没有新的烧录/复位/发送。
+- 验证与提交：原始Git text属性unset；收尾核对JSON路径/hash、解析两项自检、排除原始串口log后的git diff --check及最终Git状态。本轮未提交、未推送，保留本对话前期修改，不改历史。
+
+## 2026-10-08 14:53:23 北京时间 — 用户确认稳定候选仍红绿闪且更频繁
+
+- 用户原话：“灯还在红色和绿色间闪 不过比最初的崩溃循环闪的样子要频繁了”。确认为本次继续稳定候选测试后的目视反馈，不把绿闪无意义化；尚未回答是发送窗口期间还是此刻ESP32蓝灯/停发后，精确闪烁频率/时长及动作仍未知。
+- 结合本次完整120秒记录0panic、240完整00:01+240完整零值04:69，支持稳定候选保留红绿闪，不应只归因为持续崩溃。严格因果及时段需用户对齐，不能由日志证明该反馈瞬间或宣布常绿/M3成功；此前commentary“排除只有崩溃才出现”按本条支持性及时间边界解释，不扩大为所有工况结论。
+- 更新第二段采集JSON的user_confirmations.during_after_led及衍生总报告，明确phase未知；未将此观察补到缺启动的首段，也未改原始log。更新HANDOFF/INDEX与本条，离线助手再次完成真实数据断言。没有新的串口打开、抓包、复位、烧录或发送CAN；末次已采状态listen不冒充当前实时查询。
+- 收尾已完成capture/protocol两项自检，原始哈希与旁JSON一致，Git text属性unset，非原始log的diff --check通过；末次Git为3份交接文档修改及7个新证据/衍生文件，无固件/配置变更。本轮未提交、未推送。下一步直接确认红绿闪是否持续到蓝灯/自动停发后，再定新授权阶段。
+
+## 2026-10-08 15:11:15 北京时间 — 目视红绿闪对齐ESP32红灯回放阶段
+
+- 用户原话：“我每次按完板子上的rst键 板子亮红灯的时候 会红绿闪”。确认电机红绿闪的观察发生在RST后ESP32红灯/回放期间；结合上一条比最初崩溃循环更频繁，保留稳定候选正向观察。用户描述“每次”是重复性目视陈述，不据此补造次数、额外抓包、RST时间或蓝灯后的结果。
+- 本轮只读HANDOFF及Git，保留起点40ae422后的全部未提交文档与证据。没有新串口读取、烧录、agent复位或新发送。用户自行RST次数/时刻未新增明确记录；不能将已采一次RST与“每次”逐次匹配。
+- 更新20261008_144525_448232_stable_reset_window.json的LED阶段为red/replay，将blue/listen时段结果保持未知；重算reports/20261008_stable_full_window_result.json及真实数据断言，均通过。首段缺启动的记录不绑定这次灯色澄清，原始日志未改。
+- 离线新增reports/20261008_stable_feedback_phase.json，复用现有reconstruct_frames并独立核CRC8，只取START→window_done区间。240次零值拨轮、2403个0x232 BF>32 flags20的24:20心跳，载荷5A4101为1202个、5D4101为1201个，各自间隔中位100.005ms。除启动边界外两者分别在每轮约90/190/290/390/490ms位置重复，常相距约0.23ms；这不支持把两种原始字节当成500ms轮次的红/绿灯状态切换。字段语义未知，不能据此证明灯色编码、应用层超时或物理方向。
+- 本机一次性助手.pio/check_feedback_phase.py被忽略，只用标准库及现有解析器，真实数据断言通过；未改正式工具、固件、PlatformIO配置、依赖或本机备份。证据计数来自驱动取帧时间，不是物理CAN边沿/视频对齐。
+- 结论：本次完整120秒发送0panic、240请求+240拨轮完整，用户把红绿闪确认到回放阶段，支持绿闪不必依赖持续崩溃；M3仍未达成。下一步可离线准备稳定发送间隔单变量对照，评估500ms是否过稀；当前未实现或测试，更短间隔能常绿只是候选，不将旧非稳定降速试验当新测试，也不直接执行非零运动。
+- 本轮只新增反馈相位衍生JSON及更新确认/交接。收尾检查非原始log的diff --check、原始哈希及Git状态；未提交、未推送，不覆盖历史。
+
+## 2026-10-08 15:32:08 北京时间 — 用户视频验证与50ms稳定节奏候选准备
+
+- 用户提供D:/xwechat_files/wxid_h3cb46qr90t412_f0c8/temp/RWTemp/2026-10/21801991ac41115e11eb301fd75dfcf3/725890a69a040d3c7612628dd1423064.mp4，说明是现在手动RST后的绿闪效果，并要求“可以参照此继续进行”。承接此前明确提出的稳定发送间隔对照，作为本次新子阶段授权，范围零值、50ms组合节奏、自动120秒窗口；不延伸到非零运动或取消时限。不重复索取已明确继续的授权。
+- 先读HANDOFF、Git状态并保留全部未提交内容。视频原样副本captures/media/20261008_rst_motor_green_flash.mp4的SHA256与用户源文件相同：dbbfeaae84b3b49574b5e36b6db67767e27e6351218a0170bbe7488c9db93997。保留微信源文件；副本在项目内可随证据交接。
+- 使用依赖定位工具核实本机运行时；.venv和 bundled Python无cv2/av/imageio/ffmpeg模块，已有PIL不解码视频。只读定位到本机Cubase附带FFmpeg5.1.1，不安装依赖、不上传视频。视频HEVC1280x720/30fps、15.5秒，465帧；元数据creation_time不是CAN同步证据。抽样帧与峰值帧直接视觉核实：早段板子蓝灯、电机灯红/偏橙外观（不推橙色官方语义）；峰值帧229（视频约7.633秒）电机绿、板子红。原始视频不编辑。
+- 报告reports/20261008_rst_video_observation.json及峰值reports/20261008_rst_green_peak.png。在固定电机灯ROI(400,300,160,140)按亮绿像素规则检测到22个候选片段，起点每15帧/0.5秒，中位间隔0.5秒；长短片段交替，受曝光/压缩/滚动快门/ROI运动影响，不能把1–4帧跨度当准确物理LED占空比。与500ms节奏吻合只是关联，未和任何CAN日志同步，不证明超时或缺哪条报文。一次性.pio/inspect_rst_video.py本机忽略。重复运行曾因既有峰值PNG拒绝覆盖退出，JSON已写出；改为存在则跳过峰值提取后复算成功，没有覆盖源视频或峰值图片。
+- platformio.ini新增replay_gate0_stable_50ms_echo；沿用稳定候选实际宏，仅REPLAY_INTERVAL_MS 500→50，build_unflags去除旧500以及TX8/legacy1；报文内容/路由/序号/零值、delay0、队列0、每片等待、RX同步、自收及120秒限制均保留。两类包共同变快，不能由此单独识别哪类周期起作用；未改src源码或旧环境。
+- .pio/check_cadence_candidate.py复用现有settings/selected_gate，对解析后的宏差异及真实预处理50ms调度、120s上限、TX0/发送等待/接收mutex分支作断言，全部通过，衍生reports/20261008_stable_cadence_candidate_check.json。现有test_replay_timing三项全通过；新环境编译SUCCESS，RAM18944/Flash284277，无warning/error匹配。构建日志.pio/stable_50ms_build.txt忽略。
+- 候选及时备份backups/stable_50ms_candidate_20261008_153208_442438，bin486180cb6a03d9280306edcfaf69ab4a0fcf6d2e2e9d85a503a032d19ef89eb1，ELF83942a59f1312783f9ffec62c65bca5c9ba12614526df9811be4547147a89296；源码hash与500ms备份一致，候选配置另留。逐文件复制hash复核，旧500ms稳定备份所有文件hash未变；本机manifest.pio/stable_50ms_candidate_manifest.json。备份不纳Git。
+- 动态核实COM17=CH343、无发现python/pythonw/pio/platformio/esptool采集进程，沿用RS3全程不接入、单收发器+电机确认；不编造当前精确灯色时刻或供电电压。计划esptool只更新应用区并after=no_reset，先启动UART采集，再请用户板上RST一次，从首轮记录50ms窗口。该时点尚未上传/抓包，本轮候选绿灯、无panic或完整包均未测试，未知保持未知。
+- 本轮未提交、未推送，原始两个CAN日志和既有源码未改；完成硬件阶段后追加具体上传/采集/用户灯色及验证结果，不覆盖历史。
+
+## 2026-10-08 15:36:15 北京时间 — 50ms窗口进入常绿，用户感觉手拧阻力
+
+- 本次新阶段授权来自用户视频消息“可以参照此继续进行”，承接已提出的发送间隔对照，范围50ms零值/120秒。动态核实COM17=CH343及无采集后，本机esptool v4.11.0只写0x10000应用区，hash verified，after=no_reset留下载态，日志.pio/stable_50ms_upload.txt；无独立软件RTS复位、无非零量。
+- tools/capture.py于15:34:10.076110+08:00先开串口，DTR/RTS开前false、UART写s一次；原始captures/20261008_153410_076110_stable_50ms_window.log正在写入，600秒采集上限仅等待余量，固件仍120秒。采集启动后提示用户RST，日志出现CONFIG/AUTO_START与新发送；用户尚未单独回复“已按”，不补造RST精确时刻。未为读取状态再次开串口。
+- 用户随后明确：“现在闪了几下绿 绿灯常亮了 而且手拧电机有阻力”。这是本次50ms回放中的新常绿/阻力观察，与500ms红绿闪区别明确。时间记为本条recorded_at，不等于实际灯色起点；保存reports/20261008_stable_50ms_led_observations.json并更新HANDOFF/INDEX。
+- 当前只读最新STATUS设备106.119026秒、sent2098，rx77761、windows1，logger_dropped/rx_missed/bus_errors全0；尚未采到window_done，不提前断言完整120秒稳定/所有分片完整。常绿与阻力支持工作/保持状态，但不证明哪条报文单独必要、阻力量级/原因或非零运动成功。
+- 已提醒观察自动停发后板子蓝灯、电机绿灯及阻力是否变化；尚无停发后结果。维持120秒限制，不为常绿延长或直接加运动值。下一步窗口结束后关闭采集、按phase/CRC/计数边界核验，再追加收尾。本轮未提交/推送，保留此前全部证据和修改。
+
+## 2026-10-08 15:43:56 北京时间 — 50ms常绿工作组合完整窗口与回红闭环
+
+- 用户新确认“变蓝后电机灯变红了”，与发送期间“闪几下绿后常绿、手拧有阻力”组成replay→listen目视对应。观察JSON已追加原话/phase/记录时间；停发后阻力、确切力矩/原因、非零运动未知，不把手拧阻力当作测量到的电磁力矩。
+- 自动window_done之后继续采集，Ctrl-C结束UART。JSON interrupted=true指操作者停止采集，PTY退出码1来自中断而非panic/串口错误。原始20261008_153410_076110_stable_50ms_window.log/.json，15:34:10.076110+08:00开始、220.219秒；COM17/921600/DTR&RTS开前false/UART写s一次；SHA25689b403984afca1161f3d80e5042b8f1cec57748a09b276ff74ba7a767770a354，尾部45字节保留。全文件235199完整帧、457823序号缺口/0回退，缺口在停发刷屏段，不混入发送期。
+- START明确stage4/1Mbps/120秒/50ms，CONFIG匹配TX0/echo1/handshake1/skip1/delay0/legacy0/seq0/sync_rx1。1START、1AUTO_START、1window_done，0panic/异常Rebooting/WARN/ERROR。上传应用hash已验证，未观察活体ELF打印，本机预期ELF不冒充实时身份；用户未单独回复已按，不捏造RST墙钟时间。
+- 按START/window_done分阶段，再逐ID/可靠段重组并独立CRC8：88861完整发送帧行、0缺口，2398完整00:01（8+5）+2398完整零值04:69（8+8+3）=11990自收帧，与500ms模板相同。首请求1.107481s/拨轮1.109110s，间隔中位50.013/50.000ms；所有实际成功轮次分片完整。理论2400与实际2398差异不据此当作丢两个包，调度为最小间隔且有处理延迟。全流5个truncated候选，不宣称物理总线所有收包无损。
+- 120条发送STATUS和TX_ALERT全0x2成功位，TX错误/失败0；首末STATUS t1.111227→120.119026秒，rx+88082/sent+2377，日志丢帧/遗漏/错误增0，首状态在第一轮之后。window_done sent2398/rejected0/rx88861/bus_errors0/tx_errors0/rx_missed0/logger_dropped0。self echo/alerts位/轮数不等于物理成功帧计数或应用应答。
+- 停发后146338完整行全0x232、0CRC包，退化刷屏；STATUS t121.127731→198.174217秒约77.046486秒，rx+601915/logger_dropped+456117、sent/windows不变。首listen bus_errors15，后续增0，15在window_done到首listen边界，不归发送期或单凭此推ACK根因。日志帧数不是总线总帧数。
+- reports/20261008_stable_cadence_50ms_result.json、旁.analysis.json和目视JSON保存阶段/TX/CRC/限制；本机.pio/analyze_50ms_window.py复用此前phase分析并重核500ms基线，CONFIG/轮次/双CRC/0缺口真实数据断言全过。辅助脚本忽略，不当成跨机器正式工具。原视频、既有CAN日志和src字节未改。
+- 更新HANDOFF最新入口、README/briefing当前提示、INDEX和本日志。结论：找到稳定零值常绿工作组合；唯一配置500→50ms变化与常绿相关，停发后回红。最小必要报文集、冷启动/重复性适用范围、阻力量级/原因及非零运动仍未完成；不直接将M3最小集合全部勾选，不回退新常绿实现、取消时限或自动再发。
+- 视频副本与源hash一致；Git auto和no-filters视频对象hash同为a5054bf774fb3695c49c82be7ff1f8b5e490dfd3，未转换视频字节；新log text unset。末次无python/pythonw/pio/platformio/esptool进程，已采最后mode=listen。50ms编译/三项检查已过，正式解析工具未改，不重复扩大测试。一次收尾编排字符串语法错误导致工具未执行，拆分调用后完成文档写入，无部分写入或证据变化。
+- 本轮未提交、未推送，起点40ae422后的旧修改均保留。最终核对原始hash、结果JSON、非原始log的diff --check与Git状态；不修剪串口原始空白。
+- 最终结果：非原始log的git diff --check通过；50ms raw/video哈希与JSON一致，结果/观察/候选核验JSON均可读取。Git仅6个既有文件修改（交接/入口/环境）和本对话新增原始证据/衍生文件；src及正式工具未改。仍未提交、未推送，原始串口字节与视频副本保全。
+
+## 2026-10-08 15:46:56 北京时间 — 常绿进展本地Git保存
+
+- 用户强调电机常绿是很大进展并询问是否提交Git；此前确未提交。本轮承接其保存意图，将本对话常绿对照、50ms环境、原始CAN日志/视频、衍生分析及交接一次本地提交，未推送远程。
+- 起点HEAD40ae422；检查全部未提交内容均为本对话产生，未发现无关修改或既有暂存内容。使用明确文件清单暂存，backups及.pio忽略材料不纳Git，保留本机两版镜像备份。
+- 提交前核对原始log/视频磁盘SHA256与JSON、暂存对象原字节一致；原始log text unset，不改其换行/尾部字节/设备空白。对非原始log执行git diff --cached --check，核对JSON/证据路径与提交内容。此前新50ms编译、三项现有回放检查及真实数据断言均通过，不再重复未变化测试。
+- 本条随本次资料保存为本地Git提交，提交号以git log -1为准；成功与最终工作区状态以提交命令/后续检查为准。没有新烧录、采集、复位、发送、src改动或历史重写；常绿工作组合保全，最小报文集和非零控制仍未测试。

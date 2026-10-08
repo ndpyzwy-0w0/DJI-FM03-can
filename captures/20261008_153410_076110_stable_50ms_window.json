@@ -1,0 +1,96 @@
+{
+  "port": "COM17",
+  "serial_baud": 921600,
+  "label": "stable_50ms_window",
+  "started_at": "2026-10-08T15:34:10.076110+08:00",
+  "elapsed_seconds": 220.219,
+  "interrupted": true,
+  "raw_log": "J:\\New soft project\\FM03\\captures\\20261008_153410_076110_stable_50ms_window.log",
+  "frames": 235199,
+  "ids": {
+    "S:00000232": 172767,
+    "S:00000503": 11990,
+    "S:00000504": 50442
+  },
+  "sequence_gaps": 457823,
+  "sequence_resets": 0,
+  "non_frame_lines": 2,
+  "first_t_us": 1106517,
+  "last_t_us": 198461231,
+  "status_first": {
+    "t_us": 1111227,
+    "stage": 4,
+    "rx": 39,
+    "sent": 1,
+    "windows": 1,
+    "logger_dropped": 0,
+    "rx_missed": 0,
+    "bus_errors": 0,
+    "pending": 0
+  },
+  "status_last": {
+    "t_us": 198174217,
+    "stage": 4,
+    "rx": 690779,
+    "sent": 2398,
+    "windows": 1,
+    "logger_dropped": 456117,
+    "rx_missed": 0,
+    "bus_errors": 15,
+    "pending": 0
+  },
+  "firmware_errors": [],
+  "dtr": false,
+  "rts": false,
+  "uart_bytes_written": 1,
+  "uart_hex": "73",
+  "error": null,
+  "sha256": "89b403984afca1161f3d80e5042b8f1cec57748a09b276ff74ba7a767770a354",
+  "expected_environment": "replay_gate0_stable_50ms_echo",
+  "expected_elf_sha256": "83942a59f1312783f9ffec62c65bca5c9ba12614526df9811be4547147a89296",
+  "upload_verified": true,
+  "upload_after": "no_reset; user prompted for RST after UART capture ready",
+  "user_confirmations": {
+    "bus": "RS3全程未接入；总线只有收发器和电机；正常监听RS3拨轮设跟焦电机",
+    "rst": "Prompted after recording started; new START/CONFIG/AUTO_START captured. User did not separately reply 已按; exact button time unknown",
+    "led_observations": [
+      {
+        "recorded_at": "2026-10-08T15:36:15+08:00",
+        "user_text": "现在闪了几下绿 绿灯常亮了 而且手拧电机有阻力",
+        "phase": "during 120-second replay window",
+        "confirmed": [
+          "brief initial green flashes then steady green",
+          "user feels resistance when manually turning motor"
+        ],
+        "unknown": [
+          "exact LED onset time",
+          "physical torque magnitude and cause",
+          "nonzero command motion",
+          "outcome after automatic stop"
+        ]
+      },
+      {
+        "recorded_at": "2026-10-08T15:37:40+08:00",
+        "user_text": "变蓝后电机灯变红了",
+        "phase": "after automatic stop; ESP32 blue/listen",
+        "confirmed": [
+          "motor LED returned to red after ESP32 became blue"
+        ],
+        "unknown": [
+          "red steady or flashing",
+          "manual resistance after stop",
+          "exact LED transition time"
+        ]
+      }
+    ]
+  },
+  "unknown": [
+    "exact LED times",
+    "physical torque magnitude and cause",
+    "resistance after stop",
+    "nonzero command motion",
+    "red steady/flashing after stop",
+    "termination resistance"
+  ],
+  "stop_note": "Ctrl-C ended UART capture after window_done and listen; interrupted=true is not replay interruption"
+}
