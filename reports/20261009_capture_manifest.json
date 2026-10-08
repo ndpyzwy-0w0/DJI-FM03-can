@@ -1,0 +1,87 @@
+{
+  "time_beijing": "2026-10-09 00:52:11",
+  "captures": [
+    {
+      "raw_file": "captures/20261009_002003_285572_idle.log",
+      "raw_sha256": "e7a4eddfecfbc454acb06059af93504eb80353af39914a10bdac04e8c4c0cfda",
+      "raw_bytes": 1848,
+      "summary_file": "captures/20261009_002003_285572_idle.json",
+      "summary_sha256": "81a0eb54c4ff05bacea53aff03ffdc2072d682b25b7091c0f8937c447832462f",
+      "summary_phase": "stopped",
+      "gui_elapsed_s": 2.84,
+      "frames": 0,
+      "action": "zero CAN frame trial; physical action not confirmed",
+      "output_family": "motor_control STATE only; CAN logging disabled by default",
+      "unchanged_original": true
+    },
+    {
+      "raw_file": "captures/20261009_002007_947188_idle.log",
+      "raw_sha256": "c89b82ab3e8cfc9786848a5915a7b03007e66026df136ef26319ee4fc2404931",
+      "raw_bytes": 2015,
+      "summary_file": "captures/20261009_002007_947188_idle.json",
+      "summary_sha256": "9252204c3f9394e1fbf373561eb6eacd97b01a07dd344fcea48e35138a2b390a",
+      "summary_phase": "stopped",
+      "gui_elapsed_s": 3.19,
+      "frames": 0,
+      "action": "zero CAN frame trial; physical action not confirmed",
+      "output_family": "motor_control STATE only; CAN logging disabled by default",
+      "unchanged_original": true
+    },
+    {
+      "raw_file": "captures/20261009_003226_586465_calibration.log",
+      "raw_sha256": "c5f5975c674eed46850d622630bb0b6e97ce30777aae0175c213b999b1dff0df",
+      "raw_bytes": 9704,
+      "summary_file": "captures/20261009_003226_586465_calibration.json",
+      "summary_sha256": "bc20852653008317e016d8af0fccb189890ff73be29ba9a8282fa9c11145a217",
+      "summary_phase": "stopped",
+      "gui_elapsed_s": 15.81,
+      "frames": 0,
+      "action": "zero CAN frame trial; physical action not confirmed",
+      "output_family": "motor_control STATE only; CAN logging disabled by default",
+      "unchanged_original": true
+    },
+    {
+      "raw_file": "captures/20261009_003252_476964_calibration.log",
+      "raw_sha256": "71813e09e995700ac4821aa3136bdfc446a223b484cdf90a45e90b236525d25c",
+      "raw_bytes": 3745,
+      "summary_file": "captures/20261009_003252_476964_calibration.json",
+      "summary_sha256": "752ee4a6096b27748865a759ebe49bc809f372ac18d45f85f325d6c1491f1df3",
+      "summary_phase": "stopped",
+      "gui_elapsed_s": 6.5,
+      "frames": 0,
+      "action": "zero CAN frame trial; physical action not confirmed",
+      "output_family": "motor_control STATE only; CAN logging disabled by default",
+      "unchanged_original": true
+    },
+    {
+      "raw_file": "captures/20261009_003746_982146_calibration.log",
+      "raw_sha256": "eedfcb44068a48510f655c8d63c6d5b8c5e1f128f394d01eab2bedc9dc95bfd6",
+      "raw_bytes": 543,
+      "summary_file": "captures/20261009_003746_982146_calibration.json",
+      "summary_sha256": "91f739e217aeccb914194b74cb5f9b83ca4b7c45324c6543a312904a24336e46",
+      "summary_phase": "stopped",
+      "gui_elapsed_s": 2.7,
+      "frames": 0,
+      "action": "zero CAN frame trial; physical action not confirmed",
+      "output_family": "listener STATUS",
+      "unchanged_original": true
+    },
+    {
+      "raw_file": "captures/20261009_003846_528282_calibration.log",
+      "raw_sha256": "e4d79051b8a2bf86c7e9ae453b88d0422b7a86273893c0018f349cd60aa48611",
+      "raw_bytes": 1753334,
+      "summary_file": "captures/20261009_003846_528282_calibration.json",
+      "summary_sha256": "58d9cef7803b129fc2d58d52e283befd970ce500468f9dc51babaedac63977d1",
+      "summary_phase": "stopped",
+      "gui_elapsed_s": 21.69,
+      "frames": 37538,
+      "action": "RS3 automatic travel identification scene; exact motion and success not yet confirmed",
+      "output_family": "listener STATUS",
+      "unchanged_original": true
+    }
+  ],
+  "notes": [
+    "User confirms latest manual listening is finished; labels do not confirm earlier actions.",
+    "Original logs and GUI JSON summaries are not edited."
+  ]
+}

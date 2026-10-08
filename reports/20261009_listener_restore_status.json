@@ -1,0 +1,25 @@
+{
+  "time_beijing": "2026-10-09T00:37:00.800027+08:00",
+  "purpose": "post-upload UART listener status check; not limit-calibration experiment",
+  "port": "COM17",
+  "dtr_rts_before_open": false,
+  "uart_request": "s",
+  "status_lines": [
+    "# STATUS t_us=23298799 bitrate=1000000 mode=listen rx=0 logger_dropped=0 rx_missed=0 rx_overrun=0 bus_errors=0 pending=0 logger_pending=0 mode_switches=0 frames_in_mode=0 button=ok",
+    "# STATUS t_us=24299757 bitrate=1000000 mode=listen rx=0 logger_dropped=0 rx_missed=0 rx_overrun=0 bus_errors=0 pending=0 logger_pending=0 mode_switches=0 frames_in_mode=0 button=ok",
+    "# STATUS t_us=25300757 bitrate=1000000 mode=listen rx=0 logger_dropped=0 rx_missed=0 rx_overrun=0 bus_errors=0 pending=0 logger_pending=0 mode_switches=0 frames_in_mode=0 button=ok",
+    "# STATUS t_us=26301757 bitrate=1000000 mode=listen rx=0 logger_dropped=0 rx_missed=0 rx_overrun=0 bus_errors=0 pending=0 logger_pending=0 mode_switches=0 frames_in_mode=0 button=ok"
+  ],
+  "bytes_read": 724,
+  "raw_not_saved": true,
+  "branch": "main",
+  "environment": "listen_1m",
+  "build_result": "SUCCESS",
+  "upload_result": "SUCCESS; esptool chip ESP32-S3 revision v0.2; written segments hash verified",
+  "firmware_sha256": "ad14c98c9f35417e508536330b75df8a4c60f837a01c63191a3f5918bfa63301",
+  "firmware_bytes": 283184,
+  "previous_branch_notes_stash": "0192ec21a21f3a4b3335add43054b3be73d72b2d",
+  "gui": "http://127.0.0.1:8765; verified product=fm03_capture phase=idle",
+  "tests": "capture self-check; protocol analyzer self-check; 11 GUI tests passed",
+  "capture_owner": "user manual capture; agent must wait for completion before reading new logs"
+}

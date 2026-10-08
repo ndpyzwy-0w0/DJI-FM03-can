@@ -1,0 +1,74 @@
+{
+  "product": "fm03_capture",
+  "phase": "stopped",
+  "closing": false,
+  "port": "COM17",
+  "label": "calibration",
+  "started_at": "2026-10-09T00:32:52.476964+08:00",
+  "elapsed": 6.5,
+  "frames": 0,
+  "fps": 0,
+  "bytes_saved": 3745,
+  "unique_ids": 0,
+  "sequence_gaps": 0,
+  "sequence_resets": 0,
+  "non_frame_lines": 0,
+  "trailing_bytes": 1,
+  "status_first": null,
+  "status": null,
+  "counter_deltas": {
+    "logger_dropped": 0,
+    "rx_missed": 0,
+    "rx_overrun": 0,
+    "bus_errors": 0
+  },
+  "status_age": null,
+  "serial_age": 0.0,
+  "candidate": {
+    "segment": 0,
+    "channels": [
+      {
+        "can_id": "0x503",
+        "value": null,
+        "relative_s": null,
+        "packets": 0,
+        "zero_events": 0,
+        "last_zero_s": null,
+        "age_s": null,
+        "history": []
+      },
+      {
+        "can_id": "0x201",
+        "value": null,
+        "relative_s": null,
+        "packets": 0,
+        "zero_events": 0,
+        "last_zero_s": null,
+        "age_s": null,
+        "history": []
+      }
+    ]
+  },
+  "latest": [],
+  "ids": [],
+  "messages": [
+    "# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=12177 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 version=\"motor_control 1.0\"",
+    "# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=13044 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 version=\"motor_control 1.0\"",
+    "# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=13908 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 version=\"motor_control 1.0\"",
+    "# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=14775 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 version=\"motor_control 1.0\"",
+    "# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=15642 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 version=\"motor_control 1.0\"",
+    "# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=16509 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 version=\"motor_control 1.0\"",
+    "# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=17376 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 version=\"motor_control 1.0\"",
+    "# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=18243 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 version=\"motor_control 1.0\"",
+    "# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=19110 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 version=\"motor_control 1.0\"",
+    "# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=19977 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 version=\"motor_control 1.0\"",
+    "# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=20844 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 version=\"motor_control 1.0\"",
+    "# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=21711 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 version=\"motor_control 1.0\""
+  ],
+  "error": "",
+  "raw_file": "20261009_003252_476964_calibration.log",
+  "summary_file": null,
+  "saved_directory": "J:\\New soft project\\FM03\\captures",
+  "serial_baud": 921600,
+  "stopped_at": "2026-10-09T00:32:58.979245+08:00"
+}
