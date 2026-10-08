@@ -946,3 +946,16 @@
 - 用户“写个能拷贝走的交接文档 我要换agent”。整理reports/20261008_agent_transfer.md，包含最新常绿/+16/−16反向运动、用户停止反馈、原始hash与计数限制、−16在板身份/备份、工具/授权/Git和下一同步测量阶段。
 - 当前核验main/748aae5干净、无相关采集/上传进程；未新开串口/复位/BOOT/烧录/发送。last-known板蓝/电机红/停转不冒充新的硬件确认，旧snapshot串口/session/准备报告状态明确为历史。成功镜像backups仅本机，换机器另带。
 - 更新HANDOFF交接文档入口；无新抓包或新动作反馈，captures/INDEX既有最新记录足够，原始证据未改。仅文档git diff --check并核对路径/hash，按用户既有授权本地提交，最新号见git log，不推送、不改历史。
+
+## 2026-10-08 19:02:33 北京时间 — 接续核验：`stage=4` 之谜查明；板上镜像由闪存只读比对证实
+
+- 用户以 `reports/20261008_agent_transfer.md` 作为新会话的继续指令。先读该交接、HANDOFF、WORK_LOG/INDEX 末尾与 AGENTS；起点 main/e8cbe0f 干净，保留全部既有内容。**本轮无新 CAN 发送、无 BOOT、无固件源码/配置改动**。
+- **动态核实**：未发现 python/pythonw/pio/platformio/esptool 进程；pyserial 枚举 **COM17=USB-Enhanced-SERIAL CH343、VID:PID=1A86:55D3、SER=5C83447762**，与交接一致（另有 4 个蓝牙串口 COM3/4/5/6）。`.pio/build/replay_gate0_probe_minus16_echo/firmware.elf` 的 SHA256 = `0d3dfccd…b58a`，与 `backups/probe_minus16_prepared_20261008_163117_512786` 的 ELF/bin/manifest 逐项相符。
+- **只读观察 6 秒**（capture.py，DTR/RTS 开前 false）：`mode=listen stage=4 … sent=300 windows=2 bus_errors=15`，总线 11035 帧全为 `0x232 55 10 04 56 BF 32 ABBE`（单帧刷屏），掉帧约 84%。**电机已上电但未进入正常链路**；两端电源/灯色本轮未由用户确认，保持未知。
+- **发现一个会误导下一个 agent 的现象**：串口状态行 `stage=4` 与交接文档"板上 stage 0 / −16"矛盾。**已查明不是板上换了固件**：`platformio.ini` 里 `replay_gate0_probe16_echo` / `…_minus16_echo` 都 `extends = env:replay_bisect5`，而 **REPLAY_STAGE=4 来自 bisect5**（`replay_s4_auto` 起各环境显式设 4），probe 环境只覆盖 `REPLAY_AUTO_START/SECONDS/DIAL_PROBE_*`，**从不覆盖 REPLAY_STAGE**。故该环境下 stage 必然打印 4；判定板上身份的字段是 `PROBE_CONFIG value/start_ms/duration_ms/auto_start`。已在 HANDOFF 写明，避免下轮误判。
+- **新方法（可复用的板上身份核验，不运行 app）**：`esptool --before default_reset --after no_reset read_flash 0x10000 0x45910` 只读应用区，再与 `.pio` 镜像逐字节比对 —— **284912 字节全同、0 处差异**；比镜像多出的 32 字节是末尾 `FF` 空区。分区表只读解析：`nvs@0x9000`、`otadata@0xE000`（两扇区 seq=1/0、state=0xFF，等于未初始化）、`app0@0x10000`(6400KB)、`app1@0x650000`、`spiffs`、`coredump`；故启动分区确为 0x10000。**该只读路径不执行 app 代码。**
+- **本轮踩到并已记录的副作用**：esptool 连接会用下载时序把板子留在 **ROM bootloader**；`--after no_reset` 只影响收尾，**操作期间 app 已停止运行**，之后必须重新烧录或请用户按 RST。实测：读 flash 后立即采 4 秒 → **0 帧 0 行**（只剩 `?ABBE`），而此前同样采集有 782 行/秒。**已用 `pio run -e replay_gate0_probe_minus16_echo -t upload` 恢复**（应用区 284912 字节、hash verified），复采确认 `mode=listen sent=0 windows=0 bus_errors=0` 且刷屏恢复（7664 帧/4 秒）。本轮共烧录 3 次同环境镜像（其中一次因采集占用端口失败后重试），**均为恢复目的，未换固件**。
+- **一个未解决的抓取限制（写进 HANDOFF）**：刷屏工况下 `# START/# CONFIG/# PROBE_CONFIG/# READY` 只在 `setup()` 打印一次，而串口 FIFO 约 128 字节，**采集晚开就永远拿不到启动横幅**。本轮三次"先开采集再烧录"都因同一 COM 口互斥失败，故**CONFIG/PROBE_CONFIG 的活体读取仍未取得**；其内容推断不能替代实测。要看横幅必须用独立探针（第二串口/逻辑分析仪）或另加可控复位手段；本轮未为此改板子。
+- **证据（均只读，DTR/RTS 开前 false）**：`captures/20261008_185821_486290_resume_state_check.log/.json`（刷屏 + stage=4 状态行）、`…185932…_resume_stage_recheck`（bootloader 静默 0 帧）、`…190036…_resume_board_reflash_check`（重烧后 listen/7664 帧）、`…190107…_resume_boot_identity`、`…190224…_resume_minus16_restored`。临时只读镜像与一次性 ELF 解析助手写在忽略目录 `.pio/` 并已删除，未进库。
+- **下一步（与交接一致）**：进入运动量测阶段——固定齿轮端视角、可见轴标记、整窗视频与 CAN 时序对齐，逐窗记录方向/位移/回零/物理停止。**先离线准备候选**：当前固件的 `static_assert` 把 `REPLAY_DIAL_PROBE_DURATION_MS` 限制在 ≤200ms、值域 ±32、`START_MS≥5000`，200ms 脉冲不足以用轴标记可靠量测位移；下一候选应只改"脉冲改为可配置保持时长"这一项，其余（50ms 节奏/TX0/分片等待/单路由 seq0/RX 同步/值 ±16）保持不变。**新发送阶段与当前工况需用户确认后再烧录/采集。**
+- **验证**：仅文档改动（HANDOFF/WORK_LOG/INDEX），收尾执行 `git diff --check` 与路径/hash 复核；未改源码、配置、工具、原始抓包与备份，未运行固件编译或回归。按既有勤提交授权作本地检查点，具体号见 git log；未推送、不改历史。

@@ -40,6 +40,7 @@ logger_dropped累计含监听刷屏；−16结束累计101769/137555，首replay
 板上应用：replay_gate0_probe_minus16_echo；应用0x10000、284912字节、esptool hash verified。运行CONFIG/PROBE_CONFIG/READY匹配−16，未测活体ELF身份。
 bin SHA256 08ff3e8c0a44169925d9c5513de40c801898e5facb256f9f7ae86ac07b575bcc
 ELF SHA256 0d3dfccdda6a069d4c47bb37b64e63cd1a4f00f49f21fd83a415202fcf02b58a
+【2026-10-08 19:02 接续核验补正】串口状态行会打印 `stage=4`，**这不是板上换了固件**：`platformio.ini` 中该环境 `extends = env:replay_bisect5`，`REPLAY_STAGE=4` 由 bisect5 继承（probe 环境只覆盖 AUTO_START/SECONDS/DIAL_PROBE_*）。判定身份的字段是 `# PROBE_CONFIG value=-16 start_ms=5000 duration_ms=200 auto_start=0`，**不要用 stage 判身份**。另外已用 `esptool --before default_reset --after no_reset read_flash 0x10000 0x45910` 只读应用区，与本地镜像 **284912 字节逐字节全同**（多出 32 字节为末尾 `FF`），分区表 `app0@0x10000`、`otadata` 未初始化。**注意：esptool 连接会把板子留在 ROM bootloader，操作期间 app 停止运行（串口只剩 `?ABBE`、0 帧），之后必须重新烧录或请用户按 RST。** 刷屏工况下启动横幅（START/CONFIG/PROBE_CONFIG/READY）只在 setup 打印一次且串口 FIFO 约 128 字节，采集开晚了就拿不到，需独立探针才能抓。
 RST只监听，不自动发送；每次BOOT长按2秒会开启新窗口，先不要让用户重复按键。
 最后用户确认板蓝/电机红/已停转；常亮还是闪烁未说明。采集已关闭，旧session94247已退出，不复用旧会话句柄。
 最近枚举COM17=CH343，VID1A86:PID55D3，SER5C83447762；这是历史快照，使用前重新核实。本次交接文档整理时未发现相关采集/上传进程，没有新开串口或操作板子。
@@ -59,6 +60,7 @@ AGENTS旧“IDF竞争根因已证明”措辞证据不足，仅保留已验证TX
 
 六、下一步与授权
 本次±16方向对照已完成，不自动再发，也不重做已完成实验。下一阶段优先固定齿轮端视角、可见轴标记、整窗视频与CAN时序对应，逐窗口记录方向/位移/回零/物理停止，以量化重复性；之后再研究幅度/时长/最小必要报文集。下一阶段尚未新增候选代码或完成运动测量。
+【2026-10-08 19:02 接续核验补正】**量测阶段需要新候选，现有固件做不到**：`src/transmit_replay.cpp` 的 `static_assert` 把 `REPLAY_DIAL_PROBE_DURATION_MS` 限制在 ≤200ms、值域限制在 ±32、`REPLAY_DIAL_PROBE_START_MS` 要求 ≥5000ms。200ms 脉冲太短，用轴标记可靠量测位移/重复性不现实。建议的下一候选**只改一项**：把脉冲改为"可配置保持时长"（同值域、同 50ms 节奏、TX0、逐分片等待、单路由 seq0、RX 同步、值 ±16 均不变），先离线编译+回归核验，再确认阶段后烧录。
 用户此前“可以继续”仅批准已结束的−16阶段；这条交接请求不批准新发送、更大幅值、更长时长或取消时限。
 可以先自主完成离线分析、方案和候选核验，再简短确认具体新发送阶段和当前工况；获准后不重复索要同一授权，直接完成上传/采集准备并给明确步骤。不要只给空泛计划，也不要追问交接已有的信息。
 

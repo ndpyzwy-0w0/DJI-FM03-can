@@ -1,0 +1,41 @@
+{
+  "port": "COM17",
+  "serial_baud": 921600,
+  "label": "resume_board_reflash_check",
+  "started_at": "2026-10-08T19:00:36.839685+08:00",
+  "elapsed_seconds": 12.016,
+  "interrupted": false,
+  "raw_log": "J:\\New soft project\\FM03\\captures\\20261008_190036_839685_resume_board_reflash_check.log",
+  "frames": 23776,
+  "ids": {
+    "S:00000232": 23776
+  },
+  "sequence_gaps": 69667,
+  "sequence_resets": 0,
+  "non_frame_lines": 2,
+  "first_t_us": 2521285,
+  "last_t_us": 14482064,
+  "status_first": {
+    "t_us": 3107340,
+    "stage": 4,
+    "rx": 15632,
+    "sent": 0,
+    "windows": 0,
+    "logger_dropped": 10502,
+    "rx_missed": 0,
+    "bus_errors": 0,
+    "pending": 0
+  },
+  "status_last": {
+    "t_us": 14115384,
+    "stage": 4,
+    "rx": 101631,
+    "sent": 0,
+    "windows": 0,
+    "logger_dropped": 74631,
+    "rx_missed": 0,
+    "bus_errors": 0,
+    "pending": 0
+  },
+  "firmware_errors": []
+}

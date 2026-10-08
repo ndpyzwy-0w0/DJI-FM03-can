@@ -1,0 +1,41 @@
+{
+  "port": "COM17",
+  "serial_baud": 921600,
+  "label": "resume_boot_identity",
+  "started_at": "2026-10-08T19:01:07.729720+08:00",
+  "elapsed_seconds": 25.047,
+  "interrupted": false,
+  "raw_log": "J:\\New soft project\\FM03\\captures\\20261008_190107_729720_resume_boot_identity.log",
+  "frames": 47943,
+  "ids": {
+    "S:00000232": 47943
+  },
+  "sequence_gaps": 147408,
+  "sequence_resets": 0,
+  "non_frame_lines": 2,
+  "first_t_us": 33381331,
+  "last_t_us": 58386560,
+  "status_first": {
+    "t_us": 34121695,
+    "stage": 4,
+    "rx": 257927,
+    "sent": 0,
+    "windows": 0,
+    "logger_dropped": 192555,
+    "rx_missed": 0,
+    "bus_errors": 0,
+    "pending": 0
+  },
+  "status_last": {
+    "t_us": 58129356,
+    "stage": 4,
+    "rx": 445484,
+    "sent": 0,
+    "windows": 0,
+    "logger_dropped": 334082,
+    "rx_missed": 0,
+    "bus_errors": 0,
+    "pending": 0
+  },
+  "firmware_errors": []
+}

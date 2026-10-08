@@ -1,5 +1,15 @@
 # FM03 跟焦电机协议破解 — 当前状态
 
+## 当前入口：2026-10-08 19:02:33 北京时间 — 接续核验：板上镜像已证实为 −16 版；`stage=4` 是继承标签非异常
+
+- **本轮结论**：上一份交接里"板上 stage 0 / 板上就是 −16 手动版"的写法**只能由离线哈希支撑，不能由串口状态行支撑**。实测串口 `# STATUS … stage=4` 会让下一个 agent 误判板上换了固件；**本次已查明 stage=4 是 `replay_gate0_probe_minus16_echo` 的固有取值**（该环境 `extends = env:replay_bisect5`，而 REPLAY_STAGE=4 来自 bisect5，probe 环境从未覆盖它；阶段含义见 `src/transmit_replay.cpp:53` 的默认值 1 与平台配置）。**判定板上身份的字段是 `# PROBE_CONFIG value=-16 start_ms=5000 duration_ms=200 auto_start=0`**，不是 stage。
+- **独立确认板上镜像（新方法，可复用）**：用 esptool `read_flash 0x10000 0x45910` **只读**应用区（**不运行 app**），再与本地 `.pio` 镜像逐字节比对——**284912 字节完全一致，0 处差异**（bin SHA256 `08ff3e8c0a44169925d9c5513de40c801898e5facb256f9f7ae86ac07b575bcc`，与 prepared/交接记录相符）；多读出的 32 字节是镜像末尾的 `FF` 空区。分区表实测 `app0@0x10000`、`otadata` 空，故板上确实启动 0x10000。
+- **本轮新增的已知副作用（写进操作约束）**：esptool 连接会用下载时序把板子拉进 **ROM bootloader**；`--after no_reset` 只影响收尾，**操作期间 app 已停止运行**，之后必须重新烧录或请用户按 RST，否则串口只剩 `?ABBE` 且**没有任何帧或 STATUS**（本轮实测：读 flash 后 4 秒采集 0 帧 0 行）。**已用 `pio run -e replay_gate0_probe_minus16_echo -t upload` 恢复，hash verified，现 `mode=listen / sent=0 / windows=0 / bus_errors=0`，电机侧仍在刷屏（≈780 行/秒落盘）。**
+- **BOOT 启动横幅抓法（本轮踩过的坑）**：刷屏工况下 `# START/# CONFIG/# PROBE_CONFIG/# READY` 只在 `setup()` 打印一次，串口 FIFO 只有约 128 字节，**采集晚开就永远看不到**；本轮三次"先开采集再烧录"都因端口互斥失败。要看横幅必须**换独立探针**，不要指望同一 COM 口既烧录又采集。
+- **当前板上与台架**：板上应用 `replay_gate0_probe_minus16_echo`（已重新烧录并核验），RST 只监听、**每次 BOOT 长按 2 秒都会真的发 ±16 脉冲**，**未经新授权不要提示用户按 BOOT**。COM17 动态复核 = CH343 / VID1A86:PID55D3 / SER5C83447762，未发现采集或上传进程。电机侧当前在刷屏（`0x232`/`55 10 04 56 BF 32 ABBE`），说明**电机已上电但未进入正常链路**；本轮未改动、未证实两端电源与灯色（用户目视信息仍是旧记录）。
+- **本轮只做只读核验 + 恢复**：没有新增 CAN 发送、没有改固件源码、没有改 platformio.ini；除了 flash 只读与恢复性烧录外无其它硬件动作。证据：`captures/20261008_185821_486290_resume_state_check.log/.json`（刷屏 + stage=4 状态行）、`…185932…_resume_stage_recheck`（bootloader 静默 0 帧）、`…190036…_resume_board_reflash_check`、`…190107…_resume_boot_identity`、`…190224…_resume_minus16_restored`（恢复后 listen、7664 帧刷屏）。`.pio/flashid` 只读镜像与一次性 ELF 解析助手已删除，未进库。
+- **下一步（与上一份交接一致，未变）**：运动量测阶段——固定齿轮端视角、可见轴标记、整窗视频与 CAN 时序对齐，逐窗记录方向/位移/回零/物理停止。**当前固件做不到这件事**：`static_assert` 把 `REPLAY_DIAL_PROBE_DURATION_MS` 限制在 ≤200ms、值限 ±32、起始 ≥5000ms，200ms 脉冲不足以用轴标记可靠量测位移。故下一轮应先离线准备"保持型"候选（同值域、同 50ms 节奏、把脉冲改为可配置保持时长），再向用户确认阶段与工况后烧录。原始字节/属性核验后按既有授权本地提交，不推送。
+
 ## 交接文档入口：2026-10-08 18:54:58 北京时间
 
 - 用户要求换agent，已整理可整体复制的reports/20261008_agent_transfer.md，汇总最新±16运动/反向证据、板上−16手动版、原始SHA、备份、操作约束、授权和下一步；旧“−16未上传”准备状态已明确标为历史。

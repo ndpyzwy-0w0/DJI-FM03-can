@@ -237,3 +237,15 @@
 - 第一sent224按键提前结束，标记内223请求＋223拨轮/4个−16；第二sent300完整15秒，299请求＋299拨轮/4个−16；每窗结束后另1完整零拨轮。非零首片→首回零205.000/200.000ms、双CRC/8+8+3、脉冲各149帧/0缺口；软件5015→5220/5009→5209，200ms选择不等于物理动作时长。
 - 开始队列旧帧/缺口3130/2974，logger累计101769/137555继承、首replay STATUS后增0；窗口结束driver错误/拒绝0，额外零包和idle不是物理停止保证。方向相反/停止由用户确认；完整文件非无损，计数不跨mode/window减。详情reports/20261008_probe_minus16_motion_result.md/.json。
 - 当前板上−16手动版、用户确认板蓝电机红/停；不自动再BOOT。下一阶段同步视频/轴标记做重复性和位移量化，另确认发送，备份本机另带。本轮本地Git提交证据，不推送。
+
+## 2026-10-08 19:02:33 北京时间 — 接续核验：闪存只读比对 + `stage=4` 标签查明（诊断，非电机实验）
+
+- 五份只读记录，全部 COM17/921600、DTR&RTS 开前 false、**无 BOOT、无新 CAN 发送**；用途是接续核验板上身份与总线状态，**不作为新运动证据**：
+  - `20261008_185821_486290_resume_state_check.log/.json`：6 秒；11035 帧全为 `0x232 55 10 04 56 BF 32 ABBE`（单帧刷屏），`mode=listen stage=4 sent=300 windows=2 bus_errors=15`。**用户对设备任何操作前的状态快照。**
+  - `20261008_185932_914871_resume_stage_recheck.log/.json`：4 秒、**0 帧 0 行**（板子在 ROM bootloader，`--after no_reset` 后 app 未运行）；用于说明"静默 ≠ 电机断电"。
+  - `20261008_190036_839685_resume_board_reflash_check.log/.json`：12 秒；重烧 −16 后恢复 `mode=listen stage=4 sent=0 windows=0`，刷屏 7664 帧/约 4 秒段。
+  - `20261008_190107_729720_resume_boot_identity.log/.json`：25 秒；用于尝试抓启动横幅，**未取得 CONFIG/PROBE_CONFIG/READY**（刷屏工况下启动横幅只在 setup 打印一次，采集开得晚即被挤掉）。
+  - `20261008_190224_474967_resume_minus16_restored.log/.json`：4 秒；恢复后确认 `mode=listen sent=0 windows=0 bus_errors=0`。
+- **板上身份（闪存只读法，不运行 app）**：`esptool --before default_reset --after no_reset read_flash 0x10000 0x45910`，与 `.pio/build/replay_gate0_probe_minus16_echo/firmware.bin` **284912 字节逐字节全同、0 处差异**（bin SHA256 `08ff3e8c0a44169925d9c5513de40c801898e5facb256f9f7ae86ac07b575bcc`），多出的 32 字节为镜像末尾 `FF`。分区表只读解析：`app0@0x10000`、`otadata` 两扇区 seq=1/0 且 state=0xFF（未初始化）、`app1@0x650000`。**只读镜像与一次性 ELF 解析助手位于被忽略的 `.pio/`，已删除，不入库。**
+- **`stage=4` 不是板上换了固件**：`platformio.ini` 中 `replay_gate0_probe16_echo`/`…_minus16_echo` 均 `extends = env:replay_bisect5`，`REPLAY_STAGE=4` 由 bisect5 继承而来（probe 环境只覆盖 AUTO_START/SECONDS/DIAL_PROBE_*）。判定板上身份的字段是 `PROBE_CONFIG value/start_ms/duration_ms/auto_start`，**不是 stage**；交接文档"板上 stage 0"的写法应作废。
+- **本轮副作用（已写入 HANDOFF）**：esptool 连接会把板子留在 ROM bootloader，操作期间 app 停止运行；结束后必须重新烧录或请用户按 RST。本轮以重烧同一 −16 镜像恢复，未换固件、未改源码/配置。当前板子 `mode=listen`、刷屏中（电机已上电未进入正常链路），两端电源与灯色本轮无用户确认，保持未知。

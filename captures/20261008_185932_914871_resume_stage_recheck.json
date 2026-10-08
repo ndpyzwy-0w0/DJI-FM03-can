@@ -1,0 +1,19 @@
+{
+  "port": "COM17",
+  "serial_baud": 921600,
+  "label": "resume_stage_recheck",
+  "started_at": "2026-10-08T18:59:32.914871+08:00",
+  "elapsed_seconds": 4.125,
+  "interrupted": false,
+  "raw_log": "J:\\New soft project\\FM03\\captures\\20261008_185932_914871_resume_stage_recheck.log",
+  "frames": 0,
+  "ids": {},
+  "sequence_gaps": 0,
+  "sequence_resets": 0,
+  "non_frame_lines": 0,
+  "first_t_us": null,
+  "last_t_us": null,
+  "status_first": null,
+  "status_last": null,
+  "firmware_errors": []
+}
