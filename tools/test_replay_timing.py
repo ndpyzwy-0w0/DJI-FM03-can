@@ -213,6 +213,27 @@ class ReplayTimingTests(unittest.TestCase):
         self.assertIn("int16_t value = replay_dial_value(dial_elapsed);", output)
         self.assertIn("replay_probe_duration_ms", output)
 
+    def test_hold_pair_changes_only_the_value_sign(self):
+        """The prepared symmetry pair must differ only by the commanded sign."""
+        _, minus_flags = settings("replay_gate0_hold16_echo")
+        _, plus_flags = settings("replay_gate0_holdup16_echo")
+
+        def trim(flags):
+            return [f for f in flags if not f.startswith("-DREPLAY_DIAL_PROBE_VALUE=")]
+        # Holds for both environments come from the same expansion, so the flags are
+        # the same apart from the value - which is read from the compiled selector
+        # below rather than from the flags, because build_unflags removes inherited
+        # definitions that this reader cannot see.
+        self.assertEqual(sorted(trim(minus_flags)), sorted(trim(plus_flags)))
+        for env, value in (("replay_gate0_hold16_echo", -16),
+                           ("replay_gate0_holdup16_echo", 16)):
+            with self.subTest(env=env):
+                start, duration, guards, selector = self.probe_timeline(env)
+                self.assertEqual((start, duration), (5000, 3000))
+                compiled = int(re.search(r"\? \(int16_t\)(-?[0-9]+) :", selector).group(1))
+                self.assertEqual(compiled, value)
+                self.assert_boundaries(start, duration, guards, selector, value)
+
     def test_hold_bounds_are_enforced(self):
         """A hold must be non-zero, bounded, and return to zero before the window ends."""
         # The compiler truncates long assert messages with an ellipsis, so match on a
