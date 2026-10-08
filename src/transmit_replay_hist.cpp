@@ -1,3 +1,7 @@
+#ifndef REPLAY_ECHO_FRAMES
+#define REPLAY_ECHO_FRAMES 0
+#endif
+
 // M5 replay firmware: sends bring-up traffic to the focus motor, in stages.
 //
 // WHY A SEPARATE BUILD: the passive listener (src/main.cpp) must keep no transmit
@@ -166,7 +170,11 @@ static bool send_packet(uint32_t identifier, const uint8_t *packet,
         message.identifier = identifier;
         message.extd = 0;
         message.rtr = 0;
+#if REPLAY_ECHO_FRAMES
+        message.self = 1;
+#else
         message.self = 0;
+#endif
         message.data_length_code = frame_lengths[index];
         for (uint8_t byte = 0; byte < frame_lengths[index]; ++byte) {
             message.data[byte] = cursor[byte];

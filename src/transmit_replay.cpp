@@ -237,6 +237,26 @@ static const uint8_t M0469_FRAMES[3] = {8, 8, 3};
 #define REPLAY_SINGLE_ROUTE 0
 #endif
 
+// Set to 1 to drop the extra boot packets (the 04:10 announcement, the 04:05 attitude
+// stream and the startup dial command) and send only the 00:01 request plus the steady
+// dial command. That is exactly the message set the version with the green LED sent,
+// so this isolates "message variety" from the other differences.
+#ifndef REPLAY_SKIP_BOOT_MESSAGES
+#define REPLAY_SKIP_BOOT_MESSAGES 0
+#endif
+
+// Set to 1 to omit the "wait until the controller is idle" gate and use a 20 ms
+// transmit timeout, which is exactly what the green-LED version did. The gate was
+// added as a workaround for the tx_queue_len > 0 crash; with the queue disabled it is
+// unnecessary, and it changes how bursts are paced.
+#ifndef REPLAY_ECHO_FRAMES
+#define REPLAY_ECHO_FRAMES 0
+#endif
+
+#ifndef REPLAY_LEGACY_SEND
+#define REPLAY_LEGACY_SEND 0
+#endif
+
 static uint16_t seq_to_motor = REPLAY_SEQ_START;
 static uint16_t seq_to_peer = (uint16_t)(REPLAY_SEQ_START + 1);
 
@@ -328,6 +348,7 @@ static bool send_packet(uint32_t identifier, const uint8_t *packet,
     // buffer - it would just fail - so the only safe pattern is to check first. This
     // also keeps us out of the FreeRTOS queue wait list, which is where the crash
     // described above send_packet happens.
+#if !REPLAY_LEGACY_SEND
     for (int spin = 0; spin < 50; ++spin) {
         twai_status_info_t status{};
         if (twai_get_status_info(&status) != ESP_OK) {
@@ -338,18 +359,27 @@ static bool send_packet(uint32_t identifier, const uint8_t *packet,
         }
         delay(1);
     }
+#endif
     const uint8_t *cursor = packet;
     for (uint8_t index = 0; index < frame_count; ++index) {
         twai_message_t message{};
         message.identifier = identifier;
         message.extd = 0;
         message.rtr = 0;
+#if REPLAY_ECHO_FRAMES
+        message.self = 1;   // loop our own frames back so the log shows what we send
+#else
         message.self = 0;
+#endif
         message.data_length_code = frame_lengths[index];
         for (uint8_t byte = 0; byte < frame_lengths[index]; ++byte) {
             message.data[byte] = cursor[byte];
         }
+#if REPLAY_LEGACY_SEND
+        if (twai_transmit(&message, pdMS_TO_TICKS(20)) != ESP_OK) {
+#else
         if (twai_transmit(&message, 0) != ESP_OK) {
+#endif
             tx_backoff_ticks = 20;   // ~200 ms at the 10 ms polling step
             return false;
         }
@@ -591,7 +621,7 @@ static void run_replay_window() {
 #else
             unsigned long since_restart = elapsed;
 #endif
-#if REPLAY_HANDSHAKE
+#if REPLAY_HANDSHAKE && !REPLAY_SKIP_BOOT_MESSAGES
             // Power-on sequence, reproducing the measured boot: announce, then the
             // attitude burst stepping its sequence by 20 every ~20 ms, then the
             // startup dial command on 0x201, then the steady stream. The captured
