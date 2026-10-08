@@ -892,3 +892,12 @@
 - 编译static_assert限制±32、≤200ms、≥5s预热、回零早于结束、手动且≤20s窗口、TX0/单路由/RX同步。三环境probe16/stable_50ms/listen_1m编译全SUCCESS，.pio/probe16_build.txt；四项test_replay_timing通过，新增实际预处理selector的0/4999/5000/5199/5200/15000/ULONG_MAX边界及auto_start=1负向编译检查。没有硬件运动验证，不把软件200ms承诺为真实总线或物理运动时长。
 - 保存backups/probe16_prepared_20261008_161123_477101，bin b1208e6c5d95e02ef22ea7fbc4084b10a678892c72926450732a0585694bcb56、ELF d223469c46eaf3a39336107798a081c016c703d55bf5a1231a90bac20255c46b，源码/配置/镜像复制逐文件hash相同；reports/20261008_probe16_prepared.json。旧常绿备份四文件hash均复核不变。只本机backup，未推送。
 - 本条、HANDOFF和INDEX随本轮本地Git检查点提交；提交前diff --check、JSON/证据路径/新视频源及暂存字节核验；具体提交号与干净状态以后续Git命令为准。当前未上传试探，板上保留原50ms版。下一步直接向用户确认非零阶段+当前隔离工况；获准后先采集再提示RST/BOOT，覆盖零→非零→零→停发与用户实际灯色/动作，不重复索要已授权Git保存。
+
+## 2026-10-08 16:20:02 北京时间 — 用户批准非零试探，上传手动版并先开采集
+
+- 用户“可以，需要我做什么”批准已具体说明的+16/200ms、零值5秒、15秒手动阶段。Git起点dcdf1d2、工作区干净。工况沿用此前用户明确RS3不在总线、仅一块测试收发器+电机；没有新的精确灯色/电源/动作回复，不伪造已逐项确认。
+- 串口枚举COM17=CH343/VID1A86:PID55D3，无其他python/pythonw/pio/platformio/esptool进程；核对bin b1208e6c5d95e02ef22ea7fbc4084b10a678892c72926450732a0585694bcb56、ELF d223469c46eaf3a39336107798a081c016c703d55bf5a1231a90bac20255c46b与已编译/备份一致。一次rg的Windows通配路径报错，随后用-g在.pio正确查询，不影响镜像/上传。
+- esptool v4.11.0使用自身default_reset下载时序、--after no_reset，仅write_flash 0x10000应用；284912字节、hash verified、Staying in bootloader，日志.pio/probe16_upload.txt。无独立软件RTS复位，未改分区/引导。上传手动版并留下载态不等于已运行试探；尚无实时CONFIG/运动反馈。
+- tools/capture.py先开COM17，DTR/RTS在open前false、UART写s一次，16:19:53.149324+08:00开始，600秒等待上限；原始captures/20261008_161953_149324_probe16_manual_window.log，PTY session3337仍运行，自动JSON和最终hash待关闭才有。600秒不是电机发送时长，固件仍15秒且不自动开始；不暂存正在写的raw。
+- 已告知用户上传/采集准备完成，下一步请保持RS3断开、单模块、稳放电机并避开齿轮，按RST一次，只确认蓝灯/电机当前灯色，暂不按BOOT。读该既有采集的启动CONFIG、PROBE_CONFIG和READY后再提示已授权的BOOT启动，不为身份检查再次开串口。不自动假设用户已按、不捏造LED/运动结果。
+- 更新HANDOFF/INDEX，本条只准备记录另作本地提交（成功/具体号见git log）；src/配置/镜像没改，已完成三环境编译/四项回归不重复。活跃raw保留原字节，结束后补充用户工况、阶段/CRC/实际±16时长/停止边界/最终hash与提交；未推送。
