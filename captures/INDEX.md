@@ -249,3 +249,12 @@
 - **板上身份（闪存只读法，不运行 app）**：`esptool --before default_reset --after no_reset read_flash 0x10000 0x45910`，与 `.pio/build/replay_gate0_probe_minus16_echo/firmware.bin` **284912 字节逐字节全同、0 处差异**（bin SHA256 `08ff3e8c0a44169925d9c5513de40c801898e5facb256f9f7ae86ac07b575bcc`），多出的 32 字节为镜像末尾 `FF`。分区表只读解析：`app0@0x10000`、`otadata` 两扇区 seq=1/0 且 state=0xFF（未初始化）、`app1@0x650000`。**只读镜像与一次性 ELF 解析助手位于被忽略的 `.pio/`，已删除，不入库。**
 - **`stage=4` 不是板上换了固件**：`platformio.ini` 中 `replay_gate0_probe16_echo`/`…_minus16_echo` 均 `extends = env:replay_bisect5`，`REPLAY_STAGE=4` 由 bisect5 继承而来（probe 环境只覆盖 AUTO_START/SECONDS/DIAL_PROBE_*）。判定板上身份的字段是 `PROBE_CONFIG value/start_ms/duration_ms/auto_start`，**不是 stage**；交接文档"板上 stage 0"的写法应作废。
 - **本轮副作用（已写入 HANDOFF）**：esptool 连接会把板子留在 ROM bootloader，操作期间 app 停止运行；结束后必须重新烧录或请用户按 RST。本轮以重烧同一 −16 镜像恢复，未换固件、未改源码/配置。当前板子 `mode=listen`、刷屏中（电机已上电未进入正常链路），两端电源与灯色本轮无用户确认，保持未知。
+
+## 2026-10-08 19:20:00 北京时间 — 保持型 −16 窗口（有效实验，CAN 已核验）
+
+- **用户目视（原话）**：“往顺时针方向动了 电机灯常绿 但偶尔闪红色”。方向语境为**从齿轮端看**。**绿灯常亮按官方 2022 款灯语即可正常工作**；“偶尔闪红”属未定义行为，不判为异常、不据此宣布成功，红闪频率/时刻未提供故无法与 CAN 对齐。
+- **对应关系**：用户看到运动的是**第一次**窗口，CAN 记录的是**第二次**窗口（第一次时尚未开采集）。**两者不是同一次同步观测**，禁止合并叙述。
+- `20261008_191332_734446_hold16_window1.log/.json`：**本轮唯一有效窗口记录**。COM17/921600、DTR&RTS 开前 false；窗口 20 秒、50ms 节奏、手动 BOOT 启动。`# REPLAY stage=4 starting seconds=20 interval_ms=50`；`# PROBE elapsed_ms=5008 value=-16` → `elapsed_ms=8008 value=0`（**间隔 3000ms**，同时否证旧 200ms 脉冲版）。报文级：399 个完整 04:69 包（8+8+3）、CRC16 全过、0 残缺，其中 **60 个 `…19 F0 FF`（−16）、339 个零值**，非零跨度 **5038→7988ms（2950ms）**。`window_done sent=399 rejected=0 bus_errors=0 tx_errors=0 rx_missed=0`、`final_zero_submitted=1 final_tx_idle=1`，replay 段 `logger_dropped` 增 0。
+- **口径缺陷（本轮发现，务必沿用）**：**不要把 `reconstruct_frames()` 的分段口径直接用在刷屏工况的日志上**——它在 `logger_dropped` 变化处断段，而刷屏丢帧极多，会把一个包的 8+8+3 三片切进不同段，结果误报 0 个完整包。应按"帧边界 + 已知分片长度"分组，或先排除刷屏帧。
+- `20261008_191029_630764_hold16_boot_verify.log` 与 `20261008_191058_886974_hold16_boot_verify.log/.json`：烧录后抢采尝试，**均未取得启动横幅**。最终结论：刷屏会在不到 1 秒内冲掉适配器 FIFO，**单串口抓不到 `START/CONFIG/PROBE_CONFIG/READY`**；判板上配置改用窗口内 `# PROBE` 行 + 报文级校验。
+- `20261008_190*.…hold16_after_run.log/.json`：窗口后只读状态，`mode=listen windows=1 sent=398`，与 20 秒窗量级相符。所有本轮采集均为只读，无 BOOT/发送由 agent 触发。

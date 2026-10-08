@@ -1,0 +1,43 @@
+{
+  "port": "COM17",
+  "serial_baud": 921600,
+  "label": "hold16_window1",
+  "started_at": "2026-10-08T19:13:32.734446+08:00",
+  "elapsed_seconds": 30.062,
+  "interrupted": false,
+  "raw_log": "J:\\New soft project\\FM03\\captures\\20261008_191332_734446_hold16_window1.log",
+  "frames": 34723,
+  "ids": {
+    "S:00000232": 24325,
+    "S:00000504": 8405,
+    "S:00000503": 1993
+  },
+  "sequence_gaps": 60069,
+  "sequence_resets": 0,
+  "non_frame_lines": 3,
+  "first_t_us": 94205858,
+  "last_t_us": 124773527,
+  "status_first": {
+    "t_us": 95143084,
+    "stage": 4,
+    "rx": 580580,
+    "sent": 398,
+    "windows": 1,
+    "logger_dropped": 421113,
+    "rx_missed": 0,
+    "bus_errors": 12,
+    "pending": 0
+  },
+  "status_last": {
+    "t_us": 124154018,
+    "stage": 4,
+    "rx": 667771,
+    "sent": 389,
+    "windows": 2,
+    "logger_dropped": 475828,
+    "rx_missed": 0,
+    "bus_errors": 0,
+    "pending": 0
+  },
+  "firmware_errors": []
+}

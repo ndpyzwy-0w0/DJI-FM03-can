@@ -1,0 +1,41 @@
+{
+  "port": "COM17",
+  "serial_baud": 921600,
+  "label": "hold16_boot_verify",
+  "started_at": "2026-10-08T19:10:58.886974+08:00",
+  "elapsed_seconds": 25.016,
+  "interrupted": false,
+  "raw_log": "J:\\New soft project\\FM03\\captures\\20261008_191058_886974_hold16_boot_verify.log",
+  "frames": 47363,
+  "ids": {
+    "S:00000232": 47363
+  },
+  "sequence_gaps": 137179,
+  "sequence_resets": 0,
+  "non_frame_lines": 1,
+  "first_t_us": 1107760,
+  "last_t_us": 24729372,
+  "status_first": {
+    "t_us": 1108423,
+    "stage": 4,
+    "rx": 6,
+    "sent": 0,
+    "windows": 0,
+    "logger_dropped": 0,
+    "rx_missed": 0,
+    "bus_errors": 0,
+    "pending": 0
+  },
+  "status_last": {
+    "t_us": 25111609,
+    "stage": 4,
+    "rx": 187528,
+    "sent": 0,
+    "windows": 0,
+    "logger_dropped": 139433,
+    "rx_missed": 0,
+    "bus_errors": 0,
+    "pending": 0
+  },
+  "firmware_errors": []
+}
