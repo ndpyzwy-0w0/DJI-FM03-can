@@ -1022,3 +1022,24 @@
 - **本轮无任何硬件动作**：未烧录、未发 CAN、未按 RST/BOOT；板上仍是已实测的 `replay_gate0_hold16_echo`（listen）。烧录与实验由用户自行执行，或另行授权 agent。
 - **边界（必须写清，避免把猜想当结论）**："符号↔方向"与"幅值↔转量"**只在 ±16、3 秒这一点上被确认过**；"零值是否等于回零"、"保持更久是否转更多"（位置型 vs 速度型）、饱和点、量纲、重复精度**都未测**。这套上位机正是为回答这些问题而交付。
 - **验证与提交**：固件/上位机/测试/说明文档作本地提交，具体号见 git log；未推送、不改历史。原始抓包与既有备份哈希未变。
+
+## 2026-10-08 20:30:00 北京时间 — 烧录运动控制固件到板；上位机打包成单文件 exe（双击即用）
+
+- **用户要求**：把上位机**编译成单个可运行文件、点击即用**，并**烧录**。
+- **烧录**：`pio run -e motor_control -t upload --upload-port COM17` 成功（0x10000 应用区 `Hash of data verified`）。因环境下 `upload_flags` 用了 `--after no_reset`，板子烧完停在下载模式；**由 agent 用 RTS 时序复位启动**（DTR=false、RTS 拉高再释放；本项目此路径本轮实测有效），未要求用户按键。在板实测回话 `# VERSION motor_control 1.0 limit=2048 interval_ms=50 watchdog_ms=2000`、`mode=listen armed=0 value=0 sent=0 rejected=0 tx_failed=0`，**未发送任何 CAN 帧**（`rx_missed` 持续上升＝电机侧仍在刷屏，属已知工况，非本轮发送造成）。
+- **本轮修出的两个真问题（均为本 agent 引入，已修并复验）**：
+  1. **`upload_flags = --after no_reset` 写法错误**：PlatformIO 把整行当成**一个** esptool 参数，esptool 报 `argument operation: invalid choice: '--after no_reset'`，**烧录连续失败两次**。改为**每行一个 flag**：
+     ```
+     upload_flags =
+       --after
+       no_reset
+     ```
+     之后烧录成功。教训：PlatformIO 的多参数 flag 要按行拆，不能写成一行。
+  2. **`go` 在未 ARM 时被"接受"**：固件原本回 `# ACK go requested=… applied=…` 但**什么都不发**，用户会以为"该转却没转"。现改为 **`# ERR not_armed send 'arm' first`**（`run` 同样拒绝），上位机在下发非零值前**先弹窗确认并自动 ARM**。已重新编译、重新烧录、并在板上复验确认为 `# ERR not_armed`。
+- **exe 打包**：安装 `pyinstaller 6.22.3` 到 `.venv`，新增打包脚本 `tools/build_host_app.py`（`--onefile`、`--windowed`、`--hidden-import serial.tools.list_ports`、`--collect-submodules serial`；`dist/` 已被 .gitignore 忽略）。产物 `dist/FM03_MotorControl.exe`，10,924,587 字节，SHA256 `aba31a04b05f8a56c90b41d064a1a0dbb0503cc5406a6fcbc289361164519939`。
+  - **独立运行验证**：把 `tools/motor_control.py` **临时改名**后再启动 exe，进程存活、窗口正常出现（`MainWindowTitle = FM03 跟焦电机 运动控制`），证明它不依赖项目目录里的源码/依赖。
+  - 同目录另写中文 `dist/README_点击即用.md`（含 SHA256、使用步骤、安全底线、故障对照、以及"零值≠回零"的提醒）。`build/` 与 `.spec` 中间产物已删除。
+- **验证汇总**：固件编译 SUCCESS 无 warning；`test_motor_control.py` 6 项、`test_replay_timing.py` 7 项、`test_gui.py` 11 项全过；`capture.py`/`analyze_protocol.py`/`motor_control.py` 三项自检通过；在板协议复验（**不 arm、不发帧**）确认版本/状态回话、未 ARM 拒发且 `sent` 不增、未知命令报错。**电机运动本身仍未经 agent 测试**——按用户安排由他本人实验。
+- **备份**：`backups/motor_control_20261008_203000`（bin `bd8c28b0b8b978a0768d82fbd91c11a0208c9b97342954e908eafe74d85ca21e`、ELF `04f0f42344e42059bad08897c04631fafd3013c122cd48e1efeeb792086af6b6`，仅本机、不入 Git）。
+- **下一步（交给用户）**：双击 exe → 连接 COM17 → ARM → 从 `±16` 起按 32/64/128/256/512/1024/2048 逐级加大，记录**从哪个值开始不再转更多**；用 `run 值 毫秒` 判断"保持更久是否转更多"（位置型 vs 速度型）；留意 `STOP` 是否能真的把电机带回起点。猜想未被确认前不下结论。
+- **验证与提交**：固件/上位机/打包脚本/说明/交接作本地提交，具体号见 git log；未推送、不改历史。

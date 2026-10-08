@@ -422,6 +422,13 @@ class MotorControlApp:
         if value is None:
             return
         self.set_value(value)
+        if value != 0 and not self.armed:
+            # The firmware refuses this as well; saying so here is friendlier than
+            # letting it look like the motor should be turning.
+            if not messagebox.askyesno("尚未 ARM", "还没有 ARM，固件不会发送。现在 ARM 并下发吗？"):
+                self.log("未发送：需要先 ARM")
+                return
+            self.arm()
         self.link.send(f"go {value}")
         self.log(f"go {value}")
 

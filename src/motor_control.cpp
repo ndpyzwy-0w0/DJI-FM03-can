@@ -1,4 +1,4 @@
-﻿// FM03 focus-motor motion control firmware.
+// FM03 focus-motor motion control firmware.
 //
 // Purpose: drive the DJI RS focus motor (2022, "FM03") directly from the ESP32 with
 // no reflashing between experiments. The host program tools/motor_control.py sends
@@ -396,6 +396,12 @@ static void handle_line(char *line) {
             Serial.println("# ERR usage: go <value>");
             return;
         }
+        if (!armed) {
+            // Refusing loudly matters: accepting the value while disarmed would look
+            // like the motor should be turning when nothing is being transmitted.
+            Serial.println("# ERR not_armed send 'arm' first");
+            return;
+        }
         if (value_limit > CONTROL_HARD_LIMIT) value_limit = CONTROL_HARD_LIMIT;
         run_timed = false;
         apply_value(value, "go");
@@ -406,6 +412,10 @@ static void handle_line(char *line) {
         if (!parse_i32(first, &value) || !parse_i32(second, &duration) ||
             duration <= 0 || duration > 60000L) {
             Serial.println("# ERR usage: run <value> <ms 1..60000>");
+            return;
+        }
+        if (!armed) {
+            Serial.println("# ERR not_armed send 'arm' first");
             return;
         }
         target_value = (int16_t)clamp_value(value);

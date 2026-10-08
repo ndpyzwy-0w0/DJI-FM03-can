@@ -3,6 +3,18 @@
 配套固件 `motor_control`（`src/motor_control.cpp`）+ 上位机 `tools/motor_control.py`。
 一板固件长期留在板子上，之后所有实验都靠上位机点，**不用再反复烧录**。
 
+## 零、最简单的方式：双击 exe
+
+**`dist/FM03_MotorControl.exe`** —— 单文件、免安装、双击即用（约 10.4 MiB）。
+板子**已经烧好这套固件**，直接：选串口 → 连接 → `ARM` → 选数值 → 发送。
+
+- 打包命令：`.venv/Scripts/python.exe tools/build_host_app.py`
+- exe 的 SHA256：`aba31a04b05f8a56c90b41d064a1a0dbb0503cc5406a6fcbc289361164519939`
+- `dist/` 不入 Git（本机产物）；源码 `tools/motor_control.py` 才是版本控制的交付物。
+- Windows 首次可能提示"未知发布者"（本地打包未签名），选"仍要运行"。
+
+下面的内容是给命令行方式与故障排查用的，双击 exe 的用户可以只看"三、界面怎么用"。
+
 ## 一、安全前提（每次都要确认）
 
 1. **总线上只能有电机**。RS3 必须物理断开，数据线不入总线。
