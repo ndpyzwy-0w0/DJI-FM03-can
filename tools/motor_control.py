@@ -45,7 +45,7 @@ STATE_KEYS = (
     "mode", "armed", "value", "target", "run", "run_left_ms", "sent", "nonzero", "zero",
     "rejected", "tx_failed", "twai_state", "msgs_to_tx", "bus_errors", "tx_errors",
     "rx_missed", "limit", "interval_ms", "watchdog_ms", "watchdog_stops",
-    "run_complete", "button", "version",
+    "run_complete", "pulse", "pulse_done", "button", "version",
 )
 
 
@@ -280,6 +280,25 @@ class MotorControlApp:
         ttk.Entry(run, textvariable=self.interval_var, width=6).pack(side="left", padx=3)
         ttk.Button(run, text="应用", command=self.apply_interval).pack(side="left", padx=3)
 
+        # Pulse mode: hold the value briefly, then zero, repeated. This is how we test
+        # whether one short pulse moves the motor by a repeatable amount, which is what
+        # would make open-loop positioning possible without a position stream.
+        pulses = ttk.LabelFrame(outer, text="脉冲模式（测「一个脉冲 = 固定位移」是否成立）", padding=8)
+        pulses.pack(fill="x", pady=(8, 0))
+        ttk.Label(pulses, text="保持").pack(side="left")
+        self.pulse_hold_var = tk.StringVar(value="100")
+        ttk.Entry(pulses, textvariable=self.pulse_hold_var, width=6).pack(side="left", padx=3)
+        ttk.Label(pulses, text="ms，间隔").pack(side="left")
+        self.pulse_gap_var = tk.StringVar(value="400")
+        ttk.Entry(pulses, textvariable=self.pulse_gap_var, width=6).pack(side="left", padx=3)
+        ttk.Label(pulses, text="ms，次数").pack(side="left")
+        self.pulse_repeat_var = tk.StringVar(value="10")
+        ttk.Entry(pulses, textvariable=self.pulse_repeat_var, width=6).pack(side="left", padx=3)
+        ttk.Button(pulses, text="发脉冲", command=self.send_pulse).pack(side="left", padx=8)
+        ttk.Button(pulses, text="寻限位（慢速连续）", command=self.send_sweep).pack(side="left", padx=3)
+        self.pulse_label = ttk.Label(pulses, text="")
+        self.pulse_label.pack(side="left", padx=10)
+
         # Big readout
         readout = ttk.LabelFrame(outer, text="当前下发值", padding=8)
         readout.pack(fill="x", pady=(8, 0))
@@ -485,6 +504,56 @@ class MotorControlApp:
         self.link.send(f"interval {interval}")
         self.log(f"interval {interval}ms")
 
+    def send_pulse(self) -> None:
+        """Send n identical short pulses, so the motor's resting position can be
+        compared before and after: equal steps means time-based positioning works."""
+        if not self.require_link():
+            return
+        value = self.current_value()
+        if value is None:
+            return
+        if value == 0:
+            messagebox.showwarning("数值为 0", "脉冲需要一个非零数值。")
+            return
+        try:
+            hold = int(self.pulse_hold_var.get())
+            gap = int(self.pulse_gap_var.get())
+            repeat = int(self.pulse_repeat_var.get())
+        except ValueError:
+            messagebox.showwarning("脉冲参数无效", "保持/间隔/次数都必须是整数。")
+            return
+        if not 20 <= hold <= 60000 or not 20 <= gap <= 60000 or not 1 <= repeat <= 2000:
+            messagebox.showwarning("脉冲参数无效",
+                                   "保持与间隔需在 20..60000 ms，次数 1..2000。")
+            return
+        if not self.armed:
+            if not messagebox.askyesno("尚未 ARM", "还没有 ARM，固件不会发送。现在 ARM 并下发吗？"):
+                return
+            self.arm()
+        self.set_value(value)
+        self.link.send(f"pulse {value} {hold} {gap} {repeat}")
+        total = (hold + gap) * repeat / 1000.0
+        self.log(f"pulse {value} hold={hold}ms gap={gap}ms repeat={repeat} (≈{total:.1f}s)")
+
+    def send_sweep(self) -> None:
+        """Slow continuous rotation intended to reach a mechanical hard stop, which is
+        the only absolute reference available without a position stream."""
+        if not self.require_link():
+            return
+        value = self.current_value()
+        if value is None or value == 0:
+            messagebox.showwarning("数值为 0", "寻限位需要一个非零数值（建议小值，如 ±16）。")
+            return
+        if not messagebox.askyesno(
+                "寻限位", "会让电机低速持续转，直到撞上机械限位（最长约 3 分钟）。\n"
+                          "确认限位能承受、且你会盯着随时 STOP 吗？"):
+            return
+        if not self.armed:
+            self.arm()
+        self.set_value(value)
+        self.link.send(f"sweep {value}")
+        self.log(f"sweep {value}（低速连续，撞限位后请点 STOP）")
+
     # -- event pump --------------------------------------------------------
     def pump(self) -> None:
         try:
@@ -536,6 +605,7 @@ class MotorControlApp:
             f"rx_missed   {state.get('rx_missed', '?')}",
             f"watchdog    {state.get('watchdog_ms', '?')} ms, stops {state.get('watchdog_stops', '?')}",
             f"interval    {state.get('interval_ms', '?')} ms",
+            f"pulse       进行中 {state.get('pulse', '?')}  已完成 {state.get('pulse_done', '?')}",
             f"limit       {state.get('limit', '?')}",
             f"button      {state.get('button', '?')}",
             f"version     {state.get('version', '?')}",

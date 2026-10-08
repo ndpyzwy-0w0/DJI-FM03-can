@@ -172,6 +172,24 @@ static volatile uint32_t packets_nonzero = 0;
 static volatile uint32_t watchdog_stops = 0;
 static volatile uint32_t run_completions = 0;
 
+// Pulse mode answers the question "does one short pulse move the motor by a fixed
+// amount?". The value is held for pulse_hold_ms, then zero for the rest of the period,
+// repeated pulse_repeat times. If the resting position steps forward by the same
+// amount for every pulse, time-based open-loop positioning is possible even though the
+// value is a speed and the motor reports no position.
+static volatile bool pulse_active = false;
+static volatile int16_t pulse_value = 0;
+static volatile unsigned long pulse_hold_ms = 100;
+static volatile unsigned long pulse_gap_ms = 400;
+static volatile unsigned long pulse_repeat = 10;
+static volatile unsigned long pulse_done = 0;
+static volatile unsigned long pulse_started_ms = 0;
+
+static unsigned long pulse_period() {
+    unsigned long period = pulse_hold_ms + pulse_gap_ms;
+    return period < (unsigned long)interval_ms ? (unsigned long)interval_ms : period;
+}
+
 static void write_led(uint8_t red, uint8_t green, uint8_t blue) {
 #if LED_RGB_GPIO >= 0
     neopixelWrite((uint8_t)LED_RGB_GPIO, red, green, blue);
@@ -299,7 +317,7 @@ static void print_state() {
                   "sent=%lu nonzero=%lu zero=%lu rejected=%lu tx_failed=%lu "
                   "twai_state=%u msgs_to_tx=%u bus_errors=%lu tx_errors=%lu rx_missed=%lu "
                   "limit=%ld interval_ms=%lu watchdog_ms=%lu watchdog_stops=%lu "
-                  "run_complete=%lu button=%u version=\"%s\"\n",
+                  "run_complete=%lu pulse=%u pulse_done=%lu button=%u version=\"%s\"\n",
                   mode_replay ? "replay" : "listen", armed ? 1u : 0u, (int)applied_value,
                   (int)target_value, run_timed ? 1u : 0u, run_left,
                   (unsigned long)sent_packets, (unsigned long)packets_nonzero,
@@ -310,6 +328,7 @@ static void print_state() {
                   (unsigned long)status.rx_missed_count, (long)value_limit,
                   interval_ms, (unsigned long)CONTROL_WATCHDOG_MS,
                   (unsigned long)watchdog_stops, (unsigned long)run_completions,
+                  pulse_active ? 1u : 0u, (unsigned long)pulse_done,
                   digitalRead(BUTTON_GPIO) == LOW ? 1u : 0u, CONTROL_VERSION);
 }
 
@@ -317,6 +336,8 @@ static void print_help() {
     Serial.println("# HELP arm | disarm | stop | zero");
     Serial.println("# HELP go <value>            hold a value (-2048..2048)");
     Serial.println("# HELP run <value> <ms>      hold, then zero (1..60000)");
+    Serial.println("# HELP pulse <v> <hold> <gap> <n>   n short pulses, zero between them");
+    Serial.println("# HELP sweep <v>             pulse with defaults to reach a hard stop");
     Serial.println("# HELP status | ping         telemetry + watchdog feed");
     Serial.println("# HELP interval [ms]         dial cadence, 10..1000");
     Serial.println("# HELP limit [n]             magnitude clamp, 1..2048");
@@ -366,6 +387,8 @@ static void handle_line(char *line) {
     if (command == nullptr) return;
     char *first = strtok(nullptr, " \t");
     char *second = strtok(nullptr, " \t");
+    char *third = strtok(nullptr, " \t");
+    char *fourth = strtok(nullptr, " \t");
     int32_t value = 0;
 
     if (!strcasecmp(command, "arm")) {
@@ -379,6 +402,7 @@ static void handle_line(char *line) {
     if (!strcasecmp(command, "disarm")) {
         armed = false;
         run_timed = false;
+        pulse_active = false;
         target_value = 0;
         Serial.println("# ACK disarm value=0");
         print_state();
@@ -386,6 +410,7 @@ static void handle_line(char *line) {
     }
     if (!strcasecmp(command, "stop") || !strcasecmp(command, "zero")) {
         run_timed = false;
+        pulse_active = false;
         target_value = 0;
         Serial.println("# ACK stop value=0");
         print_state();
@@ -429,6 +454,56 @@ static void handle_line(char *line) {
         return;
     }
     if (!strcasecmp(command, "status") || !strcasecmp(command, "ping")) {
+        print_state();
+        return;
+    }
+    if (!strcasecmp(command, "pulse") || !strcasecmp(command, "sweep")) {
+        // pulse <value> <hold_ms> <gap_ms> <repeat>
+        // sweep is the same thing with defaults tuned for reaching a hard stop.
+        int32_t hold = 100, gap = 400, repeat = 10;
+        bool sweep = !strcasecmp(command, "sweep");
+        if (first == nullptr || !parse_i32(first, &value)) {
+            Serial.println("# ERR usage: pulse <value> <hold_ms> <gap_ms> <repeat>");
+            return;
+        }
+        if (second != nullptr && !parse_i32(second, &hold)) {
+            Serial.println("# ERR usage: pulse <value> <hold_ms> <gap_ms> <repeat>");
+            return;
+        }
+        if (third != nullptr && !parse_i32(third, &gap)) {
+            Serial.println("# ERR usage: pulse <value> <hold_ms> <gap_ms> <repeat>");
+            return;
+        }
+        if (fourth != nullptr && !parse_i32(fourth, &repeat)) {
+            Serial.println("# ERR usage: pulse <value> <hold_ms> <gap_ms> <repeat>");
+            return;
+        }
+        if (sweep) {
+            hold = 1500;
+            gap = 200;
+            repeat = 120;
+        }
+        if (!armed) {
+            Serial.println("# ERR not_armed send 'arm' first");
+            return;
+        }
+        if (hold < 20 || hold > 60000 || gap < 20 || gap > 60000 ||
+            repeat < 1 || repeat > 2000) {
+            Serial.println("# ERR pulse bounds: hold 20..60000, gap 20..60000, repeat 1..2000");
+            return;
+        }
+        pulse_value = (int16_t)clamp_value(value);
+        pulse_hold_ms = (unsigned long)hold;
+        pulse_gap_ms = (unsigned long)gap;
+        pulse_repeat = (unsigned long)repeat;
+        pulse_started_ms = clock_ms;
+        pulse_active = true;
+        run_timed = false;
+        Serial.printf("# ACK pulse value=%d hold_ms=%ld gap_ms=%ld repeat=%ld period_ms=%lu "
+                      "expected_total_ms=%lu\n",
+                      (int)pulse_value, (long)hold, (long)gap, (long)repeat,
+                      (unsigned long)pulse_period(),
+                      (unsigned long)(pulse_period() * pulse_repeat));
         print_state();
         return;
     }
@@ -542,6 +617,27 @@ static void service_button() {
 
 static volatile unsigned long last_tx_ms = 0;
 
+static void pulse_finish(const char *why) {
+    pulse_active = false;
+    target_value = 0;
+    ++pulse_done;
+    Serial.printf("# ACK pulse_complete pulses=%lu why=%s\n",
+                  (unsigned long)pulse_repeat, why);
+    print_state();
+}
+
+static void service_pulse() {
+    if (!pulse_active) return;
+    unsigned long elapsed = clock_ms - pulse_started_ms;
+    unsigned long period = pulse_period();
+    unsigned long index = elapsed / period;
+    if (index >= pulse_repeat) {
+        pulse_finish("complete");
+        return;
+    }
+    target_value = (elapsed % period) < pulse_hold_ms ? pulse_value : 0;
+}
+
 static void service_transmit() {
     if (!armed) {
         applied_value = 0;
@@ -555,6 +651,7 @@ static void service_transmit() {
         ++run_completions;
         Serial.println("# ACK run_complete value=0");
     }
+    if (pulse_active) service_pulse();
     int16_t value = target_value;
     applied_value = value;
     bool ok = send_request();
