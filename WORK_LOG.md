@@ -930,3 +930,13 @@
 - 上传本机日志.pio/probe_minus16_upload_20261008.txt，正式reports/20261008_probe_minus16_upload_preparation.json记录授权/用户原话/hash/采集待核验状态。源码/配置未改，不重复现有编译/四项回归。
 - tools/capture.py先开COM17，18:40:54.626320+08:00开始、DTR/RTS开前false、UART s一次、600秒等待余量，固件仍15秒；raw captures/20261008_184054_626320_probe_minus16_manual_window.log，session94247正在运行。无最终JSON/哈希，不暂存活跃raw；启动核验和有效运动尚未开始。
 - 下一步提示RST一次只监听，先读取CONFIG/PROBE_CONFIG(-16/5000/200/auto0)/READY再给BOOT2秒指令。当前上板镜像已换-16但未实测启动配置/方向；保全旧成功镜像，保持方向/量纲未知。本轮准备记录本地提交，具体号以git log为准，未推送、不改历史，活跃原始log排除。
+
+## 2026-10-08 18:49:13 北京时间 — −16运动、反向与停止确认及双窗口证据
+
+- 用户“都按完了 电机转了”，随后“现在停了 逆时针 与上次相反 这次我也按了两次boot 现在板子恢复蓝灯电机恢复红灯了”。问题指定从齿轮端看，用户报逆时针/与+16相反/BOOT两次/现已停转板蓝电机红，支持当前报文组合的符号反向；常闪未说明，两个窗口没有分别同步目视幅度/时刻，不把转动单位/最小集合或完整任意控制写成完成。
+- 起点cf0a660，保留活跃抓包未暂存；只读既有raw核对−16CONFIG/PROBE_CONFIG/READY及2窗口，两次已window_done且listen后通过既有session94247 Ctrl-C结束UART，210.032秒，interrupted=true/退出1不是panic。原始log SHA256 f14934a791cf268b3daea71e21dadddbd8532ec757d1033ca0a4d572314d8f58、尾30字节保留；自动JSON补用户原话/身份/限度。采集已退出无相关进程，不另开串口、不复位/BOOT/重烧录。
+- 1START/1READY/2manual start/2window_done/1stopped_by_button/0AUTO_START/panic/异常Rebooting/WARN/ERROR。用户自行RST/BOOT早于agent启动核验，仅事后验证运行配置：TX0/echo1/delay0/legacy0/seq0/sync_rx1、15秒/50ms、−16/5000/200/auto0。第一窗口sent224按键提前结束，第二sent300完整结束，首提前结束具体物理操作未说明。
+- 复用正式reconstruct_frames/build_packet/capture和旧分析函数定义部分，未执行会修改旧报告的主流程；.pio/analyze_minus16_result.py仅本机一次性助手。逐ID/连续段重组，00:01 8+5、04:69 8+8+3、CRC8/CRC16和整包独立重编码断言全过；两个非零段各4包f0ff字段、各149帧行/0缺口。首非零首片→首零205.000/200.000ms，软件5015→5220/5009→5209；首段调度延迟不隐去，软件选择200ms非物理时长承诺。
+- 标记内223请求+223拨轮/299请求+299拨轮，结束后额外零拨轮各1；final_zero_submitted1/final_tx_idle1均有、结束rejected/bus_errors/tx_errors/rx_missed0，TX_STATUS错误/失败最大0，物理停止另由用户确认。标记内监听队列旧帧/缺口3130/2974，不能宣布224/300轮全部记录或物理无损；logger累计101769/137555继承，首replay STATUS后增0，prior-listen→结束增935/1151含未知开始/切换。driver/sent跨界不减。
+- 全文件162071帧/415633缺口/0回退不能当总线帧数；首停发段主要0x504、第二0x232；listen bus_errors12/15不归主动发送、不据此证明ACK根因。reports/20261008_probe_minus16_motion_result.md/.json保存证据/限制/下一同步测量方案，旧+16报告/raw未改。
+- 更新HANDOFF/README/INDEX，保留−16手动版且现已停转；下一发送阶段另确认，不重复旧对照、不加幅值/时长。仅文档/衍生证据，已有编译/回归不重复。按既有勤提交授权保存本地检查点，提交前diff --check和原log属性/磁盘暂存字节核验，具体号/最终Git状态见git log；未推送、不改历史。
