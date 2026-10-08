@@ -1,5 +1,7 @@
 # FM03 接手指南（2026-10-08 归档）
 
+> 最新入口：板子现为replay_gate0_stable_echo，120秒发送后已回listen/蓝灯；发送时用户见绿闪更频繁，之后电机不再闪绿。完整当前状态、证据边界与下一步以[HANDOFF.md](HANDOFF.md)第0节为准。本文件其余为旧阶段归档，勿据此认定当前板子是hist_echo或主动发送稳定。
+
 本文件是**给后续接手者**的完整说明：现在在哪里、什么是已知的、什么已经被否定、什么还没试、以及怎么复现。当前状态快照见 [HANDOFF.md](HANDOFF.md)，历史见 [WORK_LOG.md](WORK_LOG.md)，抓包对应关系见 [CAPTURE_FILE_MAP.md](CAPTURE_FILE_MAP.md)。
 
 ---

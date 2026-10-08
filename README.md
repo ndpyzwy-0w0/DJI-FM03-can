@@ -1,5 +1,7 @@
 # FM03 协议分析
 
+> 当前板子：replay_gate0_stable_echo，自动发送120秒后已回只监听/ESP32蓝灯。用户确认发送阶段绿闪更频繁，结束后电机不再闪绿；主动发送稳定性尚未完整采集。新对话先读HANDOFF第0节与WORK_LOG末尾；下文多数验证属于早期阶段。
+
 ## Agent 接手入口
 
 先读 [HANDOFF.md](HANDOFF.md) 获取当前交接快照，再按 [AGENTS.md](AGENTS.md) 维护记录。历史工作见 [WORK_LOG.md](WORK_LOG.md)，每份抓包的动作语义和用途见 [captures/INDEX.md](captures/INDEX.md)。

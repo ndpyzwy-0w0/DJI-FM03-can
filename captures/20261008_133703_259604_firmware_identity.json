@@ -1,0 +1,62 @@
+{
+  "port": "COM17",
+  "serial_baud": 921600,
+  "purpose": "read_only_firmware_identity",
+  "started_at": "2026-10-08T13:37:03.259604+08:00",
+  "elapsed_seconds": 6.125,
+  "uart_bytes_written": 0,
+  "dtr": false,
+  "rts": false,
+  "error": null,
+  "raw_log": "captures\\20261008_133703_259604_firmware_identity.log",
+  "sha256": "add6edc849a5735a65617708641f64966ecd30104b0120d4b4a216e8ab5db53b",
+  "user_confirmed": {
+    "bus_nodes": "test transceiver and motor only",
+    "motor_powered": true,
+    "motor_motion": "not rotating",
+    "led": "flashes green, mostly red"
+  },
+  "unknown": [
+    "red solid or flashing",
+    "flash frequency",
+    "power supply details",
+    "transceiver termination"
+  ],
+  "summary": {
+    "frames": 1215,
+    "ids": {
+      "S:00000504": 768,
+      "S:00000503": 18,
+      "S:00000232": 429
+    },
+    "sequence_gaps": 0,
+    "sequence_resets": 3,
+    "non_frame_lines": 37,
+    "first_t_us": 1109679,
+    "last_t_us": 1170128,
+    "status_first": null,
+    "status_last": null,
+    "firmware_errors": []
+  },
+  "identity_verification": {
+    "environment": "replay_hist_echo",
+    "source": "src/transmit_replay_hist.cpp",
+    "local_elf": ".pio/build/replay_hist_echo/firmware.elf",
+    "local_elf_sha256": "55f5d752c3f319c4aa5b02f834c2716b5c22e7bc8272e8f4a3d5faae6634bfc3",
+    "local_bin_app_elf_sha256": "55f5d752c3f319c4aa5b02f834c2716b5c22e7bc8272e8f4a3d5faae6634bfc3",
+    "live_panic_elf_hash": "55f5d752c3f319c4",
+    "matching_prefix": true,
+    "twai_mode": "NORMAL (source/config verified)",
+    "tx_queue_len": 8,
+    "self_reception": true,
+    "dial_candidate_value": 0,
+    "start_markers": 4,
+    "panic_markers": 3,
+    "reboot_markers": 3,
+    "warn_markers": 0,
+    "tail_bytes": 26,
+    "complete_can503_request_packets": 2,
+    "complete_can503_dial_packets": 4,
+    "led_restart_synchrony": "unknown"
+  }
+}

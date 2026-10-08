@@ -1,0 +1,98 @@
+{
+  "recorded_at": "2026-10-08T14:23:52.526473+08:00",
+  "environment": "replay_gate0_stable_echo",
+  "upload_verified": true,
+  "upload_log_local_only": ".pio/startup_gate0_stable_upload.txt",
+  "expected_settings": {
+    "tx_queue_len": 0,
+    "steady_delay_ms": 0,
+    "legacy_send": 0,
+    "sync_rx": 1,
+    "echo": 1,
+    "seq_start": 0,
+    "seq_step": 0,
+    "replay_seconds": 120,
+    "interval_ms": 500
+  },
+  "capture": {
+    "started_at": "2026-10-08T14:20:38.506791+08:00",
+    "elapsed_seconds": 45.219,
+    "port": "COM17",
+    "serial_baud": 921600,
+    "dtr": false,
+    "rts": false,
+    "uart_bytes_written": 0,
+    "error": null,
+    "raw_log": "J:\\New soft project\\FM03\\captures\\20261008_142038_506791_replay_gate0_stable_echo.log",
+    "sha256": "711779a3f4cb48fdd2aaddc3ca91022aea093d4669b4e1e306caae07bd7092da",
+    "expected_environment": "replay_gate0_stable_echo",
+    "expected_elf_sha256": "89bdeb5a81796a14e47fb03f239ccb55d309999321829f41e04d035bb69e6360",
+    "observed_panic_elf_prefixes": [],
+    "all_observed_elf_prefixes_match": null,
+    "observed_configs": [],
+    "user_confirmed_led": "用户先确认：现在闪绿变频繁了；随后确认：ESP32亮蓝灯，电机也不闪绿了。准确灯色切换时刻未知。",
+    "user_confirmed_bus_nodes": "test transceiver and powered motor only; motor not rotating",
+    "unknown": [
+      "exact physical onset/LED timestamps",
+      "current termination resistance"
+    ],
+    "summary": {
+      "frames": 84501,
+      "ids": {
+        "S:00000232": 84501
+      },
+      "sequence_gaps": 264265,
+      "sequence_resets": 0,
+      "non_frame_lines": 2,
+      "first_t_us": 133066492,
+      "last_t_us": 178057950,
+      "status_first": {
+        "t_us": 134119016,
+        "stage": 4,
+        "rx": 178322,
+        "sent": 240,
+        "windows": 1,
+        "logger_dropped": 74803,
+        "rx_missed": 0,
+        "bus_errors": 15,
+        "pending": 0
+      },
+      "status_last": {
+        "t_us": 178138134,
+        "stage": 4,
+        "rx": 519550,
+        "sent": 240,
+        "windows": 1,
+        "logger_dropped": 333358,
+        "rx_missed": 0,
+        "bus_errors": 15,
+        "pending": 0
+      },
+      "firmware_errors": []
+    },
+    "tail_bytes": 37,
+    "start_markers": 0,
+    "panic_markers": 0,
+    "reboot_markers": 0,
+    "warn_markers": 0,
+    "can503_complete_packets": {},
+    "can503_first_packets_by_segment": [],
+    "time_note": "driver dequeue time, not physical CAN edge; split on sequence gaps/restarts",
+    "user_confirmation_recorded_at": "2026-10-08T14:23:52.526473+08:00",
+    "capture_phase": "post-replay listen only; first device frame 133.066492s; automatic replay window configured 120s",
+    "identity_limit": "Upload verified for replay_gate0_stable_echo; capture has no CONFIG or panic ELF identity; expected ELF is local build hash, not an observed live hash.",
+    "led_timing_limit": "Earlier green flashing observation was not synchronized with this capture; capture only records post-window listen state.",
+    "status_delta": {
+      "rx": 341228,
+      "sent": 0,
+      "windows": 0,
+      "logger_dropped": 258555,
+      "rx_missed": 0,
+      "bus_errors": 0
+    },
+    "status_boundary_seconds": 44.019118
+  },
+  "current_board_state": "listen only, ESP32 blue; user says motor no longer flashes green",
+  "conclusion": "Green flashing became more frequent per user before window ended. Post-window 45s capture has no panic/reset, but does not validate stability or complete CAN packets during active replay. M3 not achieved.",
+  "next": "With fresh sending-stage authorization, start recording before a bounded replay window and capture CONFIG, first complete packets, TX alerts/status, window_done, lamp timing; preserve queue0/delay0 and do not send nonzero motor commands yet."
+}

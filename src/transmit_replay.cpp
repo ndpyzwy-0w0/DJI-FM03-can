@@ -20,6 +20,7 @@
 #include <atomic>
 #include <cstring>
 #include "driver/twai.h"
+#include "freertos/semphr.h"
 #include "esp_timer.h"
 
 // --- DUML checksums -----------------------------------------------------------
@@ -99,6 +100,18 @@ static uint16_t crc16(const uint8_t *data, unsigned length) {
 // seconds is enough to present the same traffic shape.
 #ifndef REPLAY_HANDSHAKE_UNTIL_MS
 #define REPLAY_HANDSHAKE_UNTIL_MS 3000
+#endif
+
+// Keep the existing handshake delay by default; set zero only in the controlled
+// startup comparison to match the historical first request + dial burst.
+#ifndef REPLAY_STEADY_DELAY_MS
+#define REPLAY_STEADY_DELAY_MS 100
+#endif
+#ifndef REPLAY_LOG_CONFIG
+#define REPLAY_LOG_CONFIG 0
+#endif
+#ifndef REPLAY_SYNC_RX
+#define REPLAY_SYNC_RX 0
 #endif
 
 // Restart the whole boot sequence this often, in milliseconds.
@@ -288,11 +301,39 @@ static std::atomic<uint8_t> mode{0};   // 0 = listen only, 1 = replaying
 static bool button_usable = true;
 static uint32_t replay_sends = 0;
 static uint32_t replay_windows = 0;
+#if REPLAY_SYNC_RX
+static SemaphoreHandle_t driver_mutex;
+static std::atomic<bool> driver_switching{false};
+#endif
+static void service_status();
 
 static void receive_task(void *) {
     while (true) {
         CapturedFrame item{};
-        if (twai_receive(&item.frame, pdMS_TO_TICKS(20)) == ESP_OK) {
+#if REPLAY_SYNC_RX
+        if (driver_switching.load()) {
+            vTaskDelay(pdMS_TO_TICKS(1));
+            continue;
+        }
+        xSemaphoreTake(driver_mutex, portMAX_DELAY);
+        // Recheck after taking the mutex: a mode change may have begun meanwhile.
+        if (driver_switching.load()) {
+            xSemaphoreGive(driver_mutex);
+            continue;
+        }
+#endif
+        esp_err_t received_result = twai_receive(&item.frame, pdMS_TO_TICKS(20));
+#if REPLAY_SYNC_RX
+        xSemaphoreGive(driver_mutex);
+#endif
+#if REPLAY_SYNC_RX
+        if (received_result != ESP_OK) {
+            // Failed install/idle timeout must not turn the high-priority RX task
+            // into a busy loop that starves the system.
+            vTaskDelay(pdMS_TO_TICKS(1));
+        }
+#endif
+        if (received_result == ESP_OK) {
             item.timestamp_us = esp_timer_get_time();
             item.sequence = ++received;
             if (xQueueSend(log_queue, &item, 0) != pdTRUE) {
@@ -309,6 +350,14 @@ static void write_led(uint8_t red, uint8_t green, uint8_t blue) {
 // Reinstalls the driver so the controller mode matches the desired mode.
 // Listen Only cannot transmit, Normal can.
 static bool set_mode(bool replay) {
+#if REPLAY_SYNC_RX
+    driver_switching.store(true);
+    if (xSemaphoreTake(driver_mutex, pdMS_TO_TICKS(1000)) != pdTRUE) {
+        driver_switching.store(false);
+        Serial.println("# ERROR mode_switch_rx_busy");
+        return false;
+    }
+#endif
     twai_stop();
     twai_driver_uninstall();
     twai_general_config_t general = TWAI_GENERAL_CONFIG_DEFAULT(
@@ -317,10 +366,18 @@ static bool set_mode(bool replay) {
                : TWAI_MODE_LISTEN_ONLY);
     general.tx_queue_len = replay ? TX_QUEUE_LEN : 0;
     general.rx_queue_len = 128;
+#if REPLAY_SYNC_RX
+    general.alerts_enabled = TWAI_ALERT_TX_SUCCESS | TWAI_ALERT_TX_FAILED |
+                            TWAI_ALERT_BUS_ERROR | TWAI_ALERT_ARB_LOST | TWAI_ALERT_BUS_OFF;
+#endif
     twai_timing_config_t timing = REPLAY_TIMING();
     twai_filter_config_t filter = TWAI_FILTER_CONFIG_ACCEPT_ALL();
     esp_err_t result = twai_driver_install(&general, &timing, &filter);
     if (result == ESP_OK) result = twai_start();
+#if REPLAY_SYNC_RX
+    xSemaphoreGive(driver_mutex);
+    driver_switching.store(false);
+#endif
     if (result != ESP_OK) {
         Serial.printf("# ERROR mode_switch=%s want_replay=%u\n",
                       esp_err_to_name(result), (unsigned)replay);
@@ -343,25 +400,28 @@ static bool send_packet(uint32_t identifier, const uint8_t *packet,
     if (tx_backoff_ticks) {
         return false;
     }
-    // Wait until the controller has nothing in flight before queueing more. With a
-    // disabled TX queue (tx_queue_len = 0) twai_transmit cannot enqueue behind a busy
-    // buffer - it would just fail - so the only safe pattern is to check first. This
-    // also keeps us out of the FreeRTOS queue wait list, which is where the crash
-    // described above send_packet happens.
-#if !REPLAY_LEGACY_SEND
-    for (int spin = 0; spin < 50; ++spin) {
-        twai_status_info_t status{};
-        if (twai_get_status_info(&status) != ESP_OK) {
-            return false;
-        }
-        if (status.msgs_to_tx == 0) {
-            break;
-        }
-        delay(1);
-    }
-#endif
     const uint8_t *cursor = packet;
     for (uint8_t index = 0; index < frame_count; ++index) {
+#if !REPLAY_LEGACY_SEND
+        // Queue=0 requires an idle hardware buffer before EVERY fragment.
+        bool idle = false;
+        for (int spin = 0; spin < 50; ++spin) {
+            twai_status_info_t status{};
+            if (twai_get_status_info(&status) != ESP_OK ||
+                status.state != TWAI_STATE_RUNNING) {
+                return false;
+            }
+            if (status.msgs_to_tx == 0) {
+                idle = true;
+                break;
+            }
+            delay(1);
+        }
+        if (!idle) {
+            tx_backoff_ticks = 20;
+            return false;
+        }
+#endif
         twai_message_t message{};
         message.identifier = identifier;
         message.extd = 0;
@@ -663,10 +723,10 @@ static void run_replay_window() {
             // The dial command is repeated at a conservative cadence; see the note
             // on REPLAY_0469_INTERVAL_MS for why it is not the captured 10 ms.
             static unsigned long last_dial = 0;
-#if REPLAY_HANDSHAKE
-            // The steady stream starts once the boot sequence is done, matching the
-            // capture where the motor answers from about 97 ms.
-            bool steady_time = since_restart >= 100;
+#if REPLAY_HANDSHAKE && (REPLAY_STEADY_DELAY_MS > 0)
+            // SKIP_BOOT_MESSAGES deliberately leaves this gate intact. The paired
+            // comparison varies only this delay, without changing packet contents.
+            bool steady_time = since_restart >= REPLAY_STEADY_DELAY_MS;
 #else
             bool steady_time = true;
 #endif
@@ -690,6 +750,9 @@ static void run_replay_window() {
                 }
             }
         }
+#if REPLAY_SYNC_RX
+        service_status();
+#endif
         // Keep draining received frames while replaying.
         CapturedFrame item{};
         if (xQueueReceive(log_queue, &item, pdMS_TO_TICKS(5)) == pdTRUE) {
@@ -723,6 +786,16 @@ static void service_status() {
     last = millis();
     twai_status_info_t status{};
     if (twai_get_status_info(&status) != ESP_OK) return;
+#if REPLAY_SYNC_RX
+    uint32_t alerts = 0;
+    if (twai_read_alerts(&alerts, 0) == ESP_OK) {
+        // Alerts are accumulated bits, NOT a count of successful frames.
+        Serial.printf("# TX_ALERT bits=0x%08X\n", alerts);
+    }
+    Serial.printf("# TX_STATUS tx_pending=%u tx_errors=%u rx_errors=%u tx_failed=%u\n",
+                  status.msgs_to_tx, status.tx_error_counter,
+                  status.rx_error_counter, status.tx_failed_count);
+#endif
     Serial.printf("# STATUS t_us=%llu mode=%s stage=%u rx=%u sent=%u windows=%u "
                   "logger_dropped=%u rx_missed=%u bus_errors=%u pending=%u\n",
                   (unsigned long long)esp_timer_get_time(),
@@ -743,6 +816,16 @@ void setup() {
                   "interval_ms=%u\n",
                   (unsigned)REPLAY_STAGE, CAN_BITRATE, (unsigned)REPLAY_SECONDS,
                   (unsigned)REPLAY_INTERVAL_MS);
+#if REPLAY_LOG_CONFIG
+    // Print before driver/task startup, never between transmitted fragments.
+    Serial.printf("# CONFIG tx_queue_len=%u echo=%u handshake=%u skip_boot=%u "
+                  "steady_delay_ms=%u legacy_send=%u seq_start=%u seq_step=%u sync_rx=%u\n",
+                  (unsigned)TX_QUEUE_LEN, (unsigned)REPLAY_ECHO_FRAMES,
+                  (unsigned)REPLAY_HANDSHAKE, (unsigned)REPLAY_SKIP_BOOT_MESSAGES,
+                  (unsigned)REPLAY_STEADY_DELAY_MS, (unsigned)REPLAY_LEGACY_SEND,
+                  (unsigned)REPLAY_SEQ_START, (unsigned)REPLAY_SEQ_STEP,
+                  (unsigned)REPLAY_SYNC_RX);
+#endif
     Serial.println("# FRAME t_us,sequence,id_hex,extended,rtr,dlc,data_hex");
     Serial.println("# BUTTON hold 2s to start a replay window; hold again to stop");
     if (!button_usable) {
@@ -753,6 +836,13 @@ void setup() {
         Serial.println("# ERROR log_queue_allocation");
         return;
     }
+#if REPLAY_SYNC_RX
+    driver_mutex = xSemaphoreCreateMutex();
+    if (!driver_mutex) {
+        Serial.println("# ERROR driver_mutex_allocation");
+        return;
+    }
+#endif
     if (!set_mode(false)) return;
     if (xTaskCreatePinnedToCore(receive_task, "can_rx", 4096, nullptr, 10,
                                nullptr, 0) != pdPASS) {

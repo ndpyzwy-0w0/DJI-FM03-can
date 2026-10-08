@@ -1,0 +1,223 @@
+{
+  "started_at": "2026-10-08T14:06:21.694826+08:00",
+  "elapsed_seconds": 12.094,
+  "port": "COM17",
+  "serial_baud": 921600,
+  "dtr": false,
+  "rts": false,
+  "uart_bytes_written": 0,
+  "error": null,
+  "raw_log": "J:\\New soft project\\FM03\\captures\\20261008_140621_694826_replay_gate0_echo.log",
+  "sha256": "bf30ad60bcf5aafecfbdaa17cc7267067f7b392bc03f8b7b4fc53ed752216712",
+  "expected_environment": "replay_gate0_echo",
+  "expected_elf_sha256": "39fc59c03513b67c6f73ec16bbbc91965bb5608abcc8ad8920d24f0ccc1c6d6d",
+  "observed_panic_elf_prefixes": [
+    "39fc59c03513b67c"
+  ],
+  "all_observed_elf_prefixes_match": true,
+  "observed_configs": [
+    {
+      "tx_queue_len": 8,
+      "echo": 1,
+      "handshake": 1,
+      "skip_boot": 1,
+      "steady_delay_ms": 0,
+      "legacy_send": 1,
+      "seq_start": 0,
+      "seq_step": 0
+    },
+    {
+      "tx_queue_len": 8,
+      "echo": 1,
+      "handshake": 1,
+      "skip_boot": 1,
+      "steady_delay_ms": 0,
+      "legacy_send": 1,
+      "seq_start": 0,
+      "seq_step": 0
+    },
+    {
+      "tx_queue_len": 8,
+      "echo": 1,
+      "handshake": 1,
+      "skip_boot": 1,
+      "steady_delay_ms": 0,
+      "legacy_send": 1,
+      "seq_start": 0,
+      "seq_step": 0
+    },
+    {
+      "tx_queue_len": 8,
+      "echo": 1,
+      "handshake": 1,
+      "skip_boot": 1,
+      "steady_delay_ms": 0,
+      "legacy_send": 1,
+      "seq_start": 0,
+      "seq_step": 0
+    },
+    {
+      "tx_queue_len": 8,
+      "echo": 1,
+      "handshake": 1,
+      "skip_boot": 1,
+      "steady_delay_ms": 0,
+      "legacy_send": 1,
+      "seq_start": 0,
+      "seq_step": 0
+    },
+    {
+      "tx_queue_len": 8,
+      "echo": 1,
+      "handshake": 1,
+      "skip_boot": 1,
+      "steady_delay_ms": 0,
+      "legacy_send": 1,
+      "seq_start": 0,
+      "seq_step": 0
+    }
+  ],
+  "user_confirmed_led": "green flashes restored, mostly red (user confirmed after capture)",
+  "user_confirmed_bus_nodes": "test transceiver and powered motor only; motor not rotating",
+  "unknown": [
+    "exact physical onset/LED timestamps",
+    "current termination resistance"
+  ],
+  "summary": {
+    "frames": 2491,
+    "ids": {
+      "S:00000232": 876,
+      "S:00000504": 1585,
+      "S:00000503": 30
+    },
+    "sequence_gaps": 0,
+    "sequence_resets": 6,
+    "non_frame_lines": 84,
+    "first_t_us": 1334179,
+    "last_t_us": 1524384,
+    "status_first": null,
+    "status_last": null,
+    "firmware_errors": []
+  },
+  "tail_bytes": 771,
+  "start_markers": 6,
+  "panic_markers": 7,
+  "reboot_markers": 7,
+  "warn_markers": 0,
+  "can503_complete_packets": {
+    "550d0433e5bf0000400001ddfe": 6,
+    "55130403e5bf00000004690f04081900006b56": 6
+  },
+  "can503_first_packets_by_segment": [
+    {
+      "segment": 1,
+      "t_us": 1131266,
+      "command": "00:01",
+      "sequence": 0,
+      "flags": "40",
+      "frames_used": 2,
+      "packet_hex": "550d0433e5bf0000400001ddfe"
+    },
+    {
+      "segment": 1,
+      "t_us": 1131289,
+      "command": "04:69",
+      "sequence": 0,
+      "flags": "00",
+      "frames_used": 3,
+      "packet_hex": "55130403e5bf00000004690f04081900006b56"
+    },
+    {
+      "segment": 2,
+      "t_us": 1131061,
+      "command": "00:01",
+      "sequence": 0,
+      "flags": "40",
+      "frames_used": 2,
+      "packet_hex": "550d0433e5bf0000400001ddfe"
+    },
+    {
+      "segment": 2,
+      "t_us": 1131084,
+      "command": "04:69",
+      "sequence": 0,
+      "flags": "00",
+      "frames_used": 3,
+      "packet_hex": "55130403e5bf00000004690f04081900006b56"
+    },
+    {
+      "segment": 3,
+      "t_us": 1131269,
+      "command": "00:01",
+      "sequence": 0,
+      "flags": "40",
+      "frames_used": 2,
+      "packet_hex": "550d0433e5bf0000400001ddfe"
+    },
+    {
+      "segment": 3,
+      "t_us": 1131292,
+      "command": "04:69",
+      "sequence": 0,
+      "flags": "00",
+      "frames_used": 3,
+      "packet_hex": "55130403e5bf00000004690f04081900006b56"
+    },
+    {
+      "segment": 4,
+      "t_us": 1131057,
+      "command": "00:01",
+      "sequence": 0,
+      "flags": "40",
+      "frames_used": 2,
+      "packet_hex": "550d0433e5bf0000400001ddfe"
+    },
+    {
+      "segment": 4,
+      "t_us": 1131080,
+      "command": "04:69",
+      "sequence": 0,
+      "flags": "00",
+      "frames_used": 3,
+      "packet_hex": "55130403e5bf00000004690f04081900006b56"
+    },
+    {
+      "segment": 5,
+      "t_us": 1131272,
+      "command": "00:01",
+      "sequence": 0,
+      "flags": "40",
+      "frames_used": 2,
+      "packet_hex": "550d0433e5bf0000400001ddfe"
+    },
+    {
+      "segment": 5,
+      "t_us": 1131295,
+      "command": "04:69",
+      "sequence": 0,
+      "flags": "00",
+      "frames_used": 3,
+      "packet_hex": "55130403e5bf00000004690f04081900006b56"
+    },
+    {
+      "segment": 6,
+      "t_us": 1131270,
+      "command": "00:01",
+      "sequence": 0,
+      "flags": "40",
+      "frames_used": 2,
+      "packet_hex": "550d0433e5bf0000400001ddfe"
+    },
+    {
+      "segment": 6,
+      "t_us": 1131293,
+      "command": "04:69",
+      "sequence": 0,
+      "flags": "00",
+      "frames_used": 3,
+      "packet_hex": "55130403e5bf00000004690f04081900006b56"
+    }
+  ],
+  "time_note": "driver dequeue time, not physical CAN edge; split on sequence gaps/restarts",
+  "led_confirmation_recorded_at": "2026-10-08T14:09:57.252842+08:00"
+}

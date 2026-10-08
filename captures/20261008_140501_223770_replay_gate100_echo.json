@@ -1,0 +1,186 @@
+{
+  "started_at": "2026-10-08T14:05:01.223770+08:00",
+  "elapsed_seconds": 12.156,
+  "port": "COM17",
+  "serial_baud": 921600,
+  "dtr": false,
+  "rts": false,
+  "uart_bytes_written": 0,
+  "error": null,
+  "raw_log": "J:\\New soft project\\FM03\\captures\\20261008_140501_223770_replay_gate100_echo.log",
+  "sha256": "061b91a676db581a122506bff97f6ea2c5c5a49d667ec2abb562d61868fb5751",
+  "expected_environment": "replay_gate100_echo",
+  "expected_elf_sha256": "b9f6ae65d22f47e871a61507e792a5a1c11aa5fc173d43088fd3b986bde998c8",
+  "observed_panic_elf_prefixes": [
+    "b9f6ae65d22f47e8"
+  ],
+  "all_observed_elf_prefixes_match": true,
+  "observed_configs": [
+    {
+      "tx_queue_len": 8,
+      "echo": 1,
+      "handshake": 1,
+      "skip_boot": 1,
+      "steady_delay_ms": 100,
+      "legacy_send": 1,
+      "seq_start": 0,
+      "seq_step": 0
+    },
+    {
+      "tx_queue_len": 8,
+      "echo": 1,
+      "handshake": 1,
+      "skip_boot": 1,
+      "steady_delay_ms": 100,
+      "legacy_send": 1,
+      "seq_start": 0,
+      "seq_step": 0
+    },
+    {
+      "tx_queue_len": 8,
+      "echo": 1,
+      "handshake": 1,
+      "skip_boot": 1,
+      "steady_delay_ms": 100,
+      "legacy_send": 1,
+      "seq_start": 0,
+      "seq_step": 0
+    },
+    {
+      "tx_queue_len": 8,
+      "echo": 1,
+      "handshake": 1,
+      "skip_boot": 1,
+      "steady_delay_ms": 100,
+      "legacy_send": 1,
+      "seq_start": 0,
+      "seq_step": 0
+    },
+    {
+      "tx_queue_len": 8,
+      "echo": 1,
+      "handshake": 1,
+      "skip_boot": 1,
+      "steady_delay_ms": 100,
+      "legacy_send": 1,
+      "seq_start": 0,
+      "seq_step": 0
+    },
+    {
+      "tx_queue_len": 8,
+      "echo": 1,
+      "handshake": 1,
+      "skip_boot": 1,
+      "steady_delay_ms": 100,
+      "legacy_send": 1,
+      "seq_start": 0,
+      "seq_step": 0
+    },
+    {
+      "tx_queue_len": 8,
+      "echo": 1,
+      "handshake": 1,
+      "skip_boot": 1,
+      "steady_delay_ms": 100,
+      "legacy_send": 1,
+      "seq_start": 0,
+      "seq_step": 0
+    }
+  ],
+  "user_confirmed_led": "pure red, no green flashes (user confirmed)",
+  "user_confirmed_bus_nodes": "test transceiver and powered motor only; motor not rotating",
+  "unknown": [
+    "exact physical onset/LED timestamps",
+    "current termination resistance"
+  ],
+  "summary": {
+    "frames": 2634,
+    "ids": {
+      "S:00000232": 942,
+      "S:00000503": 14,
+      "S:00000504": 1678
+    },
+    "sequence_gaps": 0,
+    "sequence_resets": 6,
+    "non_frame_lines": 73,
+    "first_t_us": 1110983,
+    "last_t_us": 1579196,
+    "status_first": null,
+    "status_last": null,
+    "firmware_errors": []
+  },
+  "tail_bytes": 42,
+  "start_markers": 7,
+  "panic_markers": 6,
+  "reboot_markers": 6,
+  "warn_markers": 0,
+  "can503_complete_packets": {
+    "550d0433e5bf0000400001ddfe": 7
+  },
+  "can503_first_packets_by_segment": [
+    {
+      "segment": 0,
+      "t_us": 1131057,
+      "command": "00:01",
+      "sequence": 0,
+      "flags": "40",
+      "frames_used": 2,
+      "packet_hex": "550d0433e5bf0000400001ddfe"
+    },
+    {
+      "segment": 1,
+      "t_us": 1131069,
+      "command": "00:01",
+      "sequence": 0,
+      "flags": "40",
+      "frames_used": 2,
+      "packet_hex": "550d0433e5bf0000400001ddfe"
+    },
+    {
+      "segment": 2,
+      "t_us": 1131057,
+      "command": "00:01",
+      "sequence": 0,
+      "flags": "40",
+      "frames_used": 2,
+      "packet_hex": "550d0433e5bf0000400001ddfe"
+    },
+    {
+      "segment": 3,
+      "t_us": 1131267,
+      "command": "00:01",
+      "sequence": 0,
+      "flags": "40",
+      "frames_used": 2,
+      "packet_hex": "550d0433e5bf0000400001ddfe"
+    },
+    {
+      "segment": 4,
+      "t_us": 1131058,
+      "command": "00:01",
+      "sequence": 0,
+      "flags": "40",
+      "frames_used": 2,
+      "packet_hex": "550d0433e5bf0000400001ddfe"
+    },
+    {
+      "segment": 5,
+      "t_us": 1131268,
+      "command": "00:01",
+      "sequence": 0,
+      "flags": "40",
+      "frames_used": 2,
+      "packet_hex": "550d0433e5bf0000400001ddfe"
+    },
+    {
+      "segment": 6,
+      "t_us": 1131259,
+      "command": "00:01",
+      "sequence": 0,
+      "flags": "40",
+      "frames_used": 2,
+      "packet_hex": "550d0433e5bf0000400001ddfe"
+    }
+  ],
+  "time_note": "driver dequeue time, not physical CAN edge; split on sequence gaps/restarts"
+}
