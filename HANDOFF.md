@@ -1,5 +1,15 @@
 # FM03 跟焦电机协议破解 — 当前状态
 
+## 当前入口：2026-10-08 19:30:00 北京时间 — 量测阶段候选已离线备好（保持型 −16/3 秒），未上传
+
+- **用户本轮决定**：①授权先离线做好"保持型"候选再确认；②台架仍是"电机已上电、仍接在总线上，RS3 未接"；③**明确跳过量纲（不做视频/轴标记）**，目标改为"先把可控做出来"。故本阶段不追求把 ±16 换算成角度，只要求能看见"动起来→方向→停住/回零"。
+- **为什么必须改固件**：旧候选 `replay_gate0_probe_minus16_echo` 用 `static_assert` 把脉冲锁在 ≤200ms（`src/transmit_replay.cpp`），200ms 只够"闪一下"，不足以目视确认方向与停住。故新增**保持**模式与候选环境。
+- **新候选**：`replay_gate0_hold16_echo`，**相对已验证 −16 只改一处语义**——把同一个值保持 `REPLAY_DIAL_PROBE_HOLD=1`、时长 200ms→**3000ms**、窗口 15s→**20s**。`value=−16`、50ms 节奏、`TX_QUEUE_LEN=0`、逐分片有界等待、单路由 seq0、RX 同步、自收、手动 BOOT 启动（`AUTO_START=0`）全部不变。板上时间轴：**t=0–5s 零值；t=5–8s 保持 −16；t=8–20s 回零**，8 秒后不再有非零。
+- **离线核验（已完成，未上传）**：`pio run -e replay_gate0_hold16_echo` **SUCCESS、无 warning**（RAM 18944 / Flash 284593）；`test_replay_timing.py` **6 项全过**（新增 2 项：保持候选与 −16 脉冲版的编译宏差异只剩 `HOLD/DURATION/SECONDS`；越界必须拒绝——duration 0/5001、value ±33、窗口放不下、以及"未开 HOLD 时 3000ms 必须被拒"）。编译后的选择器边界经真实 `static_assert` 证明为 **5000/8000ms 切换**、区间外恒 0。报文级：离线 `build_packet.py` 重建 `value=0` 得 `55 13 04 03 e5 bf 00 00 00 04 69 0f 04 08 19 00 00 6b 56`、`value=−16` 得 `…19 f0 ff 1b 25`，与 −16 实录包 `55130403e5bf00000004690f040819f0ff1b25` **逐字节相同**，即保持模式只是把同一串字节保持更久。
+- **备份（仅本机、不入 Git）**：`backups/hold16_prepared_20261008_193000`（bin `1203dbcbe9df5362a70727caf899888b0528a431c533f1da5be9c7304bd83494`、ELF `6a401bd0ac34d45ad07e2ade4993cd866de3d23dc531492d6367adfae00da1f4`，逐文件哈希已与构建树核对一致）。既有 `probe_minus16`/`probe16`/`stable_50ms` 三套备份哈希复核未变。
+- **板上现状（勿误判）**：板子仍是**已核验的 −16 脉冲版，处于 listen**（`mode=listen sent=0 windows=0 bus_errors=0`），电机侧仍在刷屏。**保持型候选尚未烧录、尚未发送**；每次 BOOT 长按 2 秒都会真的发脉冲，**未获新授权不要提示用户按键**。
+- **下一步（需一次确认）**：向用户确认烧录 `replay_gate0_hold16_echo` 并做**一次** 20 秒窗口（先开采集 → 用户按 RST → 核验 `PROBE_CONFIG value=-16 … duration_ms=3000 hold=1` 与 READY → 请用户按 BOOT 2 秒 → 观察"动起来/方向/停住/回零"并记录灯色与常闪）。若一次不够，先取第二次授权再重开窗口。**未知保持未知**：本候选的实际运动幅度、是否真会在保持期间持续转、保持结束是否立刻停、以及"16"的量纲仍未测；本轮没有新增任何硬件动作。
+
 ## 当前入口：2026-10-08 19:02:33 北京时间 — 接续核验：板上镜像已证实为 −16 版；`stage=4` 是继承标签非异常
 
 - **本轮结论**：上一份交接里"板上 stage 0 / 板上就是 −16 手动版"的写法**只能由离线哈希支撑，不能由串口状态行支撑**。实测串口 `# STATUS … stage=4` 会让下一个 agent 误判板上换了固件；**本次已查明 stage=4 是 `replay_gate0_probe_minus16_echo` 的固有取值**（该环境 `extends = env:replay_bisect5`，而 REPLAY_STAGE=4 来自 bisect5，probe 环境从未覆盖它；阶段含义见 `src/transmit_replay.cpp:53` 的默认值 1 与平台配置）。**判定板上身份的字段是 `# PROBE_CONFIG value=-16 start_ms=5000 duration_ms=200 auto_start=0`**，不是 stage。

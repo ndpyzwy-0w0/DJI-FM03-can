@@ -48,7 +48,102 @@ def selected_gate(env, overrides=()):
     return match[1] if match else "true", result.stdout
 
 
+def guards_of(output):
+    """Extract the firmware's static assertions as compilable statements.
+
+    The preprocessor prints each assertion over several lines, and the message
+    strings contain ';', so the statements must be collected whole up to their
+    terminating semicolon rather than up to the end of a line. The compiled probe
+    duration a couple of them refer to is declared by the caller.
+    """
+    statements = []
+    pending = None
+    for line in output.splitlines():
+        if pending is None:
+            if line.lstrip().startswith("static_assert("):
+                pending = line.strip()
+        else:
+            pending += " " + line.strip()
+        if pending is not None and pending.endswith(";"):
+            statements.append(pending)
+            pending = None
+    return "\n".join(statements)
+
+
 class ReplayTimingTests(unittest.TestCase):
+    def probe_timeline(self, env, overrides=()):
+        """Return the probe window (start, duration), the assertions and the selector.
+
+        The window is read from the compiled selector and from the firmware's own
+        duration assertion, so the check follows what the build actually contains
+        rather than what the flags were meant to say. An environment with no probe
+        has no assertion, so its duration comes from the flags.
+        """
+        _, flags = settings(env)
+        _, output = selected_gate(env, overrides)
+        selector = re.search(r"static constexpr int16_t replay_dial_value\([^}]+\}", output)[0]
+        guards = guards_of(output)
+        start_match = re.search(r"elapsed >= ([0-9]+)", selector)
+        start = (int(start_match.group(1)) if start_match else
+                 next((int(flag.split("=", 1)[1]) for flag in flags
+                       if flag.startswith("-DREPLAY_DIAL_PROBE_START_MS=")), 5000))
+        if not start_match:
+            # No probe configured: the selector is a constant zero and the flags are
+            # the only record of the (unused) window.
+            duration = next((int(flag.split("=", 1)[1]) for flag in flags
+                             if flag.startswith("-DREPLAY_DIAL_PROBE_DURATION_MS=")), 200)
+            return start, duration, guards, selector
+        # When a probe is configured the selector switches at exactly the compiled
+        # duration, so the firmware's own bounds assertion carries it.
+        bound_match = re.search(
+            r"Probe duration.{0,80}?([0-9]+) > 0 && ([0-9]+) <= ([0-9]+)", guards)
+        if bound_match:
+            duration = int(bound_match.group(3))
+        else:
+            duration = next((int(flag.split("=", 1)[1]) for flag in flags
+                             if flag.startswith("-DREPLAY_DIAL_PROBE_DURATION_MS=")), 200)
+        return start, duration, guards, selector
+
+    def compiled_code(self, start, duration, guards, selector):
+        """A translation unit holding the firmware's assertions plus the selector."""
+        return (f"#include <stdint.h>\nstatic constexpr unsigned long replay_probe_duration_ms = "
+                f"{duration}UL;\nstatic constexpr unsigned long replay_probe_start_ms = {start}UL;\n"
+                + guards + "\n" + selector)
+
+    def assert_rejected(self, env, overrides, message):
+        """The candidate must not compile when one of its bounds is violated."""
+        start, duration, guards, selector = self.probe_timeline(env, overrides)
+        result = subprocess.run([str(COMPILER), "-std=c++11", "-fsyntax-only", "-x", "c++", "-"],
+                                input=self.compiled_code(start, duration, guards, selector),
+                                text=True, encoding="utf-8", capture_output=True)
+        self.assertNotEqual(result.returncode, 0, f"{env} {overrides} compiled but must not")
+        self.assertIn(message, result.stderr)
+
+    def assert_boundaries(self, start, duration, guards, selector, value):
+        """Prove the compiled selector switches at the exact compiled boundaries.
+
+        A positive value must appear only inside [start, start + duration); zero is
+        checked by matching the sign, so both signs are covered.
+        """
+        code = self.compiled_code(start, duration, guards, selector)
+        for offset, expect_nonzero in ([-1, False], [0, True],
+                                       [duration - 1, True], [duration, False],
+                                       [duration + 1, False]):
+            elapsed = start + offset
+            if elapsed < 0:
+                continue
+            if expect_nonzero:
+                code += (f'\nstatic_assert(replay_dial_value({elapsed}UL) == {value}, '
+                         '"inside the probe window");')
+            else:
+                code += (f'\nstatic_assert(replay_dial_value({elapsed}UL) == 0, '
+                         '"outside the probe window");')
+        code += ('\nstatic_assert(replay_dial_value(0UL) == 0, "probe starts at zero");'
+                 '\nstatic_assert(replay_dial_value(4294967295UL) == 0, "probe ends at zero");')
+        subprocess.run([str(COMPILER), "-std=c++11", "-fsyntax-only", "-x", "c++", "-"],
+                       input=code, text=True, encoding="utf-8",
+                       capture_output=True, check=True)
+
     def test_motion_probe_boundaries_and_manual_start_guard(self):
         _, plus_flags = settings("replay_gate0_probe16_echo")
         _, minus_flags = settings("replay_gate0_probe_minus16_echo")
@@ -60,25 +155,88 @@ class ReplayTimingTests(unittest.TestCase):
                            ("replay_gate0_probe_minus16_echo", -16),
                            ("replay_gate0_stable_50ms_echo", 0)):
             with self.subTest(env=env):
-                _, output = selected_gate(env)
-                selector = re.search(r"static constexpr int16_t replay_dial_value\([^}]+\}", output)[0]
-                guards = "\n".join(re.findall(r"^static_assert\([^\n]+", output, re.M))
-                code = "#include <stdint.h>\n" + guards + "\n" + selector
-                for elapsed, expected in ((0, 0), (4999, 0), (5000, value),
-                                          (5199, value), (5200, 0), (15000, 0),
-                                          (4294967295, 0)):
-                    code += (f'\nstatic_assert(replay_dial_value({elapsed}UL) == {expected}, '
-                             '"probe boundary");')
-                subprocess.run([str(COMPILER), "-std=c++11", "-fsyntax-only", "-x", "c++", "-"],
-                               input=code, text=True, encoding="utf-8",
-                               capture_output=True, check=True)
-        _, output = selected_gate("replay_gate0_probe16_echo",
-                                  ("-UREPLAY_AUTO_START", "-DREPLAY_AUTO_START=1"))
-        guards = "\n".join(re.findall(r"^static_assert\([^\n]+", output, re.M))
-        result = subprocess.run([str(COMPILER), "-std=c++11", "-fsyntax-only", "-x", "c++", "-"],
-                                input=guards, text=True, encoding="utf-8", capture_output=True)
-        self.assertNotEqual(result.returncode, 0)
-        self.assertIn("Motion probe requires manual start", result.stderr)
+                start, duration, guards, selector = self.probe_timeline(env)
+                self.assertEqual((start, duration), (5000, 200))
+                if value:
+                    self.assert_boundaries(start, duration, guards, selector, value)
+                else:
+                    # No probe configured: every environment must stay on zero.
+                    code = ("#include <stdint.h>\n" + selector
+                            + "\nstatic_assert(replay_dial_value(0UL) == 0, \"zero\");"
+                              "\nstatic_assert(replay_dial_value(5000UL) == 0, \"zero\");"
+                              "\nstatic_assert(replay_dial_value(4294967295UL) == 0, \"zero\");")
+                    subprocess.run([str(COMPILER), "-std=c++11", "-fsyntax-only", "-x", "c++", "-"],
+                                   input=code, text=True, encoding="utf-8",
+                                   capture_output=True, check=True)
+        self.assert_rejected("replay_gate0_probe16_echo",
+                             ("-UREPLAY_AUTO_START", "-DREPLAY_AUTO_START=1"),
+                             "Motion probe requires manual start")
+
+    def test_hold_candidate_holds_one_value_then_returns_to_zero(self):
+        """The prepared controllability candidate differs from the verified pulse
+        build only by holding the same value for a longer, bounded time."""
+        _, hold_flags = settings("replay_gate0_hold16_echo")
+        _, pulse_flags = settings("replay_gate0_probe_minus16_echo")
+
+        def trim(flags):
+            # Both the redefined flags and the start value (unflagged and redefined to
+            # the same value only to avoid a macro-redefinition warning) are ignored.
+            return [f for f in flags
+                    if not f.startswith(("-DREPLAY_DIAL_PROBE_HOLD=",
+                                         "-DREPLAY_DIAL_PROBE_DURATION_MS=",
+                                         "-DREPLAY_SECONDS=",
+                                         "-DREPLAY_DIAL_PROBE_START_MS="))]
+        self.assertEqual(sorted(trim(hold_flags)), sorted(trim(pulse_flags)))
+        # Each redefined macro appears exactly once, or the compiler warns.
+        for name in ("REPLAY_SECONDS", "REPLAY_DIAL_PROBE_VALUE",
+                     "REPLAY_DIAL_PROBE_DURATION_MS", "REPLAY_DIAL_PROBE_START_MS"):
+            with self.subTest(macro=name):
+                definitions = [f for f in hold_flags if f.startswith("-D" + name + "=")]
+                self.assertEqual(len(definitions), 1, definitions)
+        for flag in ("-DREPLAY_DIAL_PROBE_VALUE=-16", "-DREPLAY_DIAL_PROBE_HOLD=1",
+                     "-DREPLAY_DIAL_PROBE_DURATION_MS=3000",
+                     "-DREPLAY_AUTO_START=0", "-DREPLAY_SECONDS=20",
+                     "-DREPLAY_INTERVAL_MS=50", "-DTX_QUEUE_LEN=0",
+                     "-DREPLAY_SINGLE_ROUTE=1", "-DREPLAY_SYNC_RX=1",
+                     "-DREPLAY_SEQ_START=0", "-DREPLAY_SEQ_STEP=0"):
+            self.assertIn(flag, hold_flags)
+        # The 5 s warmup must stay at exactly the value the pulse comparison used.
+        self.assertIn("-DREPLAY_DIAL_PROBE_START_MS=5000", hold_flags)
+
+        start, duration, guards, selector = self.probe_timeline("replay_gate0_hold16_echo")
+        self.assertEqual((start, duration), (5000, 3000))
+        self.assert_boundaries(start, duration, guards, selector, -16)
+        # The value must be selected against the live clock, not an expired pulse
+        # timestamp, or a hold could be applied late or skipped entirely.
+        _, output = selected_gate("replay_gate0_hold16_echo")
+        self.assertIn("unsigned long dial_elapsed = millis() - started;", output)
+        self.assertIn("int16_t value = replay_dial_value(dial_elapsed);", output)
+        self.assertIn("replay_probe_duration_ms", output)
+
+    def test_hold_bounds_are_enforced(self):
+        """A hold must be non-zero, bounded, and return to zero before the window ends."""
+        # The compiler truncates long assert messages with an ellipsis, so match on a
+        # prefix that survives truncation.
+        for override, message in (
+            (("-DREPLAY_DIAL_PROBE_HOLD=1", "-DREPLAY_DIAL_PROBE_DURATION_MS=0"), "duration"),
+            (("-DREPLAY_DIAL_PROBE_HOLD=1", "-DREPLAY_DIAL_PROBE_DURATION_MS=5001"), "duration"),
+            (("-DREPLAY_DIAL_PROBE_HOLD=1", "-DREPLAY_DIAL_PROBE_VALUE=33"), "Probe value exceeds"),
+            (("-DREPLAY_DIAL_PROBE_HOLD=1", "-DREPLAY_DIAL_PROBE_VALUE=-33"), "Probe value exceeds"),
+            # A hold that cannot return to zero before the window ends.
+            (("-DREPLAY_SECONDS=7",), "before window end"),
+            # Holding is an explicit opt-in: without it the pulse bound still applies,
+            # so the 3000 ms duration of this candidate must be rejected.
+            (("-UREPLAY_DIAL_PROBE_HOLD", "-DREPLAY_DIAL_PROBE_HOLD=0"), "duration"),
+        ):
+            with self.subTest(override=override):
+                self.assert_rejected("replay_gate0_hold16_echo", override, message)
+        # Holding must be opt-in, and the opt-in must not change the value or the rate:
+        # the same duration is accepted as a hold and rejected as a pulse.
+        start, duration, guards, selector = self.probe_timeline("replay_gate0_hold16_echo")
+        self.assertIn("200ms as a pulse", guards)
+        subprocess.run([str(COMPILER), "-std=c++11", "-fsyntax-only", "-x", "c++", "-"],
+                       input=self.compiled_code(start, duration, guards, selector),
+                       text=True, encoding="utf-8", capture_output=True, check=True)
 
     def test_pair_changes_only_the_delay(self):
         source_a, flags_a = settings("replay_gate100_echo")

@@ -280,18 +280,55 @@ static const uint8_t M0469_FRAMES[3] = {8, 8, 3};
 #ifndef REPLAY_DIAL_PROBE_DURATION_MS
 #define REPLAY_DIAL_PROBE_DURATION_MS 200
 #endif
+// Pulse vs hold. Both send exactly one dial value and then return to zero; they
+// differ only in how long the non-zero value is held, so the single variable under
+// test stays the hold time:
+//   0 = short pulse (the +/-16 direction comparison used 200 ms)
+//   1 = hold  (the same value is held for REPLAY_DIAL_PROBE_DURATION_MS, which may
+//             be up to REPLAY_DIAL_PROBE_HOLD_MAX_MS)
+// A hold is what makes the commanded motion possible to observe without a CAN
+// clock: the pulse is long enough to watch start, direction and return to zero.
+#ifndef REPLAY_DIAL_PROBE_HOLD
+#define REPLAY_DIAL_PROBE_HOLD 0
+#endif
+// Upper bound for a held value. Deliberately much larger than the 200 ms pulse
+// bound, and still small enough that the motor cannot be driven anywhere near its
+// full travel in one window.
+#ifndef REPLAY_DIAL_PROBE_HOLD_MAX_MS
+#define REPLAY_DIAL_PROBE_HOLD_MAX_MS 5000
+#endif
+// The largest value the motor may be commanded in a prepared candidate. This bound
+// is unchanged from the verified +/-16 comparison; raising it is a separate,
+// separately authorized step.
+#ifndef REPLAY_DIAL_PROBE_VALUE_LIMIT
+#define REPLAY_DIAL_PROBE_VALUE_LIMIT 32
+#endif
 #if REPLAY_DIAL_PROBE_VALUE != 0
-static_assert(REPLAY_DIAL_PROBE_VALUE >= -32 && REPLAY_DIAL_PROBE_VALUE <= 32, "Probe value exceeds the prepared range");
-static_assert(REPLAY_DIAL_PROBE_DURATION_MS > 0 && REPLAY_DIAL_PROBE_DURATION_MS <= 200, "Probe duration must be at most 200ms");
+static_assert(REPLAY_DIAL_PROBE_VALUE >= -REPLAY_DIAL_PROBE_VALUE_LIMIT &&
+              REPLAY_DIAL_PROBE_VALUE <= REPLAY_DIAL_PROBE_VALUE_LIMIT,
+              "Probe value exceeds the prepared range");
+static_assert(REPLAY_DIAL_PROBE_HOLD == 0 || REPLAY_DIAL_PROBE_HOLD == 1, "REPLAY_DIAL_PROBE_HOLD must be 0 or 1");
+// One expression so the duration bound can never disagree with the guard below.
+static constexpr unsigned long replay_probe_duration_ms =
+    REPLAY_DIAL_PROBE_HOLD ? (unsigned long)REPLAY_DIAL_PROBE_DURATION_MS : 200UL;
+static_assert(REPLAY_DIAL_PROBE_HOLD
+                  ? (REPLAY_DIAL_PROBE_DURATION_MS > 0 &&
+                     REPLAY_DIAL_PROBE_DURATION_MS <= REPLAY_DIAL_PROBE_HOLD_MAX_MS)
+                  : (REPLAY_DIAL_PROBE_DURATION_MS > 0 && REPLAY_DIAL_PROBE_DURATION_MS <= 200),
+              "Probe duration: at most 200ms as a pulse, or the hold bound when holding");
 static_assert(REPLAY_DIAL_PROBE_START_MS >= 5000, "Allow five seconds of zero-value warmup");
-static_assert(REPLAY_DIAL_PROBE_START_MS + REPLAY_DIAL_PROBE_DURATION_MS < REPLAY_SECONDS * 1000UL, "Probe must return to zero before window end");
+static_assert(REPLAY_DIAL_PROBE_START_MS + replay_probe_duration_ms < REPLAY_SECONDS * 1000UL, "Probe must return to zero before window end");
 static_assert(REPLAY_AUTO_START == 0 && REPLAY_SECONDS <= 20, "Motion probe requires manual start and a bounded window");
 static_assert(TX_QUEUE_LEN == 0 && REPLAY_SINGLE_ROUTE == 1 && REPLAY_SYNC_RX == 1, "Keep the verified stable motor-only path");
 #endif
 static constexpr int16_t replay_dial_value(unsigned long elapsed) {
+#if REPLAY_DIAL_PROBE_VALUE != 0
     return elapsed >= REPLAY_DIAL_PROBE_START_MS &&
-           elapsed - REPLAY_DIAL_PROBE_START_MS < REPLAY_DIAL_PROBE_DURATION_MS
+           elapsed - REPLAY_DIAL_PROBE_START_MS < replay_probe_duration_ms
                ? (int16_t)REPLAY_DIAL_PROBE_VALUE : 0;
+#else
+    return 0;
+#endif
 }
 
 static uint16_t seq_to_motor = REPLAY_SEQ_START;
@@ -881,9 +918,13 @@ void setup() {
                   (unsigned)REPLAY_SYNC_RX);
 #endif
 #if REPLAY_DIAL_PROBE_VALUE != 0
-    Serial.printf("# PROBE_CONFIG value=%d start_ms=%u duration_ms=%u auto_start=%u\n",
+    // The identity of the running candidate: stage is inherited from the platform
+    // configuration and does NOT distinguish the probe builds, so the value, the
+    // window bounds and pulse-vs-hold are the fields that identify this firmware.
+    Serial.printf("# PROBE_CONFIG value=%d start_ms=%u duration_ms=%u hold=%u hold_max_ms=%u auto_start=%u\n",
                   (int)REPLAY_DIAL_PROBE_VALUE, (unsigned)REPLAY_DIAL_PROBE_START_MS,
-                  (unsigned)REPLAY_DIAL_PROBE_DURATION_MS, (unsigned)REPLAY_AUTO_START);
+                  (unsigned)REPLAY_DIAL_PROBE_DURATION_MS, (unsigned)REPLAY_DIAL_PROBE_HOLD,
+                  (unsigned)REPLAY_DIAL_PROBE_HOLD_MAX_MS, (unsigned)REPLAY_AUTO_START);
 #endif
     Serial.println("# FRAME t_us,sequence,id_hex,extended,rtr,dlc,data_hex");
     Serial.println("# BUTTON hold 2s to start a replay window; hold again to stop");
