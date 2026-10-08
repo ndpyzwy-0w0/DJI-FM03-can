@@ -217,3 +217,9 @@
 - 每窗口4个+16完整19B/三片包，首非零至首回零首片200.000/199.999ms，双CRC/独立重编码一致；脉冲各149帧行、0序号缺口。标记内299请求+299拨轮，window_done之后额外零包各1个；300成功轮次与自收数量不完全一致，不宣称全部物理发送帧记录完整。sent300/rejected0、TX错误/失败0、final_zero_submitted1/final_tx_idle1，物理停止另由用户目视确认而非仅凭self echo；未测应用层ACK。
 - 切换开始处排监听旧队列/缺口3164、3169；终值logger_dropped64674/236180继承累计，首replay STATUS后增0，最后prior-listen→结束增1099/650含启动前/切换，不能全算主动损失。跨mode driver/sent计数复位，禁止做差。全文件210499帧行/546769缺口/2回退不可当总线计数；详细分窗JSON/MD在reports/20261008_probe16_motion_result.*。
 - 板上保留+16手动版、用户确认停转回红；采集3337已退出。-16对照离线编译/测试/备份完成，未新上传/发送，等待新子阶段明确许可。该原始文件已结束可提交，本轮本地Git保存，不推送。
+
+## 2026-10-08 18:38:53 北京时间 — 接续UART状态观察（非新电机实验）
+
+- captures/20261008_183720_601830_resume_listen_status.log/.json；18:37:20.601830+08:00开始，3.156秒正常结束，COM17/921600、DTR&RTS开前false、UART s一次。raw SHA256 2236e46d352d1a87a24fa7cb1adffa55c3b470350cb81c0bc11f0055c0b95007；原始字节保留，未复位/BOOT/上传/要求新CAN发送。
+- 三STATUS mode=listen/sent300/windows2，rx14021638不变、0帧、TX pending/errors/failed0；累计bus_errors17/logger_dropped10736743不跨旧日志求差。没有新CONFIG/PROBE_CONFIG/ELF身份记录；status相容不等于准确镜像认证，0帧不证明电机断电或总线健康。
+- 当前两端供电、灯色/常亮或闪烁、接线、动作均待用户确认；RS3未接与单模块仅为继承台架确认，不伪造本轮新确认。不用于判定-16方向，候选尚未上传/发送。下一步取得许可/工况后才采正式对照，先采集后RST、核验启动再BOOT。

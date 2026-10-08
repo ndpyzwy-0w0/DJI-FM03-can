@@ -1,0 +1,6 @@
+# TX_STATUS tx_pending=0 tx_errors=0 rx_errors=0 tx_failed=0
+# STATUS t_us=7978808968 mode=listen stage=4 rx=14021638 sent=300 windows=2 logger_dropped=10736743 rx_missed=0 bus_errors=17 pending=0
+# TX_STATUS tx_pending=0 tx_errors=0 rx_errors=0 tx_failed=0
+# STATUS t_us=7979809967 mode=listen stage=4 rx=14021638 sent=300 windows=2 logger_dropped=10736743 rx_missed=0 bus_errors=17 pending=0
+# TX_STATUS tx_pending=0 tx_errors=0 rx_errors=0 tx_failed=0
+# STATUS t_us=7980810967 mode=listen stage=4 rx=14021638 sent=300 windows=2 logger_dropped=10736743 rx_missed=0 bus_errors=17 pending=0

@@ -913,3 +913,12 @@
 - 已获得无RS3独立台架短时运动正向证据；符号/物理单位/最小必要集/方向和任意运动仍未证实，肉眼未精确同步CAN。不直接把M3/M6所有要求勾成完成。板上仍+16手动15秒版，用户最后板蓝/电机红/停转，采集已关，未发现其他采集进程。
 - 离线准备下一单变量replay_gate0_probe_minus16_echo，仅实际+16→-16，仍BOOT手动/零5秒/200ms/15秒/50ms/TX0/单路由seq0/RX同步。新环境编译SUCCESS，四项回归通过并覆盖实际-16选择函数边界。src未再改；backups/probe_minus16_prepared_20261008_163117_512786/bin08ff3e8c0a44169925d9c5513de40c801898e5facb256f9f7ae86ac07b575bcc、ELF0d3dfccdda6a069d4c47bb37b64e63cd1a4f00f49f21fd83a415202fcf02b58a，复制hash核验且旧+16备份四文件hash未变。候选未上传/发送，下一阶段明确许可仍需取得。
 - 更新HANDOFF/README/INDEX，保存当前结果、-16准备及测试为本地Git检查点；起点474c5c8，无无关修改，不推送。误读两个不存在的历史报告名后用rg --files定位入口，未生成替代假文件。原始log-text且磁盘/暂存bytes对照，diff --check跳过原始串口空白；最终提交号/状态以git log/status为准。下一步仅经明确许可做-16方向对照，先开新采集，再用户RST/BOOT并观察方向，不自动重复+16。
+
+## 2026-10-08 18:38:53 北京时间 — 接续资料、候选和动态UART核验（无新运动实验）
+
+- 用户明确接续独立FM03控制，并要求先核验后确认-16新阶段；本消息不是发送授权。读取AGENTS/HANDOFF、WORK_LOG/INDEX末尾及四指定报告；起点main/2d794e3干净，保留既有证据。已有短时运动证据，不回退结论或宣布完整任意控制。
+- -16当前bin/ELF/源码/platformio.ini和backup四文件哈希全部匹配reports/20261008_probe_minus16_prepared.json；+16备份四文件匹配prepared JSON；常绿backup bin/ELF匹配历史哈希；+16raw SHA仍604941e23210107c728d8e6184615661309b06819bf544e93c8c537d9134e899。复用正式test_replay_timing.settings解析宏，两环境只差±16符号。固件未改/未重编译，既有编译及四项回归不重复。
+- 枚举COM17 CH343 VID1A86:PID55D3 SER5C83447762，未发现相关采集/上传/常用终端进程；仅tools/capture.py做3.156秒UART状态读取，DTR/RTS开前false、s一次，无RST/BOOT/烧录或新CAN窗口请求。raw captures/20261008_183720_601830_resume_listen_status.log SHA256 2236e46d352d1a87a24fa7cb1adffa55c3b470350cb81c0bc11f0055c0b95007，自动JSON补目的/限制，原字节未改。
+- 三STATUS mode=listen/sent300/windows2/TX pending0/errors0/failed0；rx14021638不变、无帧，当前灯色/常闪、供电/接线/实际动作未知；不能由零帧判断电，也不能用STATUS独立证明准确活体镜像。累计bus_errors17和logger_dropped10736743不跨生命周期/旧抓包做差。采集正常关闭，无新固件CONFIG/PROBE_CONFIG启动记录。
+- 沙箱初始化helper_unknown_error，普通exec及Node均启动失败；经审查require_escalated恢复本地核验，不改全局设置。更新HANDOFF和INDEX，下一步等待一次-16明确许可及当前工况，获准再上传/先采集/用户RST/核验启动/BOOT。固定齿轮端观察；+16旧方向未知则不预设反向，不重复+16。
+- 本轮按既有授权作本地Git检查点，提交前核对diff --check及raw属性/磁盘与暂存对象字节，提交成功与具体号以git log为准；本条随提交保存，未推送、不改写历史。无源码改动，不增加编译/硬件回归。
