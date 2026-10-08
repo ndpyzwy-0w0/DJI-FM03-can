@@ -222,10 +222,23 @@ static const uint8_t M0469_TO_PEER[19] = {
 // Both are 19 bytes in three CAN frames: 8 + 8 + 3.
 static const uint8_t M0469_FRAMES[3] = {8, 8, 3};
 
-// Per-route sequence counters, seeded from the captured values and advancing by two
-// per packet, matching the observed cadence.
-static uint16_t seq_to_motor = 6038;
-static uint16_t seq_to_peer = 6039;
+// Per-route sequence counters. The captured steady state runs 6038 on the 0x503 route
+// and 6039 on the 0x201 route, advancing by two per packet. Overridable because the
+// version that made the LED green sent sequence 0 forever, and a motor may treat a
+// high sequence number from a previous session as stale.
+#ifndef REPLAY_SEQ_START
+#define REPLAY_SEQ_START 6038
+#endif
+#ifndef REPLAY_SEQ_STEP
+#define REPLAY_SEQ_STEP 2
+#endif
+// Set to 1 to put the dial command only on 0x503, as the green-LED version did.
+#ifndef REPLAY_SINGLE_ROUTE
+#define REPLAY_SINGLE_ROUTE 0
+#endif
+
+static uint16_t seq_to_motor = REPLAY_SEQ_START;
+static uint16_t seq_to_peer = (uint16_t)(REPLAY_SEQ_START + 1);
 
 // Copy a template packet and re-stamp it with a new sequence, recomputing the header
 // CRC8 and the packet CRC16. Without this the frames carry sequence 0 forever, and a
@@ -357,13 +370,15 @@ static bool send_m0001_request() {
 // advances its own sequence counter, so the frames are re-stamped every time.
 static bool send_m0469() {
     uint8_t motor[19];
-    uint8_t peer[19];
     stamp_packet(M0469_TO_MOTOR, seq_to_motor, motor);
-    stamp_packet(M0469_TO_PEER, seq_to_peer, peer);
     bool ok = send_packet(0x503, motor, M0469_FRAMES, 3);
+#if !REPLAY_SINGLE_ROUTE
+    uint8_t peer[19];
+    stamp_packet(M0469_TO_PEER, seq_to_peer, peer);
     ok = send_packet(0x201, peer, M0469_FRAMES, 3) && ok;
-    seq_to_motor = (uint16_t)(seq_to_motor + 2);
-    seq_to_peer = (uint16_t)(seq_to_peer + 2);
+    seq_to_peer = (uint16_t)(seq_to_peer + REPLAY_SEQ_STEP);
+#endif
+    seq_to_motor = (uint16_t)(seq_to_motor + REPLAY_SEQ_STEP);
     return ok;
 }
 
