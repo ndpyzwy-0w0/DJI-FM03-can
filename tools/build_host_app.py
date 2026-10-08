@@ -49,7 +49,15 @@ def main() -> int:
         return 1
 
     if DIST.exists():
-        shutil.rmtree(DIST)
+        # Remove only what this script produces, so hand-written files kept alongside
+        # the executable (the click-to-use readme) survive a rebuild.
+        for pattern in ("*.exe", "*.pkg", "*.toc", "*.manifest"):
+            for stale in DIST.glob(pattern):
+                stale.unlink()
+        for stale in DIST.glob("_internal"):
+            shutil.rmtree(stale)
+    else:
+        DIST.mkdir(parents=True)
 
     command = [sys.executable, "-m", "PyInstaller", "--noconfirm", "--clean",
                "--name", args.name, "--onefile" if not args.onedir else "--onedir",

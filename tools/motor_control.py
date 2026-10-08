@@ -243,7 +243,7 @@ class MotorControlApp:
         self.arm_label.grid(row=0, column=3, padx=10)
 
         # Value control
-        control = ttk.LabelFrame(outer, text="数值控制（正负代表方向，绝对值越大转越多）", padding=8)
+        control = ttk.LabelFrame(outer, text="数值控制（正负代表方向，绝对值越大转得越快）", padding=8)
         control.pack(fill="x", pady=(8, 0))
         self.value_scale = ttk.Scale(control, from_=-DEFAULT_LIMIT, to=DEFAULT_LIMIT,
                                      orient="horizontal", command=self.on_scale, length=520)
@@ -255,14 +255,18 @@ class MotorControlApp:
         entry.bind("<Return>", lambda _event: self.send_value())
         ttk.Button(control, text="发送 (Enter)", command=self.send_value).grid(row=1, column=2, padx=4)
         ttk.Button(control, text="归零", command=self.zero).grid(row=1, column=3, padx=4)
+        # Re-sends the value that is already set, without changing it. This is what
+        # tests "does repeating the same value change anything"; the +/- buttons below
+        # change the value instead, so the two questions stay separate.
+        ttk.Button(control, text="重发当前值", command=self.resend_value).grid(row=1, column=4, padx=4)
 
         steps = ttk.Frame(control)
         steps.grid(row=2, column=0, columnspan=6, sticky="w", pady=(8, 0))
-        ttk.Label(steps, text="步进 / 快捷").pack(side="left")
+        ttk.Label(steps, text="直接设为").pack(side="left")
         for amount in (-256, -16, -1, 1, 16, 256):
             ttk.Button(steps, text=f"{amount:+d}", width=5,
-                       command=lambda a=amount: self.nudge(a)).pack(side="left", padx=2)
-        ttk.Button(steps, text="清除", command=lambda: self.set_value(0)).pack(side="left", padx=8)
+                       command=lambda a=amount: self.set_and_send(a)).pack(side="left", padx=2)
+        ttk.Label(steps, text="连续点这些按钮不会累加；要递增请用方向键或输入框。").pack(side="left", padx=8)
 
         run = ttk.Frame(control)
         run.grid(row=3, column=0, columnspan=6, sticky="w", pady=(8, 0))
@@ -405,8 +409,25 @@ class MotorControlApp:
         self.value_display.configure(text=describe_direction(value))
 
     def nudge(self, amount: int) -> None:
+        """Adjust the value relative to the current one and send it."""
         self.set_value(self.value + amount)
         self.send_value()
+
+    def set_and_send(self, value: int) -> None:
+        """Set an absolute value and send it. Pressing this repeatedly sends the same
+        value, so it cannot be mistaken for the value climbing."""
+        self.set_value(value)
+        self.send_value()
+
+    def resend_value(self) -> None:
+        """Send the current value again without changing it."""
+        if not self.require_link():
+            return
+        value = self.current_value()
+        if value is None:
+            return
+        self.link.send(f"go {value}")
+        self.log(f"resend {value}")
 
     def current_value(self) -> int | None:
         try:
