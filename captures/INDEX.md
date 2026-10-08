@@ -223,3 +223,9 @@
 - captures/20261008_183720_601830_resume_listen_status.log/.json；18:37:20.601830+08:00开始，3.156秒正常结束，COM17/921600、DTR&RTS开前false、UART s一次。raw SHA256 2236e46d352d1a87a24fa7cb1adffa55c3b470350cb81c0bc11f0055c0b95007；原始字节保留，未复位/BOOT/上传/要求新CAN发送。
 - 三STATUS mode=listen/sent300/windows2，rx14021638不变、0帧、TX pending/errors/failed0；累计bus_errors17/logger_dropped10736743不跨旧日志求差。没有新CONFIG/PROBE_CONFIG/ELF身份记录；status相容不等于准确镜像认证，0帧不证明电机断电或总线健康。
 - 当前两端供电、灯色/常亮或闪烁、接线、动作均待用户确认；RS3未接与单模块仅为继承台架确认，不伪造本轮新确认。不用于判定-16方向，候选尚未上传/发送。下一步取得许可/工况后才采正式对照，先采集后RST、核验启动再BOOT。
+
+## 2026-10-08 18:42:17 北京时间 — -16手动对照采集准备（运行中，尚未启动）
+
+- 授权用户“可以继续”；新硬件回复“通电了 rs3一直没连 情况都是正常的”。供电已确认、RS3持续不接；单模块+电机为继承确认，当前灯色/常闪/动作仍待RST后反馈，正常监听时拨轮跟焦设置已有确认且本次RS3不接。
+- -16手动版上传应用0x10000/hash verified/after=no_reset，留下载态；未完成新CONFIG/PROBE_CONFIG/READY核验，尚未给BOOT指令。准备报告reports/20261008_probe_minus16_upload_preparation.json；既有+16方向未记录，不预设此试验反向结果。
+- captures/20261008_184054_626320_probe_minus16_manual_window.log于18:40:54.626320+08:00开采集，COM17/921600/DTR&RTS开前false/UART s一次、600秒等待上限，发送窗口仍15秒。session94247为本运行时句柄，后续须动态核实；活跃raw不暂存，最终自动JSON/hash/阶段分析待结束。下一步先用户RST、核验手动配置后BOOT，未知动作保持未知。

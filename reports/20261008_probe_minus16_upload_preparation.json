@@ -1,0 +1,42 @@
+{
+  "recorded_at": "2026-10-08T18:42:17.255593+08:00",
+  "authorization": {
+    "user_text": "可以继续",
+    "scope": "One -16 sign comparison: manual BOOT, 5s zero warmup, 200ms software selection, zero until 15s; 50ms cadence",
+    "no_new_authorization_needed_for_this_stage": true
+  },
+  "user_hardware_confirmation": {
+    "raw_text": "通电了 rs3一直没连 情况都是正常的",
+    "power": "User confirms power is on in response to board/motor power question; exact power values unknown",
+    "RS3": "User confirms RS3 has remained disconnected",
+    "remaining": "Specific LED color/steady or flashing/motion pending after RST; single transceiver plus motor is inherited confirmed bench setup, no independently enumerated wiring reply"
+  },
+  "upload": {
+    "environment": "replay_gate0_probe_minus16_echo",
+    "port": "COM17",
+    "hardware_id": "USB VID:PID=1A86:55D3 SER=5C83447762",
+    "chip": "ESP32-S3 revision v0.2",
+    "bin_sha256": "08ff3e8c0a44169925d9c5513de40c801898e5facb256f9f7ae86ac07b575bcc",
+    "elf_sha256": "0d3dfccdda6a069d4c47bb37b64e63cd1a4f00f49f21fd83a415202fcf02b58a",
+    "offset": "0x10000",
+    "bytes": 284912,
+    "verified": true,
+    "before": "default_reset",
+    "after": "no_reset",
+    "result": "Staying in bootloader; no fresh running CONFIG or motion window yet",
+    "local_log": "J:\\New soft project\\FM03\\.pio\\probe_minus16_upload_20261008.txt",
+    "local_log_sha256": "b1274ee8c07d583f80ffce98fa4678635a362c8560b7095c9a604e09ac118635"
+  },
+  "capture": {
+    "raw_log": "captures/20261008_184054_626320_probe_minus16_manual_window.log",
+    "started_at": "2026-10-08T18:40:54.626320+08:00",
+    "seconds_limit": 600,
+    "firmware_window_seconds": 15,
+    "runtime_session_id": 94247,
+    "state_at_record": "running; do not stage active raw",
+    "dtr": false,
+    "rts": false,
+    "uart_hex": "73"
+  },
+  "next": "User RST once; read CONFIG/PROBE_CONFIG(-16,5000,200,auto0) and READY/listen; then prompt BOOT2s. No BOOT instruction issued yet."
+}

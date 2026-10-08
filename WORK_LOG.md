@@ -922,3 +922,11 @@
 - 三STATUS mode=listen/sent300/windows2/TX pending0/errors0/failed0；rx14021638不变、无帧，当前灯色/常闪、供电/接线/实际动作未知；不能由零帧判断电，也不能用STATUS独立证明准确活体镜像。累计bus_errors17和logger_dropped10736743不跨生命周期/旧抓包做差。采集正常关闭，无新固件CONFIG/PROBE_CONFIG启动记录。
 - 沙箱初始化helper_unknown_error，普通exec及Node均启动失败；经审查require_escalated恢复本地核验，不改全局设置。更新HANDOFF和INDEX，下一步等待一次-16明确许可及当前工况，获准再上传/先采集/用户RST/核验启动/BOOT。固定齿轮端观察；+16旧方向未知则不预设反向，不重复+16。
 - 本轮按既有授权作本地Git检查点，提交前核对diff --check及raw属性/磁盘与暂存对象字节，提交成功与具体号以git log为准；本条随提交保存，未推送、不改写历史。无源码改动，不增加编译/硬件回归。
+
+## 2026-10-08 18:42:17 北京时间 — -16对照获准、上传和采集等待RST
+
+- 用户“可以继续”明确批准已具体提出的-16/200ms/零5秒/15秒/50ms手动对照；不再重复本阶段授权。用户工况补充原话“通电了 rs3一直没连 情况都是正常的”，确认通电及RS3一直未接；灯色/常闪/当前物理动作未逐项提供，单收发器+电机沿用先前确认，不补造。
+- 起点097a65e/main干净，再枚举COM17 CH343 VID1A86:PID55D3 SER5C83447762、无相关采集/上传/常用终端进程；-16四文件hash与prepared JSON相同。esptool4.11.0自身下载复位时序，after=no_reset、应用0x10000写284912字节/hash verified、Staying in bootloader；bin08ff3e8c0a44169925d9c5513de40c801898e5facb256f9f7ae86ac07b575bcc。未独立软件RTS复位、未运行运动窗口。
+- 上传本机日志.pio/probe_minus16_upload_20261008.txt，正式reports/20261008_probe_minus16_upload_preparation.json记录授权/用户原话/hash/采集待核验状态。源码/配置未改，不重复现有编译/四项回归。
+- tools/capture.py先开COM17，18:40:54.626320+08:00开始、DTR/RTS开前false、UART s一次、600秒等待余量，固件仍15秒；raw captures/20261008_184054_626320_probe_minus16_manual_window.log，session94247正在运行。无最终JSON/哈希，不暂存活跃raw；启动核验和有效运动尚未开始。
+- 下一步提示RST一次只监听，先读取CONFIG/PROBE_CONFIG(-16/5000/200/auto0)/READY再给BOOT2秒指令。当前上板镜像已换-16但未实测启动配置/方向；保全旧成功镜像，保持方向/量纲未知。本轮准备记录本地提交，具体号以git log为准，未推送、不改历史，活跃原始log排除。
