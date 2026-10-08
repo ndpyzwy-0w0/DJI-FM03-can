@@ -940,3 +940,9 @@
 - 标记内223请求+223拨轮/299请求+299拨轮，结束后额外零拨轮各1；final_zero_submitted1/final_tx_idle1均有、结束rejected/bus_errors/tx_errors/rx_missed0，TX_STATUS错误/失败最大0，物理停止另由用户确认。标记内监听队列旧帧/缺口3130/2974，不能宣布224/300轮全部记录或物理无损；logger累计101769/137555继承，首replay STATUS后增0，prior-listen→结束增935/1151含未知开始/切换。driver/sent跨界不减。
 - 全文件162071帧/415633缺口/0回退不能当总线帧数；首停发段主要0x504、第二0x232；listen bus_errors12/15不归主动发送、不据此证明ACK根因。reports/20261008_probe_minus16_motion_result.md/.json保存证据/限制/下一同步测量方案，旧+16报告/raw未改。
 - 更新HANDOFF/README/INDEX，保留−16手动版且现已停转；下一发送阶段另确认，不重复旧对照、不加幅值/时长。仅文档/衍生证据，已有编译/回归不重复。按既有勤提交授权保存本地检查点，提交前diff --check和原log属性/磁盘暂存字节核验，具体号/最终Git状态见git log；未推送、不改历史。
+
+## 2026-10-08 18:54:58 北京时间 — 用户换agent，可复制交接文档
+
+- 用户“写个能拷贝走的交接文档 我要换agent”。整理reports/20261008_agent_transfer.md，包含最新常绿/+16/−16反向运动、用户停止反馈、原始hash与计数限制、−16在板身份/备份、工具/授权/Git和下一同步测量阶段。
+- 当前核验main/748aae5干净、无相关采集/上传进程；未新开串口/复位/BOOT/烧录/发送。last-known板蓝/电机红/停转不冒充新的硬件确认，旧snapshot串口/session/准备报告状态明确为历史。成功镜像backups仅本机，换机器另带。
+- 更新HANDOFF交接文档入口；无新抓包或新动作反馈，captures/INDEX既有最新记录足够，原始证据未改。仅文档git diff --check并核对路径/hash，按用户既有授权本地提交，最新号见git log，不推送、不改历史。
