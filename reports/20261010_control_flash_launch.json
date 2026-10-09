@@ -1,0 +1,76 @@
+{
+  "recorded_at_beijing": "2026-10-10 01:12:20",
+  "baseline_commit": "45a8a6b51ec33e6d3882a2cc463334930fec7b73",
+  "authorization": "User explicitly requested flashing control firmware, building one-file host and opening control program. No automatic arm or motion.",
+  "device": {
+    "port": "COM17",
+    "usb_vid": "1A86",
+    "usb_pid": "55D3",
+    "usb_serial": "5C83447762",
+    "esptool_chip": "ESP32-S3 revision v0.2",
+    "mac": "28:84:85:92:34:84"
+  },
+  "capture_before_upload": {
+    "phase": "idle",
+    "port": ""
+  },
+  "build": "pio run -e motor_control: SUCCESS",
+  "upload": {
+    "log": "reports/20261010_011016_319511_control_upload.txt",
+    "application_offset": "0x10000",
+    "bytes": 289680,
+    "hash_of_data_verified": true,
+    "esptool_before": "default_reset",
+    "esptool_after": "hard_reset",
+    "manual_rts_reset": false,
+    "bootloader_partitions_written": false
+  },
+  "serial_verification": "captures/20261010_011042_234428_control_version_verify.json",
+  "serial_commands": [
+    "version",
+    "status"
+  ],
+  "verified_version": "motor_control 1.1 status_coordinates",
+  "verified_state": {
+    "samples": 7,
+    "armed": 0,
+    "value": 0,
+    "target": 0,
+    "sent": 0,
+    "bus_errors": 0,
+    "tx_failed": 0
+  },
+  "CAN_application_command_sent": false,
+  "CAN_electrical_silence_verified": false,
+  "mode_note": "STATE mode=listen denotes unarmed application. Existing control firmware uses TWAI NORMAL, can ACK; not electrical listen-only.",
+  "coordinate_feedback_samples": 0,
+  "coordinate_and_motion_hardware_test": "not performed; lamp/power/wiring and physical actions unknown",
+  "host": {
+    "packaging": "PyInstaller onefile/windowed",
+    "check_exit_code": 0,
+    "startup_arguments": [],
+    "auto_connect": false,
+    "launcher_pid": 42352,
+    "gui_pid": 41728,
+    "window_handle": 135244,
+    "window_title": "FM03 跟焦电机 运动控制"
+  },
+  "outputs": [
+    {
+      "path": ".pio/build/motor_control/firmware.bin",
+      "bytes": 289680,
+      "sha256": "22e39917270cd55901ffde9a2eb0c9c3862782b458905a5c515b3c4428e6cc69"
+    },
+    {
+      "path": "dist/FM03_MotorControl_Status.exe",
+      "bytes": 12075971,
+      "sha256": "3b35b0182aa64cbd13a58a237d5b13943e715b2150acdcc30b7919886f762f46"
+    }
+  ],
+  "original_capture_files_sha256_unchanged": 174,
+  "limitations": [
+    "No coordinate packet received in 3-second UART diagnostic; decoder reception on hardware and mechanical coordinate relation still unverified.",
+    "User must disconnect RS3 for existing standalone active control.",
+    "Do not automatically reuse current COM/PIDs on next session."
+  ]
+}

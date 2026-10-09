@@ -328,3 +328,9 @@
 - 新版上位机在未来采集内记录A/B时，新增同名.coordinates.json衍生侧文件，含原始坐标、阶段、接收段、设备采样时间、点击记录北京时间及有效性/原因；另在该次新摘要保存motor状态。坐标记录按钮不对应物理运动指令，A/B字母也不证明真实机械位置。
 - 记录会因可观察阶段/中断/过期/重启边界失效，但历史值/时刻保留。不得把衍生侧文件当原始log/json；不修改旧文件。完整坐标序列应从原始log重组，面板历史缓存仅最近600样本。
 - 本轮只以132137已确认有效的日志做软件回放回归，未新增采集或动作确认；131955/132030继续弃用。软件测试截图不是实验照片，详见reports/20261010_status_coordinates_guide.md及20261010_status_coordinates_validation.json。
+
+### 2026-10-10 01:12:20 北京时间 — 控制固件UART版本诊断（非运动抓包）
+
+- captures/20261010_011042_234428_control_version_verify.log及同名.json：用户授权烧录后的version/status诊断，只写UART两条命令，未ARM/发送运动指令；原始2379字节另存不覆盖。7个STATE均未武装/值零/发送零，版本1.1 status_coordinates；没有# MOTOR报文，不纳入坐标/方向/校准/限位动作语义结论。
+- 现场灯色与常亮/闪烁、两端电源、RS3拨轮设置、Rs/CANH/CANL接线、实际机械动作/方向/时刻均未知，用户本轮未提供。mode=listen是控制应用未ARM标记，TWAI NORMAL可ACK，不按字面当listen_1m电气只听。
+- esptool自带复位后仅核验应用启动，证据reports/20261010_control_flash_launch.json与上传.txt；控制窗口已打开而未自动连接/ARM。后续实验需新的现场动作确认。

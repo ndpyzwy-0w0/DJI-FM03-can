@@ -1,3 +1,12 @@
+## 当前入口：2026-10-10 01:12:20 北京时间 — 控制固件已烧录，单文件控制窗口已打开
+
+- 用户明确要求“烧录控制固件，把控制程序编译成单文件并打开”；开始核实main/45a8a6b工作区干净，8765采集服务idle/无串口连接，唯一USB适配器COM17=CH343 VID1A86:PID55D3/SER5C83447762。其他Bluetooth COM不作为目标。当前板上已从listen_1m切换为motor_control，不能沿用上一条的监听固件状态。
+- motor_control重新编译SUCCESS；esptool4.11.0确认ESP32-S3，0x10000应用289680字节Hash of data verified，保留引导/分区。此次直接调用esptool并显式--after hard_reset使应用启动，未改platformio.ini默认no_reset，也未独立操作RTS复位。上传日志reports/20261010_011016_319511_control_upload.txt。
+- 串口仅发version/status，DTR/RTS先false再open，3秒原始诊断captures/20261010_011042_234428_control_version_verify.log及同名json。版本1.1 status_coordinates、7份STATE均armed=0/value=0/target=0/sent=0、bus_errors=0/tx_failed=0，无错误/警告；未ARM/发运动命令。mode=listen仅指应用未武装，控制固件既有TWAI NORMAL可ACK，不等于电气只听模式。
+- PyInstaller重新打包dist/FM03_MotorControl_Status.exe（12075971字节，SHA256 3b35b0182aa64cbd13a58a237d5b13943e715b2150acdcc30b7919886f762f46），实际--check退出0；可见窗口“FM03 跟焦电机 运动控制”已打开，GUI PID41728/包装父进程42352；未带--connect、不自动连接/ARM。用户可以选择COM17连接，主动控制前按现有指南确保RS3脱离独立台架；PID/COM以后仍须实时核实。
+- 此次无# MOTOR报文，坐标反馈/机械位置关系与运动尚未实机验证；灯语、电源、接线和实际动作未知，不把UART版本诊断当有效动作抓包。新版接收状态功能源代码沿用上轮，未修改。
+- 证据reports/20261010_control_flash_launch.json；原有174份log/json SHA256全未变，新增原始诊断独立创建不覆盖。更新两份动作索引、指南/交接/工作日志，git diff --check后本地提交main（实际号见git log），不推送/改写历史。下一步用户手动试连接/状态/A-B记录，未收到坐标时保持未知，不自动试发校准或定位。
+
 ## 当前入口：2026-10-10 00:28:06 北京时间 — 状态显示与坐标记录实验版v1已开发、编译与打包，未烧录
 
 - 用户授权继续开发，将状态显示和坐标记录加入目前固件与上位机，交付可亲手实验版本。本轮开始main/03ad929、工作区干净；没有真实串口连接、复位、烧录或CAN发送，不新增自动校准/取消/定位/回拉命令。

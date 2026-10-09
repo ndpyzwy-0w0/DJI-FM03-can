@@ -1183,3 +1183,12 @@
 - 环境：普通exec仍有sandbox helper setup refresh错误，改为自动审核允许的直接离线执行；没有自动审核拒绝。继续用既有.venv，未新增软件依赖。
 - 提交：本轮项目内容一并本地提交main，实际号见对应Git日志；不推送、不改写历史，构建产物保持本机，原始抓包不纳本轮差异。
 - 下一步：用户按指南先在RS3↔FM03被动监听场景标定/拨轮/停、记A/B、停止保存；补现场前置项和机械动作对照。浏览器兼容现有listen_1m，不必先重烧。若需桌面主动控制新状态，再核实当前设备/采集停止和RS3物理脱离后的独立台架，选择motor_control上传；不自动启动硬件实验。
+
+## 2026-10-10 01:12:20 北京时间 — 烧录控制固件、单文件打包并打开控制窗口
+
+- 用户明确授权本次烧录/单文件构建/打开程序，未要求自动ARM或运动。开始main/45a8a6b干净，实时确认8765 phase=idle/串口关闭，COM17 CH343 VID1A86:PID55D3/SER5C83447762且唯一USB串口；未中断采集，不复用未经核实的旧设备号。
+- 编译motor_control SUCCESS，应用289680字节/SHA22e39917270cd55901ffde9a2eb0c9c3862782b458905a5c515b3c4428e6cc69；直接esptool4.11.0写0x10000，Hash of data verified，--before default_reset/--after hard_reset为其自带下载复位时序，未独立手工RTS，未改no_reset配置/引导/分区。日志reports/20261010_011016_319511_control_upload.txt。初次准备脚本在生成时间戳时因Windows无tzdata失败，尚未调用esptool；改用标准库固定UTC+8后一次烧录成功，无新增依赖。
+- 921600串口先DTR/RTS=false再打开，只写version/status，3秒诊断原样新建captures/20261010_011042_234428_control_version_verify.log（2379字节/SHA d9d381db036c447164a6ad8c2bdc08e8a3f5cb34e2261090b8bc07d4c7485b58）与同名JSON。版本motor_control 1.1 status_coordinates，7份STATE armed/value/target/sent均0，bus_errors/tx_failed/rx_missed均0，没有ERROR/ERR/WARN。未ARM/运动；UART关闭后再开控制窗口。既有TWAI NORMAL可ACK，sent0证明未发应用命令，不证明物理总线全程静默。
+- 单文件EXE重新构建12075971字节/SHA3b35b0182aa64cbd13a58a237d5b13943e715b2150acdcc30b7919886f762f46，实际--check exit0；显式用户要求可见窗口，因此Start-Process Normal启动，无--connect参数，窗口标题“FM03 跟焦电机 运动控制”/handle135244/GUI PID41728，父42352为onefile包装进程。可执行文件仅本机dist，不纳Git。
+- 证据reports/20261010_control_flash_launch.json；新增诊断不是动作语义抓包，# MOTOR为0，现场灯语/电源/Rs/RS3接入及机械动作未确认。接收解码吞吐/坐标对应仍待现场实验，不能宣称定位或坐标实测通过；当前板上已控制固件，不再listen_1m。
+- 修改交接/指南/两份动作映射，本轮无固件/上位机源代码改动。复核旧174份log/json SHA全部相同，新增原件另存；git diff --check、暂存原始字节校验后，本轮内容本地提交main（实际提交号见Git），不推送/改写历史。下一步用户手动连接COM17测试；主动控制须RS3脱离独立电机台架，未知坐标不代填。
