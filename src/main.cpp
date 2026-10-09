@@ -28,6 +28,7 @@
 #include <atomic>
 #include "driver/twai.h"
 #include "esp_timer.h"
+#include "motor_status.h"
 
 // The DevKitC-1 has an external pull-up on BOOT, but a breadboard setup may leave
 // GPIO0 floating, which reads LOW and would look like a permanent key press. The
@@ -80,6 +81,17 @@ static bool button_usable = true;
 
 static uint32_t mode_switches = 0;
 static uint32_t frames_in_mode = 0;
+static MotorStatusDecoder motor_status;
+static uint32_t decoded_sequence = 0;
+
+static void print_motor_status() {
+    if (!motor_status.updated) return;
+    motor_status.updated = false;
+    Serial.printf("# MOTOR epoch=%u t_us=%llu stage=%d coord=%ld valid=%u packets=%u\n",
+                  motor_status.epoch,(unsigned long long)motor_status.sample_us,
+                  motor_status.stage,(long)motor_status.coordinate,
+                  motor_status.valid()?1u:0u,motor_status.packets);
+}
 
 // Timestamp is taken on driver dequeue, not at the physical frame edge.
 static void receive_frames(void *) {
@@ -134,6 +146,7 @@ static bool install_driver(twai_mode_t mode) {
 
 static bool change_mode(CanMode mode) {
     if ((CanMode)can_mode.load() == mode) return true;
+    motor_status.reset();
     driver_installed.store(false);
     twai_stop();
     twai_driver_uninstall();
@@ -234,6 +247,13 @@ static void service_serial_commands() {
             Serial.println("# ERROR status_unavailable");
             return;
         }
+        static uint32_t missed = 0, overrun = 0;
+        if (missed != status.rx_missed_count || overrun != status.rx_overrun_count) {
+            motor_status.reset();
+            print_motor_status();
+        }
+        missed = status.rx_missed_count;
+        overrun = status.rx_overrun_count;
         Serial.printf("# STATUS t_us=%llu bitrate=%u mode=%s rx=%u logger_dropped=%u "
                       "rx_missed=%u rx_overrun=%u bus_errors=%u pending=%u "
                       "logger_pending=%u mode_switches=%u frames_in_mode=%u "
@@ -267,6 +287,7 @@ void setup() {
                   "led_rgb_gpio=%u mode=listen\n",
                   CAN_BITRATE, BUTTON_GPIO, LED_RGB_GPIO);
     Serial.println("# FRAME t_us,sequence,id_hex,extended,rtr,dlc,data_hex");
+    Serial.println("# MOTOR_CONFIG version=status_coordinates_1 route=0x504_BF_E5 host_fresh_ms=500");
     Serial.println("# timestamp=driver_dequeue_us_since_boot; command=s_status");
     Serial.printf("# BUTTON hold_ms=%lu toggles_mode; boot_always=listen_only\n",
                   LONG_PRESS_MS);
@@ -307,6 +328,10 @@ void loop() {
     }
     CapturedFrame item{};
     if (xQueueReceive(log_queue, &item, pdMS_TO_TICKS(2)) == pdTRUE) {
+        if (decoded_sequence && item.sequence != decoded_sequence+1) motor_status.reset();
+        decoded_sequence = item.sequence;
+        motor_status.feed(item.frame.identifier,item.frame.extd,item.frame.rtr,
+                          item.frame.data,item.frame.data_length_code,item.timestamp_us);
         char line[128];
         int length = snprintf(line, sizeof(line), "%llu,%u,%08X,%u,%u,%u,",
                               (unsigned long long)item.timestamp_us, item.sequence,
@@ -321,6 +346,7 @@ void loop() {
         line[length++] = '\n';
         Serial.write((const uint8_t *)line, length);
         ++frames_in_mode;
+        print_motor_status();
     }
     // Mode switching stops and restarts the TWAI driver, so it must never overlap
     // a status print or a frame write. Both happen above, before this point.

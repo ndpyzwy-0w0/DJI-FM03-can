@@ -23,13 +23,17 @@ disconnected while this program transmits.
 from __future__ import annotations
 
 import argparse
+from datetime import datetime, timedelta, timezone
+import json
+from pathlib import Path
 import queue
 import re
 import sys
 import threading
 import time
 import tkinter as tk
-from tkinter import messagebox, ttk
+from tkinter import filedialog, messagebox, ttk
+from motor_status import LiveMotor, parse_motor_line
 
 try:
     import serial
@@ -179,6 +183,8 @@ class MotorLink:
                     self.last_state = state
                     self.last_state_at = time.monotonic()
                     self.events.put(("state", state))
+                elif (motor := parse_motor_line(line)) is not None:
+                    self.events.put(("motor", (motor,time.monotonic())))
                 elif line.startswith("#"):
                     self.events.put(("line", line))
                 else:
@@ -195,6 +201,7 @@ class MotorControlApp:
         self.root = root
         self.events: queue.Queue = queue.Queue()
         self.link = MotorLink(self.events)
+        self.motor = LiveMotor()
         self.armed = False
         self.value = 0
         self.limit = DEFAULT_LIMIT
@@ -209,7 +216,7 @@ class MotorControlApp:
     # -- UI ----------------------------------------------------------------
     def build_ui(self) -> None:
         self.root.title("FM03 跟焦电机 运动控制")
-        self.root.minsize(760, 620)
+        self.root.minsize(860, 760)
         outer = ttk.Frame(self.root, padding=10)
         outer.pack(fill="both", expand=True)
 
@@ -308,6 +315,19 @@ class MotorControlApp:
         self.detail_label = ttk.Label(readout, text="", justify="left")
         self.detail_label.pack(fill="x")
 
+        status = ttk.LabelFrame(outer,text="校准阶段与原始坐标（仅观察/记录）",padding=8)
+        status.pack(fill="x",pady=(8,0))
+        self.motor_label = ttk.Label(status,text="等待新版固件的电机状态",font=("",13,"bold"))
+        self.motor_label.grid(row=0,column=0,columnspan=5,sticky="w")
+        self.record_a = ttk.Button(status,text="记录 A",command=lambda:self.record_coordinate('A'),state='disabled')
+        self.record_a.grid(row=1,column=0,padx=3,pady=5)
+        self.record_b = ttk.Button(status,text="记录 B",command=lambda:self.record_coordinate('B'),state='disabled')
+        self.record_b.grid(row=1,column=1,padx=3)
+        ttk.Button(status,text="导出坐标记录",command=self.export_coordinates).grid(row=1,column=2,padx=3)
+        self.marks_label = ttk.Label(status,text="A：未记录    B：未记录")
+        self.marks_label.grid(row=1,column=3,columnspan=2,padx=8,sticky="w")
+        ttk.Label(status,text="原始坐标可能是实际位置或内部参考值；A/B 不触发运动，重新校准/中断/过期后失效。",wraplength=800).grid(row=2,column=0,columnspan=5,sticky='w')
+
         # Telemetry + log
         bottom = ttk.Frame(outer)
         bottom.pack(fill="both", expand=True, pady=(8, 0))
@@ -359,6 +379,9 @@ class MotorControlApp:
             messagebox.showwarning("未选择串口", "请选择一个串口。")
             return
         try:
+            self.motor.reset('重新连接')
+            while not self.events.empty():
+                self.events.get_nowait()
             self.link.open(port)
         except Exception as exc:
             self.link.connect_error = str(exc)
@@ -370,6 +393,7 @@ class MotorControlApp:
 
     def disconnect(self) -> None:
         self.link.close()
+        self.motor.reset('连接已断开')
         self.armed = False
         self.connect_button.configure(text="连接", command=self.connect)
         self.conn_label.configure(text="未连接")
@@ -561,18 +585,24 @@ class MotorControlApp:
                 kind, payload = self.events.get_nowait()
                 if kind == "state":
                     self.on_state(payload)
+                elif kind == "motor":
+                    self.motor.telemetry(payload[0],payload[1])
                 elif kind == "line":
                     self.on_device_line(payload)
                 elif kind == "error":
+                    self.motor.reset('串口错误/中断')
                     self.log(payload)
         except queue.Empty:
             pass
         self.update_connection_labels()
+        self.update_motor_status()
         self.root.after(50, self.pump)
 
     def on_device_line(self, line: str) -> None:
         if line.startswith("# STATE"):
             return
+        if line.startswith(('# READY ', '# MODE ')):
+            self.motor.reset('固件启动/模式改变')
         if line.startswith("# ACK arm"):
             self.armed = True
         elif line.startswith("# ACK disarm"):
@@ -630,6 +660,59 @@ class MotorControlApp:
             self.heartbeat_label.configure(text="")
         self.arm_label.configure(text="ARMED" if self.armed else "disarmed",
                                  foreground="red" if self.armed else "black")
+
+    def update_motor_status(self):
+        state = self.motor.snapshot(time.monotonic(),self.link.is_open())
+        labels = {0:'未校准状态候选',1:'校准阶段 1',2:'校准阶段 2',3:'校准后工作阶段候选'}
+        if state['fresh']:
+            text = f"阶段 {state['stage']}：{labels.get(state['stage'],'未知阶段')}"
+            if state['can_record']:
+                text += f"    原始坐标 {state['coordinate']}"
+                if state['observed_range_percent'] is not None:
+                    text += f"  （本次观察范围 {state['observed_range_percent']:.1f}%）"
+                if state['boundary']:
+                    text += '    边界坐标候选'
+        else:
+            text = '坐标已过期/连接结束' if state['age_s'] is not None else '等待新版固件的电机状态'
+        self.motor_label.configure(text=text)
+        for button in (self.record_a,self.record_b):
+            button.configure(state='normal' if state['can_record'] else 'disabled')
+        parts = []
+        for marker in ('A','B'):
+            mark = state['marks'].get(marker)
+            parts.append(f"{marker}：{mark['coordinate']} ({'有效' if mark['valid'] else '已失效'})" if mark else f'{marker}：未记录')
+        a,b = state['marks'].get('A'),state['marks'].get('B')
+        if a and b and a['valid'] and b['valid'] and a['epoch']==b['epoch']:
+            parts.append(f"B−A={b['coordinate']-a['coordinate']} 原始单位")
+        self.marks_label.configure(text='    '.join(parts))
+
+    def record_coordinate(self, marker):
+        try:
+            mark = self.motor.record(marker,time.monotonic(),self.link.is_open())
+        except ValueError as exc:
+            messagebox.showwarning('坐标不可记录',str(exc))
+            return
+        self.log(f"记录 {marker} 原始坐标 {mark['coordinate']}，接收段 {mark['epoch']}，不发送电机命令")
+        self.update_motor_status()
+
+    def export_coordinates(self):
+        if not self.motor.records:
+            messagebox.showinfo('尚无坐标记录','先在有效阶段 3 记录 A 或 B。')
+            return
+        stamp = datetime.now(timezone(timedelta(hours=8)))
+        path = filedialog.asksaveasfilename(title='导出原始坐标记录',defaultextension='.json',
+            initialfile=f'FM03_coordinates_{stamp:%Y%m%d_%H%M%S}.json',filetypes=[('JSON','*.json')])
+        if not path:
+            return
+        payload = {'exported_at_beijing':stamp.isoformat(),'port':self.link.port,
+                   'coordinate_kind':'raw position-related value; actual vs reference unresolved',
+                   **self.motor.snapshot(time.monotonic(),self.link.is_open())}
+        try:
+            Path(path).write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+        except OSError as exc:
+            messagebox.showerror('导出失败',str(exc))
+            return
+        self.log(f'坐标记录已导出：{path}')
 
 
 def self_check() -> None:

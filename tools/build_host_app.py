@@ -14,7 +14,6 @@ from __future__ import annotations
 import argparse
 import hashlib
 from pathlib import Path
-import shutil
 import subprocess
 import sys
 
@@ -48,16 +47,8 @@ def main() -> int:
               file=sys.stderr)
         return 1
 
-    if DIST.exists():
-        # Remove only what this script produces, so hand-written files kept alongside
-        # the executable (the click-to-use readme) survive a rebuild.
-        for pattern in ("*.exe", "*.pkg", "*.toc", "*.manifest"):
-            for stale in DIST.glob(pattern):
-                stale.unlink()
-        for stale in DIST.glob("_internal"):
-            shutil.rmtree(stale)
-    else:
-        DIST.mkdir(parents=True)
+    # PyInstaller replaces only this named app. Preserve other releases/executables.
+    DIST.mkdir(parents=True,exist_ok=True)
 
     command = [sys.executable, "-m", "PyInstaller", "--noconfirm", "--clean",
                "--name", args.name, "--onefile" if not args.onedir else "--onedir",

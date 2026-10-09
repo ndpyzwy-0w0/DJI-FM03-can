@@ -127,10 +127,31 @@ function render(state) {
   else notice("选择串口后点击开始。未接 CAN 总线时，可以先检查固件状态。");
   renderFrames(state.latest);renderIds(state.ids, state.frames);
   renderCandidate(state, state.phase === "capturing");
+  renderMotor(state);
   byId("saveTitle").textContent = state.raw_file ? active ? "原始日志正在写入" : "本次日志" : "原始日志自动保存";
   byId("savePath").textContent = state.raw_file ? `${state.saved_directory}\\${state.raw_file}` : state.saved_directory;
   download("downloadLog", state.raw_file, !active);download("downloadSummary", state.summary_file, !active);
   byId("details").textContent = [status ? `当前固件累计计数（从开机起）：\n${JSON.stringify(status, null, 2)}` : "尚未收到固件状态。", `非帧行 ${state.non_frame_lines} · 末尾未完成行 ${state.trailing_bytes} 字节`, ...state.messages].join("\n");
+}
+
+function renderMotor(state) {
+  const motor = state.motor || {}, usable = state.phase === "capturing" && motor.can_record;
+  const stages = {0:"未校准状态候选",1:"校准阶段 1",2:"校准阶段 2",3:"校准后工作阶段候选"};
+  byId("motorStage").textContent = motor.fresh ? String(motor.stage) : "—";
+  byId("motorStageText").textContent = motor.fresh ? stages[motor.stage] || "未知阶段" : motor.age_s == null ? "等待 04:2F 状态" : "状态已过期或采集已结束";
+  byId("motorCoordinate").textContent = usable ? String(motor.coordinate) : "—";
+  byId("motorPercent").textContent = usable && motor.observed_range_percent != null ? `本次观察范围 ${motor.observed_range_percent.toFixed(1)}% · 原始范围 0～4096` : "原始单位未知；仅阶段 3 显示有效坐标";
+  const age = Math.max(motor.age_s || 0,motor.sample_device_age_s || 0);
+  byId("motorAge").textContent = motor.age_s == null ? "等待有效状态" : `样本数据年龄 ${age.toFixed(2)} s · 接收段 ${motor.epoch}`;
+  byId("motorBoundary").textContent = !usable ? "尚未判断" : motor.boundary ? `${motor.boundary === "lower" ? "0" : "4096"} 边界${motor.limit_candidate ? " · 持续向外输入，虚拟限位候选" : "坐标"}` : motor.observed_range_percent == null ? "超出本次观察范围，映射待确认" : "位于观察范围内部";
+  for (const marker of ["A","B"]) {
+    byId(`record${marker}`).disabled = busy || !usable || !token;
+    const mark = motor.marks?.[marker];
+    byId(`mark${marker}`).textContent = mark ? `${marker}：${mark.coordinate} · ${mark.valid ? "本接收段有效" : `已失效（${mark.invalid_reason}）`}` : `${marker}：未记录`;
+  }
+  const a = motor.marks?.A, b = motor.marks?.B;
+  byId("markDistance").textContent = a?.valid && b?.valid && a.epoch === b.epoch ? `B − A：${b.coordinate-a.coordinate} 原始单位` : "";
+  download("downloadCoordinates",state.coordinate_file,true);
 }
 
 async function refreshPorts() {
@@ -157,13 +178,14 @@ async function action(path, body) {
     }
   }
   catch (error) {notice(error.message, "error");}
-  finally {busy = false;if(latestState && !appClosed) {byId("start").disabled = latestState.closing || ["starting","capturing","stopping"].includes(latestState.phase) || !byId("port").value || !token;byId("stop").disabled = !["starting","capturing"].includes(latestState.phase);byId("shutdown").disabled = !token;}}
+  finally {busy = false;if(latestState && !appClosed) {byId("start").disabled = latestState.closing || ["starting","capturing","stopping"].includes(latestState.phase) || !byId("port").value || !token;byId("stop").disabled = !["starting","capturing"].includes(latestState.phase);byId("shutdown").disabled = !token;renderMotor(latestState);}}
 }
 
 byId("refresh").addEventListener("click", () => refreshPorts().catch((error) => notice(error.message,"error")));
 byId("port").addEventListener("change", () => latestState && render(latestState));
 byId("start").addEventListener("click", () => action("/api/start", {port:byId("port").value, label:byId("label").value}));
 byId("stop").addEventListener("click", () => action("/api/stop", {}));
+for (const marker of ["A","B"]) byId(`record${marker}`).addEventListener("click", () => action("/api/coordinate/record", {marker}));
 byId("shutdown").addEventListener("click", () => action("/api/shutdown", {}));
 byId("zeroSound").addEventListener("change", async () => {
   if (!byId("zeroSound").checked) return;
@@ -173,7 +195,7 @@ byId("zeroSound").addEventListener("change", async () => {
 
 async function poll() {
   try {if (!busy && !appClosed) render(await api("/api/state"));}
-  catch (error) {if (appClosed) return;byId("phaseText").textContent = "上位机服务未连接";byId("phase").className = "badge error";byId("start").disabled = true;byId("stop").disabled = true;byId("shutdown").disabled = true;token = "";renderCandidate(null,false);notice("无法连接本机上位机服务，请重新运行「启动上位机.cmd」。", "error");}
+  catch (error) {if (appClosed) return;byId("phaseText").textContent = "上位机服务未连接";byId("phase").className = "badge error";byId("start").disabled = true;byId("stop").disabled = true;byId("shutdown").disabled = true;token = "";renderCandidate(null,false);renderMotor({phase:"error"});notice("无法连接本机上位机服务，请重新运行「启动上位机.cmd」。", "error");}
   if (!appClosed) timer = setTimeout(poll, latestState?.phase === "capturing" ? 250 : 500);
 }
 async function init() {await poll();try {await refreshPorts();}catch(error){notice(error.message,"error");}}

@@ -1,3 +1,16 @@
+## 当前入口：2026-10-10 00:28:06 北京时间 — 状态显示与坐标记录实验版v1已开发、编译与打包，未烧录
+
+- 用户授权继续开发，将状态显示和坐标记录加入目前固件与上位机，交付可亲手实验版本。本轮开始main/03ad929、工作区干净；没有真实串口连接、复位、烧录或CAN发送，不新增自动校准/取消/定位/回拉命令。
+- 固件：src/motor_status.h共享只读、整帧、双CRC解码0x504/BF→E5/flags00/04:2F/09 00；src/main.cpp监听版在原帧日志外输出# MOTOR；src/motor_control.cpp新增同loop接收轮询和# MOTOR，版本1.1 status_coordinates。保持既有发送路径、队列0和分片空闲检查；监听版没有发送调用。固件只编译，板上上次listen_1m未重新访问核验/未更换。
+- 上位机：tools/motor_status.py共享原始帧重组/状态/A-B有效性。浏览器抓包界面兼容旧listen_1m，可先不重烧，用RS3自己操作来观察阶段、原始坐标、百分比/边界候选和记录A/B；新Python模块按CAN ID、序号/计数/时间边界重组，续片55不误截断。
+- A/B只记录，不触发电机运动。500ms主机/设备帧年龄、哨兵、重新校准、序号/计数中断、适配器重启和结束使记录失效，值/时间历史仍保留。百分比仅本次0～4096观察范围，不是物理单位；超出观察范围仍显示有限原值并提示映射待确认。无法保证识别每次FM03自身快速重启，跨重启保留性未知。
+- 浏览器每次记录立即保存新*.coordinates.json衍生文件，停止时与新抓包摘要同步失效状态；不改已有原始log/json。桌面运动控制程序接收新版固件# MOTOR，可记录/导出A/B；其记录存于内存，退出前需手动导出。保留原有控制按钮，只能在既有RS3物理脱离的独立电机台架上使用主动控制。
+- 交付入口reports/20261010_status_coordinates_guide.md；根目录启动上位机.cmd与新增启动运动控制.cmd。Windows程序dist/FM03_MotorControl_Status.exe；稳定应用镜像副本dist/FM03_Status_20261010/listen_1m_application.bin、motor_control_application.bin，仅应用分区，不从0地址当全flash写。构建产物仅本机不纳Git，哈希见reports/20261010_status_coordinates_validation.json。
+- 软件验证：状态7+GUI11+控制8共26项假串口/离线/Tk测试通过；真实有效日志全部状态与共享离线重组器一致，含360个阶段3坐标；capture/protocol自检、Python语法和两固件编译通过，打包EXE离线--check实际退出0。宽/窄屏模拟API浏览器验证A/B差值、过期禁用、无横溢出/页面异常，artifacts/status-coordinate-desktop.png和artifacts/status-coordinate-mobile.png仅软件测试截图。
+- 上位机服务：原8765旧服务核实phase=stopped后通过自身API关闭，新服务最终重载PID49308；http://127.0.0.1:8765，software_version=status_coordinates_1，phase=idle，串口关闭，含最终sample_device_age_s新鲜度字段。没有打断采集；浏览器页面可直接打开。后续是否采集/串口号必须实时核实，勿凭PID或COM17旧值操作。
+- 原件：上一轮validation清单174个log/json SHA256全未变，两份旧manifest全部匹配，git原始抓包差异为空；未改.gitattributes。更新README、交接/工作日志与两份抓包索引的衍生文件说明。本轮本地提交main，实际提交号以git log为准，不推送/改历史。
+- 下一步由用户按guide亲手实验：先被动RS3标定/拨轮/停→A/B记录→停止保存，补灯语/电源/前置拨轮/Rs/实际动作时刻。未有新现场确认；新固件实机接收/吞吐与机械位置对应尚待验证，不能宣布硬件实验已通过。需上传时先核实当前设备、采集停止和台架接线，再明确选择监听或控制环境。
+
 ## 当前入口：2026-10-09 14:37:24 北京时间 — 离线模型验证：触限无待抵消积累量，坐标控制功能分层
 
 - 本轮用户明确限定离线分析；开始核实main/973da54、工作区干净。未开串口、复位、烧录或发送CAN，不切firmware-extract，不操作此前采集服务；外接适配器上次listen_1m状态未由本轮重新访问硬件验证。

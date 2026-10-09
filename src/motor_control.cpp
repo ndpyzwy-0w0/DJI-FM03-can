@@ -43,6 +43,7 @@
 #include "driver/twai.h"
 #include "freertos/semphr.h"
 #include "esp_timer.h"
+#include "motor_status.h"
 
 #if __has_include("dji_crc.h")
 #include "dji_crc.h"
@@ -79,7 +80,7 @@ static uint16_t crc16(const uint8_t *data, unsigned length) {
 
 // Firmware identity, reported by `version` so a session record can name the exact
 // build. Bump the revision when the wire behaviour changes.
-#define CONTROL_VERSION "motor_control 1.0"
+#define CONTROL_VERSION "motor_control 1.1 status_coordinates"
 
 // Magnitude clamp. The measured dial range in the captures is about +/-2048, and
 // 2048 is the default; lower it with `limit` while exploring.
@@ -147,6 +148,7 @@ static volatile bool mode_replay = false;       // driver may transmit
 static volatile bool driver_installed = false;
 static volatile bool driver_switching = false;
 static SemaphoreHandle_t driver_mutex = nullptr;
+static MotorStatusDecoder motor_status;
 
 static volatile int16_t applied_value = 0;      // value last put on the wire
 static volatile int16_t target_value = 0;       // value the host asked for
@@ -226,6 +228,7 @@ static bool install_driver(bool replay) {
 }
 
 static bool set_mode(bool replay) {
+    motor_status.reset();
     driver_switching = true;
     if (driver_mutex) xSemaphoreTake(driver_mutex, portMAX_DELAY);
     if (driver_installed) {
@@ -680,6 +683,36 @@ static void service_telemetry() {
     print_state();
 }
 
+// RX decoding runs in the same loop as driver lifecycle changes. Printing only
+// CRC-verified states avoids enabling raw RX logging during the flood condition.
+static void print_motor_observation() {
+    if (!motor_status.updated) return;
+    motor_status.updated = false;
+    Serial.printf("# MOTOR epoch=%u t_us=%llu stage=%d coord=%ld valid=%u packets=%u\n",
+                  motor_status.epoch,(unsigned long long)motor_status.sample_us,
+                  motor_status.stage,(long)motor_status.coordinate,
+                  motor_status.valid()?1u:0u,motor_status.packets);
+}
+
+static void service_receive() {
+    if (!driver_installed || driver_switching) return;
+    static uint32_t missed = 0, overrun = 0;
+    twai_status_info_t status{};
+    if (twai_get_status_info(&status) == ESP_OK) {
+        if (missed != status.rx_missed_count || overrun != status.rx_overrun_count)
+            motor_status.reset();
+        missed = status.rx_missed_count;
+        overrun = status.rx_overrun_count;
+    }
+    twai_message_t frame{};
+    for (unsigned count=0; count<128 && twai_receive(&frame,0)==ESP_OK; ++count) {
+        motor_status.feed(frame.identifier,frame.extd,frame.rtr,frame.data,
+                          frame.data_length_code,esp_timer_get_time());
+        print_motor_observation();
+    }
+    print_motor_observation(); // Publish lifecycle invalidation even with no RX.
+}
+
 void setup() {
     pinMode(BUTTON_GPIO, INPUT_PULLUP);
     pinMode(PIN_TX, OUTPUT);
@@ -716,6 +749,7 @@ void loop() {
     service_serial();
     service_button();
     service_watchdog();
+    service_receive();
     service_transmit();
     service_telemetry();
     delay(1);

@@ -18,6 +18,7 @@ from serial.tools import list_ports
 from capture import parse_frame
 from analyze_protocol import crc
 from analyze_direction import candidate_value
+from motor_status import LiveMotor
 
 ROOT = Path(__file__).resolve().parents[1]
 DROP_KEYS = ("logger_dropped", "rx_missed", "rx_overrun", "bus_errors")
@@ -123,6 +124,38 @@ class CaptureSession:
         self.last_serial = None
         self.last_status = None
         self.candidate = LiveCandidate()
+        self.motor = LiveMotor()
+
+    def _reset_decoders(self, reason):
+        self.candidate.reset()
+        self.motor.reset(reason)
+
+    def record_coordinate(self, marker):
+        with self.lock:
+            if self.phase != 'capturing' or self.raw_path is None:
+                raise ValueError('请在正在抓包且坐标有效时记录 A/B。')
+            # Marks are saved into a NEW derived sidecar immediately, in addition
+            # to the final capture summary; raw log and raw summary are untouched.
+            mark = self.motor.record(marker,time.monotonic())
+            try:
+                self._save_coordinates()
+            except OSError as exc:
+                # Keep the mark in memory/final summary, but do not claim disk save.
+                raise ValueError(f'坐标已记录，但独立文件保存失败：{exc}') from exc
+            return mark
+
+    def _save_coordinates(self):
+        if self.raw_path is None or not self.motor.records:
+            return
+        marks_path = self.raw_path.with_suffix('.coordinates.json')
+        payload = {'raw_log': self.raw_path.name, 'started_at': self.started_at,
+                   'saved_at_beijing':datetime.now(BEIJING).isoformat(),
+                   'coordinate_kind':'raw position-related value; actual vs reference unresolved',
+                   'validity_note':'Validity is only for this live receive segment; stored marks must not be reused after restart/recalibration.',
+                   **self.motor.snapshot(time.monotonic(),self.phase=='capturing')}
+        temporary = marks_path.with_suffix('.json.tmp')
+        temporary.write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+        temporary.replace(marks_path)
 
     def start(self, port, label):
         if not isinstance(port, str) or not isinstance(label, str):
@@ -168,7 +201,7 @@ class CaptureSession:
             if len(self.buffer) > 4096:
                 self.buffer = b""
                 self.non_frame_lines += 1
-                self.candidate.reset()
+                self._reset_decoders('串口行过长/数据中断')
             batch_count = 0
             for raw in lines:
                 line = raw.decode("ascii", errors="replace").strip()
@@ -179,7 +212,7 @@ class CaptureSession:
                             current.get("t_us", 0) < self.status.get("t_us", 0)
                             or any(current.get(key, 0) != self.status.get(key, 0)
                                    for key in ("logger_dropped", "rx_missed", "rx_overrun"))):
-                        self.candidate.reset()
+                        self._reset_decoders('适配器重启或丢帧计数变化')
                     for key in DROP_KEYS:
                         if self.status is not None and key in current and key in self.status:
                             before, after = self.status[key], current[key]
@@ -190,20 +223,24 @@ class CaptureSession:
                     self.status = current
                     self.last_status = now
                 elif line.startswith("#"):
-                    self.messages.append(line)
+                    if not line.startswith('# MOTOR '):
+                        self.messages.append(line)
+                    if line.startswith(('# START ', '# MODE ', '# READY listen_only')):
+                        self._reset_decoders('适配器启动/模式改变')
                 elif (frame := parse_frame(line)) is not None:
                     stamp, sequence, identifier, extended, rtr, dlc, data = frame
                     self.frames += 1
                     batch_count += 1
                     if self.previous_sequence is not None:
                         if sequence != self.previous_sequence + 1:
-                            self.candidate.reset()
+                            self._reset_decoders('帧序号缺口/重启')
                         if sequence > self.previous_sequence:
                             self.gaps += sequence - self.previous_sequence - 1
                         else:
                             self.resets += 1
                     self.previous_sequence = sequence
                     self.candidate.feed(frame, now)
+                    self.motor.feed(frame, now)
                     key = f"{'E' if extended else 'S'}:{identifier:08X}"
                     row = {"t_us": stamp, "sequence": sequence,
                            "id": f"0x{identifier:08X}" if extended else f"0x{identifier:03X}",
@@ -227,6 +264,7 @@ class CaptureSession:
             active = self.phase in ("starting", "capturing", "stopping")
             elapsed = now - self.started if active and self.started else self.elapsed
             return {"product": "fm03_capture", "phase": self.phase,
+                    "software_version": "status_coordinates_1",
                     "closing": self.closing,
                     "port": self.port, "label": self.label,
                     "started_at": self.started_at, "elapsed": round(elapsed, 2),
@@ -240,6 +278,9 @@ class CaptureSession:
                     "status_age": round(now - self.last_status, 1) if self.last_status else None,
                     "serial_age": round(now - self.last_serial, 1) if self.last_serial else None,
                     "candidate": self.candidate.snapshot(now),
+                    "motor": self.motor.snapshot(now,self.phase == 'capturing'),
+                    "coordinate_file": (self.raw_path.with_suffix('.coordinates.json').name
+                                        if self.raw_path and self.raw_path.with_suffix('.coordinates.json').exists() else None),
                     "latest": list(reversed(self.latest)),
                     "ids": sorted((dict(item) for item in self.ids.values()), key=lambda x: -x["count"]),
                     "messages": list(self.messages), "error": self.error,
@@ -297,6 +338,10 @@ class CaptureSession:
                     temporary.replace(target)
                     with self.lock:
                         self.summary_path = target
+                        try:
+                            self._save_coordinates()
+                        except OSError as exc:
+                            self.error = f'原始日志和摘要已保存，但坐标独立文件更新失败：{exc}'
                 except Exception as exc:
                     with self.lock:
                         self.error = f"原始日志已保留，但摘要保存失败：{exc}"
@@ -353,7 +398,7 @@ class Handler(BaseHTTPRequestHandler):
             self._reply(200, (ROOT / "tools" / "ui" / name).read_bytes(), f"{mime}; charset=utf-8")
         elif route.startswith("/captures/"):
             name = unquote(route.removeprefix("/captures/"))
-            if not re.fullmatch(r"\d{8}_\d{6}_\d{6}_[A-Za-z0-9_-]+\.(log|json)", name):
+            if not re.fullmatch(r"\d{8}_\d{6}_\d{6}_[A-Za-z0-9_-]+\.(log|json|coordinates\.json)", name):
                 self._reply(404, {"error": "文件不存在。"})
                 return
             path = self.server.capture.directory / name
@@ -382,6 +427,8 @@ class Handler(BaseHTTPRequestHandler):
                 self.server.capture.start(body.get("port"), body.get("label", "capture"))
             elif route == "/api/stop":
                 self.server.capture.stop()
+            elif route == "/api/coordinate/record":
+                self.server.capture.record_coordinate(body.get('marker'))
             elif route == "/api/shutdown":
                 self.server.capture.stop(closing=True)
                 state = self.server.capture.snapshot()

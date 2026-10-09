@@ -1168,3 +1168,18 @@
 - 环境：普通终端和Node REPL受windows sandbox helper setup refresh故障阻断，直接只读/离线执行通过自动审核后可用；无自动审核拒绝。使用既有.venv/Scripts/python.exe及标准库，不添加依赖，不干预硬件。
 - 适当验证：新模型合成自检、capture/protocol/calibration自检、语法编译及真实日志关键断言；交付前git diff --check、原件哈希与暂存范围核验，逐项结果记validation.json。本条与本轮10个项目文件一并本地提交main，提交号见对应Git日志；不推送、不改写历史，无其他未提交用户内容被纳入。
 - 下一步仅方案：同步机械标记对照坐标和停拨延续；改变已知物理行程后标定检验是否归一化；由用户分别重启RS3/FM03观察校准/坐标/边界保留性。未自动开展这些实验。
+
+## 2026-10-10 00:28:06 北京时间 — 开发状态显示与坐标记录实验版v1（未上传固件）
+
+- 用户授权继续开发并把功能加入当前固件和上位机，要求可亲手实验。开始核实main/03ad929、工作区干净，保持现有速度控制入口；本轮没有真实串口打开、复位、烧录或CAN发送，也不新增位置回拉/校准/取消命令。
+- 固件修改：新增src/motor_status.h整帧/双CRC/主路由09状态只读解码；main监听版在原帧日志外输出# MOTOR_CONFIG/# MOTOR，捕获序号与驱动丢帧边界清重组；motor_control新增同loop接收解码、驱动计数边界/模式切换清理，版本1.1 status_coordinates，发送队列0及分片等待不变。
+- 上位机修改：新增tools/motor_status.py供GUI/桌面复用，有限数据缓存、阶段/坐标/原始范围百分比/边界候选、A/B点击记录和会话有效性；GUI新增受现有本机Host/Origin/token保护的记录API及原子保存的新.coordinates.json。停止时更新侧文件会话已结束，原始日志仍逐字节保存。Desktop通过# MOTOR接收新状态，仅内存记录并由用户导出JSON；根目录新增启动运动控制.cmd。
+- 新鲜度：主机或最近设备帧相对坐标样本超过500ms禁止记录；重复UART同样本不续鲜。阶段离开3、哨兵、帧/计数缺口、观察到的适配器重启、串口中断或结束使A/B失效，保留历史值和时刻；不能保证识别FM03自身每次快速重启或跨标定保留。0～4096仅观察范围，超范围有限原值仍显示并提示映射未知。
+- 构建：listen_1m与motor_control编译通过，应用285088/289680字节，源码包含共享头且有# MOTOR输出。PyInstaller最终单文件dist/FM03_MotorControl_Status.exe为12076479字节，SHA256 037b656f04c748168acc741ce71413b9643fdd5919ad71f32350603b5dede15e，--check隐藏进程实际exit=0。修正build_host_app.py原先删除dist下所有EXE的宽范围清理，改由PyInstaller仅替换本次命名程序，保留旧版。
+- 本机副本：dist/FM03_Status_20261010/listen_1m_application.bin、motor_control_application.bin及使用说明.md；应用镜像不当完整flash从0写，使用PlatformIO匹配环境和当前核实串口。产物本机保留，不纳Git；构建源、指南、校验JSON和测试截图纳Git。
+- 验证：状态7/GUI11/控制8共26项，仅假串口/隐藏Tk/已有日志。Python实时主路由全部状态与离线重组逐项相同，含360个阶段3坐标；CRC/错误路由/续片55/间隙/哨兵/重标定/重复样本/设备时间年龄、A/B保存导出、HTTP权限通过；capture/protocol自检与Python编译通过。C++仅编译验证，未实机跑。tools/test_status_ui.cjs模拟所有API，1280/360px A/B差值、过期禁用、超范围提示和无溢出/页面错误检查；截图已视觉查看，明确不是新现场实验。
+- 证据/文档：reports/20261010_status_coordinates_guide.md、20261010_status_coordinates_validation.json；artifacts/status-coordinate-desktop.png和artifacts/status-coordinate-mobile.png（模拟API截图），更新README/HANDOFF/本日志/CAPTURE_FILE_MAP/capturesINDEX。没有新的用户灯语、电源、Rs、动作或真实位置确认，不补造。
+- 服务：只读确认旧8765采集已stopped，通过自身shutdown API关闭而未改原摘要，先后重载新服务，最终PID49308/idle/串口关闭，含sample_device_age_s最终schema。网页http://127.0.0.1:8765已准备好；此PID与旧COM17不作以后操作依据，需现查。原始174份log/json哈希与上轮全部一致，两份旧manifest匹配，不改.gitattributes；最终git diff --check与暂存范围检查。
+- 环境：普通exec仍有sandbox helper setup refresh错误，改为自动审核允许的直接离线执行；没有自动审核拒绝。继续用既有.venv，未新增软件依赖。
+- 提交：本轮项目内容一并本地提交main，实际号见对应Git日志；不推送、不改写历史，构建产物保持本机，原始抓包不纳本轮差异。
+- 下一步：用户按指南先在RS3↔FM03被动监听场景标定/拨轮/停、记A/B、停止保存；补现场前置项和机械动作对照。浏览器兼容现有listen_1m，不必先重烧。若需桌面主动控制新状态，再核实当前设备/采集停止和RS3物理脱离后的独立台架，选择motor_control上传；不自动启动硬件实验。

@@ -13,6 +13,7 @@ import serial
 from gui_server import CaptureSession, Handler, ThreadingHTTPServer
 from analyze_protocol import crc
 from analyze_direction import extract
+from test_motor_status import state_packet
 
 
 RAW = (b"# STATUS t_us=100 bitrate=1000000 rx=5 logger_dropped=2 rx_missed=0 rx_overrun=0 bus_errors=1\n"
@@ -233,9 +234,23 @@ class GuiTests(unittest.TestCase):
         with request("/api/start", {"port": "COM_TEST", "label": "idle"}, "test-token"):
             pass
         wait_for(lambda: session.snapshot()["frames"] == 2)
+        with self.assertRaises(HTTPError) as caught:
+            request('/api/coordinate/record',{'marker':'A'})
+        self.assertEqual(caught.exception.code,403)
+        packet=state_packet(3,3763)
+        for n,offset in enumerate(range(0,len(packet),8),4):
+            data=packet[offset:offset+8]
+            session._consume(f'{1000000+offset},{n},00000504,0,0,{len(data)},{data.hex()}\n'.encode())
+        with request('/api/coordinate/record',{'marker':'A'},'test-token') as response:
+            marked=json.load(response)
+        self.assertEqual(marked['motor']['marks']['A']['coordinate'],3763)
+        with request('/captures/'+marked['coordinate_file']) as response:
+            self.assertEqual(json.load(response)['marks']['A']['coordinate'],3763)
         with request("/api/stop", {}, "test-token") as response:
             result = json.load(response)
         self.assertEqual(result["phase"], "stopped")
+        with request('/captures/'+marked['coordinate_file']) as response:
+            self.assertFalse(json.load(response)['marks']['A']['valid'])
         with request("/captures/" + result["raw_file"]) as response:
             self.assertEqual(response.read(), RAW)
         with self.assertRaises(HTTPError) as caught:

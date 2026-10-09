@@ -29,6 +29,18 @@
       <div class="metric"><span>不同 CAN ID</span><strong id="unique">0</strong><small id="bitrate">CAN 速率待确认</small></div>
     </section>
 
+    <section class="panel motor-panel" aria-label="校准状态与原始坐标">
+      <div class="panel-title"><h2>电机状态与坐标</h2><span id="motorAge">等待有效状态</span></div>
+      <div class="motor-readout">
+        <div><span>校准阶段</span><strong id="motorStage">—</strong><small id="motorStageText">等待 04:2F 状态</small></div>
+        <div><span>原始坐标</span><strong id="motorCoordinate">—</strong><small id="motorPercent">本次观察范围：0～4096</small></div>
+        <div><span>边界提示</span><b id="motorBoundary" role="status">尚未判断</b><small>候选提示，不是物理堵转报警</small></div>
+      </div>
+      <div class="motor-marks"><button id="recordA" disabled>记录 A</button><span id="markA">A：未记录</span><button id="recordB" disabled>记录 B</button><span id="markB">B：未记录</span><span id="markDistance"></span><a id="downloadCoordinates" class="button" hidden>下载坐标记录</a></div>
+      <p id="motorDetail">阶段 3 且坐标在 500 ms 内更新时可记录。A/B 仅记录原始坐标，不发送电机命令。</p>
+      <p class="motor-caption">原始坐标可能是实际位置或内部参考值；百分比仅按本次观察范围计算。重新校准、数据中断或过期会使 A/B 失效。</p>
+    </section>
+
     <section class="panel candidate-panel" aria-label="04:69 候选字段实时观察">
       <div class="panel-title"><h2>04:69 候选字段</h2><label class="sound-option"><input type="checkbox" id="zeroSound">归零时提示音</label></div>
       <div class="candidate-channels">

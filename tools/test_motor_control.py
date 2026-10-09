@@ -10,6 +10,9 @@ import sys
 import threading
 import time
 import unittest
+from unittest.mock import patch
+import tempfile
+import json
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import motor_control as mc  # noqa: E402
@@ -92,6 +95,44 @@ STATE_LINE = ('# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 
 
 
 class ProtocolTests(unittest.TestCase):
+    def test_desktop_status_marks_and_export_do_not_send_motion(self):
+        root=mc.tk.Tk()
+        root.withdraw()
+        self.addCleanup(root.destroy)
+        with patch.object(mc.list_ports,'comports',return_value=[]):
+            app=mc.MotorControlApp(root,None,False)
+        fake=FakeSerial()
+        app.link.serial=fake
+        self.addCleanup(app.link.close)
+        app.motor.telemetry({'epoch':1,'t_us':1000000,'stage':3,'coord':3763,'valid':1},100)
+        with patch.object(mc.time,'monotonic',return_value=100):
+            app.update_motor_status()
+            self.assertIn('3763',app.motor_label.cget('text'))
+            self.assertEqual(str(app.record_a.cget('state')),'normal')
+            app.record_coordinate('A')
+            with tempfile.TemporaryDirectory() as directory:
+                path=Path(directory)/'marks.json'
+                with patch.object(mc.filedialog,'asksaveasfilename',return_value=str(path)):
+                    app.export_coordinates()
+                self.assertEqual(json.loads(path.read_text(encoding='utf-8'))['marks']['A']['coordinate'],3763)
+        self.assertEqual(fake.written,[])
+        with patch.object(mc.time,'monotonic',return_value=101):
+            app.update_motor_status()
+        self.assertEqual(str(app.record_a.cget('state')),'disabled')
+        self.assertIn('已失效',app.marks_label.cget('text'))
+
+    def test_motor_telemetry_is_classified_without_a_control_command(self):
+        events=queue.Queue()
+        fake=FakeSerial()
+        link=RecordingLink(events,fake)
+        link.open_fake()
+        fake.feed('# MOTOR epoch=1 t_us=1000000 stage=3 coord=3763 valid=1 packets=1\n')
+        kind,payload=events.get(timeout=2)
+        link.close()
+        self.assertEqual(kind,'motor')
+        self.assertEqual(payload[0]['coord'],3763)
+        self.assertTrue(all(command=='status\n' for command in fake.written))
+
     def test_state_parsing_handles_the_full_line_and_junk(self):
         state = mc.parse_state(STATE_LINE)
         self.assertEqual(state["mode"], "listen")

@@ -1,0 +1,54 @@
+{
+  "recorded_at_beijing": "2026-10-10T00:27:53.317040+08:00",
+  "baseline_commit": "03ad9291f68ba5202a4d5d0ed4cc773a9e91ba3a",
+  "hardware_actions": {
+    "serial_open": false,
+    "reset": false,
+    "flash_upload": false,
+    "CAN_transmit": false
+  },
+  "tests": {
+    "test_motor_status": 7,
+    "test_gui": 11,
+    "test_motor_control": 8,
+    "result": "26 passed; fake serial / existing saved capture / hidden Tk only"
+  },
+  "real_saved_capture_stage3_coordinate_samples_matched": 360,
+  "firmware_builds": [
+    "listen_1m SUCCESS",
+    "motor_control SUCCESS"
+  ],
+  "python_compile": "passed",
+  "capture_and_protocol_self_checks": "passed",
+  "browser_ui": "Mock API only; A/B raw delta, out-of-observed-range hint, stale disabling, 1280/360px overflow/page errors passed; screenshots visually inspected",
+  "raw_capture_hashes_unchanged": 174,
+  "existing_hash_manifests_matched": true,
+  "outputs": [
+    {
+      "environment": "listen_1m",
+      "source": ".pio/build/listen_1m/firmware.bin",
+      "copy": "dist/FM03_Status_20261010/listen_1m_application.bin",
+      "bytes": 285088,
+      "sha256": "fc739c2d2c8b961c93ea2a536ea8a89b8a3a82e4c470b849f910189f3ac4a59a",
+      "image_kind": "application partition; use PlatformIO matching upload process"
+    },
+    {
+      "environment": "motor_control",
+      "source": ".pio/build/motor_control/firmware.bin",
+      "copy": "dist/FM03_Status_20261010/motor_control_application.bin",
+      "bytes": 289680,
+      "sha256": "22e39917270cd55901ffde9a2eb0c9c3862782b458905a5c515b3c4428e6cc69",
+      "image_kind": "application partition; use PlatformIO matching upload process"
+    },
+    {
+      "path": "dist/FM03_MotorControl_Status.exe",
+      "bytes": 12076479,
+      "sha256": "037b656f04c748168acc741ce71413b9643fdd5919ad71f32350603b5dede15e",
+      "check_exit_code": 0
+    }
+  ],
+  "hardware_limit": "Firmware compiled and host tested offline; new firmware not uploaded, live hardware RX/performance not verified.",
+  "final_idle_server": "127.0.0.1:8765 software_version=status_coordinates_1 phase=idle; serial closed; final sample_device_age_s schema verified",
+  "document_evidence_paths": "passed",
+  "git_diff_check": "passed; staged content rechecked before commit"
+}
