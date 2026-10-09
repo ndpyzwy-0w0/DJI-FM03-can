@@ -1,0 +1,22 @@
+{
+  "prior_raw_log": "20261009_003846_528282_calibration.log",
+  "current_raw_log": "20261009_132137_540179_calibration.log",
+  "prior_sha256": "e4d79051b8a2bf86c7e9ae453b88d0422b7a86273893c0018f349cd60aa48611",
+  "current_sha256": "e361f75e7d76d20cc54a3c0369e4277756f56495294ddd97e7da7f85bb2135e0",
+  "same_start_payload": true,
+  "prior_stage3_samples": 84,
+  "prior_stage3_unique_values": [
+    3757
+  ],
+  "current_stage3_samples": 360,
+  "current_stage3_unique_values": 149,
+  "current_coordinate_range": [
+    0,
+    4096
+  ],
+  "current_initial_coordinate": 3763,
+  "current_final_coordinate": 1878,
+  "previous_fixed_travel_length_interpretation": "not supported as a constant full-travel result; same payload field varies with command input",
+  "actual_vs_target_position": "unresolved",
+  "soft_limit_enforcement_physical_node": "unresolved; outgoing E5 commands stay nonzero at the observed saturation boundary"
+}

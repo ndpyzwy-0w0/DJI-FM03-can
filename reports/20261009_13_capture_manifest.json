@@ -1,0 +1,77 @@
+{
+  "recorded_at_beijing": "2026-10-09 13:46:33",
+  "captures": [
+    {
+      "raw_file": "captures/20261009_131955_704488_calibration.log",
+      "raw_sha256": "62577874279d0ca6676fb5f08f3440eed7abdb3f5b410d47a84019f4f25ebce4",
+      "raw_bytes": 2601475,
+      "summary_file": "captures/20261009_131955_704488_calibration.json",
+      "summary_sha256": "7e75d823d6c7c416823ddc8dde883a932a2aa7a41e423cee4679367b0831d366",
+      "phase": "stopped",
+      "elapsed_s": 32.14,
+      "gui_frames": 56772,
+      "sequence_gaps": 3056,
+      "counter_deltas": {
+        "logger_dropped": 3056,
+        "rx_missed": 0,
+        "rx_overrun": 0,
+        "bus_errors": 18
+      },
+      "valid_for_semantic_analysis": false,
+      "reason": "User explicitly reports errors and discards this trial; exact error unknown; originals retained",
+      "user_confirmed_actions": []
+    },
+    {
+      "raw_file": "captures/20261009_132030_763971_calibration.log",
+      "raw_sha256": "6da8e488f900005f5209d858f8013c20584921126b34a38cdb403d243071d204",
+      "raw_bytes": 3944660,
+      "summary_file": "captures/20261009_132030_763971_calibration.json",
+      "summary_sha256": "19d4d8d418d4b4bb283811897686154d1937a50c70879edc7c755fdc4956f1a9",
+      "phase": "stopped",
+      "elapsed_s": 48.05,
+      "gui_frames": 84345,
+      "sequence_gaps": 2933,
+      "counter_deltas": {
+        "logger_dropped": 2933,
+        "rx_missed": 0,
+        "rx_overrun": 0,
+        "bus_errors": 16
+      },
+      "valid_for_semantic_analysis": false,
+      "reason": "User explicitly reports errors and discards this trial; exact error unknown; originals retained",
+      "user_confirmed_actions": []
+    },
+    {
+      "raw_file": "captures/20261009_132137_540179_calibration.log",
+      "raw_sha256": "e361f75e7d76d20cc54a3c0369e4277756f56495294ddd97e7da7f85bb2135e0",
+      "raw_bytes": 4027075,
+      "summary_file": "captures/20261009_132137_540179_calibration.json",
+      "summary_sha256": "9c09ae9340fe9b8e3f7ac3fdc97cc7a841e1c6d11683c71a0c0b738301984f6d",
+      "phase": "stopped",
+      "elapsed_s": 49.8,
+      "gui_frames": 86225,
+      "sequence_gaps": 0,
+      "counter_deltas": {
+        "logger_dropped": 0,
+        "rx_missed": 0,
+        "rx_overrun": 0,
+        "bus_errors": 0
+      },
+      "valid_for_semantic_analysis": true,
+      "reason": "User confirms latest recording only is valid",
+      "user_confirmed_actions": [
+        "automatic travel calibration",
+        "RS3 dial forward / stop / reverse / stop",
+        "reach both virtual limits; keep dialing outward while motor stops without physical collision"
+      ]
+    }
+  ],
+  "unknown": [
+    "exact action times",
+    "physical clockwise/counterclockwise",
+    "distance to physical stops",
+    "light pattern",
+    "power state",
+    "listener Rs and module count"
+  ]
+}

@@ -3,6 +3,7 @@
 Offline only. Reuses the project's frame-boundary parser and never opens a port.
 """
 import argparse
+from bisect import bisect_right
 from collections import Counter, defaultdict
 import hashlib
 import json
@@ -45,6 +46,78 @@ def details(entries, origin):
             'sample_packet':entries[0]['packet'].hex(' ').upper()}
 
 
+
+def post_calibration_observation(entries, origin):
+    """Raw coordinate/velocity evidence; does not label actual encoder position."""
+    coordinate = []
+    speed = []
+    for e in entries:
+        b = e['packet']
+        value = state09(b)
+        if e['can_id'] == 0x504 and b[4:6] == b'\xbf\xe5' and value is not None and value[0] == 3:
+            coordinate.append((e['segment'], e['stamp'], value[1]))
+        if e['can_id'] == 0x503 and b[4:6] == b'\xe5\xbf' and b[9:11] == b'\x04\x69' and len(b) == 19 and b[11:15] == bytes.fromhex('0f040819'):
+            speed.append((e['segment'], e['stamp'], int.from_bytes(b[15:17], 'little', signed=True)))
+    if not coordinate or not speed:
+        return None
+    low = min(p for seg, t, p in coordinate)
+    high = max(p for seg, t, p in coordinate)
+    runs = []
+    for seg, t, p in coordinate:
+        if not runs or (seg, p) != (runs[-1]['segment'], runs[-1]['value']):
+            runs.append({'segment': seg, 'value': p, 'first_t_us': t, 'last_t_us': t, 'samples': 1})
+        else:
+            runs[-1]['last_t_us'] = t; runs[-1]['samples'] += 1
+    plateaus = []
+    for run in runs:
+        if run['last_t_us'] - run['first_t_us'] < 300000:
+            continue
+        velocities = [v for seg, t, v in speed if seg == run['segment'] and run['first_t_us'] <= t <= run['last_t_us']]
+        plateaus.append({**run, 'first_relative_s': round((run['first_t_us']-origin)/1e6, 6),
+                         'last_relative_s': round((run['last_t_us']-origin)/1e6, 6),
+                         'speed_samples': len(velocities), 'nonzero_speed_samples': sum(v != 0 for v in velocities),
+                         'speed_min': min(velocities) if velocities else None,
+                         'speed_max': max(velocities) if velocities else None,
+                         'outward_nonzero_speed_samples': (sum(v < 0 for v in velocities) if run['value'] == low
+                                                          else sum(v > 0 for v in velocities) if run['value'] == high else 0)})
+    # Integrate the recorded commands per reliable segment using zero-order hold.
+    streams = defaultdict(list)
+    for seg, t, v in speed: streams[seg].append((t/1e6, v))
+    integration = {}
+    for seg, rows in streams.items():
+        times = [t for t, v in rows]; prefix = [0.0]
+        for (a, v), (b, _) in zip(rows, rows[1:]): prefix.append(prefix[-1] + v*(b-a))
+        integration[seg] = (times, prefix, rows)
+    def integral_at(seg, t):
+        times, prefix, rows = integration[seg]
+        index = bisect_right(times, t)-1
+        return prefix[index]+rows[index][1]*(t-times[index])
+    pairs = []
+    for (sa, a, pa), (sb, b, pb) in zip(coordinate, coordinate[1:]):
+        if sa != sb or not low < pa < high or not low < pb < high or not .08 < (b-a)/1e6 < .13:
+            continue
+        times = integration[sa][0]
+        if a/1e6 < times[0] or b/1e6 > times[-1]: continue
+        pairs.append((integral_at(sa, b/1e6)-integral_at(sa, a/1e6), pb-pa))
+    fit = None
+    if len(pairs) >= 2 and sum(x*x for x, y in pairs) > 0:
+        slope = sum(x*y for x, y in pairs)/sum(x*x for x, y in pairs)
+        mx = sum(x for x, y in pairs)/len(pairs); my = sum(y for x, y in pairs)/len(pairs)
+        denominator = (sum((x-mx)**2 for x, y in pairs)*sum((y-my)**2 for x, y in pairs))**.5
+        fit = {'pairs': len(pairs), 'raw_coordinate_per_integrated_raw_speed_second': slope,
+               'rmse_raw_coordinate': (sum((y-slope*x)**2 for x, y in pairs)/len(pairs))**.5,
+               'pearson_r': sum((x-mx)*(y-my) for x, y in pairs)/denominator if denominator else None,
+               'method': 'No-intercept fit of coordinate increments to zero-order-held speed integral, same reliable segment, 80-130ms pairs excluding observed extrema. Dequeue timestamps; not a physical encoder calibration.'}
+    return {'route': '0x504 BF>E5 flags=00 cmd=04:2F payload=09 00, state=3',
+            'coordinate_samples': [[round((t-origin)/1e6, 6), p] for seg, t, p in coordinate],
+            'speed_samples_0x503': [[round((t-origin)/1e6, 6), v] for seg, t, v in speed],
+            'observed_min': low, 'observed_max': high, 'unique_values': len({p for seg, t, p in coordinate}),
+            'first_value': coordinate[0][2], 'last_value': coordinate[-1][2],
+            'coordinate_runs': len(runs), 'plateaus_at_least_300ms': plateaus,
+            'velocity_integral_fit': fit,
+            'interpretation_limit': 'A varying position-related coordinate. Measured position vs target/reference is not established; observed extrema are not universal angle units.'}
+
+
 def analyze(path):
     raw = path.read_bytes()
     complete = raw[:raw.rfind(b'\n')+1]
@@ -69,7 +142,7 @@ def analyze(path):
         pairings = Counter()
         for e in old_entries:
             b = e['packet']
-            if e['can_id'] == 0x503 and b[4:6] == b'\xe5\xbf' and b[9:11] == b'\x04\x69' and b[11:15] == bytes.fromhex('0f040819'):
+            if e['can_id'] == 0x503 and b[4:6] == b'\xe5\xbf' and b[9:11] == b'\x04\x69' and len(b) == 19 and b[11:15] == bytes.fromhex('0f040819'):
                 dial_context[e['segment']] = (e['stamp'], int.from_bytes(b[15:17], 'little', signed=True))
             key = identity((e['can_id'],e['extended'],e['segment'],e['stamp'],b))
             old_groups[key].add(b[11:-2])
@@ -134,7 +207,7 @@ def analyze(path):
     dial=[]
     for key,rows in sorted(groups.items()):
         b=rows[0]['packet']
-        if b[9:11]!=b'\x04\x69': continue
+        if b[9:11]!=b'\x04\x69' or len(b)!=19: continue
         values=[int.from_bytes(e['packet'][15:17],'little',signed=True) for e in rows]
         dial.append({'route':route(rows[0]),'packets':len(rows),'value_counts':dict(Counter(values)),
                      'prefix':b[11:15].hex(' ').upper(),'median_interval_ms':details(rows,origin)['median_interval_ms']})
@@ -147,6 +220,7 @@ def analyze(path):
             'offset_convention':'zero-based payload offsets, excluding 11-byte header and trailing CRC16',
             'historical_references':historical,'groups':comparison,'dial_routes':dial,
             'periodic_state_validation':analyze_periodic_state(path),
+            'post_calibration_position_observation':post_calibration_observation(entries,origin),
             'e5bf_non_dial_commands':commands,'state09_bfe5_runs':runs,
             'limits':['Relative time uses the first complete parsed CAN frame, not the button press.',
                       'Physical senders, movement, limit-contact times and units are not inferred.',
@@ -162,6 +236,23 @@ def self_check():
     assert state09(negative)==(3,-2147483648)
     assert state09(packet[:9]+b'\x04\x69'+packet[11:]) is None
     assert state09(packet[:-1]) is None
+    def entry(t, value, coordinate=False):
+        if coordinate:
+            b = b'\x00'*4 + b'\xbf\xe5' + b'\x00'*3 + b'\x04\x2f'
+            b += b'\x09\x00\x03' + value.to_bytes(4, 'little', signed=True) + b'\x00'*8 + b'\x00\x00'
+        else:
+            b = b'\x00'*4 + b'\xe5\xbf' + b'\x00'*3 + b'\x04\x69'
+            b += bytes.fromhex('0f040819') + value.to_bytes(2, 'little', signed=True) + b'\x00\x00'
+        return {'can_id':0x504 if coordinate else 0x503,'segment':0,'stamp':t,'packet':b}
+    rows = [entry(t, 10) for t in range(0, 600001, 10000)]
+    rows += [entry(t, value, True) for t, value in ((0,0),(100000,100),(200000,200),(300000,200),(400000,200),(500000,200),(600000,200))]
+    result = post_calibration_observation(sorted(rows,key=lambda e:e['stamp']),0)
+    assert result['observed_min'] == 0 and result['observed_max'] == 200
+    assert result['plateaus_at_least_300ms'][0]['outward_nonzero_speed_samples'] == 41
+    rows = [entry(t, 10) for t in range(0, 600001, 10000)]
+    rows += [entry(t, value, True) for t, value in ((0,0),(100000,100),(200000,200),(300000,300),(400000,500),(500000,500),(600000,500))]
+    fit = post_calibration_observation(sorted(rows,key=lambda e:e['stamp']),0)['velocity_integral_fit']
+    assert fit['pairs'] == 2 and abs(fit['raw_coordinate_per_integrated_raw_speed_second']-100) < 1e-8
     print('calibration analyzer self-check passed')
 
 
