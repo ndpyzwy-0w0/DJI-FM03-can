@@ -8,7 +8,7 @@
 
 - 上位机单文件：`dist/FM03_MotorControl_Calibration.exe`，主机版本 `motor_control_host 1.3 calibration_trial`。根目录“启动运动控制.cmd”优先打开它，无自动连接/ARM/寻限位。
 - ESP32-S3 控制固件：`dist/FM03_Calibration_20261010/motor_control_application.bin`，版本 `motor_control 1.2 calibration_trigger`。这是应用镜像，已有相容引导/分区时地址 `0x10000`；不是整片备份，不能从地址 0 写入，不是 FM03 原 MCU 固件。
-- 本轮仅软件构建和离线验证，**未烧录/开真实串口/发送 CAN**。用户旧上位机仍运行，现场停转、串口断开和 RS3 脱离待确认。旧 ESP32 固件 1.1 没有触发命令，新界面连接旧固件会禁用按钮；需要更新 ESP32 后才能试。
+- 用户后续明确授权烧录，现已更新 ESP32 控制固件 1.2 并读回版本；7 次诊断均未使能/普通值归零/校准尝试为零，尚未主动重放校准候选。新版窗口已打开不连接，部署证据 `reports/20261010_calibration_control_flash.json`。串口会话已结束、GUI已关闭后再更新，未中断采集；灯语/电源/RS3是否脱离等现场条件仍须用户在主动试验前确认。旧 ESP32 1.1 不支持按钮；连接其他旧设备时仍禁用。
 - 不替换正在运行的旧 Status EXE。不要让两窗口同时连接同一串口；切换前 STOP/DISARM、核对普通值归零并亲眼确认停转，然后断开旧窗口。
 
 ## 亲手试验步骤（固件更新以后）

@@ -358,3 +358,9 @@
 - 用户确认昨晚RS3自动寻限位后切独立测试台架，双方向各到极点停止、原坐标4096/0；现限位失效，非零速度连续转。无新增文件/同步时刻/物理方向/供电复位顺序，不按描述或日期强配11:58/12:02会话；“无持久化”是待验推测。
 - 本轮不抓包/开串口/烧录/触发；候选原件仅有效003846与132137两记录，弃用131955/132030不纳语义。复算tools/check_calibration_candidate.py，字节结果reports/20261010_calibration_candidate_evidence.json。
 - 新版用户未来试验记录位于captures/control_sessions每连接新目录，含calibration_request/clear_request、候选hex、ACK/STATE/MOTOR与人工观察；未产生该候选的新实机试验，不登记虚构文件。指南reports/20261010_calibration_trial_guide.md、软件验证reports/20261010_calibration_trial_validation.json。
+
+## 2026-10-10 12:48:05 北京时间 — 自动寻限位试验控制固件烧录与身份诊断
+
+- 用户明确请求烧录；本轮只ESP32应用固件更新，不做FM03运动/校准。上传reports/20261010_124619_821176_calibration_control_upload.txt；汇总reports/20261010_calibration_control_flash.json。
+- 新原始UART诊断captures/20261010_124659_953817_calibration_control_version_verify.log及同名json：DTR/RTS=false、921600、仅version/status、3秒、7STATE版本1.2且未ARM/零普通速度/零校准尝试，无错误警告；不是完整CAN抓包，不纳机械动作语义。当前灯色/电源/RS3接线/实际动作保持未知。
+- 用户烧录前会话captures/control_sessions/20261010_124329_565335_ea949b57已正常disconnect，末普通value/target0、阶段0；未给对应物理动作确认，只用于不打断活动会话的检查，原四文件保留未跟踪、不混入本轮提交。188既有文件哈希不变。新版GUI已打开不连接，尚无候选主动重放记录。

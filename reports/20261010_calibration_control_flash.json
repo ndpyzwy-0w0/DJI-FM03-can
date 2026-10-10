@@ -1,0 +1,70 @@
+{
+  "port": "COM17",
+  "hwid": "USB VID:PID=1A86:55D3 SER=5C83447762 LOCATION=1-8.3",
+  "command": [
+    "J:\\New soft project\\FM03\\.venv\\Scripts\\python.exe",
+    "C:\\Users\\ndpyz\\.platformio\\packages\\tool-esptoolpy\\esptool.py",
+    "--chip",
+    "esp32s3",
+    "--port",
+    "COM17",
+    "--baud",
+    "460800",
+    "--before",
+    "default_reset",
+    "--after",
+    "hard_reset",
+    "write_flash",
+    "-z",
+    "0x10000",
+    "J:\\New soft project\\FM03\\dist\\FM03_Calibration_20261010\\motor_control_application.bin"
+  ],
+  "upload_log": "reports/20261010_124619_821176_calibration_control_upload.txt",
+  "exit_code": 0,
+  "application_offset": "0x10000",
+  "sha256": "f3e1e84128a4918206d6c0124b02acb25e12ec8d06c46870ce05f7a3178cdeb0",
+  "scope": "ESP32 application only; no ARM/calibrate/nonzero sent",
+  "version_diagnostic": {
+    "raw_log": "captures/20261010_124659_953817_calibration_control_version_verify.log",
+    "metadata": "captures/20261010_124659_953817_calibration_control_version_verify.json",
+    "kind": "UART firmware identity diagnostic, not a CAN motion capture",
+    "port": "COM17",
+    "baud": 921600,
+    "dtr_before_open": false,
+    "rts_before_open": false,
+    "commands": [
+      {
+        "command": "version",
+        "bytes_written": 8
+      },
+      {
+        "command": "status",
+        "bytes_written": 7
+      }
+    ],
+    "duration_s": 3,
+    "raw_bytes": 2996,
+    "raw_sha256": "d67239d0fea22756a0c0f6382a8af2ce5e1410e717b70807a72f7a803aa50c7a",
+    "complete_state_count": 7,
+    "version_lines": [
+      "# VERSION motor_control 1.2 calibration_trigger limit=2048 interval_ms=50 watchdog_ms=2000"
+    ],
+    "first_state": "# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version=\"motor_control 1.2 calibration_trigger\"",
+    "last_state": "# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version=\"motor_control 1.2 calibration_trigger\"",
+    "error_or_warning_lines": [],
+    "motor_lines": 0,
+    "tail_terminated": true,
+    "assertions": "version1.2; all observed armed/value/target/sent/cal_pending/cal_attempts/cal_sent/cal_observed zero",
+    "physical_observations": "unknown; no ARM/calibrate/nonzero sent"
+  },
+  "verified_at_beijing": "2026-10-10 12:48:05",
+  "pre_existing_raw_files_unchanged": 188,
+  "preflash_session": "captures/control_sessions/20261010_124329_565335_ea949b57",
+  "preflash_checks": {
+    "control_processes": "none at check",
+    "last_user_session": "ended disconnect, last ordinary value/target zero, stage0; mechanical stop unconfirmed",
+    "capture_service": "API timed out; no local8765 listener/control/capture process found",
+    "physical_rs3_power_wiring": "unknown; flash identity check only, no active calibration/control performed"
+  },
+  "gui_launched_without_connect": true
+}

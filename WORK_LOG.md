@@ -1236,3 +1236,10 @@
 - 44项假串口/离线/Tk测试、capture/protocol自检、motor_control编译、最终单文件--check通过；原有184log/json/jsonl哈希一致。GUI已打开不连接，保留旧运行程序；新固件/EXE字节哈希在validation。尚未验证候选重放与实机保护，不把软件测试当机械校准/定位验证。
 - 本轮不打开真实串口、复位、烧录、ARM或发CAN。串口仅枚举COM17同CH343身份，用户旧上位机仍运行；已异步问停转/串口断开/RS3脱离，未回复前不打断实验。新版按钮需要ESP32 1.2，旧1.1不可用。
 - 更新HANDOFF/CAPTURE_FILE_MAP/captures INDEX/README，交付前git diff --check及原件/暂存检查。本轮将本地main提交（本条随本轮提交，准确号见git log），不推送或改写历史。下一步确认现场状态后更新ESP32、用户手动单次试验并记录动作/灯语/电源；持久化受控试验和实际位置验证另做。
+
+## 2026-10-10 12:48:05 北京时间 — 用户授权烧录控制1.2，读回未武装状态
+
+- 请求“帮我烧录”，起点main/98e71f3；用户124329会话四原件未跟踪，保留原字节且不纳本轮提交。当前GUI/采集进程未发现，用户会话已disconnect/末普通值0，API超时但无8765监听；COM17同CH343身份。灯语/电源/接线/实际停转仍未知，本轮只ESP32固件更新与UART诊断，不是动作实验。
+- 已校验上轮镜像/复用编译产物，esptool4.11核实ESP32-S3 rev0.2/MAC28:84:85:92:34:84，0x10000应用291568字节Hash verified，esptool自处理复位并启动，未单独操作RTS，不动FM03 MCU固件。日志reports/20261010_124619_821176_calibration_control_upload.txt，完整部署记录reports/20261010_calibration_control_flash.json。
+- UART DTR/RTS先false再open，仅version/status读3秒；captures/20261010_124659_953817_calibration_control_version_verify.log及同名json，7STATE版本1.2、armed/value/target/sent/校准pending/attempts/sent/observed全0、无错误警告。没有ARM/非零/触发校准/猜取消；零计数仅本次未武装诊断，不能判定主动控制/校准可靠或无丢帧。
+- 单文件新版GUI已打开无自动连接；188旧文件哈希不变。更新guide/README/HANDOFF与两动作映射，git diff --check及暂存raw校验后本轮内容本地提交main（本条随本轮提交，号见git log），不推送/改历史；用户新会话留未跟踪。下一步由用户独立台架手动一次自动寻限位并记录机械动作/阶段1/2→3与坐标，STOP不保证取消内部校准。

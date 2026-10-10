@@ -1,3 +1,11 @@
+## 当前入口：2026-10-10 12:48:05 北京时间 — 控制固件1.2已烧录并核验，新版上位机打开待用户手动试验
+
+- 用户明确要求“帮我烧录”；起点main/98e71f3，用户新会话captures/control_sessions/20261010_124329_565335_ea949b57未跟踪，原件保留不改、不混入本轮提交。上位机进程已关闭，新会话有session_end/disconnect，最后STATE value/target/run/pulse0、stage0；armed1与此前累计错误仍在旧记录中，不视为机械停转确认。8765 API超时、无本地监听或控制/采集进程；CH343实时枚举COM17 VID1A86 PID55D3 SER5C83447762。没有自动关闭用户实验/杀进程。
+- 校验镜像SHA f3e1e84128a4918206d6c0124b02acb25e12ec8d06c46870ce05f7a3178cdeb0一致，复用上轮已通过编译的291568字节motor_control 1.2 calibration_trigger，仅烧ESP32应用0x10000；esptool4.11确认ESP32-S3 rev0.2/MAC28:84:85:92:34:84，Hash of data verified。esptool自行default_reset/hard_reset启动，未独立软件RTS复位，不动引导/分区或FM03 GD32原固件。
+- 上传日志reports/20261010_124619_821176_calibration_control_upload.txt，部署/诊断汇总reports/20261010_calibration_control_flash.json。烧后DTR/RTS=false再开UART921600，仅version/status、3秒原始诊断captures/20261010_124659_953817_calibration_control_version_verify.log及同名json；7完整STATE版本1.2，armed/value/target/sent/cal_pending/cal_attempts/cal_sent/cal_observed全0，bus_errors/tx_failed/rejected/rx_missed0，无错误警告。没有ARM、非零速度、校准或取消；mode=listen是应用未武装状态，既有TWAI NORMAL可ACK，并非电气只听。零计数与3秒诊断不证明主动校准成功、全天无错或全CAN无损。
+- 新版dist/FM03_MotorControl_Calibration.exe重新可见打开、不带--connect。USB与ESP32身份核实；现场电机灯语、电源、RS3是否物理脱离及机械状态仍未知，不能补造。用户主动实验需独立台架/机械两端挡块/全程看护；ARM→STOP等归零→手动自动寻限位，候选单包有效性未验证，STOP/DISARM/watchdog不保证中止内部校准，需中止可切电机电源。
+- 188个烧录前captures log/json/jsonl SHA全未变（包括用户新会话4文件），原件不修改/覆盖。新增仅本轮UART诊断log/json与上传/部署/哈希记录，更新指南/README/动作索引/交接/北京时间WORK_LOG；git diff --check及暂存原始log字节检查通过后本地main提交，不推送/改历史，准确号见git log。保留用户未跟踪会话不纳本轮提交。下一步用户亲手一次候选试验，提供新自动日志+实际动作/灯语/供电确认，由agent判断是否进入1/2→3并建立两端软限位。
+
 ## 当前入口：2026-10-10 12:34:29 北京时间 — 自动寻限位候选试验版已开发/编译/打开，ESP32待更新
 
 - 起点main/033d364工作区干净（本轮此前新增src/motor_control.cpp修改继续完成）；用户明确授权给测试上位机增加电机自动寻限位触发。新增口述：昨晚RS3寻限位后接独立测试台架，两向极点停转，原坐标4096/0；现再测限位丢失、非零速度连续同向转。支持电机侧会话保留限位推测，不证明完全无持久化；断电/复位/换线先后、具体时刻/方向/灯语未知。未把口述强绑11:58或12:02会话。

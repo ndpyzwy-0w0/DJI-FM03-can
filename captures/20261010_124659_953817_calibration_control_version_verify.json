@@ -1,0 +1,31 @@
+{
+  "kind": "UART firmware identity diagnostic, not a CAN motion capture",
+  "port": "COM17",
+  "baud": 921600,
+  "dtr_before_open": false,
+  "rts_before_open": false,
+  "commands": [
+    {
+      "command": "version",
+      "bytes_written": 8
+    },
+    {
+      "command": "status",
+      "bytes_written": 7
+    }
+  ],
+  "duration_s": 3,
+  "raw_bytes": 2996,
+  "raw_sha256": "d67239d0fea22756a0c0f6382a8af2ce5e1410e717b70807a72f7a803aa50c7a",
+  "complete_state_count": 7,
+  "version_lines": [
+    "# VERSION motor_control 1.2 calibration_trigger limit=2048 interval_ms=50 watchdog_ms=2000"
+  ],
+  "first_state": "# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version=\"motor_control 1.2 calibration_trigger\"",
+  "last_state": "# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version=\"motor_control 1.2 calibration_trigger\"",
+  "error_or_warning_lines": [],
+  "motor_lines": 0,
+  "tail_terminated": true,
+  "assertions": "version1.2; all observed armed/value/target/sent/cal_pending/cal_attempts/cal_sent/cal_observed zero",
+  "physical_observations": "unknown; no ARM/calibrate/nonzero sent"
+}
