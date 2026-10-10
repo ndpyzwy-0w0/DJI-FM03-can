@@ -279,3 +279,9 @@
 - captures/20261010_011042_234428_control_version_verify.log及同名.json：用户授权烧录后的version/status诊断，只写UART两条命令，未ARM/发送运动指令；原始2379字节另存不覆盖。7个STATE均未武装/值零/发送零，版本1.1 status_coordinates；没有# MOTOR报文，不纳入坐标/方向/校准/限位动作语义结论。
 - 现场灯色与常亮/闪烁、两端电源、RS3拨轮设置、Rs/CANH/CANL接线、实际机械动作/方向/时刻均未知，用户本轮未提供。mode=listen是控制应用未ARM标记，TWAI NORMAL可ACK，不按字面当listen_1m电气只听。
 - esptool自带复位后仅核验应用启动，证据reports/20261010_control_flash_launch.json与上传.txt；控制窗口已打开而未自动连接/ARM。后续实验需新的现场动作确认。
+
+### 2026-10-10 11:52:49 北京时间 — 后续桌面手动控制实验自动日志入口（本轮无新动作抓包）
+
+- 每次连接独立captures/control_sessions/北京时间_随机后缀：rx.log为主机接收原字节，events.jsonl为带时间/seq的TX尝试与写入结果、完整回话/STATE/MOTOR/A-B/用户观察；session.json只创建一次，summary.json为结束后的衍生摘要。完整UART不等于完整CAN；命令写入不等于机械动作。用户备注记录点击时刻，实际运动/灯语/电源/接线仍须用户确认；未知不填。
+- A/B及失效自动落盘，强制退出后原件仍可离线分析并标记残行/缺结尾。新日志8项与其他回归仅假串口/临时目录，不把合成记录归入动作证据。旧有效132137/003846与弃用131955/132030用途不变；十小时前未保存的手动实验无法补回。
+- agent入口reports/20261010_control_logging_guide.md及tools/control_session.py；未来有新真实会话及现场动作确认后，再补本索引与CAPTURE_FILE_MAP对应关系。原始证据只追加/独占创建，不覆盖旧抓包。

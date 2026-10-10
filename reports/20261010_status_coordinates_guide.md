@@ -1,3 +1,5 @@
+> 日志更新：桌面控制新版每次连接自动保存完整UART会话，A/B也自动写日志；原有手动导出仍可用。详见[自动实验日志说明](20261010_control_logging_guide.md)，本版无需重烧固件。
+
 > 部署更新（2026-10-10 01:12:20 北京时间）：COM17已烧录motor_control 1.1 status_coordinates，单文件dist/FM03_MotorControl_Status.exe已打开，未自动连接/ARM。板上现在是控制固件；下文“未烧录/旧listen_1m”是此前准备阶段背景。UART版本/未ARM核验通过，但未收到坐标反馈。当前上传证据见[本次记录](20261010_control_flash_launch.json)。
 
 # 状态显示与坐标记录实验版 v1

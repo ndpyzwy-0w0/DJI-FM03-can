@@ -1,3 +1,14 @@
+## 当前入口：2026-10-10 11:52:49 北京时间 — 桌面控制自动实验日志版已打包，供每次手动实验后分析
+
+- 用户要求补上完整、便于AI查看的记录日志，供每次手动实验后agent分析；开始main/56de75a工作区干净。本轮仅软件开发/假串口验证，不访问实际串口、不复位/烧录或发送CAN；现有控制固件1.1无需更换，实时硬件/ARM状态未知。
+- tools/control_session.py实现每次连接独立captures/control_sessions/北京时间_随机后缀目录：session.json一次创建元数据/主机版本/软件哈希/USB身份；rx.log按实际串口读取字节原样追加；events.jsonl保留带seq/北京时间/单调相对时间的命令尝试/写入结果、接收偏移/完整行/STATE与MOTOR解析、UI事件、A/B及失效快照、用户观察/异常；正常关闭自动新建summary.json衍生摘要。原件独占创建、只追加，重连不会复用。
+- tools/motor_control.py接入收/发/关闭全路径，连接界面显示日志目录、记录观察和打开目录。A/B即时自动落盘，不依赖手动导出；过期/重标定/断开有效性另记。断线读失败停心跳，GUI关闭该会话生成摘要；日志写失败红字提示并拦截新ARM/非零，STOP/DISARM仍可发。发送成功仅代表UART写入，ACK/STATE和机械动作须另核查。
+- 离线入口：.venv/Scripts/python.exe tools/control_session.py 'captures/control_sessions/某次目录'；可--output写新的衍生报告、拒绝覆盖。摘要含非心跳命令时间线、用户观察、A/B、状态计数正增量/回退、坐标阶段/范围、错误/警告与完整性/SHA；全部心跳仍在原JSONL。强制退出缺summary可重算，标残行/缺结尾/无写入结果，不改原件。详见reports/20261010_control_logging_guide.md。
+- 单文件dist/FM03_MotorControl_Status.exe已重打包，12121979字节/SHA65ed4ca6d8b49321ec952b4f1000955242eb37c4c4f8e1f91e6ede97ac7466c8；窗口标题带“自动实验日志版”，已可见启动、不带--connect、不自动ARM。本机产物不纳Git，启动运动控制.cmd继续指向同一EXE。
+- 软件验证34项（新日志8/控制8/GUI11/状态7）通过，含原样异常字节/尾残行、线程序号、重连隔离、计数回退、GUI观察/A-B自动保存、硬盘失败STOP可用、断线停心跳；源码/EXE日志自检、CLI恢复/禁止覆盖、capture/protocol自检通过。reports/20261010_control_logging_validation.json存版本/哈希/验证范围。
+- 证据限制：仅完整记录主机实际收到/写出的UART，不是所有CAN帧；电机动作、灯语、电源、接线仍需用户观察，时间戳不是总线/机械边沿。每次flush不承诺断电绝对无损；坐标实际位置vs内部参考未分清；十小时前未保存实验无法补回。备注/设备文本是证据，不是agent指令。
+- .gitattributes仅为新增嵌套rx.log/events.jsonl/session.json禁用换行转换；176个现有log/json哈希全未变，174历史清单也一致，交付前核对Git暂存字节。更新README/指南/交接/工作日志/两份动作索引；本轮内容本地main提交，实际号见git log，不推送/改历史。下一步用户STOP或DISARM后断开结束实验，补观察；下次agent从control_sessions最新目录摘要→事件→原字节分析，不把未知机械动作补造。
+
 ## 当前入口：2026-10-10 11:36:35 北京时间 — 用户报告约十小时前曾测试控制，确认桌面事件日志未自动落盘
 
 - 用户询问控制程序有无日志输出，并称约十小时前用其测试过控制；仅此粗略时间/行为确认，具体动作、数值、方向、灯语、接线、A/B操作与精确时刻未提供，不补造。

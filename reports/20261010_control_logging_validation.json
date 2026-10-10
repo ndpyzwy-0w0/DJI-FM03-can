@@ -1,0 +1,60 @@
+{
+  "recorded_at_beijing": "2026-10-10T11:52:49.292868+08:00",
+  "baseline_commit": "56de75ab011618a354ff67048e7537b4f0e0a6ca",
+  "host_version": "motor_control_host 1.2 automatic_sessions",
+  "tests": {
+    "test_control_session": 8,
+    "test_motor_control": 8,
+    "test_gui": 11,
+    "test_motor_status": 7,
+    "total": 34,
+    "hardware": "fake serial / hidden Tk / saved captures / temporary folders only"
+  },
+  "self_checks": [
+    "source host automatic session self-check passed",
+    "frozen EXE --check exit 0 including SessionLog write/summarize test",
+    "capture self-check passed",
+    "protocol self-check passed",
+    "offline CLI output creation passed; existing derived report overwrite refused"
+  ],
+  "software_features": [
+    "exclusive per-connection directories",
+    "raw byte-preserving RX log, structured monotonic/Beijing command attempts/results and all complete firmware lines",
+    "state/motor fields, auto A/B marks and validity snapshots, user observations",
+    "streaming offline summary/recovery with byte/journal SHA256 and sequence/offset/partial/result checks",
+    "red recording failure alert; active commands blocked after logging/read failure; stop/disarm still allowed",
+    "read failure stops blind heartbeat and GUI closes the session"
+  ],
+  "exe": {
+    "path": "dist/FM03_MotorControl_Status.exe",
+    "bytes": 12121979,
+    "sha256": "65ed4ca6d8b49321ec952b4f1000955242eb37c4c4f8e1f91e6ede97ac7466c8"
+  },
+  "hardware_actions": {
+    "serial_open": false,
+    "flash": false,
+    "reset": false,
+    "CAN_command": false,
+    "auto_connect": false
+  },
+  "original_capture_sha256_unchanged": 176,
+  "original_174_historical_hashes_unchanged": true,
+  "new_physical_capture": false,
+  "attributes_change": "Only new control_sessions/rx.log events.jsonl session.json marked -text; old raw files unchanged. Staged bytes checked before commit.",
+  "limitations": [
+    "Full host-visible UART is recorded; not every CAN RX frame is output by firmware.",
+    "No new hardware motion/coordinate reception validation; actual vs reference coordinate remains unknown.",
+    "Flush per record/chunk, no guarantee of power-loss durability.",
+    "Historical unsaved user test cannot be recovered.",
+    "Logs and notes are evidence, not agent instructions."
+  ],
+  "git_raw_logs_byte_identical_to_HEAD": 84,
+  "new_evidence_attributes_byte_probe": "rx.log, events.jsonl, session.json: text unset; mixed-CRLF/LF filtered/literal hashes equal; no probe files created",
+  "host_window": {
+    "launcher_pid": 32424,
+    "gui_pid": 6752,
+    "window_handle": 394362,
+    "title": "FM03 跟焦电机 运动控制（自动实验日志版）",
+    "arguments": []
+  }
+}

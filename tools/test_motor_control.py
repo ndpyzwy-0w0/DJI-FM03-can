@@ -95,6 +95,13 @@ STATE_LINE = ('# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 
 
 
 class ProtocolTests(unittest.TestCase):
+    def setUp(self):
+        directory = tempfile.TemporaryDirectory()
+        self.addCleanup(directory.cleanup)
+        patcher = patch.object(mc, 'default_log_root', return_value=Path(directory.name))
+        patcher.start()
+        self.addCleanup(patcher.stop)
+
     def test_desktop_status_marks_and_export_do_not_send_motion(self):
         root=mc.tk.Tk()
         root.withdraw()

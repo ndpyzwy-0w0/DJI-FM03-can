@@ -25,6 +25,7 @@ from __future__ import annotations
 import argparse
 from datetime import datetime, timedelta, timezone
 import json
+import os
 from pathlib import Path
 import queue
 import re
@@ -34,6 +35,7 @@ import time
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
 from motor_status import LiveMotor, parse_motor_line
+from control_session import HOST_VERSION, SessionLog, default_log_root
 
 try:
     import serial
@@ -82,7 +84,7 @@ def describe_direction(value: int) -> str:
 class MotorLink:
     """Owns the serial port and the device conversation. UI-agnostic and testable."""
 
-    def __init__(self, events: queue.Queue):
+    def __init__(self, events: queue.Queue, log_root=None):
         self.events = events
         self.serial = None
         self.port = None
@@ -97,6 +99,11 @@ class MotorLink:
         self.last_state_at = 0.0
         self.last_rx_at = 0.0
         self.connect_error = None
+        self.log_root = Path(log_root) if log_root is not None else default_log_root()
+        self.session = None
+        self.last_session_dir = None
+        self.logging_error = None
+        self.tx_id = 0
         # Kept as an attribute so a test can shorten it without touching production
         # code; the shipped cadence is HEARTBEAT_MS.
         self.heartbeat_ms = HEARTBEAT_MS
@@ -107,15 +114,38 @@ class MotorLink:
             raise RuntimeError("pyserial is not installed in this interpreter")
         self.close()
         self.stopping.clear()
-        connection = serial.Serial(port=None, baudrate=BAUD, timeout=0.1, write_timeout=1)
-        # Set control lines before opening: this must never reset the ESP32.
-        connection.dtr = False
-        connection.rts = False
-        connection.port = port
-        connection.open()
+        self.logging_error = None
+        self.lines_written = self.lines_read = self.bad_lines = self.tx_id = 0
+        self.last_state = {}
+        self.last_state_at = self.last_rx_at = 0.0
+        device = {}
+        try:
+            info = next((p for p in list_ports.comports() if p.device == port), None)
+            if info:
+                device = {key: getattr(info, key, None) for key in ('description', 'hwid', 'vid', 'pid', 'serial_number')}
+        except Exception as exc:
+            device = {'enumeration_error': str(exc)}
+        # Refuse to start an unrecorded experiment if the folder cannot be created.
+        self.session = SessionLog(self.log_root, port, BAUD, device)
+        self.last_session_dir = self.session.path
+        connection = None
+        try:
+            connection = serial.Serial(port=None, baudrate=BAUD, timeout=0.1, write_timeout=1)
+            # Set control lines before opening: this must never reset the ESP32.
+            connection.dtr = False
+            connection.rts = False
+            connection.port = port
+            connection.open()
+        except Exception as exc:
+            if connection is not None:
+                connection.close()
+            self.record_event('io_error', operation='open', error=str(exc))
+            self.close('open_failed')
+            raise
         self.serial = connection
         self.port = port
         self.connect_error = None
+        self.record_event('serial_open', port=port, dtr=False, rts=False)
         self.reader = threading.Thread(target=self._read_loop, name="motor-reader", daemon=True)
         self.reader.start()
         self.heartbeat = threading.Thread(target=self._heartbeat_loop, name="motor-heartbeat",
@@ -123,12 +153,12 @@ class MotorLink:
         self.heartbeat.start()
         self.send("status")
 
-    def close(self) -> None:
+    def close(self, reason='disconnect') -> None:
         self.stopping.set()
         if self.heartbeat and self.heartbeat.is_alive():
-            self.heartbeat.join(timeout=1)
+            self.heartbeat.join(timeout=2)
         if self.reader and self.reader.is_alive():
-            self.reader.join(timeout=1)
+            self.reader.join(timeout=2)
         if self.serial is not None:
             try:
                 self.serial.close()
@@ -137,6 +167,25 @@ class MotorLink:
         self.serial = None
         self.reader = None
         self.heartbeat = None
+        if self.session and not self.session.closed:
+            try:
+                self.session.close(reason)
+            except Exception as exc:
+                self._log_error(exc)
+
+    def _log_error(self, exc):
+        if self.logging_error is None:
+            self.logging_error = str(exc)
+            self.events.put(('logging_error', f'实验日志保存失败：{exc}；停止本次实验并检查磁盘。'))
+
+    def record_event(self, kind, **fields):
+        if self.session is None or self.session.closed:
+            return None
+        try:
+            return self.session.event(kind, **fields)
+        except Exception as exc:
+            self._log_error(exc)
+            return None
 
     def is_open(self) -> bool:
         return self.serial is not None and getattr(self.serial, "is_open", False)
@@ -146,12 +195,29 @@ class MotorLink:
         if not self.is_open():
             return False
         payload = (command + "\n").encode("ascii", errors="replace")
+        allowed = command.strip().lower() in ('stop', 'disarm', 'go 0', 'status', 'ping', 'version', 'help')
+        if (self.logging_error or self.stopping.is_set()) and not allowed:
+            self.events.put(('error', f'未发送 {command}：记录或连接已中断；STOP/DISARM仍可用。'))
+            self.record_event('command_blocked', command=command)
+            return False
+        tx_id = None
         try:
             with self.lock:
-                self.serial.write(payload)
+                self.tx_id += 1
+                tx_id = self.tx_id
+                self.record_event('tx_attempt', tx_id=tx_id, command=command, payload_hex=payload.hex())
+                if (self.logging_error or self.stopping.is_set()) and not allowed:
+                    return False
+                written = self.serial.write(payload)
+                ok = written == len(payload)
+                self.record_event('tx_result', tx_id=tx_id, command=command, bytes_written=written, ok=ok)
+                if not ok:
+                    self.events.put(('error', f'串口命令只写入 {written}/{len(payload)} 字节：{command}'))
+                    return False
                 self.lines_written += 1
             return True
         except Exception as exc:  # cable pulled, port closed underneath us
+            self.record_event('tx_result', tx_id=tx_id, command=command, bytes_written=None, ok=False, error=str(exc))
             self.events.put(("error", f"write failed: {exc}"))
             return False
 
@@ -162,19 +228,34 @@ class MotorLink:
                 chunk = self.serial.read(4096) if self.serial is not None else b""
             except Exception as exc:
                 if not self.stopping.is_set():
+                    self.record_event('io_error', operation='read', error=str(exc))
                     self.events.put(("error", f"read failed: {exc}"))
+                    # A failed reader must not keep feeding a blind motion watchdog.
+                    self.stopping.set()
                 return
             if not chunk:
                 continue
             self.last_rx_at = time.monotonic()
+            chunk_record = None
+            if self.session and not self.session.closed:
+                try:
+                    chunk_record = self.session.receive(chunk, self.last_rx_at)
+                except Exception as exc:
+                    self._log_error(exc)
             buffer += chunk
             lines = buffer.split(b"\n")
             buffer = lines.pop()
             if len(buffer) > 8192:
+                self.record_event('parser_gap', discarded_partial_bytes=len(buffer))
                 buffer = b""
                 self.bad_lines += 1
             for raw in lines:
                 line = raw.decode("ascii", errors="replace").strip()
+                fields = parse_state(line) if line.startswith('# STATE ') else parse_motor_line(line)
+                category = 'state' if line.startswith('# STATE ') else 'motor' if fields is not None else 'other'
+                self.record_event('rx_line', line=raw.decode('ascii', errors='replace'), category=category, fields=fields or {},
+                    completed_in_chunk_seq=chunk_record['seq'] if chunk_record else None,
+                    received_elapsed_s=chunk_record['received_elapsed_s'] if chunk_record else None)
                 if not line:
                     continue
                 self.lines_read += 1
@@ -205,6 +286,7 @@ class MotorControlApp:
         self.armed = False
         self.value = 0
         self.limit = DEFAULT_LIMIT
+        self.last_coordinate_log = None
         self.build_ui()
         if port:
             self.port_var.set(port)
@@ -215,7 +297,7 @@ class MotorControlApp:
 
     # -- UI ----------------------------------------------------------------
     def build_ui(self) -> None:
-        self.root.title("FM03 跟焦电机 运动控制")
+        self.root.title("FM03 跟焦电机 运动控制（自动实验日志版）")
         self.root.minsize(860, 760)
         outer = ttk.Frame(self.root, padding=10)
         outer.pack(fill="both", expand=True)
@@ -234,6 +316,13 @@ class MotorControlApp:
         self.conn_label.grid(row=0, column=4, padx=10, sticky="w")
         self.heartbeat_label = ttk.Label(conn, text="")
         self.heartbeat_label.grid(row=0, column=5, padx=10, sticky="w")
+        self.session_label = ttk.Label(conn, text='连接后自动保存完整实验日志', wraplength=800)
+        self.session_label.grid(row=1, column=0, columnspan=6, sticky='w', pady=3)
+        self.observation_var = tk.StringVar()
+        ttk.Entry(conn, textvariable=self.observation_var, width=58).grid(row=2, column=0, columnspan=3, sticky='we')
+        ttk.Button(conn, text='记录观察', command=self.record_observation).grid(row=2, column=3, padx=3)
+        ttk.Button(conn, text='打开日志目录', command=self.open_log_folder).grid(row=2, column=4, padx=3)
+        ttk.Label(conn, text='可填实际动作、灯语、电源、接线；未记录的现场信息保持未知。').grid(row=3, column=0, columnspan=6, sticky='w')
 
         # Enable row
         enable = ttk.LabelFrame(outer, text="使能（必须先 arm，板子才会开始发送）", padding=8)
@@ -350,6 +439,7 @@ class MotorControlApp:
         self.root.bind("<Down>", lambda _event: self.nudge(-16))
 
     def log(self, message: str) -> None:
+        self.link.record_event('ui_event', message=message)
         stamp = time.strftime("%H:%M:%S")
         self.log_text.configure(state="normal")
         self.log_text.insert("end", f"{stamp}  {message}\n")
@@ -389,15 +479,47 @@ class MotorControlApp:
             messagebox.showerror("连接失败", str(exc))
             return
         self.log(f"已连接 {port} @ {BAUD}")
+        self.last_coordinate_log = None
+        self.session_label.configure(text=f'自动日志：{self.link.last_session_dir}', foreground='black')
+        if self.observation_var.get().strip():
+            self.record_observation()
         self.connect_button.configure(text="断开", command=self.disconnect)
 
-    def disconnect(self) -> None:
-        self.link.close()
+    def disconnect(self, reason='disconnect') -> None:
+        self.log('结束本次串口实验')
         self.motor.reset('连接已断开')
+        self.update_motor_status(active=False)
+        self.link.close(reason)
         self.armed = False
         self.connect_button.configure(text="连接", command=self.connect)
         self.conn_label.configure(text="未连接")
         self.log("已断开")
+        if self.link.last_session_dir and not self.link.logging_error:
+            self.session_label.configure(text=f'日志已保存（含自动摘要）：{self.link.last_session_dir}')
+
+    def shutdown(self):
+        self.disconnect('window_closed')
+        self.root.destroy()
+
+    def record_observation(self):
+        text = self.observation_var.get().strip()
+        if not text:
+            messagebox.showinfo('观察备注', '填写实际动作、灯语、电源或接线，再点记录。')
+            return
+        if not self.link.is_open():
+            messagebox.showinfo('尚未开始实验', '连接后会保存输入的工况；实验中也可以继续记录观察。')
+            return
+        self.link.record_event('observation', text=text, source='user', time_semantics='note click time; actual action time only if user specifies it')
+        self.log(f'观察备注：{text}')
+        self.observation_var.set('')
+
+    def open_log_folder(self):
+        path = self.link.last_session_dir or self.link.log_root
+        try:
+            path.mkdir(parents=True, exist_ok=True)
+            os.startfile(str(path))
+        except OSError as exc:
+            messagebox.showerror('打开日志目录失败', str(exc))
 
     def toggle_connection(self) -> None:
         if self.link.is_open():
@@ -409,7 +531,8 @@ class MotorControlApp:
     def arm(self) -> None:
         if not self.require_link():
             return
-        self.link.send("arm")
+        if not self.link.send("arm"):
+            return
         self.armed = True
         self.value = 0
         self.set_value(0)
@@ -592,6 +715,11 @@ class MotorControlApp:
                 elif kind == "error":
                     self.motor.reset('串口错误/中断')
                     self.log(payload)
+                    if self.link.stopping.is_set() and self.link.is_open():
+                        self.disconnect('serial_error')
+                elif kind == 'logging_error':
+                    self.session_label.configure(text=payload, foreground='red')
+                    self.log(payload)
         except queue.Empty:
             pass
         self.update_connection_labels()
@@ -661,8 +789,12 @@ class MotorControlApp:
         self.arm_label.configure(text="ARMED" if self.armed else "disarmed",
                                  foreground="red" if self.armed else "black")
 
-    def update_motor_status(self):
-        state = self.motor.snapshot(time.monotonic(),self.link.is_open())
+    def update_motor_status(self, active=None):
+        state = self.motor.snapshot(time.monotonic(), self.link.is_open() if active is None else active)
+        signature = json.dumps({key: state[key] for key in ('epoch','fresh','can_record','marks','records','reason')}, ensure_ascii=False, sort_keys=True)
+        if signature != self.last_coordinate_log:
+            self.link.record_event('coordinate_snapshot', snapshot={key:value for key,value in state.items() if key != 'history'})
+            self.last_coordinate_log = signature
         labels = {0:'未校准状态候选',1:'校准阶段 1',2:'校准阶段 2',3:'校准后工作阶段候选'}
         if state['fresh']:
             text = f"阶段 {state['stage']}：{labels.get(state['stage'],'未知阶段')}"
@@ -693,6 +825,7 @@ class MotorControlApp:
             messagebox.showwarning('坐标不可记录',str(exc))
             return
         self.log(f"记录 {marker} 原始坐标 {mark['coordinate']}，接收段 {mark['epoch']}，不发送电机命令")
+        self.link.record_event('coordinate_mark', mark=mark)
         self.update_motor_status()
 
     def export_coordinates(self):
@@ -713,6 +846,7 @@ class MotorControlApp:
             messagebox.showerror('导出失败',str(exc))
             return
         self.log(f'坐标记录已导出：{path}')
+        self.link.record_event('coordinate_export', path=path)
 
 
 def self_check() -> None:
@@ -732,7 +866,17 @@ def self_check() -> None:
     assert describe_direction(16).startswith("+16")
     # A malformed or unrelated line must not raise.
     assert parse_state("# STATE ") == {}
-    print("motor_control self-check passed")
+    import tempfile
+    from control_session import summarize
+    with tempfile.TemporaryDirectory() as directory:
+        session = SessionLog(Path(directory), 'FAKE_SELF_CHECK', BAUD)
+        session.receive(b'# CHECK fake offline bytes\r\ntail')
+        session.event('observation', text='self-check only, no hardware')
+        session.close('offline_self_check')
+        report = summarize(session.path)
+        assert report['ended_normally'] and report['integrity']['rx_offsets_cover_raw']
+        assert report['integrity']['rx_unterminated_tail_bytes'] == 4
+    print(f'{HOST_VERSION}: protocol and automatic log self-check passed')
 
 
 def main() -> int:
@@ -742,6 +886,7 @@ def main() -> int:
     parser.add_argument("--connect", action="store_true", help="connect on start")
     parser.add_argument("--check", action="store_true", help="run offline self-checks and exit")
     parser.add_argument("--list", action="store_true", help="list serial ports and exit")
+    parser.add_argument('--log-dir', type=Path, help='override automatic session root (default: captures/control_sessions beside project/executable)')
     args = parser.parse_args()
 
     if args.check:
@@ -760,7 +905,9 @@ def main() -> int:
 
     root = tk.Tk()
     app = MotorControlApp(root, args.port, args.connect)
-    root.protocol("WM_DELETE_WINDOW", lambda: (app.link.close(), root.destroy()))
+    if args.log_dir:
+        app.link.log_root = args.log_dir.resolve()
+    root.protocol("WM_DELETE_WINDOW", app.shutdown)
     root.mainloop()
     return 0
 

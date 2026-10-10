@@ -1,5 +1,8 @@
 * text=auto
 captures/*.log -text
+captures/control_sessions/**/rx.log -text
+captures/control_sessions/**/events.jsonl -text
+captures/control_sessions/**/session.json -text
 *.bin -text
 *.png -text
 *.cmd text eol=crlf
