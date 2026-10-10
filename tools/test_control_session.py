@@ -144,6 +144,48 @@ class SessionTests(unittest.TestCase):
         self.assertTrue(all(not mark['valid'] for mark in report['last_coordinate_snapshot']['records']))
         self.assertTrue(all(command=='status\n' for command in fake.written))
 
+    def test_small_telemetry_is_not_held_for_full_usb_batch(self):
+        class BatchDriver(FakeSerial):
+            def read(self, size):
+                end=time.monotonic()+.8
+                while self.is_open and self.in_waiting<size and time.monotonic()<end:
+                    time.sleep(.003)
+                return super().read(size)
+        fake=BatchDriver()
+        link=self.open_link(fake)
+        fake.feed('# MOTOR epoch=1 t_us=1000000 stage=3 coord=1234 valid=1 packets=1\n')
+        kind,payload=link.events.get(timeout=.35)
+        self.assertEqual(kind,'motor')
+        self.assertEqual(payload[0]['coord'],1234)
+        link.close()
+
+    def test_stage0_and_stale_sentinel_remain_visible_without_enabling_marks(self):
+        root=mc.tk.Tk();root.withdraw()
+        self.addCleanup(root.destroy)
+        with patch.object(mc.list_ports,'comports',return_value=[]):
+            app=mc.MotorControlApp(root,None,False)
+        app.link.serial=FakeSerial()
+        self.addCleanup(app.link.close)
+        app.motor.telemetry({'epoch':1,'t_us':1000000,'stage':0,'coord':2147483647,'valid':0},time.monotonic())
+        app.update_motor_status()
+        self.assertIn('阶段 0',app.motor_label.cget('text'))
+        self.assertIn('2147483647',app.motor_label.cget('text'))
+        self.assertIn('无效哨兵',app.motor_label.cget('text'))
+        app.motor.seen-=1
+        app.update_motor_status()
+        self.assertIn('阶段 0',app.motor_label.cget('text'))
+        self.assertIn('过期',app.motor_label.cget('text'))
+        self.assertEqual(str(app.record_a.cget('state')),'disabled')
+        self.assertEqual(str(app.record_b.cget('state')),'disabled')
+
+    def test_arm_driver_reset_is_not_reported_as_mcu_restart(self):
+        log=SessionLog(self.root,'FAKE',921600)
+        log.event('rx_line',category='state',line='# STATE',fields={'sent':0,'bus_errors':100,'mode':'listen'})
+        log.event('rx_line',category='other',line='# ACK arm value=0',fields={})
+        log.event('rx_line',category='state',line='# STATE',fields={'sent':0,'bus_errors':0,'mode':'replay'})
+        log.close()
+        self.assertEqual(summarize(log.path)['anomalies'][0]['type'],'counter_decrease_with_arm_mode_change')
+
     def test_read_failure_stops_blind_heartbeats_and_records_error(self):
         fake=FakeSerial()
         link=self.open_link(fake)

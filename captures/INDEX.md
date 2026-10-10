@@ -340,3 +340,10 @@
 - 每次连接独立captures/control_sessions/北京时间_随机后缀：rx.log为主机接收原字节，events.jsonl为带时间/seq的TX尝试与写入结果、完整回话/STATE/MOTOR/A-B/用户观察；session.json只创建一次，summary.json为结束后的衍生摘要。完整UART不等于完整CAN；命令写入不等于机械动作。用户备注记录点击时刻，实际运动/灯语/电源/接线仍须用户确认；未知不填。
 - A/B及失效自动落盘，强制退出后原件仍可离线分析并标记残行/缺结尾。新日志8项与其他回归仅假串口/临时目录，不把合成记录归入动作证据。旧有效132137/003846与弃用131955/132030用途不变；十小时前未保存的手动实验无法补回。
 - agent入口reports/20261010_control_logging_guide.md及tools/control_session.py；未来有新真实会话及现场动作确认后，再补本索引与CAPTURE_FILE_MAP对应关系。原始证据只追加/独占创建，不覆盖旧抓包。
+
+### 2026-10-10 12:14:48 北京时间 — 11:58桌面控制会话与上位机录屏
+
+- 原会话captures/control_sessions/20261010_115824_562578_828a108c/session.json、rx.log、events.jsonl、summary.json未改；录屏原I:/OBScatch/2026-10-10 11-58-17.mp4的字节副本captures/media/20261010_115817_control_host_operation.mp4。画面会话路径和界面操作与日志吻合，时间仅主机命令/回话时刻，未做帧精确或机械同步。
+- 可确认主机11:58:36 ARM、44秒go16、48秒go256、11:59:01 go0、03秒go−256、14秒重发、15秒go0、34秒DISARM、35秒STOP（精确小数见analysis.json）。固件ACK/STATE对应，不证明物理顺逆方向/停止或触限；此前RS3校准、两端电源/灯语、RS3脱离/接线情况和实际运动待用户确认。
+- 676实际状态都是stage0（69字段0、607字段2147483647），另1条适配器重置通知；没有stage3/可记录A-B/标定启动命令。不把此记录用于阶段3速度坐标模型/虚拟限位或定位精度。35个4096主机批次及500ms过期显示说明UI问题；ARM驱动重建解释bus_errors清零，不当MCU重启。
+- 证据reports/20261010_115824_control_feedback_findings.md与analysis/validation JSON；7张抽帧仅GUI截图，不能补灯语/机械动作；未转写音频。此记录是用户亲手速度控制交互证据，无需弃用，机械语义另待确认。旧131955/132030弃用状态不变。

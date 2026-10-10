@@ -14,7 +14,7 @@ import threading
 import time
 import uuid
 
-HOST_VERSION = 'motor_control_host 1.2 automatic_sessions'
+HOST_VERSION = 'motor_control_host 1.2.1 feedback_diagnostics'
 BEIJING = timezone(timedelta(hours=8))
 
 
@@ -160,6 +160,7 @@ def summarize(directory):
     attempts, results = set(), set()
     last_motor_time = None
     max_motor_gap = 0
+    last_arm_ack = None
     raw_size = (directory / 'rx.log').stat().st_size
     raw_lines, raw_tail = raw_line_counts(directory / 'rx.log')
     with (directory / 'events.jsonl').open('rb') as stream:
@@ -216,7 +217,10 @@ def summarize(directory):
                                     and fields[k] < previous[k] for k in counter_keys)
                         if reset:
                             resets += 1
-                            anomalies.append({**reference, 'type': 'counter_decrease_possible_restart'})
+                            arm_reset = (last_arm_ack is not None and 0 <= elapsed-last_arm_ack <= 2
+                                         and previous.get('mode') == 'listen' and fields.get('mode') == 'replay')
+                            anomalies.append({**reference, 'type': 'counter_decrease_with_arm_mode_change' if arm_reset else 'counter_decrease_unexplained',
+                                              'note': 'ARM rebuilds TWAI in current firmware; not evidence of MCU restart' if arm_reset else 'counter decrease alone does not identify a physical MCU restart'})
                         for key in counter_keys:
                             if isinstance(fields.get(key), int) and isinstance(previous.get(key), int):
                                 counter_deltas[key] += max(0, fields[key] - previous[key])
@@ -240,6 +244,8 @@ def summarize(directory):
                     last_motor = {**reference, 'fields': fields}
                 if row.get('line', '').startswith(('# ERR', '# ERROR', '# WARN', '# READY ', '# MODE ')):
                     anomalies.append({**reference, 'type': 'device_event', 'line': row['line']})
+                if row.get('line', '').startswith('# ACK arm '):
+                    last_arm_ack = elapsed
     return {
         'schema': 'fm03.control_summary.v1', 'session': metadata,
         'ended_normally': end is not None, 'end_reason': end.get('reason') if end else 'missing session_end: interrupted or still open',

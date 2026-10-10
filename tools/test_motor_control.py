@@ -42,10 +42,15 @@ class FakeSerial:
             self.written.append(payload.decode("ascii"))
         return len(payload)
 
+    @property
+    def in_waiting(self):
+        with self._lock:
+            return len(self._pending)
+
     def read(self, _size):
         with self._lock:
-            chunk = bytes(self._pending)
-            self._pending.clear()
+            chunk = bytes(self._pending[:_size])
+            del self._pending[:_size]
         if chunk:
             return chunk
         time.sleep(0.005)

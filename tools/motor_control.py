@@ -225,7 +225,11 @@ class MotorLink:
         buffer = b""
         while not self.stopping.is_set():
             try:
-                chunk = self.serial.read(4096) if self.serial is not None else b""
+                # Drain bytes already available. Some USB drivers batch a fixed-size
+                # read despite the configured timeout; that made 100 ms telemetry
+                # arrive in 4096-byte/~2 s batches and trip the 500 ms freshness gate.
+                connection = self.serial
+                chunk = connection.read(min(max(connection.in_waiting, 1), 4096)) if connection is not None else b""
             except Exception as exc:
                 if not self.stopping.is_set():
                     self.record_event('io_error', operation='read', error=str(exc))
@@ -297,7 +301,7 @@ class MotorControlApp:
 
     # -- UI ----------------------------------------------------------------
     def build_ui(self) -> None:
-        self.root.title("FM03 跟焦电机 运动控制（自动实验日志版）")
+        self.root.title("FM03 跟焦电机 运动控制（自动日志/反馈诊断版）")
         self.root.minsize(860, 760)
         outer = ttk.Frame(self.root, padding=10)
         outer.pack(fill="both", expand=True)
@@ -406,7 +410,7 @@ class MotorControlApp:
 
         status = ttk.LabelFrame(outer,text="校准阶段与原始坐标（仅观察/记录）",padding=8)
         status.pack(fill="x",pady=(8,0))
-        self.motor_label = ttk.Label(status,text="等待新版固件的电机状态",font=("",13,"bold"))
+        self.motor_label = ttk.Label(status,text="尚未收到可识别的电机状态",font=("",13,"bold"),wraplength=800)
         self.motor_label.grid(row=0,column=0,columnspan=5,sticky="w")
         self.record_a = ttk.Button(status,text="记录 A",command=lambda:self.record_coordinate('A'),state='disabled')
         self.record_a.grid(row=1,column=0,padx=3,pady=5)
@@ -795,17 +799,27 @@ class MotorControlApp:
         if signature != self.last_coordinate_log:
             self.link.record_event('coordinate_snapshot', snapshot={key:value for key,value in state.items() if key != 'history'})
             self.last_coordinate_log = signature
-        labels = {0:'未校准状态候选',1:'校准阶段 1',2:'校准阶段 2',3:'校准后工作阶段候选'}
-        if state['fresh']:
-            text = f"阶段 {state['stage']}：{labels.get(state['stage'],'未知阶段')}"
+        labels = {0:'尚未进入阶段 3（校准状态待确认）',1:'校准阶段 1',2:'校准阶段 2',3:'校准后工作阶段候选'}
+        if state['stage'] is not None:
+            text = f"最后阶段 {state['stage']}：{labels.get(state['stage'],'未知阶段')}"
             if state['can_record']:
                 text += f"    原始坐标 {state['coordinate']}"
                 if state['observed_range_percent'] is not None:
                     text += f"  （本次观察范围 {state['observed_range_percent']:.1f}%）"
                 if state['boundary']:
                     text += '    边界坐标候选'
+            else:
+                raw = state['last_coordinate']
+                if raw in (-2147483648,2147483647):
+                    text += f"\n原始字段 {raw}：无效哨兵候选，不能记录 A/B"
+                elif state['stage'] != 3:
+                    text += f"\n原始字段 {raw}：阶段未满足坐标有效条件，不能记录 A/B"
+                else:
+                    text += f"\n最后原始坐标 {raw}，当前不可记录 A/B"
+            if not state['fresh']:
+                text += f"\n上次接收 {state['age_s']:.1f}s 前（已过期/连接结束）" if state['age_s'] is not None else '\n状态不可用'
         else:
-            text = '坐标已过期/连接结束' if state['age_s'] is not None else '等待新版固件的电机状态'
+            text = '尚未收到可识别的电机状态（不代表固件版本旧）'
         self.motor_label.configure(text=text)
         for button in (self.record_a,self.record_b):
             button.configure(state='normal' if state['can_record'] else 'disabled')
