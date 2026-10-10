@@ -1302,3 +1302,9 @@
 - origin=https://github.com/ndpyzwy-0w0/DJI-FM03-can.git；首次push -u origin main成功，发布提交731e4378f3999b9ab78f9ae289c53ecb323a5289。ls-remote/main与本地HEAD相等，核验时工作区干净；只main，无强推/改历史/合并firmware-extract。
 - 210原始log/json/jsonl哈希不变，五原会话20文件Git暂存字节核对通过并随main上云；未知动作继续未知。环境/缓存/备份/dist/.env被忽略，无软件/硬件变化。不需要重跑软件测试，diff格式/路径/原件/远端核验已完成。
 - 保存github_push_verification.json并更新manifest/HANDOFF/PROJECT_STATUS，随后文档确认提交再正常推送；准确最后提交见git log，第一次源码推送验证来源保留为731e4378f3999b9ab78f9ae289c53ecb323a5289，不倒填结果。本轮用户明确授权上传，外部动作范围仅指定仓库main。
+
+## 2026-10-10 21:15:11 北京时间 — 中英文README介绍与切换
+
+- 用户要求写中英可切换README并提交；main/29891d8起点干净/同步origin。中文README.md与英文README.en.md同等范围，顶部互链，原README原样保存README.history.md。重新组织介绍/功能/硬件/启动构建/代码/证据/验证限制，移出首页旧阶段叙事，未删历史。
+- 链接/围栏/4代码块命令跨语言一致/旧README Git内容等价通过；210原件哈希未变，报告reports/20261010_bilingual_readme_validation.json。软件版本1.2/1.6与已验证范围按当前源码/交接，67测试为既有结果；只文档，不重跑软/硬件或操作串口。
+- diff检查和暂存核对后仅本轮文档提交main，并普通推送现有origin，最终号见git log，远端SHA核对；不强推/改历史。用户发布授权延续，不上传备份/EXE或其他分支。

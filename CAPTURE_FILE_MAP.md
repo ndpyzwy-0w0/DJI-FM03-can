@@ -353,3 +353,7 @@
 - captures/control_sessions/20261010_201159_135557_e1a139ea：motor_control_host 1.4 coordinate_positioning，4原件原样纳入；正常window_closed；实际动作/灯语/电源未在本轮确认，不能凭目录升级语义。
 - captures/control_sessions/20261010_202237_074288_a4091112：motor_control_host 1.5 positioning_options，4原件原样纳入；正常window_closed；实际动作/灯语/电源未在本轮确认，不能凭目录升级语义。
 - captures/control_sessions/20261010_203847_236655_5f32e982：motor_control_host 1.6 strict_positioning，4原件原样纳入；正常window_closed；实际动作/灯语/电源未在本轮确认，不能凭目录升级语义。
+
+## 2026-10-10 21:15:11 北京时间 — 中英文项目介绍，无新增动作
+
+- README.md/README.en.md整理既有范围与证据，原首页保存在README.history.md；未新解析实验或补机械动作，210原始文件哈希不变。本轮只文档提交/推送，无串口或CAN动作；依据仍为各原记录及最新项目状态。

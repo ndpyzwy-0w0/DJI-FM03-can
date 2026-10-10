@@ -1,0 +1,22 @@
+{
+  "beijing_time": "2026-10-10 21:15:11",
+  "base_commit": "29891d8",
+  "scope": "documentation only; no code/build/hardware changes",
+  "language_switch": "relative links between README.md and README.en.md",
+  "checks": {
+    "README.md": {
+      "local_links_checked": 21,
+      "fenced_blocks": 4
+    },
+    "README.en.md": {
+      "local_links_checked": 21,
+      "fenced_blocks": 4
+    }
+  },
+  "powershell_blocks_match": true,
+  "previous_readme_archived_unchanged_on_disk": true,
+  "previous_readme_git_content_equivalent": true,
+  "raw_files_unchanged": 210,
+  "software_test_statement": "67 prior offline tests; not rerun for this documentation change",
+  "known_limitations_and_versions_mirrored": true
+}

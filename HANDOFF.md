@@ -1,3 +1,10 @@
+## 当前入口：2026-10-10 21:15:11 北京时间 — GitHub中英文项目README重写与语言切换
+
+- 用户要求中英可切换的项目介绍并提交；起点main/29891d8，与origin/main同步且工作区干净。README.md为中文首页，README.en.md为完整对应英文，顶部相互切换；旧README逐字节另存README.history.md（仍在根目录，原相对链接不变）。不覆盖历史工作日志或原始抓包。
+- 新首页介绍目标/功能/当前版本1.2与1.6、实机核心能力/实验性位置控制区别、硬件与CAN/UART/GPIO、Windows启动/两正常固件构建/EXE构建、代码接口/证据、离线验证和未知范围。两语言保留校准取消/坐标来源/机械精度/掉电保留/PID未实现等边界，未把历史假设或67软件测试升级为新实机结论。
+- 验证顶部双向链接、所有本地链接、代码围栏、4组PowerShell命令跨语言一致、历史README与旧Git内容等价；210原件SHA全不变。报告reports/20261010_bilingual_readme_validation.json。本轮文档，不重复软件测试/编译，不串口/复位/烧录/CAN。
+- 更新HANDOFF/WORK_LOG/两动作索引，git diff --check和暂存审阅后仅本轮文档提交main并普通push origin/main，沿用户既有指定GitHub发布授权，不强推/改历史。最终提交号和远端一致性以git log/ls-remote核对为准；其他内容保留。
+
 ## 当前入口：2026-10-10 21:06:32 北京时间 — 首次GitHub推送成功并核验远端main
 
 - 仓库https://github.com/ndpyzwy-0w0/DJI-FM03-can.git，已设置origin；首次普通git push -u origin main成功，新main/追踪origin/main。首次发布提交731e4378f3999b9ab78f9ae289c53ecb323a5289；git ls-remote远端main与本地HEAD完全相等，初次核验工作区干净。没有强制推送/历史改写，只推main，firmware-extract未合并或上传。
