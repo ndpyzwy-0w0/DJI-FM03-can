@@ -53,7 +53,7 @@ py -3.12 -m venv .venv
 
 先读 [HANDOFF.md](HANDOFF.md) 获取当前交接快照，再按 [AGENTS.md](AGENTS.md) 维护记录。历史工作见 [WORK_LOG.md](WORK_LOG.md)，每份抓包的动作语义和用途见 [captures/INDEX.md](captures/INDEX.md)。
 
-Git 已初始化在 `main`；本次交接建立本地初始提交，没有远程或推送。当前版本使用 `git log -1 --oneline` 查询；每次完成工作更新交接与日志，检查并记录 Git 状态。原固件备份不在 Git 中。
+Git 主线为 `main`，已推送并跟踪 GitHub `origin/main`：https://github.com/ndpyzwy-0w0/DJI-FM03-can。当前版本使用 `git log -1 --oneline` 查询；每次完成工作更新交接与日志，检查并记录 Git 状态。本机备份不在 Git 中。
 
 ## 目标
 

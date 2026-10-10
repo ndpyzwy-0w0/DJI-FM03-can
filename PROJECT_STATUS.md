@@ -23,7 +23,7 @@
 - 每次连接自动保存UART接收原字节、命令尝试与写入结果、ACK/STATE/MOTOR、A/B、观察、到位参数/过程/结束原因，生成可恢复摘要，便于agent离线分析。该日志不是完整CAN总线录制。
 - `tools/position_control.py`是无GUI/串口依赖的通用控制模块，配合现有UART适配器和LiveMotor状态使用；当前实现语言为Python，嵌入式独立运行还需另行移植。PID尚未实现，只讨论了可行性。
 
-当前67项软件测试、源码/单文件自检通过；严格模式9个模拟案例6成功/3失败均保存。这些是软件验证，不是自动到位实机误差或成功率。最新用户控制日志仍有未跟踪、未确认动作的会话，不能据文件存在升级实机结论。
+当前67项软件测试、源码/单文件自检通过；严格模式9个模拟案例6成功/3失败均保存。这些是软件验证，不是自动到位实机误差或成功率。最新用户控制日志仍有未确认动作的会话，不能据文件存在升级实机结论。
 
 使用/外部接入入口：`reports/20261010_strict_positioning_guide.md`；日志分析入口：`reports/20261010_control_logging_guide.md`；源码`src/motor_control.cpp`、`src/motor_status.h`、`tools/motor_status.py`、`tools/position_control.py`及`tools/motor_control.py`。
 
@@ -38,4 +38,4 @@
 
 当前适合发布“FM03核心协议逆向与独立控制，实验性坐标定位”。发布仓库应突出当前功能、接线/编译/使用入口、通用调用接口、证据和明确的已验证范围；历史交接与日志继续作为研究记录保存。保留本仓库只服务FM03通用能力的范围。
 
-当前`dist/`、`.venv/`、`.pio/`、`backups/`被忽略；普通源码提交不会自动上传单文件EXE或备份。需要可下载程序时应另准备对应发布附件。用户于后续明确授权将项目推送到https://github.com/ndpyzwy-0w0/DJI-FM03-can.git。本轮将五份已结束实验会话原样归档并保留未知动作标记，按main准备首次推送；firmware-extract仍单独保留。实际推送完成以HANDOFF最新核验入口为准。
+当前`dist/`、`.venv/`、`.pio/`、`backups/`被忽略；普通源码提交不会自动上传单文件EXE或备份。需要可下载程序时应另准备对应发布附件。用户于后续明确授权将项目推送到https://github.com/ndpyzwy-0w0/DJI-FM03-can.git。五份已结束实验会话已原样归档并保留未知动作标记，main已首次推送成功且远端提交SHA核对一致；firmware-extract仍单独保留、未上传。发布记录见reports/20261010_github_push_verification.json和HANDOFF最新入口。

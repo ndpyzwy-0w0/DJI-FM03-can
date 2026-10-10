@@ -1,3 +1,10 @@
+## 当前入口：2026-10-10 21:06:32 北京时间 — 首次GitHub推送成功并核验远端main
+
+- 仓库https://github.com/ndpyzwy-0w0/DJI-FM03-can.git，已设置origin；首次普通git push -u origin main成功，新main/追踪origin/main。首次发布提交731e4378f3999b9ab78f9ae289c53ecb323a5289；git ls-remote远端main与本地HEAD完全相等，初次核验工作区干净。没有强制推送/历史改写，只推main，firmware-extract未合并或上传。
+- 完整main源码/既有历史/文档/协议证据及五份已结束会话20原件归档已上云；210原始log/json/jsonl哈希全部未变，新增20暂存对象逐字节与磁盘SHA一致。backups/.venv/.pio/build/dist/.env仍忽略，生成EXE未作为源码上传；源代码运行和单文件构建方法已在README。
+- 证据reports/20261010_github_publication_manifest.json和reports/20261010_github_push_verification.json，后者明确是第一次实际推送核验。这次核验记录随后另提交并正常推送，不改第一次记录的时间/来源；最终最新main提交可用git log及远端refs确认。仓库业务范围和未知事项未扩大，用户未核对动作日志不冒充机械成功。
+- 本轮仅上传/文档归档，不串口/复位/烧录/CAN。Git已建立远程跟踪，后续更新需沿项目记录约定；未指定发布EXE附件或firmware-extract，不自动扩展上传。交付前再次git diff --check和本地/远端最终SHA核对，完成两次正常推送。
+
 ## 当前入口：2026-10-10 21:04:06 北京时间 — 用户授权首次推送GitHub，主线及既有实验原件准备上传
 
 - 用户指定https://github.com/ndpyzwy-0w0/DJI-FM03-can.git并明确要求推送；本轮覆盖此前默认不推送限制。起点main/e810ee1，GitHub ls-remote成功且无refs，本机Git Credential Manager可用；原无remote。仅main，firmware-extract不合并/不推送，不改写历史、不强制推送。

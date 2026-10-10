@@ -353,5 +353,7 @@
     "captures/control_sessions/20261010_203847_236655_5f32e982/session.json": "f3bd84592b6b21f15b5653f6d424c0c23da80e3036ca7e6067caf456322b61e1",
     "captures/control_sessions/20261010_203847_236655_5f32e982/summary.json": "7d32ce43ee2cc346820b0ff4d9b10e9af0ad288b63c030e82099f5f722c02f5f"
   },
-  "push_status": "prepared; actual completion must be checked against remote main commit"
+  "push_status": "first main push completed and remote SHA verified",
+  "first_published_commit": "731e4378f3999b9ab78f9ae289c53ecb323a5289",
+  "first_push_verified_at_beijing": "2026-10-10 21:06:32"
 }

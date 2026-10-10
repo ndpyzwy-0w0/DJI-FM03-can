@@ -1,0 +1,25 @@
+{
+  "beijing_time": "2026-10-10 21:06:32",
+  "repository": "https://github.com/ndpyzwy-0w0/DJI-FM03-can.git",
+  "verification_scope": "first successful project push; follow-up documentation commit will be normally pushed after this report",
+  "first_published_commit": "731e4378f3999b9ab78f9ae289c53ecb323a5289",
+  "remote_main_at_verification": "731e4378f3999b9ab78f9ae289c53ecb323a5289",
+  "matches": true,
+  "upstream": "origin/main",
+  "raw_files_unchanged": 210,
+  "newly_archived_original_files": 20,
+  "worktree_clean_at_verification": true,
+  "branches_pushed": [
+    "main"
+  ],
+  "firmware_extract_not_pushed": true,
+  "ignored_artifacts_not_pushed": [
+    "backups/",
+    ".venv/",
+    ".pio/",
+    "build/",
+    "dist/",
+    ".env*"
+  ],
+  "hardware_actions_by_agent": "none"
+}

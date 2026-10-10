@@ -1296,3 +1296,9 @@
 - 用户指定ndpyzwy-0w0/DJI-FM03-can.git并要求推送；main/e810ee1已跟踪内容干净，五已结束会话原件未跟踪。远程ls-remote成功无refs；Git Credential Manager可用，原无remote。只推main，不合并firmware-extract/不强制/不改历史。
 - 本轮纳入五会话20文件，正常disconnect仅作归档事实，未知机械动作保持未知；两索引补归档映射。manifest记录全部210原始log/json/jsonl SHA，README补源码启动和仓库入口；不改源代码或硬件、不重复软件测试。已检查当前文本常见凭据格式未匹配；备份/环境/缓存/EXE照现有忽略不上传。
 - 交付前diff检查/新增原件Git暂存字节核对，提交本轮归档与记录后设置origin/push。当前记录为准备状态，实际推送结果追加最后核验条目；用户已授权外部写入，无需再次请求同一推送权限。
+
+## 2026-10-10 21:06:32 北京时间 — GitHub首次发布完成
+
+- origin=https://github.com/ndpyzwy-0w0/DJI-FM03-can.git；首次push -u origin main成功，发布提交731e4378f3999b9ab78f9ae289c53ecb323a5289。ls-remote/main与本地HEAD相等，核验时工作区干净；只main，无强推/改历史/合并firmware-extract。
+- 210原始log/json/jsonl哈希不变，五原会话20文件Git暂存字节核对通过并随main上云；未知动作继续未知。环境/缓存/备份/dist/.env被忽略，无软件/硬件变化。不需要重跑软件测试，diff格式/路径/原件/远端核验已完成。
+- 保存github_push_verification.json并更新manifest/HANDOFF/PROJECT_STATUS，随后文档确认提交再正常推送；准确最后提交见git log，第一次源码推送验证来源保留为731e4378f3999b9ab78f9ae289c53ecb323a5289，不倒填结果。本轮用户明确授权上传，外部动作范围仅指定仓库main。
