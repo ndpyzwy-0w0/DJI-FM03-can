@@ -1,3 +1,12 @@
+## 当前入口：2026-10-10 20:21:59 北京时间 — 坐标到位减速改为可选，主机1.5默认恒速直停
+
+- 用户要求“无需接近减速，到了直接停，做成可选开关”；起点main/6573890，保留三用户未跟踪会话。界面新增“接近目标减速”，默认关闭；控制器start增加slowdown=False，日志start/end保存选项。启动固定策略、进行中复选框禁用；到A/B共用开关，不影响记录按钮行为。
+- 关闭时以max_speed固定幅值run v 200，进入目标容差或反馈跨过目标立即STOP；新STATE零确认后若坐标不在容差内则失败显示误差，不自动反转追赶。勾选沿用1.4误差减速及有限反向修正。已有新鲜阶段3/ARM/普通全零/校准锁、期限/超时/异常/手动停止保护与到位稳定确认保留。直接停不能承诺无过冲或精确瞬间机械停转。
+- 仅修改tools/position_control.py、motor_control.py、control_session.py、test_position_control.py、启动CMD及本轮指南/验证/模拟/记录，不动固件。主机motor_control_host 1.5 positioning_options；dist/FM03_MotorControl_PositionOptions.exe已单文件打包/自检/打开无--connect，12140670字节/SHA4bdccc3b5e4995ce9326c588114c9e9016aecfad47718d76d1a44f8e3e29b0a3；CMD优先新版，旧EXE保留，无需重烧1.2。
+- 61项离线测试通过（到位17+既有44），新增正负恒速/采样跨目标直停、模式开关传递/禁用，已有减速验证显式slowdown=True；源码/EXE --check通过，GUI874x1108容纳2194x1234屏幕。4组独立运动模拟只属软件，不是机械误差；入口reports/20261010_positioning_options_guide.md、simulation.json、validation.json、raw_baseline.json（均20261010_positioning_options_前缀）。
+- 202既有log/json/jsonl哈希未变。此前20:11用户会话已出现summary，启动前未发现控制进程；本轮只检查文件存在和进程，不分析其动作/定位结果，不中断、不提交三个用户目录。agent未真实串口/复位/烧录/ARM/CAN。现场动作/灯语/电源与新策略机械过冲仍未知。
+- 更新README/HANDOFF/WORK_LOG/两动作映射；git diff --check与暂存核对后仅本轮本地main提交（准确号见git log），不推送/改历史。下一步用户选择开关比较相同目标不同速度的停下误差，观察与日志结合分析；仓库仅FM03通用能力。
+
 ## 当前入口：2026-10-10 20:13:43 北京时间 — 指定坐标自动到位上位机1.4已开发并打开，待用户实机验证
 
 - 用户明确要求开发指定坐标自动到位；起点main/edbd5c7，两用户12:43/19:38会话未跟踪保留。本轮按最小实现复用已烧录控制固件1.2的run速度期限，闭环放在上位机，不增加未知DUML位置命令，不改固件、不重烧。用户机械标记对应性是开发依据，自动到位机械精度尚未验证。

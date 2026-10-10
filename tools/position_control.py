@@ -22,6 +22,7 @@ REASONS = {
     'no_coordinate_progress':'坐标持续没有进展', 'too_many_direction_reversals':'反向修正次数过多',
     'stop_write_failed':'归零命令写入失败', 'motion_write_failed':'运动命令写入失败',
     'zero_state_not_held':'归零确认后普通运动状态再次变为非零',
+    'direct_stop_outside_tolerance':'直接停止后坐标超出允许误差，请降低速度或开启接近减速',
     'position_log_failed':'到位日志保存失败', 'device_error_or_warning':'设备报告错误或警告',
     'operator_stop':'手动STOP', 'operator_disarm':'手动DISARM', 'operator_zero_or_stop':'手动归零/停止',
     'disconnect':'串口断开', 'window_closed':'窗口关闭',
@@ -64,7 +65,7 @@ class PositionController:
         self.move_id = 0
         self.result = None
 
-    def start(self, target, context, now, tolerance=4, max_speed=64, timeout_s=60):
+    def start(self, target, context, now, tolerance=4, max_speed=64, timeout_s=60, slowdown=False):
         if self.active:
             raise ValueError('自动到位仍在进行，请先取消。')
         if type(target) is not int or not 0 <= target <= 4096:
@@ -75,6 +76,8 @@ class PositionController:
             raise ValueError('最大速度必须为1～256，且不超过固件当前limit。')
         if not isinstance(timeout_s, (int, float)) or not math.isfinite(timeout_s) or not 2 <= timeout_s <= 120:
             raise ValueError('超时必须为2～120秒。')
+        if type(slowdown) is not bool:
+            raise ValueError('接近目标减速必须是布尔开关。')
         reason = unavailable(context)
         if reason:
             raise ValueError('不能启动自动到位：'+reason_text(reason))
@@ -83,6 +86,7 @@ class PositionController:
         self.move_id += 1
         self.active, self.phase, self.result = True, 'moving', None
         self.target, self.tolerance, self.max_speed = target, tolerance, max_speed
+        self.slowdown = slowdown
         self.started, self.deadline = now, now+timeout_s
         self.last_tick_at = now
         self.epoch = context['motor']['epoch']
@@ -96,7 +100,7 @@ class PositionController:
         self.zero_at = self.zero_confirmed_at = self.stable_since = None
         self.stable_coordinates = []
         recorded = self.event('position_start', move_id=self.move_id, target=target, tolerance=tolerance,
-                   max_speed=max_speed, timeout_s=timeout_s, initial_coordinate=context['motor']['coordinate'],
+                   max_speed=max_speed, timeout_s=timeout_s, slowdown=slowdown, initial_coordinate=context['motor']['coordinate'],
                    epoch=self.epoch, lease_ms=LEASE_MS)
         if recorded is False:
             self._finish('failed', 'position_log_failed', context, now)
@@ -106,7 +110,7 @@ class PositionController:
         coordinate = context['motor'].get('coordinate')
         self.result = dict(move_id=self.move_id, status=status, reason=reason, target=self.target,
                            final_coordinate=coordinate, error=coordinate-self.target if coordinate is not None else None,
-                           elapsed_s=round(now-self.started, 3), tolerance=self.tolerance, reversals=self.reversals,
+                           elapsed_s=round(now-self.started, 3), tolerance=self.tolerance, slowdown=self.slowdown, reversals=self.reversals,
                            firmware_zero_confirmed=self.zero_confirmed_at is not None and all(context['state'].get(k)==0 for k in ('value','target','run','pulse')),
                            stop_write_ok=self.send('stop') if stop else None,
                            coordinate_success_only=True)
@@ -173,6 +177,9 @@ class PositionController:
                 if now-self.stable_since >= SETTLE_S and len(self.stable_coordinates) >= 4:
                     self._finish('arrived', 'coordinate_in_tolerance_and_stable', context, now, stop=False)
                 return
+            if not self.slowdown:
+                self._finish('failed', 'direct_stop_outside_tolerance', context, now)
+                return  # Direct stop never reverses automatically to chase an overshoot.
             self.phase, self.progress_at, self.best_error = 'moving', now, abs(error)
         if abs(error) <= self.tolerance:
             self._zero(context, now)
@@ -182,6 +189,9 @@ class PositionController:
             return
         direction = 1 if error > 0 else -1
         if self.last_nonzero and direction != self.last_nonzero:
+            if not self.slowdown:
+                self._zero(context, now)
+                return  # The sample skipped across the target; stop immediately.
             self.reversals += 1
             self.last_nonzero = 0
             if self.reversals > 4:
@@ -190,7 +200,7 @@ class PositionController:
                 self._zero(context, now)
             return
         # Conservative proportional speed, not an assumed distance/time integral.
-        speed = direction*max(1, min(self.max_speed, abs(error)//24))
+        speed = direction*(max(1, min(self.max_speed, abs(error)//24)) if self.slowdown else self.max_speed)
         if self.send(f'run {speed} {LEASE_MS}'):
             self.last_nonzero = direction
         else:

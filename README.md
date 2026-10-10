@@ -1,3 +1,5 @@
+> 2026-10-10：上位机1.5新增“接近目标减速”开关，默认关闭、恒速到达/跨过目标直接停；勾选沿用减速。打开 `dist/FM03_MotorControl_PositionOptions.exe` 或启动CMD，无需重烧。[开关与停止说明](reports/20261010_positioning_options_guide.md)。
+
 > 2026-10-10：指定坐标自动到位已加入上位机1.4，支持接近减速、归零稳定确认、到A/B和自动日志。打开 `dist/FM03_MotorControl_Position.exe` 或“启动运动控制.cmd”，复用已烧录控制固件1.2，无需重烧；58项软件测试通过，自动机械到位待手动首测。[操作与限制](reports/20261010_positioning_guide.md)。
 
 > 2026-10-10：用户已用机械标记确认重复自动标定后同坐标对应同位置（目视、手动速度归零）。可进入通用坐标反馈到位开发；精度/回差/坐标传感器来源仍待测。[确认记录](reports/20261010_mechanical_coordinate_confirmation.md)。

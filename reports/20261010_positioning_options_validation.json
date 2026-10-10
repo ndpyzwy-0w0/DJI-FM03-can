@@ -1,0 +1,51 @@
+{
+  "beijing_time": "2026-10-10 20:21:59",
+  "base_commit": "6573890",
+  "branch": "main",
+  "host_version": "motor_control_host 1.5 positioning_options",
+  "firmware": "existing motor_control 1.2 calibration_trigger unchanged; no flash",
+  "default_slowdown": false,
+  "direct_mode": "constant max_speed; stop on tolerance or target crossing; no automatic reverse chasing; out-of-tolerance after confirmed zero fails",
+  "tests": {
+    "position_control": 17,
+    "existing_regressions": 44,
+    "total": 61,
+    "passed": true,
+    "hardware_used": false
+  },
+  "checks": {
+    "source_self_check": true,
+    "frozen_self_check": true,
+    "gui_requested_size": [
+      874,
+      1108
+    ],
+    "screen_size": [
+      2194,
+      1234
+    ],
+    "gui_fits_screen": true,
+    "raw_baseline_files_unchanged": 202
+  },
+  "executable": {
+    "path": "dist/FM03_MotorControl_PositionOptions.exe",
+    "bytes": 12140670,
+    "sha256": "4bdccc3b5e4995ce9326c588114c9e9016aecfad47718d76d1a44f8e3e29b0a3",
+    "opened_without_connect": true
+  },
+  "simulation": "reports/20261010_positioning_options_simulation.json; synthetic only",
+  "raw_baseline": "reports/20261010_positioning_options_raw_baseline.json",
+  "hardware_actions_by_agent": {
+    "serial_opened": false,
+    "reset": false,
+    "flashed": false,
+    "arm": false,
+    "can_sent": false
+  },
+  "preserved_untracked_sessions": [
+    "20261010_124329_565335_ea949b57",
+    "20261010_193825_843127_9303ba16",
+    "20261010_201159_135557_e1a139ea"
+  ],
+  "unresolved": "real mechanical overshoot/error under different speeds and loads; no exact instantaneous mechanical stop guarantee"
+}

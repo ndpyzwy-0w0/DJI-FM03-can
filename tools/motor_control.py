@@ -333,7 +333,7 @@ class MotorControlApp:
 
     # -- UI ----------------------------------------------------------------
     def build_ui(self) -> None:
-        self.root.title("FM03 跟焦电机 运动控制（坐标自动到位/日志版）")
+        self.root.title("FM03 跟焦电机 运动控制（到位减速可选/日志版）")
         self.root.minsize(860, 760)
         outer = ttk.Frame(self.root, padding=10)
         outer.pack(fill="both", expand=True)
@@ -477,8 +477,12 @@ class MotorControlApp:
         self.goto_b_button = ttk.Button(positioning,text='到 B',command=lambda:self.goto_mark('B'),state='disabled')
         self.goto_b_button.grid(row=1,column=3)
         ttk.Button(positioning,text='取消到位并归零',command=self.stop).grid(row=1,column=4,columnspan=3)
+        self.position_slowdown_var = tk.BooleanVar(value=False)
+        self.position_slowdown_button = ttk.Checkbutton(positioning,text='接近目标减速',variable=self.position_slowdown_var)
+        self.position_slowdown_button.grid(row=2,column=0,columnspan=3,sticky='w')
+        ttk.Label(positioning,text='不勾选：按最大速度运行，到达或越过目标时直接停止。').grid(row=2,column=3,columnspan=5,sticky='w')
         self.position_label = ttk.Label(positioning,text='尚未启动；允许误差是原始坐标单位，实际机械误差需复测。',wraplength=800)
-        self.position_label.grid(row=2,column=0,columnspan=8,sticky='w')
+        self.position_label.grid(row=3,column=0,columnspan=8,sticky='w')
 
         # Telemetry + log
         bottom = ttk.Frame(outer)
@@ -858,7 +862,7 @@ class MotorControlApp:
         try:
             self.position.start(int(self.position_target_var.get()), self.position_context(),time.monotonic(),
                 tolerance=int(self.position_tolerance_var.get()),max_speed=int(self.position_speed_var.get()),
-                timeout_s=float(self.position_timeout_var.get()))
+                timeout_s=float(self.position_timeout_var.get()),slowdown=self.position_slowdown_var.get())
         except ValueError as exc:
             messagebox.showwarning('不能开始自动到位',str(exc))
             return
@@ -868,7 +872,7 @@ class MotorControlApp:
         if not self.position.active:
             self.log('自动到位未启动：日志保存失败。')
             return
-        self.log(f'开始自动到位：目标{self.position.target}、误差±{self.position.tolerance}、速度上限{self.position.max_speed}')
+        self.log(f'开始自动到位：目标{self.position.target}、误差±{self.position.tolerance}、速度上限{self.position.max_speed}、接近减速{self.position.slowdown}')
 
     def goto_mark(self, marker):
         context = self.position_context()
@@ -893,13 +897,15 @@ class MotorControlApp:
             self.log(f"自动到位结束：{result['status']} / {result['reason']}，坐标{result['final_coordinate']}、误差{result['error']}")
         ready = not self.position.active and position_unavailable(context) is None and all(context['state'].get(k)==0 for k in ('value','target','run','pulse'))
         self.position_button.configure(state='normal' if ready else 'disabled')
+        self.position_slowdown_button.configure(state='disabled' if self.position.active else 'normal')
         for marker,button in (('A',self.goto_a_button),('B',self.goto_b_button)):
             mark = context['motor']['marks'].get(marker)
             valid = ready and mark and mark['valid'] and mark['epoch']==context['motor']['epoch']
             button.configure(state='normal' if valid else 'disabled')
         if self.position.active:
             coordinate = context['motor']['coordinate']
-            text = f"{'减速接近' if self.position.phase=='moving' else '归零/稳定确认'}：目标{self.position.target}，当前{coordinate}，允许±{self.position.tolerance}"
+            motion_text = '减速接近' if self.position.slowdown else '恒速接近'
+            text = f"{motion_text if self.position.phase=='moving' else '归零/稳定确认'}：目标{self.position.target}，当前{coordinate}，允许±{self.position.tolerance}"
         elif self.position.result:
             r = self.position.result
             text = f"{'坐标到位（机械位置请复核）' if r['status']=='arrived' else '已取消/失败'}：目标{r['target']}，最终{r['final_coordinate']}，误差{r['error']}；{reason_text(r['reason'])}"
@@ -1096,7 +1102,7 @@ def self_check() -> None:
                          run=0, pulse=0, twai_state=1, cal_pending=0, cal_attempts=1)
     context = {'connected':True, 'state_age_s':0, 'state_at':100, 'state':position_state,
                'motor':{'epoch':1,'stage':3,'coordinate':2000,'can_record':True,'age_s':0,'sample_t_us':1000000}}
-    controller.start(2048,context,100)
+    controller.start(2048,context,100,slowdown=True)
     controller.tick(context,100)
     controller.cancel('offline_self_check',context,100.1)
     assert written == ['run 2 200','stop'] and controller.phase == 'cancelled'

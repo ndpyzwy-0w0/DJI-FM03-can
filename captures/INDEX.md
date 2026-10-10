@@ -383,3 +383,8 @@
 - 未来每次手动连接的control_sessions日志新增position_start/sample/end与原run/stop/UART结果；summary position_events便于agent分析，最终坐标到位不等于机械精度认证，实际动作/标记/灯语/电源继续由用户确认。既有198原件哈希未变；未跟踪12:43/19:38会话保留不强绑本功能首测。
 
 - 交付检查发现用户已于20:11:59手动连接新版1.4，生成captures/control_sessions/20261010_201159_135557_e1a139ea；只读session.json核实EXE哈希相同，尚无summary/实验结束或动作确认。该活动会话原件留未跟踪，不中断、不分析为到位成功、不纳开发提交；agent本轮未连接硬件。
+
+## 2026-10-10 20:21:59 北京时间 — 到位减速选项软件开发，无agent硬件实验
+
+- 用户要求减速可选，主机1.5默认恒速到达/跨过目标直停；日志position_start/end新增slowdown，后续可区分恒速与减速。原两模式的实际速度/动作/停下误差须从用户观察及新会话确认，本轮无对应实机动作记录。
+- 61离线测试与4组模拟仅软件；指南reports/20261010_positioning_options_guide.md，模拟/验证见同前缀simulation.json/validation.json。202既有原件哈希不变；三个未跟踪用户会话保留不提交，20:11已有summary但本轮不据此宣布到位成功。agent未串口/复位/烧录/CAN，旧EXE保留。

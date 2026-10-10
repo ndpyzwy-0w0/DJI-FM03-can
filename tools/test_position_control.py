@@ -39,8 +39,8 @@ class Plant:
             self.pending.append((self.now+self.delay,int(value),self.now+int(ms)/1000))
         return True
 
-    def run(self, target, timeout=60):
-        self.controller.start(target,self.ctx,self.now,timeout_s=timeout)
+    def run(self, target, timeout=60, slowdown=True):
+        self.controller.start(target,self.ctx,self.now,timeout_s=timeout,slowdown=slowdown)
         for step in range(int(timeout*100)+10):
             self.now = 100+(step+1)/100
             while self.pending and self.pending[0][0] <= self.now+1e-8:
@@ -64,6 +64,36 @@ class Plant:
 
 
 class PositionTests(unittest.TestCase):
+    def test_direct_mode_keeps_speed_until_tolerance_in_both_directions(self):
+        for initial,near,arrived,speed in ((1000,1950,1997,64),(3000,2050,2003,-64)):
+            written=[];events=[]
+            controller=PositionController(lambda cmd:written.append(cmd) or True,
+                                          lambda kind,**fields:events.append((kind,fields)))
+            c=context(initial);controller.start(2000,c,100);controller.tick(c,100)
+            c['motor'].update(coordinate=near,sample_t_us=1100000);controller.tick(c,100.1)
+            self.assertEqual(written,[f'run {speed} 200']*2)
+            c['motor'].update(coordinate=arrived,sample_t_us=1200000);controller.tick(c,100.2)
+            self.assertEqual(written[-1],'stop')
+            c['state_at']=100.3;controller.tick(c,100.3)
+            for i in range(4,11):
+                c['motor']['sample_t_us']+=100000;controller.tick(c,100+i*.1)
+            self.assertEqual(controller.phase,'arrived')
+            self.assertFalse(controller.result['slowdown'])
+            self.assertFalse(events[0][1]['slowdown'])
+
+    def test_direct_mode_stops_when_sample_skips_target_without_reverse(self):
+        for initial,crossed in ((1000,2100),(3000,1900)):
+            written=[];controller=PositionController(lambda cmd:written.append(cmd) or True)
+            c=context(initial);controller.start(2000,c,100);controller.tick(c,100)
+            c['motor'].update(coordinate=crossed,sample_t_us=1100000);controller.tick(c,100.1)
+            self.assertEqual(written[-1],'stop')
+            c['state_at']=100.2;controller.tick(c,100.2)
+            c['motor']['sample_t_us']+=100000;controller.tick(c,100.3)
+            self.assertEqual(controller.result['reason'],'direct_stop_outside_tolerance')
+            self.assertEqual(controller.result['final_coordinate'],crossed)
+            self.assertEqual(len([cmd for cmd in written if cmd.startswith('run ')]),1)
+            self.assertEqual(controller.result['reversals'],0)
+
     def test_reaches_internal_and_boundary_targets_with_different_gains_and_delays(self):
         for start,target,gain,delay in ((200,3072,5.937,.05),(3700,1024,8.16,.1),
                                         (2048,0,6,.05),(2048,4096,6,.1),(200,1000,2,.05)):
@@ -108,7 +138,7 @@ class PositionTests(unittest.TestCase):
         for field,value,area in (('age_s',.4,'motor'),('epoch',3,'motor'),('stage',1,'motor'),
                 ('cal_attempts',3,'state'),('tx_failed',1,'state'),('armed',0,'state')):
             written=[];controller=PositionController(lambda cmd:written.append(cmd) or True)
-            c=context(1000);controller.start(2000,c,100);controller.tick(c,100)
+            c=context(1000);controller.start(2000,c,100,slowdown=True);controller.tick(c,100)
             c[area][field]=value;controller.tick(c,100.1)
             self.assertEqual(controller.phase,'failed')
             self.assertEqual(written[-1],'stop')
@@ -117,7 +147,7 @@ class PositionTests(unittest.TestCase):
 
     def test_duplicate_feedback_does_not_renew_lease(self):
         written=[];controller=PositionController(lambda cmd:written.append(cmd) or True)
-        c=context(1000);controller.start(2000,c,100);controller.tick(c,100)
+        c=context(1000);controller.start(2000,c,100,slowdown=True);controller.tick(c,100)
         controller.tick(c,100.1);controller.tick(c,100.2)
         self.assertEqual(written,['run 41 200'])
         c['motor']['age_s']=.31;controller.tick(c,100.31)
@@ -125,7 +155,7 @@ class PositionTests(unittest.TestCase):
 
     def test_missing_zero_confirmation_never_reports_success(self):
         written=[];controller=PositionController(lambda cmd:written.append(cmd) or True)
-        c=context(2000);controller.start(2000,c,100);controller.tick(c,100)
+        c=context(2000);controller.start(2000,c,100,slowdown=True);controller.tick(c,100)
         c['state_at']=99.9
         for i in range(1,11):
             c['motor']['sample_t_us'] += 100000;controller.tick(c,100+i*.1)
@@ -135,7 +165,7 @@ class PositionTests(unittest.TestCase):
 
     def test_later_nonzero_state_invalidates_zero_confirmation(self):
         written=[];controller=PositionController(lambda cmd:written.append(cmd) or True)
-        c=context(2000);controller.start(2000,c,100);controller.tick(c,100)
+        c=context(2000);controller.start(2000,c,100,slowdown=True);controller.tick(c,100)
         c['state_at']=100.1;controller.tick(c,100.1)
         c['state'].update(value=1,target=1,run=1)
         c['motor']['sample_t_us']+=100000
@@ -147,7 +177,7 @@ class PositionTests(unittest.TestCase):
 
     def test_overshoot_waits_for_zero_before_reverse_and_caps_corrections(self):
         written=[];controller=PositionController(lambda cmd:written.append(cmd) or True)
-        c=context(1000);controller.start(2000,c,100);controller.tick(c,100)
+        c=context(1000);controller.start(2000,c,100,slowdown=True);controller.tick(c,100)
         now=100
         for reversal in range(1,6):
             now+=.1
@@ -174,7 +204,7 @@ class PositionTests(unittest.TestCase):
             def send(cmd):written.append(cmd);return operation!='write_failure' or cmd=='stop'
             def event(kind,**fields):return False if operation=='log_failure' and kind=='position_sample' else True
             controller=PositionController(send,event);c=context(1000)
-            controller.start(2000,c,100)
+            controller.start(2000,c,100,slowdown=True)
             if operation=='cancel':controller.cancel('operator_stop',c,100)
             else:controller.tick(c,100)
             self.assertFalse(controller.active)
@@ -183,7 +213,7 @@ class PositionTests(unittest.TestCase):
     def test_ui_pause_and_timestamp_reversal_fail_even_if_snapshot_is_fresh(self):
         for change in ('pause','timestamp'):
             written=[];controller=PositionController(lambda cmd:written.append(cmd) or True)
-            c=context(1000);controller.start(2000,c,100);controller.tick(c,100)
+            c=context(1000);controller.start(2000,c,100,slowdown=True);controller.tick(c,100)
             if change=='timestamp':c['motor']['sample_t_us']-=1
             controller.tick(c,100.4 if change=='pause' else 100.1)
             self.assertEqual(controller.phase,'failed')
@@ -215,6 +245,19 @@ class PositionGuiTests(unittest.TestCase):
             self.assertEqual(app.position.phase,'cancelled')
             count=len(self.fake.written);app.update_position_status()
             self.assertEqual(len(self.fake.written),count)
+
+    def test_slowdown_switch_is_off_by_default_and_applies_to_next_move(self):
+        app=self.app
+        with patch.object(mc.time,'monotonic',return_value=100):
+            self.assertFalse(app.position_slowdown_var.get())
+            app.start_position();app.update_position_status()
+            self.assertEqual(self.fake.written[-1],'run 64 200\n')
+            self.assertEqual(str(app.position_slowdown_button['state']),'disabled')
+            app.stop();app.update_position_status()
+            self.assertEqual(str(app.position_slowdown_button['state']),'normal')
+            app.position_slowdown_var.set(True);app.start_position();app.update_position_status()
+            self.assertTrue(app.position.slowdown)
+            self.assertEqual(self.fake.written[-1],'run 43 200\n')
 
     def test_mark_validity_and_direct_zero_stop(self):
         app=self.app
