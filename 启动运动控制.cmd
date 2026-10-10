@@ -1,5 +1,9 @@
 @echo off
 cd /d "%~dp0"
+if exist "dist\FM03_MotorControl_Calibration.exe" (
+  start "" "dist\FM03_MotorControl_Calibration.exe"
+  exit /b 0
+)
 if exist "dist\FM03_MotorControl_Status.exe" (
   start "" "dist\FM03_MotorControl_Status.exe"
   exit /b 0

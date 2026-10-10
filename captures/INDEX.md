@@ -352,3 +352,9 @@
 
 - captures/control_sessions/20261010_120212_435431_fae49d09原4文件：旧主机1.2，22.797s，46status+ARM+go16；227条stage0/INT32_MAX，无stage3。末STATE仍armed1/value16，无日志内停止确认；不推机械动作或看门狗后真实停转。灯语、电源、接线与此前标定保持未知。
 - 总线错误首末546462、本次增量0；本次sent增223，不能用累计值作当前动作数或错误增长。独立报告reports/20261010_120212_control_feedback_analysis.json。用户视频关联只成立于11:58会话，第二会话不是修复版实测，不把无效坐标用于A/B轨迹模型。
+
+## 2026-10-10 12:34:29 北京时间 — 新口述限位保留/失效与自动寻限位试验开发
+
+- 用户确认昨晚RS3自动寻限位后切独立测试台架，双方向各到极点停止、原坐标4096/0；现限位失效，非零速度连续转。无新增文件/同步时刻/物理方向/供电复位顺序，不按描述或日期强配11:58/12:02会话；“无持久化”是待验推测。
+- 本轮不抓包/开串口/烧录/触发；候选原件仅有效003846与132137两记录，弃用131955/132030不纳语义。复算tools/check_calibration_candidate.py，字节结果reports/20261010_calibration_candidate_evidence.json。
+- 新版用户未来试验记录位于captures/control_sessions每连接新目录，含calibration_request/clear_request、候选hex、ACK/STATE/MOTOR与人工观察；未产生该候选的新实机试验，不登记虚构文件。指南reports/20261010_calibration_trial_guide.md、软件验证reports/20261010_calibration_trial_validation.json。

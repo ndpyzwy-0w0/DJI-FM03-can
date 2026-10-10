@@ -1228,3 +1228,11 @@
 - 724b3b3已提交11:58录屏/日志诊断与主机修复，随后工作区另一用户12:02会话保留未跟踪，补只读分析：旧1.2/65ed EXE，22.797s/227状态均stage0/2147483647，无stage3；46status、ARM、go16。末完整STATE armed1/target16/value16，无停止/看门狗回话；不把预期2s看门狗归零当实测停转。首末bus_errors546462相同/增量0，sent只增223/nonzero113/zero110，历史累计不能算本次发送或当前故障。录屏11:58与此会话分开，对机械行为/灯语/RS3接入仍未知。
 - 第二报告reports/20261010_120212_control_feedback_analysis.json，补findings/validation/HANDOFF和动作两索引；第二会话4文件原样保留并逐字节暂存校验。无串口连接或主动CAN。
 - 首次暂存git diff --check报告原始rx.log三个CR和末尾半行空格（源码无格式问题）；PowerShell后续提交未因该返回码自动停止，724b3b3已经存在。补正确属性：原始rx.log -text -whitespace，保留字节不修剪，普通源码/文档检查继续启用，随后检查通过。不是改写历史或清理原件。本补充仅相关属性/分析/原件记录另本地提交，号见Git，不推送。
+
+## 2026-10-10 12:34:29 北京时间 — 增加独立台架手动自动寻限位候选
+
+- 用户授权/新确认、实现与未知事项见HANDOFF最新入口及reports/20261010_calibration_trial_guide.md。昨晚RS3自动校准后独立台架两向停在4096/0、现限位失效连续转；供电/复位先后及同步文件未知，未判定无持久化。
+- 修改src/motor_control.cpp、tools/motor_control.py/control_session.py、启动运动控制.cmd；新增tools/check_calibration_candidate.py、test_calibration_trial.py、候选证据/验证/原件哈希报告与试验指南。候选16=8+8、双CRC；显式一次、无自动重试、无已知取消；阶段发送和完成分离、普通非零观察锁、本地解除锁需人工停转确认。
+- 44项假串口/离线/Tk测试、capture/protocol自检、motor_control编译、最终单文件--check通过；原有184log/json/jsonl哈希一致。GUI已打开不连接，保留旧运行程序；新固件/EXE字节哈希在validation。尚未验证候选重放与实机保护，不把软件测试当机械校准/定位验证。
+- 本轮不打开真实串口、复位、烧录、ARM或发CAN。串口仅枚举COM17同CH343身份，用户旧上位机仍运行；已异步问停转/串口断开/RS3脱离，未回复前不打断实验。新版按钮需要ESP32 1.2，旧1.1不可用。
+- 更新HANDOFF/CAPTURE_FILE_MAP/captures INDEX/README，交付前git diff --check及原件/暂存检查。本轮将本地main提交（本条随本轮提交，准确号见git log），不推送或改写历史。下一步确认现场状态后更新ESP32、用户手动单次试验并记录动作/灯语/电源；持久化受控试验和实际位置验证另做。

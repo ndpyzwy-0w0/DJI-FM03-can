@@ -26,6 +26,8 @@
 //   limit [n]            show or set the magnitude clamp (1..2048)
 //   help                 print the command list
 //   version              print the build identity
+//   calibrate            one experimental 04:2F start candidate; requires ARM + zero
+//   calibration_clear    local observation lock only, disarmed + user-confirmed idle
 //
 // Device replies, one line each, always prefixed so the host can classify them:
 //   # ACK <what>          a command was accepted
@@ -35,7 +37,8 @@
 //
 // Watchdog: if no valid command arrives within CONTROL_WATCHDOG_MS, the value returns
 // to zero and an ERR line is printed. The host sends `status` as a heartbeat, so a
-// closed laptop or a pulled cable stops the motor instead of leaving it driving.
+// closed laptop or a pulled cable zeroes ordinary speed control. Internal motor
+// calibration may continue: no cancellation command has been verified.
 
 #include <Arduino.h>
 #include <cstring>
@@ -80,7 +83,7 @@ static uint16_t crc16(const uint8_t *data, unsigned length) {
 
 // Firmware identity, reported by `version` so a session record can name the exact
 // build. Bump the revision when the wire behaviour changes.
-#define CONTROL_VERSION "motor_control 1.1 status_coordinates"
+#define CONTROL_VERSION "motor_control 1.2 calibration_trigger"
 
 // Magnitude clamp. The measured dial range in the captures is about +/-2048, and
 // 2048 is the default; lower it with `limit` while exploring.
@@ -140,6 +143,13 @@ static const uint8_t DIAL_0469[19] = {
     0x55, 0x13, 0x04, 0x03, 0xE5, 0xBF, 0x00, 0x00,
     0x00, 0x04, 0x69, 0x0F, 0x04, 0x08, 0x19, 0x00, 0x00, 0x6B, 0x56};
 
+// Exact start candidate from the valid 20261009_132137 capture. Not yet replay
+// validated. Each explicit attempt uses the next sequence and recomputes CRC16;
+// the first attempt is byte-identical to the capture. No automatic retries/cancel.
+static const uint8_t CALIBRATE_042F[16] = {
+    0x55, 0x10, 0x04, 0x56, 0xE5, 0xBF, 0x21, 0xDB,
+    0x00, 0x04, 0x2F, 0x02, 0x00, 0x01, 0x7C, 0xC9};
+
 // ---------------------------------------------------------------------------
 // State
 // ---------------------------------------------------------------------------
@@ -173,6 +183,14 @@ static volatile uint32_t packets_zero = 0;
 static volatile uint32_t packets_nonzero = 0;
 static volatile uint32_t watchdog_stops = 0;
 static volatile uint32_t run_completions = 0;
+static bool calibration_pending = false;
+static bool calibration_seen_active = false;
+static unsigned long calibration_requested_ms = 0;
+static int64_t calibration_requested_us = 0;
+static uint16_t calibration_sequence = 0xDB21;
+static uint32_t calibration_attempts = 0;
+static uint32_t calibration_sent = 0;
+static uint32_t calibration_observed = 0;
 
 // Pulse mode answers the question "does one short pulse move the motor by a fixed
 // amount?". The value is held for pulse_hold_ms, then zero for the rest of the period,
@@ -260,7 +278,7 @@ static bool wait_tx_idle(unsigned spins) {
     return false;
 }
 
-// Fragment lengths are fixed by the two template sizes: 13 = 8+5, 19 = 8+8+3.
+// Fragment lengths: request 13=8+5, speed 19=8+8+3, calibration 16=8+8.
 static bool send_packet(uint32_t identifier, const uint8_t *packet, const uint8_t *lengths,
                         unsigned fragments) {
     unsigned offset = 0;
@@ -305,6 +323,27 @@ static bool send_dial(int16_t value) {
     return send_packet(0x503, packet, lengths, 3);
 }
 
+static bool motor_calibrating_observed() {
+    return (motor_status.stage == 1 || motor_status.stage == 2) &&
+           motor_status.sample_us > 0 && esp_timer_get_time()-motor_status.sample_us <= 500000;
+}
+
+static bool send_calibration_candidate() {
+    uint8_t packet[16];
+    memcpy(packet, CALIBRATE_042F, sizeof(packet));
+    uint16_t sequence = calibration_sequence++;
+    packet[6] = (uint8_t)sequence;
+    packet[7] = (uint8_t)(sequence >> 8);
+    uint16_t checksum = crc16(packet, 14);
+    packet[14] = (uint8_t)checksum;
+    packet[15] = (uint8_t)(checksum >> 8);
+    Serial.printf("# CALIB candidate can_id=0x503 seq=%u hex=", (unsigned)sequence);
+    for (unsigned index=0; index<sizeof(packet); ++index) Serial.printf("%02X", packet[index]);
+    Serial.println();
+    static const uint8_t lengths[2] = {8, 8};
+    return send_packet(0x503, packet, lengths, 2) && wait_tx_idle(50);
+}
+
 // ---------------------------------------------------------------------------
 // Reporting
 // ---------------------------------------------------------------------------
@@ -320,7 +359,9 @@ static void print_state() {
                   "sent=%lu nonzero=%lu zero=%lu rejected=%lu tx_failed=%lu "
                   "twai_state=%u msgs_to_tx=%u bus_errors=%lu tx_errors=%lu rx_missed=%lu "
                   "limit=%ld interval_ms=%lu watchdog_ms=%lu watchdog_stops=%lu "
-                  "run_complete=%lu pulse=%u pulse_done=%lu button=%u version=\"%s\"\n",
+                  "run_complete=%lu pulse=%u pulse_done=%lu button=%u "
+                  "cal_pending=%u cal_active_seen=%u cal_attempts=%lu cal_sent=%lu "
+                  "cal_observed=%lu cal_wait_ms=%lu version=\"%s\"\n",
                   mode_replay ? "replay" : "listen", armed ? 1u : 0u, (int)applied_value,
                   (int)target_value, run_timed ? 1u : 0u, run_left,
                   (unsigned long)sent_packets, (unsigned long)packets_nonzero,
@@ -332,7 +373,11 @@ static void print_state() {
                   interval_ms, (unsigned long)CONTROL_WATCHDOG_MS,
                   (unsigned long)watchdog_stops, (unsigned long)run_completions,
                   pulse_active ? 1u : 0u, (unsigned long)pulse_done,
-                  digitalRead(BUTTON_GPIO) == LOW ? 1u : 0u, CONTROL_VERSION);
+                  digitalRead(BUTTON_GPIO) == LOW ? 1u : 0u,
+                  calibration_pending ? 1u : 0u, calibration_seen_active ? 1u : 0u,
+                  (unsigned long)calibration_attempts, (unsigned long)calibration_sent,
+                  (unsigned long)calibration_observed,
+                  calibration_pending ? clock_ms-calibration_requested_ms : 0ul, CONTROL_VERSION);
 }
 
 static void print_help() {
@@ -341,6 +386,8 @@ static void print_help() {
     Serial.println("# HELP run <value> <ms>      hold, then zero (1..60000)");
     Serial.println("# HELP pulse <v> <hold> <gap> <n>   n short pulses, zero between them");
     Serial.println("# HELP sweep <v>             pulse with defaults to reach a hard stop");
+    Serial.println("# HELP calibrate             one start candidate; ARM + zero required; no verified cancel");
+    Serial.println("# HELP calibration_clear     local lock only; disarm + physically idle required");
     Serial.println("# HELP status | ping         telemetry + watchdog feed");
     Serial.println("# HELP interval [ms]         dial cadence, 10..1000");
     Serial.println("# HELP limit [n]             magnitude clamp, 1..2048");
@@ -393,6 +440,54 @@ static void handle_line(char *line) {
     char *third = strtok(nullptr, " \t");
     char *fourth = strtok(nullptr, " \t");
     int32_t value = 0;
+
+    bool motion_command = !strcasecmp(command,"run") || !strcasecmp(command,"pulse") ||
+                          !strcasecmp(command,"sweep") ||
+                          ((!strcasecmp(command,"go") || !strcasecmp(command,"set")) &&
+                           first && parse_i32(first,&value) && value != 0);
+    if (motion_command && (calibration_pending || motor_calibrating_observed())) {
+        Serial.println("# ERR calibration_guard ordinary_nonzero_blocked; STOP/DISARM are not calibration cancel");
+        return;
+    }
+    if (!strcasecmp(command,"calibrate")) {
+        if (!armed) {
+            Serial.println("# ERR calibrate requires_arm_and_zero");
+            return;
+        }
+        if (calibration_pending || motor_calibrating_observed()) {
+            Serial.println("# ERR calibrate already_pending_or_stage_active no_retry");
+            return;
+        }
+        if (target_value != 0 || applied_value != 0 || run_timed || pulse_active) {
+            Serial.println("# ERR calibrate stop_ordinary_motion_first");
+            return;
+        }
+        // Latch BEFORE the first fragment; failure can be ambiguous on the wire.
+        calibration_pending = true;
+        calibration_seen_active = false;
+        calibration_requested_ms = clock_ms;
+        calibration_requested_us = esp_timer_get_time();
+        ++calibration_attempts;
+        if (send_calibration_candidate()) {
+            ++calibration_sent;
+            Serial.println("# ACK calibrate candidate_sent=1 motor_started_unverified=1 no_auto_retry=1");
+        } else {
+            Serial.println("# ERR calibrate transmit_failed outcome_unknown=1 lock_retained=1 no_auto_retry=1");
+        }
+        print_state();
+        return;
+    }
+    if (!strcasecmp(command,"calibration_clear")) {
+        if (armed || target_value != 0 || applied_value != 0 || motor_calibrating_observed()) {
+            Serial.println("# ERR calibration_clear requires_disarmed_idle_and_no_observed_stage12");
+            return;
+        }
+        calibration_pending = false;
+        calibration_seen_active = false;
+        Serial.println("# ACK calibration_clear local_only=1 no_motor_cancel_sent=1");
+        print_state();
+        return;
+    }
 
     if (!strcasecmp(command, "arm")) {
         armed = true;
@@ -688,6 +783,18 @@ static void service_telemetry() {
 static void print_motor_observation() {
     if (!motor_status.updated) return;
     motor_status.updated = false;
+    if (calibration_pending) {
+        if (motor_status.stage < 0) calibration_seen_active = false;
+        else if (motor_status.sample_us >= calibration_requested_us) {
+            if (motor_status.stage == 1 || motor_status.stage == 2) calibration_seen_active = true;
+            else if (motor_status.stage == 3 && motor_status.valid() && calibration_seen_active) {
+                calibration_pending = false;
+                ++calibration_observed;
+                Serial.println("# ACK calibration_observation stage3_after_stage12=1 mechanical_success_unverified=1");
+                print_state();
+            }
+        }
+    }
     Serial.printf("# MOTOR epoch=%u t_us=%llu stage=%d coord=%ld valid=%u packets=%u\n",
                   motor_status.epoch,(unsigned long long)motor_status.sample_us,
                   motor_status.stage,(long)motor_status.coordinate,

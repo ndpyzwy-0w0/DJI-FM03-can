@@ -14,7 +14,7 @@ import threading
 import time
 import uuid
 
-HOST_VERSION = 'motor_control_host 1.2.1 feedback_diagnostics'
+HOST_VERSION = 'motor_control_host 1.3 calibration_trial'
 BEIJING = timezone(timedelta(hours=8))
 
 
@@ -150,12 +150,14 @@ def summarize(directory):
     low = high = None
     resets = 0
     counter_deltas = Counter()
-    counter_keys = ('sent', 'nonzero', 'zero', 'rejected', 'tx_failed', 'bus_errors', 'rx_missed', 'watchdog_stops')
+    counter_keys = ('sent', 'nonzero', 'zero', 'rejected', 'tx_failed', 'bus_errors', 'rx_missed', 'watchdog_stops',
+                    'cal_attempts', 'cal_sent', 'cal_observed')
     end = None
     elapsed = 0
     last_seq = raw_expected = 0
     malformed = []
     observations, marks, command_timeline, stage_transitions = [], [], [], []
+    calibration_events = []
     coordinate_snapshot = None
     attempts, results = set(), set()
     last_motor_time = None
@@ -178,6 +180,9 @@ def summarize(directory):
             kind = row['kind']
             kinds[kind] += 1
             reference = {'seq': row['seq'], 'elapsed_s': elapsed}
+            if kind in ('calibration_request', 'calibration_clear_request') or (kind == 'rx_line' and
+                    row.get('line', '').startswith(('# CALIB ', '# ACK calibrat', '# ERR calibrat'))):
+                calibration_events.append(row)
             if kind == 'session_end':
                 end = row
             elif kind == 'rx_chunk':
@@ -258,6 +263,7 @@ def summarize(directory):
         'motor_samples': motor_count, 'invalid_or_nonworking_motor_samples': invalid_motor,
         'stages_observed': sorted(stages), 'working_coordinate_range': [low, high] if low is not None else None,
         'motor_stage_transitions': stage_transitions, 'max_host_motor_sample_gap_s': max_motor_gap if motor_count > 1 else None,
+        'calibration_events': calibration_events,
         'first_motor': first_motor, 'last_motor': last_motor, 'anomalies': anomalies,
         'integrity': {'malformed_jsonl_lines': malformed, 'rx_bytes': raw_size,
                       'rx_complete_lines': raw_lines, 'rx_unterminated_tail_bytes': raw_tail,
@@ -266,6 +272,7 @@ def summarize(directory):
                       'rx_bytes_accounted_by_journal': raw_expected, 'rx_offsets_cover_raw': raw_size == raw_expected,
                       'rx_sha256': file_sha256(directory / 'rx.log'), 'journal_sha256': file_sha256(directory / 'events.jsonl')},
         'analysis_limits': ['Host command write is not CAN transmission or motor execution; inspect firmware ACK/STATE separately.',
+                            'Calibration start is an unverified replay candidate; stage3 after stage1/2 is feedback, not verified mechanical success. STOP/watchdog may not cancel internal calibration.',
                             'Raw coordinate may be actual position or internal reference; no physical units/accuracy inferred.',
                             'Positive counter deltas cover observed samples only; decreases/gaps/reset can hide counts.',
                             'Absence of errors does not prove lossless reception; UART firmware does not output every CAN RX frame.',

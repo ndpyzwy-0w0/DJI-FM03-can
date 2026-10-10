@@ -1,0 +1,24 @@
+{
+  "at_beijing": "2026-10-10T12:31:38.343854+08:00",
+  "candidate_hex": "55100456e5bf21db00042f0200017cc9",
+  "first_manual_attempt_sequence": "0xdb21",
+  "fragment_lengths": [
+    8,
+    8
+  ],
+  "evidence": [
+    {
+      "capture": "captures\\20261009_003846_528282_calibration.log",
+      "packet_hex": "55100456e5bfb34400042f020001a978",
+      "frames": 2,
+      "stamp": 137123273
+    },
+    {
+      "capture": "captures\\20261009_132137_540179_calibration.log",
+      "packet_hex": "55100456e5bf21db00042f0200017cc9",
+      "frames": 2,
+      "stamp": 642158885
+    }
+  ],
+  "limits": "Byte evidence only; no replay, cancel, persistence, or mechanical success verification."
+}

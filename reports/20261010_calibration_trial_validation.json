@@ -1,0 +1,57 @@
+{
+  "at_beijing": "2026-10-10 12:34:29",
+  "base_commit": "033d364",
+  "firmware_version": "motor_control 1.2 calibration_trigger",
+  "host_version": "motor_control_host 1.3 calibration_trial",
+  "artifacts": [
+    {
+      "path": "dist/FM03_MotorControl_Calibration.exe",
+      "bytes": 12127368,
+      "sha256": "b1cd3f7e21f0ebd7e4e4af661828437ea9fffa6b758ff2c9df415cbc0b069f95"
+    },
+    {
+      "path": "dist/FM03_Calibration_20261010/motor_control_application.bin",
+      "bytes": 291568,
+      "sha256": "f3e1e84128a4918206d6c0124b02acb25e12ec8d06c46870ce05f7a3178cdeb0"
+    }
+  ],
+  "offline_tests": {
+    "calibration_trial": 7,
+    "motor_control": 8,
+    "control_session": 11,
+    "motor_status": 7,
+    "gui": 11,
+    "total": 44
+  },
+  "checks": {
+    "motor_control_build": "SUCCESS",
+    "final_exe_self_check": 0,
+    "capture_self_check": "passed",
+    "protocol_self_check": "passed",
+    "candidate_two_valid_captures": "passed",
+    "raw_files_hashed_unchanged": 184
+  },
+  "ui_required_size": [
+    874,
+    961
+  ],
+  "screen_size": [
+    2194,
+    1234
+  ],
+  "deployment": {
+    "flashed": false,
+    "real_serial_opened": false,
+    "can_transmitted": false,
+    "gui_launched_without_connect": true,
+    "old_gui_preserved": true,
+    "port_enumeration": "COM17 CH343 VID1A86 PID55D3 SER5C83447762; enumerate only",
+    "hardware_idle_and_rs3_detached": "pending user confirmation"
+  },
+  "limits": [
+    "Firmware runtime guards compiled/reviewed, not replay tested on hardware",
+    "No verified calibration cancel",
+    "Power persistence hypothesis unconfirmed",
+    "Stage/coordinate not proof of mechanical position or successful calibration"
+  ]
+}
