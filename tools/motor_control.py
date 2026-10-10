@@ -38,6 +38,7 @@ import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
 from motor_status import LiveMotor, parse_motor_line
 from control_session import HOST_VERSION, SessionLog, default_log_root
+from position_control import PositionController, unavailable as position_unavailable, reason_text
 
 try:
     import serial
@@ -109,6 +110,8 @@ class MotorLink:
         self.tx_id = 0
         self.calibration_unconfirmed = False
         self.calibration_attempt_before = 0
+        self.position_active = False
+        self.position_stop_requested = False
         # Kept as an attribute so a test can shorten it without touching production
         # code; the shipped cadence is HEARTBEAT_MS.
         self.heartbeat_ms = HEARTBEAT_MS
@@ -196,11 +199,11 @@ class MotorLink:
         return self.serial is not None and getattr(self.serial, "is_open", False)
 
     # -- conversation ------------------------------------------------------
-    def send(self, command: str) -> bool:
+    def send(self, command: str, *, position_control=False) -> bool:
         if not self.is_open():
             return False
         payload = (command + "\n").encode("ascii", errors="replace")
-        allowed = command.strip().lower() in ('stop', 'disarm', 'go 0', 'status', 'ping', 'version', 'help')
+        allowed = command.strip().lower() in ('stop', 'zero', 'disarm', 'go 0', 'set 0', 'status', 'ping', 'version', 'help')
         if (self.logging_error or self.stopping.is_set()) and not allowed:
             self.events.put(('error', f'未发送 {command}：记录或连接已中断；STOP/DISARM仍可用。'))
             self.record_event('command_blocked', command=command)
@@ -209,6 +212,12 @@ class MotorLink:
         try:
             with self.lock:
                 verb = command.strip().lower().split()[0] if command.strip() else ''
+                if self.position_active and not position_control and not allowed:
+                    self.record_event('command_blocked', command=command, reason='position_control_active')
+                    self.events.put(('command_blocked', '自动到位中，普通控制和校准已锁定；先 STOP/取消到位。'))
+                    return False
+                if self.position_active and not position_control and command.strip().lower() in ('stop','zero','disarm','go 0','set 0'):
+                    self.position_stop_requested = True
                 motion = verb in ('run', 'pulse', 'sweep', 'calibrate')
                 if verb in ('go', 'set'):
                     motion = command.strip().split()[1:] != ['0']
@@ -309,6 +318,7 @@ class MotorControlApp:
         self.events: queue.Queue = queue.Queue()
         self.link = MotorLink(self.events)
         self.motor = LiveMotor()
+        self.position = PositionController(lambda command: self.link.send(command, position_control=True), self.position_event)
         self.armed = False
         self.value = 0
         self.limit = DEFAULT_LIMIT
@@ -323,7 +333,7 @@ class MotorControlApp:
 
     # -- UI ----------------------------------------------------------------
     def build_ui(self) -> None:
-        self.root.title("FM03 跟焦电机 运动控制（自动校准试验/日志版）")
+        self.root.title("FM03 跟焦电机 运动控制（坐标自动到位/日志版）")
         self.root.minsize(860, 760)
         outer = ttk.Frame(self.root, padding=10)
         outer.pack(fill="both", expand=True)
@@ -450,6 +460,26 @@ class MotorControlApp:
         self.marks_label.grid(row=1,column=3,columnspan=2,padx=8,sticky="w")
         ttk.Label(status,text="原始坐标可能是实际位置或内部参考值；A/B 不触发运动，重新校准/中断/过期后失效。",wraplength=800).grid(row=2,column=0,columnspan=5,sticky='w')
 
+        positioning = ttk.LabelFrame(outer, text='指定坐标自动到位（需先 ARM、普通归零和新鲜阶段 3）', padding=8)
+        positioning.pack(fill='x', pady=(8,0))
+        self.position_target_var = tk.StringVar(value='2048')
+        self.position_tolerance_var = tk.StringVar(value='4')
+        self.position_speed_var = tk.StringVar(value='64')
+        self.position_timeout_var = tk.StringVar(value='60')
+        for column, (label, variable) in enumerate((('目标0～4096',self.position_target_var),
+                ('允许误差',self.position_tolerance_var),('最大速度',self.position_speed_var),('超时秒',self.position_timeout_var))):
+            ttk.Label(positioning,text=label).grid(row=0,column=2*column,padx=3)
+            ttk.Entry(positioning,textvariable=variable,width=7).grid(row=0,column=2*column+1,padx=3)
+        self.position_button = ttk.Button(positioning,text='开始到位',command=self.start_position,state='disabled')
+        self.position_button.grid(row=1,column=0,columnspan=2,pady=4)
+        self.goto_a_button = ttk.Button(positioning,text='到 A',command=lambda:self.goto_mark('A'),state='disabled')
+        self.goto_a_button.grid(row=1,column=2)
+        self.goto_b_button = ttk.Button(positioning,text='到 B',command=lambda:self.goto_mark('B'),state='disabled')
+        self.goto_b_button.grid(row=1,column=3)
+        ttk.Button(positioning,text='取消到位并归零',command=self.stop).grid(row=1,column=4,columnspan=3)
+        self.position_label = ttk.Label(positioning,text='尚未启动；允许误差是原始坐标单位，实际机械误差需复测。',wraplength=800)
+        self.position_label.grid(row=2,column=0,columnspan=8,sticky='w')
+
         # Telemetry + log
         bottom = ttk.Frame(outer)
         bottom.pack(fill="both", expand=True, pady=(8, 0))
@@ -519,6 +549,8 @@ class MotorControlApp:
         self.connect_button.configure(text="断开", command=self.disconnect)
 
     def disconnect(self, reason='disconnect') -> None:
+        self.position.cancel(reason,self.position_context(),time.monotonic())
+        self.link.position_active = False
         self.log('结束本次串口实验')
         self.motor.reset('连接已断开')
         self.update_motor_status(active=False)
@@ -574,6 +606,8 @@ class MotorControlApp:
     def disarm(self) -> None:
         if not self.require_link():
             return
+        self.position.cancel('operator_disarm',self.position_context(),time.monotonic())
+        self.link.position_active = False
         self.link.send("disarm")
         self.armed = False
         self.value = 0
@@ -581,13 +615,19 @@ class MotorControlApp:
         self.log("disarm：已释放控制，数值归零")
 
     def stop(self) -> None:
-        if self.link.is_open():
+        moving = self.position.active
+        self.position.cancel('operator_stop',self.position_context(),time.monotonic())
+        self.link.position_active = False
+        if self.link.is_open() and not moving:
             self.link.send("stop")
         self.value = 0
         self.set_value(0)
         self.log("stop：数值归零")
 
     def zero(self) -> None:
+        if self.position.active:
+            self.stop()
+            return
         self.set_value(0)
         self.send_value()
 
@@ -640,6 +680,9 @@ class MotorControlApp:
             return
         value = self.current_value()
         if value is None:
+            return
+        if self.position.active and value == 0:
+            self.stop()
             return
         self.set_value(value)
         if value != 0 and not self.armed:
@@ -735,6 +778,8 @@ class MotorControlApp:
         self.log(f"sweep {value}（低速连续，撞限位后请点 STOP）")
 
     def calibration_ready(self, clearing=False):
+        if self.position.active:
+            return False
         state = self.link.last_state
         fresh = self.link.is_open() and self.link.last_state_at > 0 and time.monotonic()-self.link.last_state_at < 1.5
         supported = all(key in state for key in ('cal_pending', 'cal_attempts', 'cal_observed'))
@@ -797,6 +842,71 @@ class MotorControlApp:
         self.calibration_label.configure(text=text)
 
     # -- event pump --------------------------------------------------------
+    def position_event(self, kind, **fields):
+        self.link.record_event(kind, **fields)
+        return not self.link.logging_error
+
+    def position_context(self):
+        now = time.monotonic()
+        return {'motor':self.motor.snapshot(now,self.link.is_open()), 'state':self.link.last_state,
+                'state_age_s':now-self.link.last_state_at if self.link.last_state_at else float('inf'),
+                'state_at':self.link.last_state_at,
+                'connected':self.link.is_open() and not self.link.stopping.is_set() and not self.link.logging_error,
+                'calibration_unconfirmed':self.link.calibration_unconfirmed}
+
+    def start_position(self):
+        try:
+            self.position.start(int(self.position_target_var.get()), self.position_context(),time.monotonic(),
+                tolerance=int(self.position_tolerance_var.get()),max_speed=int(self.position_speed_var.get()),
+                timeout_s=float(self.position_timeout_var.get()))
+        except ValueError as exc:
+            messagebox.showwarning('不能开始自动到位',str(exc))
+            return
+        self.link.position_stop_requested = False
+        self.link.position_active = self.position.active
+        self.set_value(0)
+        if not self.position.active:
+            self.log('自动到位未启动：日志保存失败。')
+            return
+        self.log(f'开始自动到位：目标{self.position.target}、误差±{self.position.tolerance}、速度上限{self.position.max_speed}')
+
+    def goto_mark(self, marker):
+        context = self.position_context()
+        mark = context['motor']['marks'].get(marker)
+        if not mark or not mark['valid'] or mark['epoch'] != context['motor']['epoch']:
+            messagebox.showwarning('记录已失效','需要本接收段内有效A/B记录；请重新记录。')
+            return
+        self.position_target_var.set(str(mark['coordinate']))
+        self.start_position()
+
+    def update_position_status(self):
+        context = self.position_context()
+        was_active = self.position.active
+        if self.link.position_stop_requested:
+            self.position.cancel('operator_zero_or_stop',context,time.monotonic())
+            self.link.position_stop_requested = False
+        self.position.tick(context,time.monotonic())
+        self.link.position_active = self.position.active
+        if was_active and not self.position.active:
+            result = self.position.result
+            self.set_value(0)
+            self.log(f"自动到位结束：{result['status']} / {result['reason']}，坐标{result['final_coordinate']}、误差{result['error']}")
+        ready = not self.position.active and position_unavailable(context) is None and all(context['state'].get(k)==0 for k in ('value','target','run','pulse'))
+        self.position_button.configure(state='normal' if ready else 'disabled')
+        for marker,button in (('A',self.goto_a_button),('B',self.goto_b_button)):
+            mark = context['motor']['marks'].get(marker)
+            valid = ready and mark and mark['valid'] and mark['epoch']==context['motor']['epoch']
+            button.configure(state='normal' if valid else 'disabled')
+        if self.position.active:
+            coordinate = context['motor']['coordinate']
+            text = f"{'减速接近' if self.position.phase=='moving' else '归零/稳定确认'}：目标{self.position.target}，当前{coordinate}，允许±{self.position.tolerance}"
+        elif self.position.result:
+            r = self.position.result
+            text = f"{'坐标到位（机械位置请复核）' if r['status']=='arrived' else '已取消/失败'}：目标{r['target']}，最终{r['final_coordinate']}，误差{r['error']}；{reason_text(r['reason'])}"
+        else:
+            text = '尚未启动；先 ARM、STOP 等归零。误差为原始坐标单位，不代表机械精度。'
+        self.position_label.configure(text=text)
+
     def pump(self) -> None:
         try:
             while True:
@@ -815,10 +925,13 @@ class MotorControlApp:
                 elif kind == 'logging_error':
                     self.session_label.configure(text=payload, foreground='red')
                     self.log(payload)
+                elif kind == 'command_blocked':
+                    self.log(payload)
         except queue.Empty:
             pass
         self.update_connection_labels()
         self.update_motor_status()
+        self.update_position_status()
         self.update_calibration_status()
         self.root.after(50, self.pump)
 
@@ -833,6 +946,9 @@ class MotorControlApp:
             self.armed = False
         if line.startswith(("# ACK", "# ERR", "# WARN", "# VERSION", "# CALIB")):
             self.log(line)
+        if self.position.active and line.startswith(('# ERR ', '# ERROR ', '# WARN ')):
+            self.position.cancel('device_error_or_warning',self.position_context(),time.monotonic(),status='failed')
+            self.link.position_active = False
 
     def on_state(self, state: dict) -> None:
         if "limit" in state and isinstance(state["limit"], int):
@@ -974,6 +1090,16 @@ def self_check() -> None:
     assert describe_direction(16).startswith("+16")
     # A malformed or unrelated line must not raise.
     assert parse_state("# STATE ") == {}
+    written = []
+    controller = PositionController(lambda command: written.append(command) or True)
+    position_state = dict(state, version='motor_control 1.2 calibration_trigger', value=0, target=0,
+                         run=0, pulse=0, twai_state=1, cal_pending=0, cal_attempts=1)
+    context = {'connected':True, 'state_age_s':0, 'state_at':100, 'state':position_state,
+               'motor':{'epoch':1,'stage':3,'coordinate':2000,'can_record':True,'age_s':0,'sample_t_us':1000000}}
+    controller.start(2048,context,100)
+    controller.tick(context,100)
+    controller.cancel('offline_self_check',context,100.1)
+    assert written == ['run 2 200','stop'] and controller.phase == 'cancelled'
     import tempfile
     from control_session import summarize
     with tempfile.TemporaryDirectory() as directory:

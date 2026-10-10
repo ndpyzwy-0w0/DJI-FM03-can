@@ -1,0 +1,64 @@
+{
+  "beijing_time": "2026-10-10 20:13:43",
+  "base_commit": "edbd5c7",
+  "branch": "main",
+  "host_version": "motor_control_host 1.4 coordinate_positioning",
+  "firmware": "existing motor_control 1.2 calibration_trigger; unchanged; no flash",
+  "tests": {
+    "position_control": 14,
+    "motor_control": 8,
+    "control_session": 11,
+    "calibration_trial": 7,
+    "motor_status": 7,
+    "gui": 11,
+    "total": 58,
+    "passed": true,
+    "scope": "offline actual controller, simulated plant, fake serial and Tk; no hardware motion test"
+  },
+  "checks": {
+    "source_motor_control_check": true,
+    "frozen_motor_control_check": true,
+    "capture_self_check": true,
+    "analyze_protocol_self_check": true,
+    "simulation_reproduced": 5,
+    "baseline_raw_files_unchanged": 198,
+    "gui_requested_size": [
+      874,
+      1085
+    ],
+    "screen_size": [
+      2194,
+      1234
+    ]
+  },
+  "executable": {
+    "path": "dist/FM03_MotorControl_Position.exe",
+    "bytes": 12140562,
+    "sha256": "3bd04061b4f7b0625a8abb5c6d0f6f10cd539a4b3d79289c5f19a54cfe818b9d",
+    "opened_without_connect": true
+  },
+  "hardware_actions": {
+    "serial_opened": false,
+    "reset": false,
+    "flashed": false,
+    "can_sent": false,
+    "auto_arm": false
+  },
+  "unresolved": [
+    "mechanical automatic arrival accuracy and reverse backlash",
+    "minimum practical speed and settling under real loads",
+    "sensor or reference coordinate generation",
+    "coordinate calibration power persistence"
+  ],
+  "raw_baseline": "reports/20261010_positioning_raw_baseline.json",
+  "simulation": "reports/20261010_positioning_simulation.json",
+  "user_session_during_development": {
+    "path": "captures/control_sessions/20261010_201159_135557_e1a139ea",
+    "host_version": "motor_control_host 1.4 coordinate_positioning",
+    "executable_sha256_matches": true,
+    "inspected": "session metadata only",
+    "summary_present": false,
+    "hardware_actions_unknown": true,
+    "left_untracked_and_uninterrupted": true
+  }
+}

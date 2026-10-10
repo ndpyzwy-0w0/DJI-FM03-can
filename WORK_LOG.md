@@ -1258,3 +1258,13 @@
 - 起点main/d32a9b8，12:43/19:38会话未跟踪原样保留；只读19:38摘要，1次calibrate、5go0、A2187/B2843，末累计校准2、armed1/普通0/正常disconnect。没有把最新目录或A/B强配到未给时刻的机械标记事件。
 - 本轮仅文档，未开发自动运动/开串口/复位/烧录/CAN控制；198原件哈希未变。更新HANDOFF/README/指南/动作索引/WORK_LOG，git diff --check后只提交本轮文档到本地main（本条随本轮提交，号见git log），不推送/改写历史；用户原件目录留未跟踪。
 - 下一步可开发通用目标坐标闭环到位与接近减速、容差/稳定检查，再验自动到位误差与双向重复性；保留校准/反馈失效和普通STOP边界，仓库只做FM03相关能力。
+
+## 2026-10-10 20:13:43 北京时间 — 开发通用指定坐标自动到位
+
+- 用户授权指定坐标自动到位，起点main/edbd5c7；保留12:43/19:38未跟踪用户会话，不关联未知机械动作。复用板上1.2 run期限，不改/重刷固件，未开串口/复位/ARM/CAN；主机1.4打包并打开无自动连接。
+- 新tools/position_control.py与test_position_control.py；tools/motor_control.py接入目标0～4096、容差/速度/超时、到A/B/取消；control_session.py新增到位事件和summary；启动CMD优先Position EXE。实际控制器每新样本run v 200，误差减速、归零STATE+连续新样本稳定检查；过期/校准/epoch/错误/日志/无进展/超时/反向次数失败归零，手动抢控锁和取消后不续跑。
+- 58项软件测试全部通过，源码/打包自检及capture/protocol自检；5模拟案例已复算同结果，GUI尺寸检查通过。dist单文件12140562字节/SHA3bd04061b4f7b0625a8abb5c6d0f6f10cd539a4b3d79289c5f19a54cfe818b9d；report验证、simulation、raw_baseline和guide路径见HANDOFF。机械自动定位、低速推力/回差仍未实测，不把默认±4或模拟误差当机械精度；200ms不是FM03停转/校准取消保证。
+- 原198log/json/jsonl哈希全不变；README/HANDOFF/两动作索引/WORK_LOG同步；git diff --check及暂存内容核对后只提交本轮到本地main（本条随本轮提交，准确号见git log），不推送/改历史；两用户目录留未跟踪。
+- 下一步用户ARM/STOP等归零/新鲜阶段3后，从附近内部目标手动试验；记录机械标记偏差/双向重复性与观察，断开生成日志，agent从position_events与UART/反馈分析。本仓库只FM03通用控制。
+
+- 交付检查发现用户已于20:11:59手动连接新版1.4，生成captures/control_sessions/20261010_201159_135557_e1a139ea；只读session.json核实EXE哈希相同，尚无summary/实验结束或动作确认。该活动会话原件留未跟踪，不中断、不分析为到位成功、不纳开发提交；agent本轮未连接硬件。

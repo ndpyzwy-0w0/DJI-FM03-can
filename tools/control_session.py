@@ -14,7 +14,7 @@ import threading
 import time
 import uuid
 
-HOST_VERSION = 'motor_control_host 1.3 calibration_trial'
+HOST_VERSION = 'motor_control_host 1.4 coordinate_positioning'
 BEIJING = timezone(timedelta(hours=8))
 
 
@@ -158,6 +158,7 @@ def summarize(directory):
     malformed = []
     observations, marks, command_timeline, stage_transitions = [], [], [], []
     calibration_events = []
+    position_events = []
     coordinate_snapshot = None
     attempts, results = set(), set()
     last_motor_time = None
@@ -180,6 +181,8 @@ def summarize(directory):
             kind = row['kind']
             kinds[kind] += 1
             reference = {'seq': row['seq'], 'elapsed_s': elapsed}
+            if kind in ('position_start', 'position_end'):
+                position_events.append(row)
             if kind in ('calibration_request', 'calibration_clear_request') or (kind == 'rx_line' and
                     row.get('line', '').startswith(('# CALIB ', '# ACK calibrat', '# ERR calibrat'))):
                 calibration_events.append(row)
@@ -264,6 +267,7 @@ def summarize(directory):
         'stages_observed': sorted(stages), 'working_coordinate_range': [low, high] if low is not None else None,
         'motor_stage_transitions': stage_transitions, 'max_host_motor_sample_gap_s': max_motor_gap if motor_count > 1 else None,
         'calibration_events': calibration_events,
+        'position_events': position_events,
         'first_motor': first_motor, 'last_motor': last_motor, 'anomalies': anomalies,
         'integrity': {'malformed_jsonl_lines': malformed, 'rx_bytes': raw_size,
                       'rx_complete_lines': raw_lines, 'rx_unterminated_tail_bytes': raw_tail,

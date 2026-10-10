@@ -1,0 +1,110 @@
+{
+  "scope": "synthetic plant using actual controller; not mechanical measurements",
+  "cases": [
+    {
+      "initial": 200,
+      "target": 3072,
+      "simulated_gain": 5.937,
+      "simulated_command_delay_s": 0.05,
+      "result": {
+        "move_id": 1,
+        "status": "arrived",
+        "reason": "coordinate_in_tolerance_and_stable",
+        "target": 3072,
+        "final_coordinate": 3068,
+        "error": -4,
+        "elapsed_s": 26.5,
+        "tolerance": 4,
+        "reversals": 0,
+        "firmware_zero_confirmed": true,
+        "stop_write_ok": null,
+        "coordinate_success_only": true
+      },
+      "run_commands": 255
+    },
+    {
+      "initial": 3700,
+      "target": 1024,
+      "simulated_gain": 8.16,
+      "simulated_command_delay_s": 0.1,
+      "result": {
+        "move_id": 1,
+        "status": "arrived",
+        "reason": "coordinate_in_tolerance_and_stable",
+        "target": 1024,
+        "final_coordinate": 1027,
+        "error": 3,
+        "elapsed_s": 18.5,
+        "tolerance": 4,
+        "reversals": 0,
+        "firmware_zero_confirmed": true,
+        "stop_write_ok": null,
+        "coordinate_success_only": true
+      },
+      "run_commands": 179
+    },
+    {
+      "initial": 2048,
+      "target": 0,
+      "simulated_gain": 6,
+      "simulated_command_delay_s": 0.05,
+      "result": {
+        "move_id": 1,
+        "status": "arrived",
+        "reason": "coordinate_in_tolerance_and_stable",
+        "target": 0,
+        "final_coordinate": 4,
+        "error": 4,
+        "elapsed_s": 24.0,
+        "tolerance": 4,
+        "reversals": 0,
+        "firmware_zero_confirmed": true,
+        "stop_write_ok": null,
+        "coordinate_success_only": true
+      },
+      "run_commands": 231
+    },
+    {
+      "initial": 2048,
+      "target": 4096,
+      "simulated_gain": 6,
+      "simulated_command_delay_s": 0.1,
+      "result": {
+        "move_id": 1,
+        "status": "arrived",
+        "reason": "coordinate_in_tolerance_and_stable",
+        "target": 4096,
+        "final_coordinate": 4093,
+        "error": -3,
+        "elapsed_s": 23.5,
+        "tolerance": 4,
+        "reversals": 0,
+        "firmware_zero_confirmed": true,
+        "stop_write_ok": null,
+        "coordinate_success_only": true
+      },
+      "run_commands": 229
+    },
+    {
+      "initial": 200,
+      "target": 1000,
+      "simulated_gain": 2,
+      "simulated_command_delay_s": 0.05,
+      "result": {
+        "move_id": 1,
+        "status": "arrived",
+        "reason": "coordinate_in_tolerance_and_stable",
+        "target": 1000,
+        "final_coordinate": 996,
+        "error": -4,
+        "elapsed_s": 59.0,
+        "tolerance": 4,
+        "reversals": 0,
+        "firmware_zero_confirmed": true,
+        "stop_write_ok": null,
+        "coordinate_success_only": true
+      },
+      "run_commands": 581
+    }
+  ]
+}
