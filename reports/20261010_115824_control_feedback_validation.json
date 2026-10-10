@@ -216,5 +216,32 @@
     "Prior RS3 calibration and subsequent power/replug/restart history",
     "RS3 physical disconnection and actual motor movement/stop for recorded speed changes"
   ],
-  "initial_review_failure": "First ffmpeg frame extraction was not executed because automatic approval review reported usage limit, not unsafe determination; user requested continue, same approval retried successfully. No bypass used."
+  "initial_review_failure": "First ffmpeg frame extraction was not executed because automatic approval review reported usage limit, not unsafe determination; user requested continue, same approval retried successfully. No bypass used.",
+  "secondary_session": {
+    "directory": "captures/control_sessions/20261010_120212_435431_fae49d09",
+    "old_host_version": "1.2",
+    "analysis": "reports/20261010_120212_control_feedback_analysis.json",
+    "stage0_sentinel_samples": 227,
+    "stage3_samples": 0,
+    "elapsed_s": 22.797,
+    "bus_errors_first_last": 546462,
+    "bus_errors_observed_delta": 0,
+    "last_observed_armed": 1,
+    "last_observed_value": 16,
+    "STOP_DISARM_or_watchdog_stop_not_observed": true,
+    "file_sha256": {
+      "events.jsonl": "3f9f8872ecdf89fa3dd32903c16ce9bcfa350816c6819669e5d35beab790a371",
+      "rx.log": "13d0497d63ee364b19dc5859157e0ef25b76551c5d3243570671c3b389d20b75",
+      "session.json": "0140439519c19e012f0aa98054cb224f565766723b307538541c3d12e2054c49",
+      "summary.json": "8616e875674e385a76f93e66d3b4c1cd2da217defeae715ed6e42a7c28e24c12"
+    }
+  },
+  "raw_log_whitespace_check": "Mixed serial CR/LF and trailing partial-line space preserved; -whitespace attribute for raw rx.log only. All source/doc checks remain enabled.",
+  "host_window": {
+    "launcher_pid": 37140,
+    "gui_pid": 23128,
+    "window_handle": 593850,
+    "title": "FM03 跟焦电机 运动控制（自动日志/反馈诊断版）",
+    "arguments": []
+  }
 }

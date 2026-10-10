@@ -50,3 +50,13 @@
 直接加入自动校准按钮仍需单独协议验证：04:2F/02 00 01只有强相关候选，独立启动可靠性与取消命令未确认，普通速度归零不保证终止内部校准。因此本轮没有新增或试发校准/取消/位置命令。
 
 复现：`.venv/Scripts/python.exe tools/analyze_control_feedback.py captures/control_sessions/20261010_115824_562578_828a108c --output reports/一个新名称.json`。输出独占创建，拒绝覆盖；固定输入文件哈希在报告内。
+
+## 补查12:02会话与原始字节格式
+
+分析进行时另见`captures/control_sessions/20261010_120212_435431_fae49d09/`，主机仍是旧1.2/原EXE SHA（不是修复后的复测）。22.797秒记录227条MOTOR，全为stage0/2147483647；没有stage3，进一步支持无校准后坐标。第二份独立报告`reports/20261010_120212_control_feedback_analysis.json`保留其计数/时间诊断。
+
+46次status、ARM、go16；最后完整STATE armed1/value16/target16，没有记录STOP/DISARM或后续watchdog_stop。本固件设计在心跳结束约2秒后归零，但该动作在本日志之外，不能声明已验证停转。下次先STOP/DISARM并见ACK/STATE零，再关闭以留下完整停止证据。
+
+该会话bus_errors首末都是546462，本次观察增量0；大累计值说明中间曾有总线错误，但具体发生于哪次断电/接线/节点状态未知，不归因这次22.8秒动作。sent只增223/nonzero113/zero110，不能将末累计1394当作此次发送周期数。原录屏仍只对应11:58会话，12:02不是同一个视频时段。
+
+初次暂存检查发现原始rx.log中三个串口CR和最终半行空格会触发Git空白检查。原字节保持不动，在.gitattributes中只为此类原始rx.log添加-whitespace，普通源码/文档检查不变；再次检查通过。此前提交724b3b3保留，新补充另提交，不改历史。
