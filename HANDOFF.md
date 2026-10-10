@@ -1,3 +1,10 @@
+## 当前入口：2026-10-10 21:04:06 北京时间 — 用户授权首次推送GitHub，主线及既有实验原件准备上传
+
+- 用户指定https://github.com/ndpyzwy-0w0/DJI-FM03-can.git并明确要求推送；本轮覆盖此前默认不推送限制。起点main/e810ee1，GitHub ls-remote成功且无refs，本机Git Credential Manager可用；原无remote。仅main，firmware-extract不合并/不推送，不改写历史、不强制推送。
+- 为完整项目纳入五份此前未跟踪会话：12:43/19:38/20:11/20:22/20:38；每目录session.json/rx.log/events.jsonl/summary.json，summary均正常disconnect。只核对归档/版本及原始SHA，不将新增日志存在当实际定位成功，不补机械动作/灯语/电源。两动作映射登记本轮归档范围；raw全部210log/json/jsonl哈希清单见reports/20261010_github_publication_manifest.json。
+- 本机备份/环境/缓存/build/dist/.env继续忽略，不上传ESP32备份或生成EXE；源码/协议证据/分析/测试/说明随main上传。当前源码文本常见凭据格式扫描无匹配，未改软件或硬件；本轮仅归档和发布，不串口/复位/烧录/CAN。
+- README增加GitHub入口与Windows源码启动方法；PROJECT_STATUS明确已授权发布。git diff --check及20新增原件暂存逐字节核对后提交本轮归档/记录，再设置origin并首次普通push main；执行结果以最后GitHub发布核验条目和远程main SHA为准，不提前宣称推送完成。
+
 ## 当前入口：2026-10-10 20:55:27 北京时间 — 整理核心逆向成功与云端发布范围（文档准备）
 
 - 用户要求整理目前情况、准备完整FM03破解项目云端提交并评估成功范围；核实main/c51d1c6，已跟踪内容干净，五用户control_sessions目录未跟踪保留。本轮仅核查并整理文档，不创建远程/上传/推送，不串口/硬件动作。

@@ -1,0 +1,21 @@
+{
+  "schema": "fm03.control_session.v1",
+  "session_id": "20261010_201159_135557_e1a139ea",
+  "started_at_beijing": "2026-10-10T20:11:59.135557+08:00",
+  "host_version": "motor_control_host 1.4 coordinate_positioning",
+  "port": "COM17",
+  "baudrate": 921600,
+  "device": {
+    "description": "USB-Enhanced-SERIAL CH343 (COM17)",
+    "hwid": "USB VID:PID=1A86:55D3 SER=5C83447762 LOCATION=1-8.3",
+    "vid": 6790,
+    "pid": 21971,
+    "serial_number": "5C83447762"
+  },
+  "host_sha256": {
+    "FM03_MotorControl_Position.exe": "3bd04061b4f7b0625a8abb5c6d0f6f10cd539a4b3d79289c5f19a54cfe818b9d"
+  },
+  "physical_observations": "unknown until user records an observation",
+  "time_semantics": "elapsed_s is host monotonic journal time; received_elapsed_s is serial read return time; Beijing is host wall clock; motor t_us is driver dequeue time",
+  "scope": "UART evidence, not a complete CAN bus capture; a written command is not a motor acknowledgement or mechanical action"
+}

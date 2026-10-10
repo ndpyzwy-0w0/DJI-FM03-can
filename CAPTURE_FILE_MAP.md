@@ -344,3 +344,12 @@
 ## 2026-10-10 20:55:27 北京时间 — 发布范围整理，无新增动作证据
 
 - PROJECT_STATUS.md汇总既有实机核心成果与实验性定位软件，未分析/修改新的用户原件，未据软件测试或新目录宣称实机成功；190已跟踪原始文件哈希不变。五未跟踪用户会话保留，动作/最新自动定位结果仍须另确认。本轮只文档，不抓包/串口/复位/烧录/CAN/上传。
+
+## 2026-10-10 21:04:06 北京时间 — 首次GitHub发布归档五份既有实验会话
+
+- 用户授权整个项目推送到ndpyzwy-0w0/DJI-FM03-can；本轮只归档，未新增机械动作确认或硬件实验。全部原件SHA和版本见reports/20261010_github_publication_manifest.json，原文件不编辑/覆盖，归档正常结束不等于自动定位成功。
+- captures/control_sessions/20261010_124329_565335_ea949b57：motor_control_host 1.3 calibration_trial，4原件原样纳入；正常disconnect；实际动作/灯语/电源未在本轮确认，不能凭目录升级语义。
+- captures/control_sessions/20261010_193825_843127_9303ba16：motor_control_host 1.3 calibration_trial，4原件原样纳入；正常disconnect；实际动作/灯语/电源未在本轮确认，不能凭目录升级语义。
+- captures/control_sessions/20261010_201159_135557_e1a139ea：motor_control_host 1.4 coordinate_positioning，4原件原样纳入；正常window_closed；实际动作/灯语/电源未在本轮确认，不能凭目录升级语义。
+- captures/control_sessions/20261010_202237_074288_a4091112：motor_control_host 1.5 positioning_options，4原件原样纳入；正常window_closed；实际动作/灯语/电源未在本轮确认，不能凭目录升级语义。
+- captures/control_sessions/20261010_203847_236655_5f32e982：motor_control_host 1.6 strict_positioning，4原件原样纳入；正常window_closed；实际动作/灯语/电源未在本轮确认，不能凭目录升级语义。

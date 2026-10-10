@@ -1,0 +1,544 @@
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11120 nonzero=731 zero=10389 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11120 nonzero=731 zero=10389 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2754825851 stage=0 coord=2147483647 valid=0 packets=7223
+# MOTOR epoch=2 t_us=2754925855 stage=0 coord=2147483647 valid=0 packets=7224
+# MOTOR epoch=2 t_us=2755025855 stage=0 coord=2147483647 valid=0 packets=7225
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11125 nonzero=731 zero=10394 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2755125851 stage=0 coord=2147483647 valid=0 packets=7226
+# MOTOR epoch=2 t_us=2755225851 stage=0 coord=2147483647 valid=0 packets=7227
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11130 nonzero=731 zero=10399 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2755325855 stage=0 coord=2147483647 valid=0 packets=7228
+# MOTOR epoch=2 t_us=2755425851 stage=0 coord=2147483647 valid=0 packets=7229
+# MOTOR epoch=2 t_us=2755525851 stage=0 coord=2147483647 valid=0 packets=7230
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11135 nonzero=731 zero=10404 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2755625855 stage=0 coord=2147483647 valid=0 packets=7231
+# MOTOR epoch=2 t_us=2755725855 stage=0 coord=2147483647 valid=0 packets=7232
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11140 nonzero=731 zero=10409 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2755825851 stage=0 coord=2147483647 valid=0 packets=7233
+# MOTOR epoch=2 t_us=2755925855 stage=0 coord=2147483647 valid=0 packets=7234
+# MOTOR epoch=2 t_us=2756025855 stage=0 coord=2147483647 valid=0 packets=7235
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11145 nonzero=731 zero=10414 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2756125851 stage=0 coord=2147483647 valid=0 packets=7236
+# MOTOR epoch=2 t_us=2756225855 stage=0 coord=2147483647 valid=0 packets=7237
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11150 nonzero=731 zero=10419 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2756325855 stage=0 coord=2147483647 valid=0 packets=7238
+# MOTOR epoch=2 t_us=2756425855 stage=0 coord=2147483647 valid=0 packets=7239
+# MOTOR epoch=2 t_us=2756525855 stage=0 coord=2147483647 valid=0 packets=7240
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11155 nonzero=731 zero=10424 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2756625855 stage=0 coord=2147483647 valid=0 packets=7241
+# MOTOR epoch=2 t_us=2756725855 stage=0 coord=2147483647 valid=0 packets=7242
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11161 nonzero=731 zero=10430 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2756825854 stage=0 coord=2147483647 valid=0 packets=7243
+# MOTOR epoch=2 t_us=2756925855 stage=0 coord=2147483647 valid=0 packets=7244
+# MOTOR epoch=2 t_us=2757025855 stage=0 coord=2147483647 valid=0 packets=7245
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11165 nonzero=731 zero=10434 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2757125855 stage=0 coord=2147483647 valid=0 packets=7246
+# MOTOR epoch=2 t_us=2757225855 stage=0 coord=2147483647 valid=0 packets=7247
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11171 nonzero=731 zero=10440 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2757327952 stage=0 coord=2147483647 valid=0 packets=7248
+# MOTOR epoch=2 t_us=2757425855 stage=0 coord=2147483647 valid=0 packets=7249
+# MOTOR epoch=2 t_us=2757525855 stage=0 coord=2147483647 valid=0 packets=7250
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11175 nonzero=731 zero=10444 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2757625855 stage=0 coord=2147483647 valid=0 packets=7251
+# MOTOR epoch=2 t_us=2757725855 stage=0 coord=2147483647 valid=0 packets=7252
+# MOTOR epoch=2 t_us=2757825855 stage=0 coord=2147483647 valid=0 packets=7253
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11181 nonzero=731 zero=10450 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2757925855 stage=0 coord=2147483647 valid=0 packets=7254
+# MOTOR epoch=2 t_us=2758025855 stage=0 coord=2147483647 valid=0 packets=7255
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11185 nonzero=731 zero=10454 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2758125855 stage=0 coord=2147483647 valid=0 packets=7256
+# MOTOR epoch=2 t_us=2758225860 stage=0 coord=2147483647 valid=0 packets=7257
+# MOTOR epoch=2 t_us=2758325855 stage=0 coord=2147483647 valid=0 packets=7258
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11191 nonzero=731 zero=10460 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2758425855 stage=0 coord=2147483647 valid=0 packets=7259
+# MOTOR epoch=2 t_us=2758525861 stage=0 coord=2147483647 valid=0 packets=7260
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11195 nonzero=731 zero=10464 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2758625855 stage=0 coord=2147483647 valid=0 packets=7261
+# MOTOR epoch=2 t_us=2758725855 stage=0 coord=2147483647 valid=0 packets=7262
+# MOTOR epoch=2 t_us=2758825856 stage=0 coord=2147483647 valid=0 packets=7263
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11201 nonzero=731 zero=10470 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2758925861 stage=0 coord=2147483647 valid=0 packets=7264
+# MOTOR epoch=2 t_us=2759025855 stage=0 coord=2147483647 valid=0 packets=7265
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11205 nonzero=731 zero=10474 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2759125855 stage=0 coord=2147483647 valid=0 packets=7266
+# MOTOR epoch=2 t_us=2759225862 stage=0 coord=2147483647 valid=0 packets=7267
+# MOTOR epoch=2 t_us=2759325856 stage=0 coord=2147483647 valid=0 packets=7268
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11211 nonzero=731 zero=10480 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2759425855 stage=0 coord=2147483647 valid=0 packets=7269
+# MOTOR epoch=2 t_us=2759525861 stage=0 coord=2147483647 valid=0 packets=7270
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11215 nonzero=731 zero=10484 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2759625861 stage=0 coord=2147483647 valid=0 packets=7271
+# MOTOR epoch=2 t_us=2759725855 stage=0 coord=2147483647 valid=0 packets=7272
+# MOTOR epoch=2 t_us=2759825857 stage=0 coord=2147483647 valid=0 packets=7273
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11221 nonzero=731 zero=10490 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2759925861 stage=0 coord=2147483647 valid=0 packets=7274
+# MOTOR epoch=2 t_us=2760025861 stage=0 coord=2147483647 valid=0 packets=7275
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11225 nonzero=731 zero=10494 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2760125860 stage=0 coord=2147483647 valid=0 packets=7276
+# MOTOR epoch=2 t_us=2760225861 stage=0 coord=2147483647 valid=0 packets=7277
+# MOTOR epoch=2 t_us=2760325855 stage=0 coord=2147483647 valid=0 packets=7278
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11231 nonzero=731 zero=10500 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2760425861 stage=0 coord=2147483647 valid=0 packets=7279
+# MOTOR epoch=2 t_us=2760525861 stage=0 coord=2147483647 valid=0 packets=7280
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11235 nonzero=731 zero=10504 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2760625855 stage=0 coord=2147483647 valid=0 packets=7281
+# MOTOR epoch=2 t_us=2760725855 stage=0 coord=2147483647 valid=0 packets=7282
+# MOTOR epoch=2 t_us=2760825862 stage=0 coord=2147483647 valid=0 packets=7283
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11241 nonzero=731 zero=10510 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2760925855 stage=0 coord=2147483647 valid=0 packets=7284
+# MOTOR epoch=2 t_us=2761025855 stage=0 coord=2147483647 valid=0 packets=7285
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11245 nonzero=731 zero=10514 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2761125861 stage=0 coord=2147483647 valid=0 packets=7286
+# MOTOR epoch=2 t_us=2761225861 stage=0 coord=2147483647 valid=0 packets=7287
+# MOTOR epoch=2 t_us=2761325855 stage=0 coord=2147483647 valid=0 packets=7288
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11251 nonzero=731 zero=10520 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2761425879 stage=0 coord=2147483647 valid=0 packets=7289
+# MOTOR epoch=2 t_us=2761525873 stage=0 coord=2147483647 valid=0 packets=7290
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11255 nonzero=731 zero=10524 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2761625879 stage=0 coord=2147483647 valid=0 packets=7291
+# MOTOR epoch=2 t_us=2761725866 stage=0 coord=2147483647 valid=0 packets=7292
+# ACK arm value=0 (send 'go <value>' to move)
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11260 nonzero=731 zero=10529 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2761829855 stage=0 coord=2147483647 valid=0 packets=7293
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11261 nonzero=731 zero=10530 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2761929855 stage=0 coord=2147483647 valid=0 packets=7294
+# MOTOR epoch=2 t_us=2762029855 stage=0 coord=2147483647 valid=0 packets=7295
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11265 nonzero=731 zero=10534 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2762129855 stage=0 coord=2147483647 valid=0 packets=7296
+# MOTOR epoch=2 t_us=2762229855 stage=0 coord=2147483647 valid=0 packets=7297
+# MOTOR epoch=2 t_us=2762329855 stage=0 coord=2147483647 valid=0 packets=7298
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11272 nonzero=731 zero=10541 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2762429855 stage=0 coord=2147483647 valid=0 packets=7299
+# MOTOR epoch=2 t_us=2762529858 stage=0 coord=2147483647 valid=0 packets=7300
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11275 nonzero=731 zero=10544 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2762629855 stage=0 coord=2147483647 valid=0 packets=7301
+# MOTOR epoch=2 t_us=2762729858 stage=0 coord=2147483647 valid=0 packets=7302
+# MOTOR epoch=2 t_us=2762829858 stage=0 coord=2147483647 valid=0 packets=7303
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11282 nonzero=731 zero=10551 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2762929855 stage=0 coord=2147483647 valid=0 packets=7304
+# MOTOR epoch=2 t_us=2763029855 stage=0 coord=2147483647 valid=0 packets=7305
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11285 nonzero=731 zero=10554 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2763129858 stage=0 coord=2147483647 valid=0 packets=7306
+# MOTOR epoch=2 t_us=2763229858 stage=0 coord=2147483647 valid=0 packets=7307
+# MOTOR epoch=2 t_us=2763329858 stage=0 coord=2147483647 valid=0 packets=7308
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11292 nonzero=731 zero=10561 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2763429858 stage=0 coord=2147483647 valid=0 packets=7309
+# MOTOR epoch=2 t_us=2763529858 stage=0 coord=2147483647 valid=0 packets=7310
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11295 nonzero=731 zero=10564 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2763629855 stage=0 coord=2147483647 valid=0 packets=7311
+# MOTOR epoch=2 t_us=2763729858 stage=0 coord=2147483647 valid=0 packets=7312
+# MOTOR epoch=2 t_us=2763829858 stage=0 coord=2147483647 valid=0 packets=7313
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11302 nonzero=731 zero=10571 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2763929858 stage=0 coord=2147483647 valid=0 packets=7314
+# MOTOR epoch=2 t_us=2764029858 stage=0 coord=2147483647 valid=0 packets=7315
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11305 nonzero=731 zero=10574 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2764129858 stage=0 coord=2147483647 valid=0 packets=7316
+# MOTOR epoch=2 t_us=2764229858 stage=0 coord=2147483647 valid=0 packets=7317
+# MOTOR epoch=2 t_us=2764329858 stage=0 coord=2147483647 valid=0 packets=7318
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11312 nonzero=731 zero=10581 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2764427944 stage=0 coord=2147483647 valid=0 packets=7319
+# MOTOR epoch=2 t_us=2764529858 stage=0 coord=2147483647 valid=0 packets=7320
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11315 nonzero=731 zero=10584 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2764629858 stage=0 coord=2147483647 valid=0 packets=7321
+# MOTOR epoch=2 t_us=2764729858 stage=0 coord=2147483647 valid=0 packets=7322
+# MOTOR epoch=2 t_us=2764829859 stage=0 coord=2147483647 valid=0 packets=7323
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11323 nonzero=731 zero=10592 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2764932923 stage=0 coord=2147483647 valid=0 packets=7324
+# MOTOR epoch=2 t_us=2765029858 stage=0 coord=2147483647 valid=0 packets=7325
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11325 nonzero=731 zero=10594 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2765129858 stage=0 coord=2147483647 valid=0 packets=7326
+# MOTOR epoch=2 t_us=2765229859 stage=0 coord=2147483647 valid=0 packets=7327
+# MOTOR epoch=2 t_us=2765329865 stage=0 coord=2147483647 valid=0 packets=7328
+# MOTOR epoch=2 t_us=2765429858 stage=0 coord=2147483647 valid=0 packets=7329
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11333 nonzero=731 zero=10602 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2765529858 stage=0 coord=2147483647 valid=0 packets=7330
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11335 nonzero=731 zero=10604 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2765629862 stage=0 coord=2147483647 valid=0 packets=7331
+# MOTOR epoch=2 t_us=2765729859 stage=0 coord=2147483647 valid=0 packets=7332
+# MOTOR epoch=2 t_us=2765829859 stage=0 coord=2147483647 valid=0 packets=7333
+# MOTOR epoch=2 t_us=2765929858 stage=0 coord=2147483647 valid=0 packets=7334
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11343 nonzero=731 zero=10612 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2766029865 stage=0 coord=2147483647 valid=0 packets=7335
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11345 nonzero=731 zero=10614 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2766129858 stage=0 coord=2147483647 valid=0 packets=7336
+# MOTOR epoch=2 t_us=2766229858 stage=0 coord=2147483647 valid=0 packets=7337
+# MOTOR epoch=2 t_us=2766329861 stage=0 coord=2147483647 valid=0 packets=7338
+# MOTOR epoch=2 t_us=2766429865 stage=0 coord=2147483647 valid=0 packets=7339
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11353 nonzero=731 zero=10622 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2766529858 stage=0 coord=2147483647 valid=0 packets=7340
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11355 nonzero=731 zero=10624 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2766629858 stage=0 coord=2147483647 valid=0 packets=7341
+# MOTOR epoch=2 t_us=2766729865 stage=0 coord=2147483647 valid=0 packets=7342
+# MOTOR epoch=2 t_us=2766829865 stage=0 coord=2147483647 valid=0 packets=7343
+# MOTOR epoch=2 t_us=2766929858 stage=0 coord=2147483647 valid=0 packets=7344
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11364 nonzero=731 zero=10633 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2767029865 stage=0 coord=2147483647 valid=0 packets=7345
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11365 nonzero=731 zero=10634 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2767129865 stage=0 coord=2147483647 valid=0 packets=7346
+# MOTOR epoch=2 t_us=2767229862 stage=0 coord=2147483647 valid=0 packets=7347
+# MOTOR epoch=2 t_us=2767329865 stage=0 coord=2147483647 valid=0 packets=7348
+# MOTOR epoch=2 t_us=2767429865 stage=0 coord=2147483647 valid=0 packets=7349
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11374 nonzero=731 zero=10643 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2767529858 stage=0 coord=2147483647 valid=0 packets=7350
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11375 nonzero=731 zero=10644 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2767629864 stage=0 coord=2147483647 valid=0 packets=7351
+# MOTOR epoch=2 t_us=2767729865 stage=0 coord=2147483647 valid=0 packets=7352
+# MOTOR epoch=2 t_us=2767829858 stage=0 coord=2147483647 valid=0 packets=7353
+# MOTOR epoch=2 t_us=2767929865 stage=0 coord=2147483647 valid=0 packets=7354
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11384 nonzero=731 zero=10653 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2768029866 stage=0 coord=2147483647 valid=0 packets=7355
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11385 nonzero=731 zero=10654 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2768129858 stage=0 coord=2147483647 valid=0 packets=7356
+# MOTOR epoch=2 t_us=2768229858 stage=0 coord=2147483647 valid=0 packets=7357
+# MOTOR epoch=2 t_us=2768329865 stage=0 coord=2147483647 valid=0 packets=7358
+# MOTOR epoch=2 t_us=2768429858 stage=0 coord=2147483647 valid=0 packets=7359
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11394 nonzero=731 zero=10663 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2768529858 stage=0 coord=2147483647 valid=0 packets=7360
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11395 nonzero=731 zero=10664 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2768629865 stage=0 coord=2147483647 valid=0 packets=7361
+# MOTOR epoch=2 t_us=2768729858 stage=0 coord=2147483647 valid=0 packets=7362
+# MOTOR epoch=2 t_us=2768829858 stage=0 coord=2147483647 valid=0 packets=7363
+# MOTOR epoch=2 t_us=2768929862 stage=0 coord=2147483647 valid=0 packets=7364
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11404 nonzero=731 zero=10673 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2769029860 stage=0 coord=2147483647 valid=0 packets=7365
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11405 nonzero=731 zero=10674 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2769129858 stage=0 coord=2147483647 valid=0 packets=7366
+# MOTOR epoch=2 t_us=2769229862 stage=0 coord=2147483647 valid=0 packets=7367
+# MOTOR epoch=2 t_us=2769329862 stage=0 coord=2147483647 valid=0 packets=7368
+# MOTOR epoch=2 t_us=2769429858 stage=0 coord=2147483647 valid=0 packets=7369
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11414 nonzero=731 zero=10683 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2769529858 stage=0 coord=2147483647 valid=0 packets=7370
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11415 nonzero=731 zero=10684 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2769629862 stage=0 coord=2147483647 valid=0 packets=7371
+# MOTOR epoch=2 t_us=2769729858 stage=0 coord=2147483647 valid=0 packets=7372
+# MOTOR epoch=2 t_us=2769829858 stage=0 coord=2147483647 valid=0 packets=7373
+# MOTOR epoch=2 t_us=2769929862 stage=0 coord=2147483647 valid=0 packets=7374
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11424 nonzero=731 zero=10693 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2770029864 stage=0 coord=2147483647 valid=0 packets=7375
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11425 nonzero=731 zero=10694 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2770129858 stage=0 coord=2147483647 valid=0 packets=7376
+# MOTOR epoch=2 t_us=2770229862 stage=0 coord=2147483647 valid=0 packets=7377
+# MOTOR epoch=2 t_us=2770329862 stage=0 coord=2147483647 valid=0 packets=7378
+# MOTOR epoch=2 t_us=2770429862 stage=0 coord=2147483647 valid=0 packets=7379
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11435 nonzero=731 zero=10704 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2770532931 stage=0 coord=2147483647 valid=0 packets=7380
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11435 nonzero=731 zero=10704 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2770629862 stage=0 coord=2147483647 valid=0 packets=7381
+# MOTOR epoch=2 t_us=2770729862 stage=0 coord=2147483647 valid=0 packets=7382
+# MOTOR epoch=2 t_us=2770829862 stage=0 coord=2147483647 valid=0 packets=7383
+# MOTOR epoch=2 t_us=2770929862 stage=0 coord=2147483647 valid=0 packets=7384
+# MOTOR epoch=2 t_us=2771029862 stage=0 coord=2147483647 valid=0 packets=7385
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11445 nonzero=731 zero=10714 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11445 nonzero=731 zero=10714 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2771129862 stage=0 coord=2147483647 valid=0 packets=7386
+# MOTOR epoch=2 t_us=2771229862 stage=0 coord=2147483647 valid=0 packets=7387
+# MOTOR epoch=2 t_us=2771329862 stage=0 coord=2147483647 valid=0 packets=7388
+# MOTOR epoch=2 t_us=2771429862 stage=0 coord=2147483647 valid=0 packets=7389
+# MOTOR epoch=2 t_us=2771529862 stage=0 coord=2147483647 valid=0 packets=7390
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11455 nonzero=731 zero=10724 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11455 nonzero=731 zero=10724 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2771629862 stage=0 coord=2147483647 valid=0 packets=7391
+# MOTOR epoch=2 t_us=2771729862 stage=0 coord=2147483647 valid=0 packets=7392
+# MOTOR epoch=2 t_us=2771829862 stage=0 coord=2147483647 valid=0 packets=7393
+# MOTOR epoch=2 t_us=2771929862 stage=0 coord=2147483647 valid=0 packets=7394
+# ACK arm value=0 (send 'go <value>' to move)
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11463 nonzero=731 zero=10732 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2772029862 stage=0 coord=2147483647 valid=0 packets=7395
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11465 nonzero=731 zero=10734 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11465 nonzero=731 zero=10734 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2772129862 stage=0 coord=2147483647 valid=0 packets=7396
+# MOTOR epoch=2 t_us=2772229862 stage=0 coord=2147483647 valid=0 packets=7397
+# MOTOR epoch=2 t_us=2772329862 stage=0 coord=2147483647 valid=0 packets=7398
+# MOTOR epoch=2 t_us=2772429862 stage=0 coord=2147483647 valid=0 packets=7399
+# MOTOR epoch=2 t_us=2772529862 stage=0 coord=2147483647 valid=0 packets=7400
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11475 nonzero=731 zero=10744 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11476 nonzero=731 zero=10745 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2772629862 stage=0 coord=2147483647 valid=0 packets=7401
+# MOTOR epoch=2 t_us=2772729862 stage=0 coord=2147483647 valid=0 packets=7402
+# MOTOR epoch=2 t_us=2772829862 stage=0 coord=2147483647 valid=0 packets=7403
+# MOTOR epoch=2 t_us=2772929862 stage=0 coord=2147483647 valid=0 packets=7404
+# MOTOR epoch=2 t_us=2773029862 stage=0 coord=2147483647 valid=0 packets=7405
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11485 nonzero=731 zero=10754 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11486 nonzero=731 zero=10755 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2773129864 stage=0 coord=2147483647 valid=0 packets=7406
+# MOTOR epoch=2 t_us=2773229864 stage=0 coord=2147483647 valid=0 packets=7407
+# MOTOR epoch=2 t_us=2773329863 stage=0 coord=2147483647 valid=0 packets=7408
+# MOTOR epoch=2 t_us=2773429862 stage=0 coord=2147483647 valid=0 packets=7409
+# MOTOR epoch=2 t_us=2773529869 stage=0 coord=2147483647 valid=0 packets=7410
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11495 nonzero=731 zero=10764 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11496 nonzero=731 zero=10765 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2773629862 stage=0 coord=2147483647 valid=0 packets=7411
+# MOTOR epoch=2 t_us=2773729862 stage=0 coord=2147483647 valid=0 packets=7412
+# MOTOR epoch=2 t_us=2773829863 stage=0 coord=2147483647 valid=0 packets=7413
+# MOTOR epoch=2 t_us=2773929869 stage=0 coord=2147483647 valid=0 packets=7414
+# MOTOR epoch=2 t_us=2774029862 stage=0 coord=2147483647 valid=0 packets=7415
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11505 nonzero=731 zero=10774 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11506 nonzero=731 zero=10775 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2774129869 stage=0 coord=2147483647 valid=0 packets=7416
+# MOTOR epoch=2 t_us=2774229869 stage=0 coord=2147483647 valid=0 packets=7417
+# MOTOR epoch=2 t_us=2774329869 stage=0 coord=2147483647 valid=0 packets=7418
+# MOTOR epoch=2 t_us=2774429863 stage=0 coord=2147483647 valid=0 packets=7419
+# MOTOR epoch=2 t_us=2774529867 stage=0 coord=2147483647 valid=0 packets=7420
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11515 nonzero=731 zero=10784 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11516 nonzero=731 zero=10785 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2774629869 stage=0 coord=2147483647 valid=0 packets=7421
+# MOTOR epoch=2 t_us=2774729862 stage=0 coord=2147483647 valid=0 packets=7422
+# MOTOR epoch=2 t_us=2774829867 stage=0 coord=2147483647 valid=0 packets=7423
+# MOTOR epoch=2 t_us=2774929869 stage=0 coord=2147483647 valid=0 packets=7424
+# MOTOR epoch=2 t_us=2775029869 stage=0 coord=2147483647 valid=0 packets=7425
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11525 nonzero=731 zero=10794 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11526 nonzero=731 zero=10795 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2775129870 stage=0 coord=2147483647 valid=0 packets=7426
+# MOTOR epoch=2 t_us=2775229869 stage=0 coord=2147483647 valid=0 packets=7427
+# MOTOR epoch=2 t_us=2775329862 stage=0 coord=2147483647 valid=0 packets=7428
+# MOTOR epoch=2 t_us=2775429869 stage=0 coord=2147483647 valid=0 packets=7429
+# MOTOR epoch=2 t_us=2775529869 stage=0 coord=2147483647 valid=0 packets=7430
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11535 nonzero=731 zero=10804 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11536 nonzero=731 zero=10805 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2775629870 stage=0 coord=2147483647 valid=0 packets=7431
+# MOTOR epoch=2 t_us=2775729866 stage=0 coord=2147483647 valid=0 packets=7432
+# MOTOR epoch=2 t_us=2775829869 stage=0 coord=2147483647 valid=0 packets=7433
+# MOTOR epoch=2 t_us=2775929869 stage=0 coord=2147483647 valid=0 packets=7434
+# MOTOR epoch=2 t_us=2776029866 stage=0 coord=2147483647 valid=0 packets=7435
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11545 nonzero=731 zero=10814 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11546 nonzero=731 zero=10815 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2776127941 stage=0 coord=2147483647 valid=0 packets=7436
+# MOTOR epoch=2 t_us=2776229869 stage=0 coord=2147483647 valid=0 packets=7437
+# MOTOR epoch=2 t_us=2776329866 stage=0 coord=2147483647 valid=0 packets=7438
+# MOTOR epoch=2 t_us=2776429866 stage=0 coord=2147483647 valid=0 packets=7439
+# MOTOR epoch=2 t_us=2776529869 stage=0 coord=2147483647 valid=0 packets=7440
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11555 nonzero=731 zero=10824 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2776629862 stage=0 coord=2147483647 valid=0 packets=7441
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11557 nonzero=731 zero=10826 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2776729873 stage=0 coord=2147483647 valid=0 packets=7442
+# MOTOR epoch=2 t_us=2776829866 stage=0 coord=2147483647 valid=0 packets=7443
+# MOTOR epoch=2 t_us=2776929869 stage=0 coord=2147483647 valid=0 packets=7444
+# MOTOR epoch=2 t_us=2777029866 stage=0 coord=2147483647 valid=0 packets=7445
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11565 nonzero=731 zero=10834 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2777129873 stage=0 coord=2147483647 valid=0 packets=7446
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11567 nonzero=731 zero=10836 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2777229879 stage=0 coord=2147483647 valid=0 packets=7447
+# MOTOR epoch=2 t_us=2777329866 stage=0 coord=2147483647 valid=0 packets=7448
+# MOTOR epoch=2 t_us=2777429866 stage=0 coord=2147483647 valid=0 packets=7449
+# MOTOR epoch=2 t_us=2777529866 stage=0 coord=2147483647 valid=0 packets=7450
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11575 nonzero=731 zero=10844 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2777629879 stage=0 coord=2147483647 valid=0 packets=7451
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11577 nonzero=731 zero=10846 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2777729873 stage=0 coord=2147483647 valid=0 packets=7452
+# MOTOR epoch=2 t_us=2777829866 stage=0 coord=2147483647 valid=0 packets=7453
+# ACK go requested=16 applied=16
+# STATE mode=replay armed=1 value=0 target=16 run=0 run_left_ms=0 sent=11581 nonzero=731 zero=10850 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2777929873 stage=0 coord=2147483647 valid=0 packets=7454
+# MOTOR epoch=2 t_us=2778029866 stage=0 coord=2147483647 valid=0 packets=7455
+# STATE mode=replay armed=1 value=16 target=16 run=0 run_left_ms=0 sent=11585 nonzero=735 zero=10850 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2778129873 stage=0 coord=2147483647 valid=0 packets=7456
+# STATE mode=replay armed=1 value=16 target=16 run=0 run_left_ms=0 sent=11588 nonzero=738 zero=10850 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2778229875 stage=0 coord=2147483647 valid=0 packets=7457
+# MOTOR epoch=2 t_us=2778329866 stage=0 coord=2147483647 valid=0 packets=7458
+# MOTOR epoch=2 t_us=2778429866 stage=0 coord=2147483647 valid=0 packets=7459
+# MOTOR epoch=2 t_us=2778529866 stage=0 coord=2147483647 valid=0 packets=7460
+# STATE mode=replay armed=1 value=16 target=16 run=0 run_left_ms=0 sent=11595 nonzero=745 zero=10850 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2778629873 stage=0 coord=2147483647 valid=0 packets=7461
+# STATE mode=replay armed=1 value=16 target=16 run=0 run_left_ms=0 sent=11598 nonzero=748 zero=10850 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2778729875 stage=0 coord=2147483647 valid=0 packets=7462
+# MOTOR epoch=2 t_us=2778829866 stage=0 coord=2147483647 valid=0 packets=7463
+# MOTOR epoch=2 t_us=2778929866 stage=0 coord=2147483647 valid=0 packets=7464
+# MOTOR epoch=2 t_us=2779029866 stage=0 coord=2147483647 valid=0 packets=7465
+# STATE mode=replay armed=1 value=16 target=16 run=0 run_left_ms=0 sent=11605 nonzero=755 zero=10850 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2779129873 stage=0 coord=2147483647 valid=0 packets=7466
+# STATE mode=replay armed=1 value=16 target=16 run=0 run_left_ms=0 sent=11608 nonzero=758 zero=10850 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2779229875 stage=0 coord=2147483647 valid=0 packets=7467
+# MOTOR epoch=2 t_us=2779329866 stage=0 coord=2147483647 valid=0 packets=7468
+# MOTOR epoch=2 t_us=2779429866 stage=0 coord=2147483647 valid=0 packets=7469
+# MOTOR epoch=2 t_us=2779529866 stage=0 coord=2147483647 valid=0 packets=7470
+# STATE mode=replay armed=1 value=16 target=16 run=0 run_left_ms=0 sent=11615 nonzero=765 zero=10850 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2779629873 stage=0 coord=2147483647 valid=0 packets=7471
+# STATE mode=replay armed=1 value=16 target=16 run=0 run_left_ms=0 sent=11618 nonzero=768 zero=10850 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2779729876 stage=0 coord=2147483647 valid=0 packets=7472
+# MOTOR epoch=2 t_us=2779829866 stage=0 coord=2147483647 valid=0 packets=7473
+# MOTOR epoch=2 t_us=2779929866 stage=0 coord=2147483647 valid=0 packets=7474
+# MOTOR epoch=2 t_us=2780029866 stage=0 coord=2147483647 valid=0 packets=7475
+# STATE mode=replay armed=1 value=16 target=16 run=0 run_left_ms=0 sent=11625 nonzero=775 zero=10850 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2780129873 stage=0 coord=2147483647 valid=0 packets=7476
+# STATE mode=replay armed=1 value=16 target=16 run=0 run_left_ms=0 sent=11628 nonzero=778 zero=10850 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2780229875 stage=0 coord=2147483647 valid=0 packets=7477
+# MOTOR epoch=2 t_us=2780329866 stage=0 coord=2147483647 valid=0 packets=7478
+# MOTOR epoch=2 t_us=2780429866 stage=0 coord=2147483647 valid=0 packets=7479
+# MOTOR epoch=2 t_us=2780529866 stage=0 coord=2147483647 valid=0 packets=7480
+# STATE mode=replay armed=1 value=16 target=16 run=0 run_left_ms=0 sent=11635 nonzero=785 zero=10850 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2780629873 stage=0 coord=2147483647 valid=0 packets=7481
+# STATE mode=replay armed=1 value=16 target=16 run=0 run_left_ms=0 sent=11638 nonzero=788 zero=10850 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2780725923 stage=0 coord=2147483647 valid=0 packets=7482
+# MOTOR epoch=2 t_us=2780825873 stage=0 coord=2147483647 valid=0 packets=7483
+# ACK go requested=0 applied=0
+# STATE mode=replay armed=1 value=16 target=0 run=0 run_left_ms=0 sent=11641 nonzero=791 zero=10850 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2780925879 stage=0 coord=2147483647 valid=0 packets=7484
+# MOTOR epoch=2 t_us=2781025873 stage=0 coord=2147483647 valid=0 packets=7485
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11645 nonzero=791 zero=10854 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2781125879 stage=0 coord=2147483647 valid=0 packets=7486
+# MOTOR epoch=2 t_us=2781225873 stage=0 coord=2147483647 valid=0 packets=7487
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11649 nonzero=791 zero=10858 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2781325880 stage=0 coord=2147483647 valid=0 packets=7488
+# MOTOR epoch=2 t_us=2781425866 stage=0 coord=2147483647 valid=0 packets=7489
+# MOTOR epoch=2 t_us=2781525873 stage=0 coord=2147483647 valid=0 packets=7490
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11655 nonzero=791 zero=10864 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2781625877 stage=0 coord=2147483647 valid=0 packets=7491
+# MOTOR epoch=2 t_us=2781725866 stage=0 coord=2147483647 valid=0 packets=7492
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11659 nonzero=791 zero=10868 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2781825875 stage=0 coord=2147483647 valid=0 packets=7493
+# MOTOR epoch=2 t_us=2781925873 stage=0 coord=2147483647 valid=0 packets=7494
+# MOTOR epoch=2 t_us=2782025866 stage=0 coord=2147483647 valid=0 packets=7495
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11665 nonzero=791 zero=10874 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2782125871 stage=0 coord=2147483647 valid=0 packets=7496
+# MOTOR epoch=2 t_us=2782225873 stage=0 coord=2147483647 valid=0 packets=7497
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11669 nonzero=791 zero=10878 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2782325882 stage=0 coord=2147483647 valid=0 packets=7498
+# MOTOR epoch=2 t_us=2782425866 stage=0 coord=2147483647 valid=0 packets=7499
+# MOTOR epoch=2 t_us=2782525866 stage=0 coord=2147483647 valid=0 packets=7500
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11675 nonzero=791 zero=10884 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2782625877 stage=0 coord=2147483647 valid=0 packets=7501
+# MOTOR epoch=2 t_us=2782725866 stage=0 coord=2147483647 valid=0 packets=7502
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11679 nonzero=791 zero=10888 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2782825875 stage=0 coord=2147483647 valid=0 packets=7503
+# MOTOR epoch=2 t_us=2782925866 stage=0 coord=2147483647 valid=0 packets=7504
+# MOTOR epoch=2 t_us=2783025866 stage=0 coord=2147483647 valid=0 packets=7505
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11685 nonzero=791 zero=10894 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2783125871 stage=0 coord=2147483647 valid=0 packets=7506
+# MOTOR epoch=2 t_us=2783225866 stage=0 coord=2147483647 valid=0 packets=7507
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11689 nonzero=791 zero=10898 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2783325875 stage=0 coord=2147483647 valid=0 packets=7508
+# MOTOR epoch=2 t_us=2783425866 stage=0 coord=2147483647 valid=0 packets=7509
+# MOTOR epoch=2 t_us=2783525866 stage=0 coord=2147483647 valid=0 packets=7510
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11695 nonzero=791 zero=10904 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2783625871 stage=0 coord=2147483647 valid=0 packets=7511
+# MOTOR epoch=2 t_us=2783725866 stage=0 coord=2147483647 valid=0 packets=7512
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11699 nonzero=791 zero=10908 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2783825875 stage=0 coord=2147483647 valid=0 packets=7513
+# MOTOR epoch=2 t_us=2783925866 stage=0 coord=2147483647 valid=0 packets=7514
+# MOTOR epoch=2 t_us=2784025866 stage=0 coord=2147483647 valid=0 packets=7515
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11705 nonzero=791 zero=10914 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2784125871 stage=0 coord=2147483647 valid=0 packets=7516
+# MOTOR epoch=2 t_us=2784225866 stage=0 coord=2147483647 valid=0 packets=7517
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11709 nonzero=791 zero=10918 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2784325875 stage=0 coord=2147483647 valid=0 packets=7518
+# MOTOR epoch=2 t_us=2784425866 stage=0 coord=2147483647 valid=0 packets=7519
+# MOTOR epoch=2 t_us=2784525866 stage=0 coord=2147483647 valid=0 packets=7520
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11715 nonzero=791 zero=10924 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2784625871 stage=0 coord=2147483647 valid=0 packets=7521
+# MOTOR epoch=2 t_us=2784725866 stage=0 coord=2147483647 valid=0 packets=7522
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11719 nonzero=791 zero=10928 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2784825875 stage=0 coord=2147483647 valid=0 packets=7523
+# MOTOR epoch=2 t_us=2784925866 stage=0 coord=2147483647 valid=0 packets=7524
+# MOTOR epoch=2 t_us=2785025866 stage=0 coord=2147483647 valid=0 packets=7525
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11725 nonzero=791 zero=10934 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2785125871 stage=0 coord=2147483647 valid=0 packets=7526
+# MOTOR epoch=2 t_us=2785225866 stage=0 coord=2147483647 valid=0 packets=7527
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11729 nonzero=791 zero=10938 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2785325875 stage=0 coord=2147483647 valid=0 packets=7528
+# MOTOR epoch=2 t_us=2785425866 stage=0 coord=2147483647 valid=0 packets=7529
+# MOTOR epoch=2 t_us=2785525866 stage=0 coord=2147483647 valid=0 packets=7530
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11735 nonzero=791 zero=10944 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2785625871 stage=0 coord=2147483647 valid=0 packets=7531
+# MOTOR epoch=2 t_us=2785725866 stage=0 coord=2147483647 valid=0 packets=7532
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11740 nonzero=791 zero=10949 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2785825881 stage=0 coord=2147483647 valid=0 packets=7533
+# MOTOR epoch=2 t_us=2785925866 stage=0 coord=2147483647 valid=0 packets=7534
+# MOTOR epoch=2 t_us=2786025866 stage=0 coord=2147483647 valid=0 packets=7535
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11745 nonzero=791 zero=10954 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2786125873 stage=0 coord=2147483647 valid=0 packets=7536
+# MOTOR epoch=2 t_us=2786225866 stage=0 coord=2147483647 valid=0 packets=7537
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11750 nonzero=791 zero=10959 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2786325879 stage=0 coord=2147483647 valid=0 packets=7538
+# MOTOR epoch=2 t_us=2786425871 stage=0 coord=2147483647 valid=0 packets=7539
+# MOTOR epoch=2 t_us=2786525866 stage=0 coord=2147483647 valid=0 packets=7540
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11755 nonzero=791 zero=10964 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2786625871 stage=0 coord=2147483647 valid=0 packets=7541
+# MOTOR epoch=2 t_us=2786725871 stage=0 coord=2147483647 valid=0 packets=7542
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11760 nonzero=791 zero=10969 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2786825888 stage=0 coord=2147483647 valid=0 packets=7543
+# MOTOR epoch=2 t_us=2786925866 stage=0 coord=2147483647 valid=0 packets=7544
+# MOTOR epoch=2 t_us=2787025866 stage=0 coord=2147483647 valid=0 packets=7545
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11765 nonzero=791 zero=10974 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2787125878 stage=0 coord=2147483647 valid=0 packets=7546
+# MOTOR epoch=2 t_us=2787225866 stage=0 coord=2147483647 valid=0 packets=7547
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11770 nonzero=791 zero=10979 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2787326918 stage=0 coord=2147483647 valid=0 packets=7548
+# MOTOR epoch=2 t_us=2787425873 stage=0 coord=2147483647 valid=0 packets=7549
+# MOTOR epoch=2 t_us=2787525873 stage=0 coord=2147483647 valid=0 packets=7550
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11775 nonzero=791 zero=10984 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2787625873 stage=0 coord=2147483647 valid=0 packets=7551
+# MOTOR epoch=2 t_us=2787725873 stage=0 coord=2147483647 valid=0 packets=7552
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11780 nonzero=791 zero=10989 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2787826916 stage=0 coord=2147483647 valid=0 packets=7553
+# MOTOR epoch=2 t_us=2787925873 stage=0 coord=2147483647 valid=0 packets=7554
+# MOTOR epoch=2 t_us=2788025871 stage=0 coord=2147483647 valid=0 packets=7555
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11785 nonzero=791 zero=10994 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2788125877 stage=0 coord=2147483647 valid=0 packets=7556
+# MOTOR epoch=2 t_us=2788225873 stage=0 coord=2147483647 valid=0 packets=7557
+# MOTOR epoch=2 t_us=2788325873 stage=0 coord=2147483647 valid=0 packets=7558
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11791 nonzero=791 zero=11000 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2788425879 stage=0 coord=2147483647 valid=0 packets=7559
+# MOTOR epoch=2 t_us=2788525873 stage=0 coord=2147483647 valid=0 packets=7560
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11795 nonzero=791 zero=11004 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2788625880 stage=0 coord=2147483647 valid=0 packets=7561
+# MOTOR epoch=2 t_us=2788725873 stage=0 coord=2147483647 valid=0 packets=7562
+# MOTOR epoch=2 t_us=2788825873 stage=0 coord=2147483647 valid=0 packets=7563
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11801 nonzero=791 zero=11010 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2788925873 stage=0 coord=2147483647 valid=0 packets=7564
+# MOTOR epoch=2 t_us=2789025873 stage=0 coord=2147483647 valid=0 packets=7565
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11805 nonzero=791 zero=11014 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2789125878 stage=0 coord=2147483647 valid=0 packets=7566
+# MOTOR epoch=2 t_us=2789225866 stage=0 coord=2147483647 valid=0 packets=7567
+# MOTOR epoch=2 t_us=2789325866 stage=0 coord=2147483647 valid=0 packets=7568
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11811 nonzero=791 zero=11020 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2789425879 stage=0 coord=2147483647 valid=0 packets=7569
+# MOTOR epoch=2 t_us=2789525866 stage=0 coord=2147483647 valid=0 packets=7570
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11815 nonzero=791 zero=11024 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2789625873 stage=0 coord=2147483647 valid=0 packets=7571
+# MOTOR epoch=2 t_us=2789725866 stage=0 coord=2147483647 valid=0 packets=7572
+# MOTOR epoch=2 t_us=2789825873 stage=0 coord=2147483647 valid=0 packets=7573
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11821 nonzero=791 zero=11030 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2789925873 stage=0 coord=2147483647 valid=0 packets=7574
+# MOTOR epoch=2 t_us=2790025866 stage=0 coord=2147483647 valid=0 packets=7575
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11825 nonzero=791 zero=11034 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2790125879 stage=0 coord=2147483647 valid=0 packets=7576
+# MOTOR epoch=2 t_us=2790225866 stage=0 coord=2147483647 valid=0 packets=7577
+# MOTOR epoch=2 t_us=2790325866 stage=0 coord=2147483647 valid=0 packets=7578
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11831 nonzero=791 zero=11040 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2790425873 stage=0 coord=2147483647 valid=0 packets=7579
+# MOTOR epoch=2 t_us=2790525866 stage=0 coord=2147483647 valid=0 packets=7580
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11835 nonzero=791 zero=11044 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2790625873 stage=0 coord=2147483647 valid=0 packets=7581
+# MOTOR epoch=2 t_us=2790725866 stage=0 coord=2147483647 valid=0 packets=7582
+# MOTOR epoch=2 t_us=2790825866 stage=0 coord=2147483647 valid=0 packets=7583
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11841 nonzero=791 zero=11050 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2790925873 stage=0 coord=2147483647 valid=0 packets=7584
+# MOTOR epoch=2 t_us=2791025866 stage=0 coord=2147483647 valid=0 packets=7585
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11845 nonzero=791 zero=11054 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2791125873 stage=0 coord=2147483647 valid=0 packets=7586
+# MOTOR epoch=2 t_us=2791225866 stage=0 coord=2147483647 valid=0 packets=7587
+# MOTOR epoch=2 t_us=2791325866 stage=0 coord=2147483647 valid=0 packets=7588
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11851 nonzero=791 zero=11060 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2791425879 stage=0 coord=2147483647 valid=0 packets=7589
+# MOTOR epoch=2 t_us=2791525866 stage=0 coord=2147483647 valid=0 packets=7590
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11855 nonzero=791 zero=11064 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2791625871 stage=0 coord=2147483647 valid=0 packets=7591
+# MOTOR epoch=2 t_us=2791725871 stage=0 coord=2147483647 valid=0 packets=7592
+# MOTOR epoch=2 t_us=2791825873 stage=0 coord=2147483647 valid=0 packets=7593
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11862 nonzero=791 zero=11071 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2791925875 stage=0 coord=2147483647 valid=0 packets=7594
+# MOTOR epoch=2 t_us=2792025865 stage=0 coord=2147483647 valid=0 packets=7595
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11865 nonzero=791 zero=11074 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2792125880 stage=0 coord=2147483647 valid=0 packets=7596
+# MOTOR epoch=2 t_us=2792225866 stage=0 coord=2147483647 valid=0 packets=7597
+# MOTOR epoch=2 t_us=2792325866 stage=0 coord=2147483647 valid=0 packets=7598
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11872 nonzero=791 zero=11081 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2792425884 stage=0 coord=2147483647 valid=0 packets=7599
+# MOTOR epoch=2 t_us=2792525873 stage=0 coord=2147483647 valid=0 packets=7600
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11875 nonzero=791 zero=11084 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2792625870 stage=0 coord=2147483647 valid=0 packets=7601
+# MOTOR epoch=2 t_us=2792725871 stage=0 coord=2147483647 valid=0 packets=7602
+# MOTOR epoch=2 t_us=2792825873 stage=0 coord=2147483647 valid=0 packets=7603
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=11882 nonzero=791 zero=11091 rejected=38749 tx_failed=19375 twai_state=1 msgs_to_tx=0 bus_errors=15459029 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=1 run_complete=0 pulse=0 pulse_done=0 button=0 version="motor_control 1.1 status_coordinates"
+# MOTOR epoch=2 t_us=2792925881 stage=0 coord=2147483647 valid=0 packets=7604
+#

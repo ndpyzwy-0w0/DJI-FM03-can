@@ -1,0 +1,21 @@
+{
+  "schema": "fm03.control_session.v1",
+  "session_id": "20261010_193825_843127_9303ba16",
+  "started_at_beijing": "2026-10-10T19:38:25.843127+08:00",
+  "host_version": "motor_control_host 1.3 calibration_trial",
+  "port": "COM17",
+  "baudrate": 921600,
+  "device": {
+    "description": "USB-Enhanced-SERIAL CH343 (COM17)",
+    "hwid": "USB VID:PID=1A86:55D3 SER=5C83447762 LOCATION=1-8.3",
+    "vid": 6790,
+    "pid": 21971,
+    "serial_number": "5C83447762"
+  },
+  "host_sha256": {
+    "FM03_MotorControl_Calibration.exe": "b1cd3f7e21f0ebd7e4e4af661828437ea9fffa6b758ff2c9df415cbc0b069f95"
+  },
+  "physical_observations": "unknown until user records an observation",
+  "time_semantics": "elapsed_s is host monotonic journal time; received_elapsed_s is serial read return time; Beijing is host wall clock; motor t_us is driver dequeue time",
+  "scope": "UART evidence, not a complete CAN bus capture; a written command is not a motor acknowledgement or mechanical action"
+}

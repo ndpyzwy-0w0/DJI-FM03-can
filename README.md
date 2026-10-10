@@ -1,3 +1,24 @@
+> GitHub仓库：[ndpyzwy-0w0/DJI-FM03-can](https://github.com/ndpyzwy-0w0/DJI-FM03-can)。FM03核心CAN协议逆向、独立控制与实验性坐标定位；已验证范围见PROJECT_STATUS.md。
+
+## Windows源码启动
+
+已验证环境为Windows/Python3.12。建立虚拟环境后安装依赖，再启动上位机；这些命令不自动连接串口或运动：
+
+```powershell
+py -3.12 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe tools/motor_control.py
+```
+
+单文件可自行构建（本机验证PyInstaller6.22.3）：
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install pyinstaller==6.22.3
+.\.venv\Scripts\python.exe tools/build_host_app.py --name FM03_MotorControl_StrictPosition
+```
+
+固件构建/烧录与接线请先阅读现有指南；不要把打开上位机当成已可安全发送。最新上位机操作见[严格到点指南](reports/20261010_strict_positioning_guide.md)。dist、虚拟环境、编译缓存与本机备份不在源码仓库内。
+
 > 当前可发布范围：FM03核心CAN控制协议逆向成功，已完成独立速度控制/寻限位/坐标反馈与实验性自动定位。实机证据、软件完成项和未知事项见[PROJECT_STATUS.md](PROJECT_STATUS.md)。下面含历史阶段记录，当前状态以此文件及HANDOFF最新入口为准。
 
 > 2026-10-10：上位机1.6新增“严格到点（误差=0）”及可设置最低速度。严格模式持续低速纠偏，只有坐标等于目标并归零稳定才成功，失效/不可达/超时报告失败。打开 `dist/FM03_MotorControl_StrictPosition.exe` 或启动CMD，无需重烧。[使用说明](reports/20261010_strict_positioning_guide.md)。
