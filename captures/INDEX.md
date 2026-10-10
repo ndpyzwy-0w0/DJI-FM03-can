@@ -364,3 +364,9 @@
 - 用户明确请求烧录；本轮只ESP32应用固件更新，不做FM03运动/校准。上传reports/20261010_124619_821176_calibration_control_upload.txt；汇总reports/20261010_calibration_control_flash.json。
 - 新原始UART诊断captures/20261010_124659_953817_calibration_control_version_verify.log及同名json：DTR/RTS=false、921600、仅version/status、3秒、7STATE版本1.2且未ARM/零普通速度/零校准尝试，无错误警告；不是完整CAN抓包，不纳机械动作语义。当前灯色/电源/RS3接线/实际动作保持未知。
 - 用户烧录前会话captures/control_sessions/20261010_124329_565335_ea949b57已正常disconnect，末普通value/target0、阶段0；未给对应物理动作确认，只用于不打断活动会话的检查，原四文件保留未跟踪、不混入本轮提交。188既有文件哈希不变。新版GUI已打开不连接，尚无候选主动重放记录。
+
+## 2026-10-10 18:49:06 北京时间 — 18:37自动寻限位测试（用户确认可用）
+
+- 用户明确提供18-37-40录屏并说功能可用；文件副本captures/media/20261010_183740_calibration_host_operation.mp4原字节/SHA一致，界面目录明确对应captures/control_sessions/20261010_183747_709961_6bdc8a25（session.json/rx.log/events.jsonl/summary.json保留）。9抽帧见artifacts/20261010_calibration_video_frames，画面仅GUI，不补机械方向/碰撞时刻/完整灯语。
+- 一次手动calibrate，18:37:57.286至18:38:09.925见1→2→3、初坐标3789、后±256控制到0/4096；普通零值背景校准53状态，末DISARM/STOP/值0/正常断开；用户确认寻限位可用。4向外坐标平台106样本支持限幅，但未逐段确认机械停转/不撞硬限位。无A/B点击。取消/持久化/真实位置和裸包条件未证。
+- 结论/复算：reports/20261010_183747_calibration_findings.md，tools/analyze_calibration_session.py→新文件，最新完整结果calibration_gain_followup.json；源码只新增离线工具，不操作硬件。194既有记录不变；12:43用户会话不与本次混合/不纳本轮提交。

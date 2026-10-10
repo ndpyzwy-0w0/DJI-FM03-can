@@ -1,0 +1,849 @@
+# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=1 t_us=21083479152 stage=0 coord=0 valid=0 packets=265
+# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=1 t_us=21083579153 stage=0 coord=0 valid=0 packets=266
+# MOTOR epoch=1 t_us=21083679155 stage=0 coord=0 valid=0 packets=267
+# MOTOR epoch=1 t_us=21083779148 stage=0 coord=0 valid=0 packets=268
+# MOTOR epoch=1 t_us=21083879155 stage=0 coord=0 valid=0 packets=269
+# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=1 t_us=21083979155 stage=0 coord=0 valid=0 packets=270
+# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=1 t_us=21084079148 stage=0 coord=0 valid=0 packets=271
+# MOTOR epoch=1 t_us=21084179155 stage=0 coord=0 valid=0 packets=272
+# MOTOR epoch=1 t_us=21084279155 stage=0 coord=0 valid=0 packets=273
+# MOTOR epoch=1 t_us=21084379155 stage=0 coord=0 valid=0 packets=274
+# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=1 t_us=21084479148 stage=0 coord=0 valid=0 packets=275
+# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=1 t_us=21084579155 stage=0 coord=0 valid=0 packets=276
+# MOTOR epoch=1 t_us=21084679148 stage=0 coord=0 valid=0 packets=277
+# MOTOR epoch=1 t_us=21084779148 stage=0 coord=0 valid=0 packets=278
+# MOTOR epoch=1 t_us=21084879148 stage=0 coord=0 valid=0 packets=279
+# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=1 t_us=21084979148 stage=0 coord=0 valid=0 packets=280
+# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=1 t_us=21085079148 stage=0 coord=0 valid=0 packets=281
+# MOTOR epoch=1 t_us=21085179148 stage=0 coord=0 valid=0 packets=282
+# MOTOR epoch=1 t_us=21085279148 stage=0 coord=0 valid=0 packets=283
+# MOTOR epoch=1 t_us=21085379148 stage=0 coord=0 valid=0 packets=284
+# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=1 t_us=21085479148 stage=0 coord=0 valid=0 packets=285
+# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=1 t_us=21085579148 stage=0 coord=0 valid=0 packets=286
+# MOTOR epoch=1 t_us=21085679148 stage=0 coord=0 valid=0 packets=287
+# MOTOR epoch=1 t_us=21085779148 stage=0 coord=0 valid=0 packets=288
+# MOTOR epoch=1 t_us=21085879152 stage=0 coord=0 valid=0 packets=289
+# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=1 t_us=21085979148 stage=0 coord=0 valid=0 packets=290
+# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=1 t_us=21086079148 stage=0 coord=0 valid=0 packets=291
+# MOTOR epoch=1 t_us=21086179148 stage=0 coord=0 valid=0 packets=292
+# MOTOR epoch=1 t_us=21086279152 stage=0 coord=0 valid=0 packets=293
+# MOTOR epoch=1 t_us=21086379148 stage=0 coord=0 valid=0 packets=294
+# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=1 t_us=21086479148 stage=0 coord=0 valid=0 packets=295
+# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=1 t_us=21086579152 stage=0 coord=0 valid=0 packets=296
+# MOTOR epoch=1 t_us=21086679152 stage=0 coord=0 valid=0 packets=297
+# MOTOR epoch=1 t_us=21086779152 stage=0 coord=0 valid=0 packets=298
+# MOTOR epoch=1 t_us=21086879152 stage=0 coord=0 valid=0 packets=299
+# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=1 t_us=21086979475 stage=0 coord=0 valid=0 packets=300
+# STATE mode=listen armed=0 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=1 t_us=21087079152 stage=0 coord=0 valid=0 packets=301
+# ACK arm value=0 (send 'go <value>' to move)
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=0 nonzero=0 zero=0 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=0 stage=-1 coord=0 valid=0 packets=301
+# MOTOR epoch=2 t_us=21087179148 stage=0 coord=0 valid=0 packets=302
+# MOTOR epoch=2 t_us=21087279152 stage=0 coord=0 valid=0 packets=303
+# MOTOR epoch=2 t_us=21087379152 stage=0 coord=0 valid=0 packets=304
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=8 nonzero=0 zero=8 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21087479498 stage=0 coord=0 valid=0 packets=305
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=9 nonzero=0 zero=9 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21087579152 stage=0 coord=0 valid=0 packets=306
+# MOTOR epoch=2 t_us=21087679152 stage=0 coord=0 valid=0 packets=307
+# MOTOR epoch=2 t_us=21087779152 stage=0 coord=0 valid=0 packets=308
+# MOTOR epoch=2 t_us=21087879152 stage=0 coord=0 valid=0 packets=309
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=18 nonzero=0 zero=18 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21087980503 stage=0 coord=0 valid=0 packets=310
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=19 nonzero=0 zero=19 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21088079152 stage=0 coord=0 valid=0 packets=311
+# MOTOR epoch=2 t_us=21088179152 stage=0 coord=2147483647 valid=0 packets=312
+# MOTOR epoch=2 t_us=21088279152 stage=0 coord=2147483647 valid=0 packets=313
+# MOTOR epoch=2 t_us=21088379152 stage=0 coord=2147483647 valid=0 packets=314
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=28 nonzero=0 zero=28 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21088481500 stage=0 coord=2147483647 valid=0 packets=315
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=29 nonzero=0 zero=29 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21088579152 stage=0 coord=2147483647 valid=0 packets=316
+# MOTOR epoch=2 t_us=21088679152 stage=0 coord=2147483647 valid=0 packets=317
+# MOTOR epoch=2 t_us=21088779157 stage=0 coord=2147483647 valid=0 packets=318
+# MOTOR epoch=2 t_us=21088879152 stage=0 coord=2147483647 valid=0 packets=319
+# MOTOR epoch=2 t_us=21088979152 stage=0 coord=2147483647 valid=0 packets=320
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=38 nonzero=0 zero=38 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=39 nonzero=0 zero=39 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21089079157 stage=0 coord=2147483647 valid=0 packets=321
+# MOTOR epoch=2 t_us=21089179159 stage=0 coord=2147483647 valid=0 packets=322
+# MOTOR epoch=2 t_us=21089279152 stage=0 coord=2147483647 valid=0 packets=323
+# MOTOR epoch=2 t_us=21089379152 stage=0 coord=2147483647 valid=0 packets=324
+# MOTOR epoch=2 t_us=21089479159 stage=0 coord=2147483647 valid=0 packets=325
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=49 nonzero=0 zero=49 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=49 nonzero=0 zero=49 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21089579152 stage=0 coord=2147483647 valid=0 packets=326
+# MOTOR epoch=2 t_us=21089679152 stage=0 coord=2147483647 valid=0 packets=327
+# MOTOR epoch=2 t_us=21089779159 stage=0 coord=2147483647 valid=0 packets=328
+# MOTOR epoch=2 t_us=21089879159 stage=0 coord=2147483647 valid=0 packets=329
+# MOTOR epoch=2 t_us=21089979156 stage=0 coord=2147483647 valid=0 packets=330
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=59 nonzero=0 zero=59 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=59 nonzero=0 zero=59 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21090079159 stage=0 coord=2147483647 valid=0 packets=331
+# MOTOR epoch=2 t_us=21090179159 stage=0 coord=2147483647 valid=0 packets=332
+# MOTOR epoch=2 t_us=21090279159 stage=0 coord=2147483647 valid=0 packets=333
+# MOTOR epoch=2 t_us=21090379157 stage=0 coord=2147483647 valid=0 packets=334
+# MOTOR epoch=2 t_us=21090479159 stage=0 coord=2147483647 valid=0 packets=335
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=69 nonzero=0 zero=69 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=69 nonzero=0 zero=69 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21090579152 stage=0 coord=2147483647 valid=0 packets=336
+# MOTOR epoch=2 t_us=21090679159 stage=0 coord=2147483647 valid=0 packets=337
+# MOTOR epoch=2 t_us=21090779159 stage=0 coord=2147483647 valid=0 packets=338
+# MOTOR epoch=2 t_us=21090879152 stage=0 coord=2147483647 valid=0 packets=339
+# MOTOR epoch=2 t_us=21090979152 stage=0 coord=2147483647 valid=0 packets=340
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=79 nonzero=0 zero=79 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=79 nonzero=0 zero=79 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21091079159 stage=0 coord=2147483647 valid=0 packets=341
+# MOTOR epoch=2 t_us=21091179159 stage=0 coord=2147483647 valid=0 packets=342
+# MOTOR epoch=2 t_us=21091279152 stage=0 coord=2147483647 valid=0 packets=343
+# MOTOR epoch=2 t_us=21091379159 stage=0 coord=2147483647 valid=0 packets=344
+# MOTOR epoch=2 t_us=21091479159 stage=0 coord=2147483647 valid=0 packets=345
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=89 nonzero=0 zero=89 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=89 nonzero=0 zero=89 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21091579152 stage=0 coord=2147483647 valid=0 packets=346
+# MOTOR epoch=2 t_us=21091679152 stage=0 coord=2147483647 valid=0 packets=347
+# MOTOR epoch=2 t_us=21091779159 stage=0 coord=2147483647 valid=0 packets=348
+# MOTOR epoch=2 t_us=21091879152 stage=0 coord=2147483647 valid=0 packets=349
+# MOTOR epoch=2 t_us=21091979152 stage=0 coord=2147483647 valid=0 packets=350
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=99 nonzero=0 zero=99 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=100 nonzero=0 zero=100 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21092079152 stage=0 coord=2147483647 valid=0 packets=351
+# MOTOR epoch=2 t_us=21092179152 stage=0 coord=2147483647 valid=0 packets=352
+# MOTOR epoch=2 t_us=21092279152 stage=0 coord=2147483647 valid=0 packets=353
+# MOTOR epoch=2 t_us=21092379156 stage=0 coord=2147483647 valid=0 packets=354
+# MOTOR epoch=2 t_us=21092479152 stage=0 coord=2147483647 valid=0 packets=355
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=109 nonzero=0 zero=109 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=110 nonzero=0 zero=110 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=0 cal_attempts=0 cal_sent=0 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21092579152 stage=0 coord=2147483647 valid=0 packets=356
+# MOTOR epoch=2 t_us=21092679156 stage=0 coord=2147483647 valid=0 packets=357
+# MOTOR epoch=2 t_us=21092779152 stage=0 coord=2147483647 valid=0 packets=358
+# MOTOR epoch=2 t_us=21092879152 stage=0 coord=2147483647 valid=0 packets=359
+# CALIB candidate can_id=0x503 seq=56097 hex=55100456E5BF21DB00042F0200017CC9
+# ACK calibrate candidate_sent=1 motor_started_unverified=1 no_auto_retry=1
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=118 nonzero=0 zero=118 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=0 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21092979152 stage=1 coord=2147483647 valid=0 packets=360
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=119 nonzero=0 zero=119 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=35 version="motor_control 1.2 calibration_trigger"
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=120 nonzero=0 zero=120 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=96 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21093079156 stage=1 coord=2147483647 valid=0 packets=361
+# MOTOR epoch=2 t_us=21093179152 stage=1 coord=2147483647 valid=0 packets=362
+# MOTOR epoch=2 t_us=21093279152 stage=1 coord=2147483647 valid=0 packets=363
+# MOTOR epoch=2 t_us=21093379156 stage=1 coord=2147483647 valid=0 packets=364
+# MOTOR epoch=2 t_us=21093479158 stage=1 coord=2147483647 valid=0 packets=365
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=129 nonzero=0 zero=129 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=535 version="motor_control 1.2 calibration_trigger"
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=130 nonzero=0 zero=130 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=610 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21093579485 stage=1 coord=2147483647 valid=0 packets=366
+# MOTOR epoch=2 t_us=21093679156 stage=1 coord=2147483647 valid=0 packets=367
+# MOTOR epoch=2 t_us=21093779159 stage=1 coord=2147483647 valid=0 packets=368
+# MOTOR epoch=2 t_us=21093879156 stage=1 coord=2147483647 valid=0 packets=369
+# MOTOR epoch=2 t_us=21093979156 stage=1 coord=2147483647 valid=0 packets=370
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=139 nonzero=0 zero=139 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=1035 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21094079156 stage=1 coord=2147483647 valid=0 packets=371
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=140 nonzero=0 zero=140 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=1124 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21094179163 stage=1 coord=2147483647 valid=0 packets=372
+# MOTOR epoch=2 t_us=21094279156 stage=1 coord=2147483647 valid=0 packets=373
+# MOTOR epoch=2 t_us=21094379156 stage=1 coord=2147483647 valid=0 packets=374
+# MOTOR epoch=2 t_us=21094479163 stage=1 coord=2147483647 valid=0 packets=375
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=149 nonzero=0 zero=149 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=1535 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21094579156 stage=1 coord=2147483647 valid=0 packets=376
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=151 nonzero=0 zero=151 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=1638 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21094679156 stage=1 coord=2147483647 valid=0 packets=377
+# MOTOR epoch=2 t_us=21094779163 stage=1 coord=2147483647 valid=0 packets=378
+# MOTOR epoch=2 t_us=21094879163 stage=1 coord=2147483647 valid=0 packets=379
+# MOTOR epoch=2 t_us=21094979156 stage=1 coord=2147483647 valid=0 packets=380
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=159 nonzero=0 zero=159 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=2035 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21095079157 stage=1 coord=2147483647 valid=0 packets=381
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=161 nonzero=0 zero=161 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=2140 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21095179163 stage=1 coord=2147483647 valid=0 packets=382
+# MOTOR epoch=2 t_us=21095279163 stage=1 coord=2147483647 valid=0 packets=383
+# MOTOR epoch=2 t_us=21095379157 stage=1 coord=2147483647 valid=0 packets=384
+# MOTOR epoch=2 t_us=21095479163 stage=1 coord=2147483647 valid=0 packets=385
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=169 nonzero=0 zero=169 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=2535 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21095579163 stage=1 coord=2147483647 valid=0 packets=386
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=171 nonzero=0 zero=171 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=2654 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21095679163 stage=1 coord=2147483647 valid=0 packets=387
+# MOTOR epoch=2 t_us=21095779161 stage=1 coord=2147483647 valid=0 packets=388
+# MOTOR epoch=2 t_us=21095879163 stage=1 coord=2147483647 valid=0 packets=389
+# MOTOR epoch=2 t_us=21095979156 stage=1 coord=2147483647 valid=0 packets=390
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=179 nonzero=0 zero=179 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=3035 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21096079163 stage=1 coord=2147483647 valid=0 packets=391
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=181 nonzero=0 zero=181 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=3168 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21096179163 stage=1 coord=2147483647 valid=0 packets=392
+# MOTOR epoch=2 t_us=21096279156 stage=1 coord=2147483647 valid=0 packets=393
+# MOTOR epoch=2 t_us=21096379163 stage=1 coord=2147483647 valid=0 packets=394
+# MOTOR epoch=2 t_us=21096479163 stage=1 coord=2147483647 valid=0 packets=395
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=189 nonzero=0 zero=189 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=3535 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21096579156 stage=1 coord=2147483647 valid=0 packets=396
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=191 nonzero=0 zero=191 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=3668 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21096679156 stage=1 coord=2147483647 valid=0 packets=397
+# MOTOR epoch=2 t_us=21096779163 stage=1 coord=2147483647 valid=0 packets=398
+# MOTOR epoch=2 t_us=21096879156 stage=1 coord=2147483647 valid=0 packets=399
+# MOTOR epoch=2 t_us=21096979156 stage=1 coord=2147483647 valid=0 packets=400
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=199 nonzero=0 zero=199 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=4035 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21097079156 stage=1 coord=2147483647 valid=0 packets=401
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=201 nonzero=0 zero=201 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=4170 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21097179156 stage=1 coord=2147483647 valid=0 packets=402
+# MOTOR epoch=2 t_us=21097279156 stage=1 coord=2147483647 valid=0 packets=403
+# MOTOR epoch=2 t_us=21097379156 stage=1 coord=2147483647 valid=0 packets=404
+# MOTOR epoch=2 t_us=21097479156 stage=1 coord=2147483647 valid=0 packets=405
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=209 nonzero=0 zero=209 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=4535 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21097579156 stage=1 coord=2147483647 valid=0 packets=406
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=212 nonzero=0 zero=212 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=4685 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21097679156 stage=2 coord=2147483647 valid=0 packets=407
+# MOTOR epoch=2 t_us=21097779156 stage=2 coord=2147483647 valid=0 packets=408
+# MOTOR epoch=2 t_us=21097879156 stage=2 coord=2147483647 valid=0 packets=409
+# MOTOR epoch=2 t_us=21097979156 stage=2 coord=2147483647 valid=0 packets=410
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=219 nonzero=0 zero=219 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=5035 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21098079156 stage=2 coord=2147483647 valid=0 packets=411
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=222 nonzero=0 zero=222 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=5186 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21098179156 stage=2 coord=2147483647 valid=0 packets=412
+# MOTOR epoch=2 t_us=21098279156 stage=2 coord=2147483647 valid=0 packets=413
+# MOTOR epoch=2 t_us=21098379156 stage=2 coord=2147483647 valid=0 packets=414
+# MOTOR epoch=2 t_us=21098479156 stage=2 coord=2147483647 valid=0 packets=415
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=229 nonzero=0 zero=229 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=5535 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21098579156 stage=2 coord=2147483647 valid=0 packets=416
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=232 nonzero=0 zero=232 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=5698 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21098679156 stage=2 coord=2147483647 valid=0 packets=417
+# MOTOR epoch=2 t_us=21098779156 stage=2 coord=2147483647 valid=0 packets=418
+# MOTOR epoch=2 t_us=21098879156 stage=2 coord=2147483647 valid=0 packets=419
+# MOTOR epoch=2 t_us=21098979156 stage=2 coord=2147483647 valid=0 packets=420
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=239 nonzero=0 zero=239 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=6035 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21099079156 stage=2 coord=2147483647 valid=0 packets=421
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=242 nonzero=0 zero=242 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=6201 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21099179160 stage=2 coord=2147483647 valid=0 packets=422
+# MOTOR epoch=2 t_us=21099279156 stage=2 coord=2147483647 valid=0 packets=423
+# MOTOR epoch=2 t_us=21099379156 stage=2 coord=2147483647 valid=0 packets=424
+# MOTOR epoch=2 t_us=21099479160 stage=2 coord=2147483647 valid=0 packets=425
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=249 nonzero=0 zero=249 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=6535 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21099579156 stage=2 coord=2147483647 valid=0 packets=426
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=252 nonzero=0 zero=252 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=6704 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21099679156 stage=2 coord=2147483647 valid=0 packets=427
+# MOTOR epoch=2 t_us=21099779160 stage=2 coord=2147483647 valid=0 packets=428
+# MOTOR epoch=2 t_us=21099879160 stage=2 coord=2147483647 valid=0 packets=429
+# MOTOR epoch=2 t_us=21099979156 stage=2 coord=2147483647 valid=0 packets=430
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=259 nonzero=0 zero=259 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=7035 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21100079156 stage=2 coord=2147483647 valid=0 packets=431
+# MOTOR epoch=2 t_us=21100179160 stage=2 coord=2147483647 valid=0 packets=432
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=262 nonzero=0 zero=262 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=7215 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21100279160 stage=2 coord=2147483647 valid=0 packets=433
+# MOTOR epoch=2 t_us=21100379160 stage=2 coord=2147483647 valid=0 packets=434
+# MOTOR epoch=2 t_us=21100479160 stage=2 coord=2147483647 valid=0 packets=435
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=269 nonzero=0 zero=269 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=7535 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21100579160 stage=2 coord=2147483647 valid=0 packets=436
+# MOTOR epoch=2 t_us=21100679160 stage=2 coord=2147483647 valid=0 packets=437
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=272 nonzero=0 zero=272 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=7729 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21100779160 stage=2 coord=2147483647 valid=0 packets=438
+# MOTOR epoch=2 t_us=21100879160 stage=2 coord=2147483647 valid=0 packets=439
+# MOTOR epoch=2 t_us=21100979160 stage=2 coord=2147483647 valid=0 packets=440
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=279 nonzero=0 zero=279 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=8039 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21101079160 stage=2 coord=2147483647 valid=0 packets=441
+# MOTOR epoch=2 t_us=21101179160 stage=2 coord=2147483647 valid=0 packets=442
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=283 nonzero=0 zero=283 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=8244 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21101279160 stage=2 coord=2147483647 valid=0 packets=443
+# MOTOR epoch=2 t_us=21101379160 stage=2 coord=2147483647 valid=0 packets=444
+# MOTOR epoch=2 t_us=21101479160 stage=2 coord=2147483647 valid=0 packets=445
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=289 nonzero=0 zero=289 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=8539 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21101579160 stage=2 coord=2147483647 valid=0 packets=446
+# MOTOR epoch=2 t_us=21101679163 stage=2 coord=2147483647 valid=0 packets=447
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=293 nonzero=0 zero=293 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=8745 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21101779160 stage=2 coord=2147483647 valid=0 packets=448
+# MOTOR epoch=2 t_us=21101879160 stage=2 coord=2147483647 valid=0 packets=449
+# MOTOR epoch=2 t_us=21101979165 stage=2 coord=2147483647 valid=0 packets=450
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=299 nonzero=0 zero=299 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=9039 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21102079160 stage=2 coord=2147483647 valid=0 packets=451
+# MOTOR epoch=2 t_us=21102179160 stage=2 coord=2147483647 valid=0 packets=452
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=303 nonzero=0 zero=303 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=9258 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21102279160 stage=2 coord=2147483647 valid=0 packets=453
+# MOTOR epoch=2 t_us=21102379167 stage=2 coord=2147483647 valid=0 packets=454
+# MOTOR epoch=2 t_us=21102479160 stage=2 coord=2147483647 valid=0 packets=455
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=309 nonzero=0 zero=309 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=9539 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21102579160 stage=2 coord=2147483647 valid=0 packets=456
+# MOTOR epoch=2 t_us=21102679167 stage=2 coord=2147483647 valid=0 packets=457
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=313 nonzero=0 zero=313 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=9773 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21102779166 stage=2 coord=2147483647 valid=0 packets=458
+# MOTOR epoch=2 t_us=21102879160 stage=2 coord=2147483647 valid=0 packets=459
+# MOTOR epoch=2 t_us=21102979165 stage=2 coord=2147483647 valid=0 packets=460
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=319 nonzero=0 zero=319 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=10039 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21103079167 stage=2 coord=2147483647 valid=0 packets=461
+# MOTOR epoch=2 t_us=21103179163 stage=2 coord=2147483647 valid=0 packets=462
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=324 nonzero=0 zero=324 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=10289 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21103279165 stage=2 coord=2147483647 valid=0 packets=463
+# MOTOR epoch=2 t_us=21103379167 stage=2 coord=2147483647 valid=0 packets=464
+# MOTOR epoch=2 t_us=21103479166 stage=2 coord=2147483647 valid=0 packets=465
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=329 nonzero=0 zero=329 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=10539 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21103579167 stage=2 coord=2147483647 valid=0 packets=466
+# MOTOR epoch=2 t_us=21103679167 stage=2 coord=2147483647 valid=0 packets=467
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=334 nonzero=0 zero=334 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=10789 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21103779160 stage=2 coord=2147483647 valid=0 packets=468
+# MOTOR epoch=2 t_us=21103879167 stage=2 coord=2147483647 valid=0 packets=469
+# MOTOR epoch=2 t_us=21103979167 stage=2 coord=2147483647 valid=0 packets=470
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=339 nonzero=0 zero=339 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=11039 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21104079167 stage=2 coord=2147483647 valid=0 packets=471
+# MOTOR epoch=2 t_us=21104179160 stage=2 coord=2147483647 valid=0 packets=472
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=344 nonzero=0 zero=344 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=11301 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21104279167 stage=2 coord=2147483647 valid=0 packets=473
+# MOTOR epoch=2 t_us=21104379167 stage=2 coord=2147483647 valid=0 packets=474
+# MOTOR epoch=2 t_us=21104479160 stage=2 coord=2147483647 valid=0 packets=475
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=349 nonzero=0 zero=349 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=11539 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21104579160 stage=2 coord=2147483647 valid=0 packets=476
+# MOTOR epoch=2 t_us=21104679167 stage=2 coord=2147483647 valid=0 packets=477
+# MOTOR epoch=2 t_us=21104779160 stage=2 coord=2147483647 valid=0 packets=478
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=354 nonzero=0 zero=354 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=11815 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21104879160 stage=2 coord=2147483647 valid=0 packets=479
+# MOTOR epoch=2 t_us=21104979160 stage=2 coord=2147483647 valid=0 packets=480
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=359 nonzero=0 zero=359 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=12039 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21105079160 stage=2 coord=2147483647 valid=0 packets=481
+# MOTOR epoch=2 t_us=21105179160 stage=2 coord=2147483647 valid=0 packets=482
+# MOTOR epoch=2 t_us=21105279160 stage=2 coord=2147483647 valid=0 packets=483
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=364 nonzero=0 zero=364 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=12325 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21105379160 stage=2 coord=2147483647 valid=0 packets=484
+# MOTOR epoch=2 t_us=21105479160 stage=2 coord=2147483647 valid=0 packets=485
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=369 nonzero=0 zero=369 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=1 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=0 cal_wait_ms=12539 version="motor_control 1.2 calibration_trigger"
+# ACK calibration_observation stage3_after_stage12=1 mechanical_success_unverified=1
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=370 nonzero=0 zero=370 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21105597160 stage=3 coord=3789 valid=1 packets=486
+# MOTOR epoch=2 t_us=21105697169 stage=3 coord=3789 valid=1 packets=487
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=374 nonzero=0 zero=374 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21105797160 stage=3 coord=3789 valid=1 packets=488
+# MOTOR epoch=2 t_us=21105897160 stage=3 coord=3789 valid=1 packets=489
+# MOTOR epoch=2 t_us=21105997164 stage=3 coord=3789 valid=1 packets=490
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=379 nonzero=0 zero=379 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=1 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21106097160 stage=3 coord=3789 valid=1 packets=491
+# MOTOR epoch=2 t_us=21106197160 stage=3 coord=3789 valid=1 packets=492
+# MOTOR epoch=2 t_us=21106297164 stage=3 coord=3789 valid=1 packets=493
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=385 nonzero=0 zero=385 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21106397169 stage=3 coord=3789 valid=1 packets=494
+# MOTOR epoch=2 t_us=21106497160 stage=3 coord=3789 valid=1 packets=495
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=389 nonzero=0 zero=389 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=1 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21106597169 stage=3 coord=3789 valid=1 packets=496
+# MOTOR epoch=2 t_us=21106697164 stage=3 coord=3789 valid=1 packets=497
+# MOTOR epoch=2 t_us=21106797164 stage=3 coord=3789 valid=1 packets=498
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=395 nonzero=0 zero=395 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21106897169 stage=3 coord=3789 valid=1 packets=499
+# MOTOR epoch=2 t_us=21106997164 stage=3 coord=3789 valid=1 packets=500
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=399 nonzero=0 zero=399 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=1 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21107097169 stage=3 coord=3789 valid=1 packets=501
+# MOTOR epoch=2 t_us=21107197164 stage=3 coord=3789 valid=1 packets=502
+# MOTOR epoch=2 t_us=21107297164 stage=3 coord=3789 valid=1 packets=503
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=405 nonzero=0 zero=405 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21107397169 stage=3 coord=3789 valid=1 packets=504
+# MOTOR epoch=2 t_us=21107497164 stage=3 coord=3789 valid=1 packets=505
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=409 nonzero=0 zero=409 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=1 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21107597169 stage=3 coord=3789 valid=1 packets=506
+# MOTOR epoch=2 t_us=21107697164 stage=3 coord=3789 valid=1 packets=507
+# MOTOR epoch=2 t_us=21107797164 stage=3 coord=3789 valid=1 packets=508
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=415 nonzero=0 zero=415 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21107897169 stage=3 coord=3789 valid=1 packets=509
+# MOTOR epoch=2 t_us=21107997164 stage=3 coord=3789 valid=1 packets=510
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=419 nonzero=0 zero=419 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=1 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21108097169 stage=3 coord=3789 valid=1 packets=511
+# MOTOR epoch=2 t_us=21108197164 stage=3 coord=3789 valid=1 packets=512
+# MOTOR epoch=2 t_us=21108297164 stage=3 coord=3789 valid=1 packets=513
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=425 nonzero=0 zero=425 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21108397169 stage=3 coord=3789 valid=1 packets=514
+# MOTOR epoch=2 t_us=21108497164 stage=3 coord=3789 valid=1 packets=515
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=429 nonzero=0 zero=429 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=1 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21108597169 stage=3 coord=3789 valid=1 packets=516
+# MOTOR epoch=2 t_us=21108697164 stage=3 coord=3789 valid=1 packets=517
+# MOTOR epoch=2 t_us=21108797164 stage=3 coord=3789 valid=1 packets=518
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=435 nonzero=0 zero=435 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21108897171 stage=3 coord=3789 valid=1 packets=519
+# MOTOR epoch=2 t_us=21108997164 stage=3 coord=3789 valid=1 packets=520
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=439 nonzero=0 zero=439 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=1 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21109097169 stage=3 coord=3789 valid=1 packets=521
+# MOTOR epoch=2 t_us=21109197169 stage=3 coord=3789 valid=1 packets=522
+# MOTOR epoch=2 t_us=21109297169 stage=3 coord=3789 valid=1 packets=523
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=445 nonzero=0 zero=445 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21109397169 stage=3 coord=3789 valid=1 packets=524
+# MOTOR epoch=2 t_us=21109497164 stage=3 coord=3789 valid=1 packets=525
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=449 nonzero=0 zero=449 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=1 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21109597176 stage=3 coord=3789 valid=1 packets=526
+# MOTOR epoch=2 t_us=21109697164 stage=3 coord=3789 valid=1 packets=527
+# MOTOR epoch=2 t_us=21109797163 stage=3 coord=3789 valid=1 packets=528
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=455 nonzero=0 zero=455 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21109897176 stage=3 coord=3789 valid=1 packets=529
+# MOTOR epoch=2 t_us=21109997171 stage=3 coord=3789 valid=1 packets=530
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=459 nonzero=0 zero=459 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=1 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21110097169 stage=3 coord=3789 valid=1 packets=531
+# MOTOR epoch=2 t_us=21110197170 stage=3 coord=3789 valid=1 packets=532
+# MOTOR epoch=2 t_us=21110297171 stage=3 coord=3789 valid=1 packets=533
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=466 nonzero=0 zero=466 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21110397173 stage=3 coord=3789 valid=1 packets=534
+# MOTOR epoch=2 t_us=21110497171 stage=3 coord=3789 valid=1 packets=535
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=469 nonzero=0 zero=469 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=1 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21110597174 stage=3 coord=3789 valid=1 packets=536
+# MOTOR epoch=2 t_us=21110697171 stage=3 coord=3789 valid=1 packets=537
+# MOTOR epoch=2 t_us=21110797169 stage=3 coord=3789 valid=1 packets=538
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=476 nonzero=0 zero=476 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21110897175 stage=3 coord=3789 valid=1 packets=539
+# MOTOR epoch=2 t_us=21110997173 stage=3 coord=3789 valid=1 packets=540
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=479 nonzero=0 zero=479 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=1 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21111097176 stage=3 coord=3789 valid=1 packets=541
+# MOTOR epoch=2 t_us=21111197171 stage=3 coord=3789 valid=1 packets=542
+# MOTOR epoch=2 t_us=21111297171 stage=3 coord=3789 valid=1 packets=543
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=486 nonzero=0 zero=486 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21111397176 stage=3 coord=3789 valid=1 packets=544
+# MOTOR epoch=2 t_us=21111497173 stage=3 coord=3789 valid=1 packets=545
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=489 nonzero=0 zero=489 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=1 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21111597174 stage=3 coord=3789 valid=1 packets=546
+# MOTOR epoch=2 t_us=21111697164 stage=3 coord=3789 valid=1 packets=547
+# MOTOR epoch=2 t_us=21111797164 stage=3 coord=3789 valid=1 packets=548
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=496 nonzero=0 zero=496 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21111897175 stage=3 coord=3789 valid=1 packets=549
+# MOTOR epoch=2 t_us=21111997173 stage=3 coord=3789 valid=1 packets=550
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=499 nonzero=0 zero=499 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=1 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21112097169 stage=3 coord=3789 valid=1 packets=551
+# MOTOR epoch=2 t_us=21112197170 stage=3 coord=3789 valid=1 packets=552
+# MOTOR epoch=2 t_us=21112297164 stage=3 coord=3789 valid=1 packets=553
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=506 nonzero=0 zero=506 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21112397169 stage=3 coord=3789 valid=1 packets=554
+# MOTOR epoch=2 t_us=21112497166 stage=3 coord=3789 valid=1 packets=555
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=509 nonzero=0 zero=509 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=1 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21112597175 stage=3 coord=3789 valid=1 packets=556
+# MOTOR epoch=2 t_us=21112697164 stage=3 coord=3789 valid=1 packets=557
+# MOTOR epoch=2 t_us=21112797164 stage=3 coord=3789 valid=1 packets=558
+# MOTOR epoch=2 t_us=21112897164 stage=3 coord=3789 valid=1 packets=559
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=516 nonzero=0 zero=516 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21112997169 stage=3 coord=3789 valid=1 packets=560
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=518 nonzero=0 zero=518 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21113097169 stage=3 coord=3789 valid=1 packets=561
+# MOTOR epoch=2 t_us=21113197164 stage=3 coord=3789 valid=1 packets=562
+# MOTOR epoch=2 t_us=21113297164 stage=3 coord=3789 valid=1 packets=563
+# MOTOR epoch=2 t_us=21113397164 stage=3 coord=3789 valid=1 packets=564
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=526 nonzero=0 zero=526 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21113497169 stage=3 coord=3789 valid=1 packets=565
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=528 nonzero=0 zero=528 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21113597169 stage=3 coord=3789 valid=1 packets=566
+# MOTOR epoch=2 t_us=21113697164 stage=3 coord=3789 valid=1 packets=567
+# MOTOR epoch=2 t_us=21113797164 stage=3 coord=3789 valid=1 packets=568
+# MOTOR epoch=2 t_us=21113897164 stage=3 coord=3789 valid=1 packets=569
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=537 nonzero=0 zero=537 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21113997169 stage=3 coord=3789 valid=1 packets=570
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=538 nonzero=0 zero=538 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21114097169 stage=3 coord=3789 valid=1 packets=571
+# MOTOR epoch=2 t_us=21114197164 stage=3 coord=3789 valid=1 packets=572
+# MOTOR epoch=2 t_us=21114297164 stage=3 coord=3789 valid=1 packets=573
+# MOTOR epoch=2 t_us=21114397164 stage=3 coord=3789 valid=1 packets=574
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=547 nonzero=0 zero=547 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21114497169 stage=3 coord=3789 valid=1 packets=575
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=548 nonzero=0 zero=548 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21114597169 stage=3 coord=3789 valid=1 packets=576
+# MOTOR epoch=2 t_us=21114697164 stage=3 coord=3789 valid=1 packets=577
+# MOTOR epoch=2 t_us=21114797164 stage=3 coord=3789 valid=1 packets=578
+# MOTOR epoch=2 t_us=21114897164 stage=3 coord=3789 valid=1 packets=579
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=557 nonzero=0 zero=557 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21114997169 stage=3 coord=3789 valid=1 packets=580
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=558 nonzero=0 zero=558 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21115097169 stage=3 coord=3789 valid=1 packets=581
+# MOTOR epoch=2 t_us=21115197164 stage=3 coord=3789 valid=1 packets=582
+# MOTOR epoch=2 t_us=21115297164 stage=3 coord=3789 valid=1 packets=583
+# MOTOR epoch=2 t_us=21115397164 stage=3 coord=3789 valid=1 packets=584
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=567 nonzero=0 zero=567 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21115497169 stage=3 coord=3789 valid=1 packets=585
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=568 nonzero=0 zero=568 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21115597169 stage=3 coord=3789 valid=1 packets=586
+# MOTOR epoch=2 t_us=21115697164 stage=3 coord=3789 valid=1 packets=587
+# MOTOR epoch=2 t_us=21115797164 stage=3 coord=3789 valid=1 packets=588
+# MOTOR epoch=2 t_us=21115897164 stage=3 coord=3789 valid=1 packets=589
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=577 nonzero=0 zero=577 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21115997169 stage=3 coord=3789 valid=1 packets=590
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=578 nonzero=0 zero=578 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21116097169 stage=3 coord=3789 valid=1 packets=591
+# MOTOR epoch=2 t_us=21116197164 stage=3 coord=3789 valid=1 packets=592
+# MOTOR epoch=2 t_us=21116297164 stage=3 coord=3789 valid=1 packets=593
+# MOTOR epoch=2 t_us=21116397170 stage=3 coord=3789 valid=1 packets=594
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=587 nonzero=0 zero=587 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21116497169 stage=3 coord=3789 valid=1 packets=595
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=588 nonzero=0 zero=588 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21116597169 stage=3 coord=3789 valid=1 packets=596
+# MOTOR epoch=2 t_us=21116697169 stage=3 coord=3789 valid=1 packets=597
+# MOTOR epoch=2 t_us=21116797170 stage=3 coord=3789 valid=1 packets=598
+# MOTOR epoch=2 t_us=21116897164 stage=3 coord=3789 valid=1 packets=599
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=597 nonzero=0 zero=597 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21116997174 stage=3 coord=3789 valid=1 packets=600
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=598 nonzero=0 zero=598 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21117097175 stage=3 coord=3789 valid=1 packets=601
+# MOTOR epoch=2 t_us=21117197164 stage=3 coord=3789 valid=1 packets=602
+# MOTOR epoch=2 t_us=21117297166 stage=3 coord=3789 valid=1 packets=603
+# MOTOR epoch=2 t_us=21117397171 stage=3 coord=3789 valid=1 packets=604
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=607 nonzero=0 zero=607 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21117497175 stage=3 coord=3789 valid=1 packets=605
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=608 nonzero=0 zero=608 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21117597172 stage=3 coord=3789 valid=1 packets=606
+# MOTOR epoch=2 t_us=21117697171 stage=3 coord=3789 valid=1 packets=607
+# MOTOR epoch=2 t_us=21117797171 stage=3 coord=3789 valid=1 packets=608
+# MOTOR epoch=2 t_us=21117897170 stage=3 coord=3789 valid=1 packets=609
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=618 nonzero=0 zero=618 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21117997175 stage=3 coord=3789 valid=1 packets=610
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=618 nonzero=0 zero=618 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21118097175 stage=3 coord=3789 valid=1 packets=611
+# MOTOR epoch=2 t_us=21118197171 stage=3 coord=3789 valid=1 packets=612
+# MOTOR epoch=2 t_us=21118297170 stage=3 coord=3789 valid=1 packets=613
+# MOTOR epoch=2 t_us=21118397171 stage=3 coord=3789 valid=1 packets=614
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=628 nonzero=0 zero=628 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21118497176 stage=3 coord=3789 valid=1 packets=615
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=628 nonzero=0 zero=628 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21118597169 stage=3 coord=3789 valid=1 packets=616
+# MOTOR epoch=2 t_us=21118697171 stage=3 coord=3789 valid=1 packets=617
+# MOTOR epoch=2 t_us=21118797171 stage=3 coord=3789 valid=1 packets=618
+# MOTOR epoch=2 t_us=21118897164 stage=3 coord=3789 valid=1 packets=619
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=638 nonzero=0 zero=638 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21118997175 stage=3 coord=3789 valid=1 packets=620
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=638 nonzero=0 zero=638 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21119097175 stage=3 coord=3789 valid=1 packets=621
+# MOTOR epoch=2 t_us=21119197164 stage=3 coord=3789 valid=1 packets=622
+# MOTOR epoch=2 t_us=21119297164 stage=3 coord=3789 valid=1 packets=623
+# MOTOR epoch=2 t_us=21119397170 stage=3 coord=3789 valid=1 packets=624
+# MOTOR epoch=2 t_us=21119497164 stage=3 coord=3789 valid=1 packets=625
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=648 nonzero=0 zero=648 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# STATE mode=replay armed=1 value=0 target=0 run=0 run_left_ms=0 sent=648 nonzero=0 zero=648 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# ACK go requested=256 applied=256
+# STATE mode=replay armed=1 value=0 target=256 run=0 run_left_ms=0 sent=649 nonzero=0 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21119597169 stage=3 coord=3831 valid=1 packets=626
+# MOTOR epoch=2 t_us=21119697170 stage=3 coord=3983 valid=1 packets=627
+# MOTOR epoch=2 t_us=21119797164 stage=3 coord=4096 valid=1 packets=628
+# MOTOR epoch=2 t_us=21119897164 stage=3 coord=4096 valid=1 packets=629
+# MOTOR epoch=2 t_us=21119997164 stage=3 coord=4096 valid=1 packets=630
+# STATE mode=replay armed=1 value=256 target=256 run=0 run_left_ms=0 sent=658 nonzero=9 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# STATE mode=replay armed=1 value=256 target=256 run=0 run_left_ms=0 sent=658 nonzero=9 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21120097169 stage=3 coord=4096 valid=1 packets=631
+# MOTOR epoch=2 t_us=21120197164 stage=3 coord=4096 valid=1 packets=632
+# MOTOR epoch=2 t_us=21120297164 stage=3 coord=4096 valid=1 packets=633
+# MOTOR epoch=2 t_us=21120397164 stage=3 coord=4096 valid=1 packets=634
+# MOTOR epoch=2 t_us=21120497164 stage=3 coord=4096 valid=1 packets=635
+# STATE mode=replay armed=1 value=256 target=256 run=0 run_left_ms=0 sent=668 nonzero=19 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# STATE mode=replay armed=1 value=256 target=256 run=0 run_left_ms=0 sent=669 nonzero=20 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21120597169 stage=3 coord=4096 valid=1 packets=636
+# MOTOR epoch=2 t_us=21120697164 stage=3 coord=4096 valid=1 packets=637
+# MOTOR epoch=2 t_us=21120797164 stage=3 coord=4096 valid=1 packets=638
+# MOTOR epoch=2 t_us=21120897164 stage=3 coord=4096 valid=1 packets=639
+# MOTOR epoch=2 t_us=21120997164 stage=3 coord=4096 valid=1 packets=640
+# STATE mode=replay armed=1 value=256 target=256 run=0 run_left_ms=0 sent=678 nonzero=29 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# STATE mode=replay armed=1 value=256 target=256 run=0 run_left_ms=0 sent=679 nonzero=30 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21121097169 stage=3 coord=4096 valid=1 packets=641
+# MOTOR epoch=2 t_us=21121197164 stage=3 coord=4096 valid=1 packets=642
+# MOTOR epoch=2 t_us=21121297164 stage=3 coord=4096 valid=1 packets=643
+# MOTOR epoch=2 t_us=21121397169 stage=3 coord=4096 valid=1 packets=644
+# MOTOR epoch=2 t_us=21121497164 stage=3 coord=4096 valid=1 packets=645
+# STATE mode=replay armed=1 value=256 target=256 run=0 run_left_ms=0 sent=688 nonzero=39 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# STATE mode=replay armed=1 value=256 target=256 run=0 run_left_ms=0 sent=689 nonzero=40 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21121597169 stage=3 coord=4096 valid=1 packets=646
+# MOTOR epoch=2 t_us=21121697169 stage=3 coord=4096 valid=1 packets=647
+# ACK go requested=-256 applied=-256
+# STATE mode=replay armed=1 value=256 target=-256 run=0 run_left_ms=0 sent=694 nonzero=45 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21121797176 stage=3 coord=4096 valid=1 packets=648
+# MOTOR epoch=2 t_us=21121897166 stage=3 coord=3976 valid=1 packets=649
+# MOTOR epoch=2 t_us=21121997166 stage=3 coord=3824 valid=1 packets=650
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=698 nonzero=49 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=699 nonzero=50 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21122097175 stage=3 coord=3672 valid=1 packets=651
+# MOTOR epoch=2 t_us=21122197164 stage=3 coord=3521 valid=1 packets=652
+# MOTOR epoch=2 t_us=21122297164 stage=3 coord=3369 valid=1 packets=653
+# MOTOR epoch=2 t_us=21122397171 stage=3 coord=3218 valid=1 packets=654
+# MOTOR epoch=2 t_us=21122497170 stage=3 coord=3066 valid=1 packets=655
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=708 nonzero=59 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=709 nonzero=60 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21122597170 stage=3 coord=2914 valid=1 packets=656
+# MOTOR epoch=2 t_us=21122697170 stage=3 coord=2763 valid=1 packets=657
+# MOTOR epoch=2 t_us=21122797171 stage=3 coord=2611 valid=1 packets=658
+# MOTOR epoch=2 t_us=21122897169 stage=3 coord=2459 valid=1 packets=659
+# MOTOR epoch=2 t_us=21122997170 stage=3 coord=2308 valid=1 packets=660
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=718 nonzero=69 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=719 nonzero=70 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21123097175 stage=3 coord=2156 valid=1 packets=661
+# MOTOR epoch=2 t_us=21123197171 stage=3 coord=2004 valid=1 packets=662
+# MOTOR epoch=2 t_us=21123297171 stage=3 coord=1853 valid=1 packets=663
+# MOTOR epoch=2 t_us=21123397171 stage=3 coord=1701 valid=1 packets=664
+# MOTOR epoch=2 t_us=21123497171 stage=3 coord=1550 valid=1 packets=665
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=728 nonzero=79 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=729 nonzero=80 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21123597176 stage=3 coord=1398 valid=1 packets=666
+# MOTOR epoch=2 t_us=21123697171 stage=3 coord=1246 valid=1 packets=667
+# MOTOR epoch=2 t_us=21123797171 stage=3 coord=1095 valid=1 packets=668
+# MOTOR epoch=2 t_us=21123897164 stage=3 coord=943 valid=1 packets=669
+# MOTOR epoch=2 t_us=21123997171 stage=3 coord=791 valid=1 packets=670
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=738 nonzero=89 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=739 nonzero=90 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21124097176 stage=3 coord=640 valid=1 packets=671
+# MOTOR epoch=2 t_us=21124197164 stage=3 coord=488 valid=1 packets=672
+# MOTOR epoch=2 t_us=21124297164 stage=3 coord=336 valid=1 packets=673
+# MOTOR epoch=2 t_us=21124397171 stage=3 coord=185 valid=1 packets=674
+# MOTOR epoch=2 t_us=21124497164 stage=3 coord=33 valid=1 packets=675
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=748 nonzero=99 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=749 nonzero=100 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21124597169 stage=3 coord=0 valid=1 packets=676
+# MOTOR epoch=2 t_us=21124697171 stage=3 coord=0 valid=1 packets=677
+# MOTOR epoch=2 t_us=21124797164 stage=3 coord=0 valid=1 packets=678
+# MOTOR epoch=2 t_us=21124897164 stage=3 coord=0 valid=1 packets=679
+# MOTOR epoch=2 t_us=21124997164 stage=3 coord=0 valid=1 packets=680
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=758 nonzero=109 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=760 nonzero=111 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21125097180 stage=3 coord=0 valid=1 packets=681
+# MOTOR epoch=2 t_us=21125197164 stage=3 coord=0 valid=1 packets=682
+# MOTOR epoch=2 t_us=21125297164 stage=3 coord=0 valid=1 packets=683
+# MOTOR epoch=2 t_us=21125397164 stage=3 coord=0 valid=1 packets=684
+# MOTOR epoch=2 t_us=21125497164 stage=3 coord=0 valid=1 packets=685
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=768 nonzero=119 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=770 nonzero=121 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21125597170 stage=3 coord=0 valid=1 packets=686
+# MOTOR epoch=2 t_us=21125697164 stage=3 coord=0 valid=1 packets=687
+# MOTOR epoch=2 t_us=21125797164 stage=3 coord=0 valid=1 packets=688
+# MOTOR epoch=2 t_us=21125897164 stage=3 coord=0 valid=1 packets=689
+# MOTOR epoch=2 t_us=21125997164 stage=3 coord=0 valid=1 packets=690
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=778 nonzero=129 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=780 nonzero=131 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21126097170 stage=3 coord=0 valid=1 packets=691
+# MOTOR epoch=2 t_us=21126197164 stage=3 coord=0 valid=1 packets=692
+# MOTOR epoch=2 t_us=21126297164 stage=3 coord=0 valid=1 packets=693
+# MOTOR epoch=2 t_us=21126397164 stage=3 coord=0 valid=1 packets=694
+# MOTOR epoch=2 t_us=21126497164 stage=3 coord=0 valid=1 packets=695
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=788 nonzero=139 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21126597169 stage=3 coord=0 valid=1 packets=696
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=790 nonzero=141 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21126697169 stage=3 coord=0 valid=1 packets=697
+# MOTOR epoch=2 t_us=21126797164 stage=3 coord=0 valid=1 packets=698
+# MOTOR epoch=2 t_us=21126897164 stage=3 coord=0 valid=1 packets=699
+# MOTOR epoch=2 t_us=21126997164 stage=3 coord=0 valid=1 packets=700
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=798 nonzero=149 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21127097169 stage=3 coord=0 valid=1 packets=701
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=800 nonzero=151 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21127197169 stage=3 coord=0 valid=1 packets=702
+# MOTOR epoch=2 t_us=21127297164 stage=3 coord=0 valid=1 packets=703
+# MOTOR epoch=2 t_us=21127397164 stage=3 coord=0 valid=1 packets=704
+# MOTOR epoch=2 t_us=21127497164 stage=3 coord=0 valid=1 packets=705
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=808 nonzero=159 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# ACK go requested=256 applied=256
+# STATE mode=replay armed=1 value=-256 target=256 run=0 run_left_ms=0 sent=809 nonzero=160 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21127597169 stage=3 coord=39 valid=1 packets=706
+# STATE mode=replay armed=1 value=256 target=256 run=0 run_left_ms=0 sent=810 nonzero=161 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21127697169 stage=3 coord=191 valid=1 packets=707
+# MOTOR epoch=2 t_us=21127797164 stage=3 coord=342 valid=1 packets=708
+# MOTOR epoch=2 t_us=21127897164 stage=3 coord=494 valid=1 packets=709
+# MOTOR epoch=2 t_us=21127997164 stage=3 coord=645 valid=1 packets=710
+# STATE mode=replay armed=1 value=256 target=256 run=0 run_left_ms=0 sent=818 nonzero=169 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21128097169 stage=3 coord=797 valid=1 packets=711
+# STATE mode=replay armed=1 value=256 target=256 run=0 run_left_ms=0 sent=821 nonzero=172 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21128197169 stage=3 coord=949 valid=1 packets=712
+# MOTOR epoch=2 t_us=21128297164 stage=3 coord=1100 valid=1 packets=713
+# MOTOR epoch=2 t_us=21128397164 stage=3 coord=1252 valid=1 packets=714
+# MOTOR epoch=2 t_us=21128497163 stage=3 coord=1404 valid=1 packets=715
+# STATE mode=replay armed=1 value=256 target=256 run=0 run_left_ms=0 sent=828 nonzero=179 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21128597169 stage=3 coord=1555 valid=1 packets=716
+# STATE mode=replay armed=1 value=256 target=256 run=0 run_left_ms=0 sent=831 nonzero=182 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21128697169 stage=3 coord=1707 valid=1 packets=717
+# MOTOR epoch=2 t_us=21128797164 stage=3 coord=1859 valid=1 packets=718
+# MOTOR epoch=2 t_us=21128897169 stage=3 coord=2010 valid=1 packets=719
+# MOTOR epoch=2 t_us=21128997164 stage=3 coord=2162 valid=1 packets=720
+# STATE mode=replay armed=1 value=256 target=256 run=0 run_left_ms=0 sent=838 nonzero=189 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21129097169 stage=3 coord=2313 valid=1 packets=721
+# STATE mode=replay armed=1 value=256 target=256 run=0 run_left_ms=0 sent=841 nonzero=192 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21129197170 stage=3 coord=2465 valid=1 packets=722
+# MOTOR epoch=2 t_us=21129297170 stage=3 coord=2617 valid=1 packets=723
+# MOTOR epoch=2 t_us=21129397164 stage=3 coord=2768 valid=1 packets=724
+# MOTOR epoch=2 t_us=21129497164 stage=3 coord=2920 valid=1 packets=725
+# STATE mode=replay armed=1 value=256 target=256 run=0 run_left_ms=0 sent=848 nonzero=199 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21129597175 stage=3 coord=3072 valid=1 packets=726
+# STATE mode=replay armed=1 value=256 target=256 run=0 run_left_ms=0 sent=851 nonzero=202 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21129697169 stage=3 coord=3223 valid=1 packets=727
+# MOTOR epoch=2 t_us=21129797164 stage=3 coord=3375 valid=1 packets=728
+# MOTOR epoch=2 t_us=21129897170 stage=3 coord=3527 valid=1 packets=729
+# MOTOR epoch=2 t_us=21129997171 stage=3 coord=3678 valid=1 packets=730
+# STATE mode=replay armed=1 value=256 target=256 run=0 run_left_ms=0 sent=858 nonzero=209 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21130097171 stage=3 coord=3830 valid=1 packets=731
+# STATE mode=replay armed=1 value=256 target=256 run=0 run_left_ms=0 sent=861 nonzero=212 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21130197173 stage=3 coord=3981 valid=1 packets=732
+# MOTOR epoch=2 t_us=21130297171 stage=3 coord=4096 valid=1 packets=733
+# MOTOR epoch=2 t_us=21130397169 stage=3 coord=4096 valid=1 packets=734
+# MOTOR epoch=2 t_us=21130497169 stage=3 coord=4096 valid=1 packets=735
+# STATE mode=replay armed=1 value=256 target=256 run=0 run_left_ms=0 sent=868 nonzero=219 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21130597176 stage=3 coord=4096 valid=1 packets=736
+# STATE mode=replay armed=1 value=256 target=256 run=0 run_left_ms=0 sent=871 nonzero=222 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21130697176 stage=3 coord=4096 valid=1 packets=737
+# MOTOR epoch=2 t_us=21130797170 stage=3 coord=4096 valid=1 packets=738
+# MOTOR epoch=2 t_us=21130897171 stage=3 coord=4096 valid=1 packets=739
+# MOTOR epoch=2 t_us=21130997170 stage=3 coord=4096 valid=1 packets=740
+# STATE mode=replay armed=1 value=256 target=256 run=0 run_left_ms=0 sent=878 nonzero=229 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21131097175 stage=3 coord=4096 valid=1 packets=741
+# STATE mode=replay armed=1 value=256 target=256 run=0 run_left_ms=0 sent=882 nonzero=233 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21131197176 stage=3 coord=4096 valid=1 packets=742
+# MOTOR epoch=2 t_us=21131297173 stage=3 coord=4096 valid=1 packets=743
+# MOTOR epoch=2 t_us=21131397164 stage=3 coord=4096 valid=1 packets=744
+# MOTOR epoch=2 t_us=21131497171 stage=3 coord=4096 valid=1 packets=745
+# STATE mode=replay armed=1 value=256 target=256 run=0 run_left_ms=0 sent=888 nonzero=239 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21131597175 stage=3 coord=4096 valid=1 packets=746
+# STATE mode=replay armed=1 value=256 target=256 run=0 run_left_ms=0 sent=892 nonzero=243 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21131697498 stage=3 coord=4096 valid=1 packets=747
+# MOTOR epoch=2 t_us=21131797166 stage=3 coord=4096 valid=1 packets=748
+# MOTOR epoch=2 t_us=21131897171 stage=3 coord=4096 valid=1 packets=749
+# MOTOR epoch=2 t_us=21131997164 stage=3 coord=4096 valid=1 packets=750
+# STATE mode=replay armed=1 value=256 target=256 run=0 run_left_ms=0 sent=898 nonzero=249 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21132097169 stage=3 coord=4096 valid=1 packets=751
+# STATE mode=replay armed=1 value=256 target=256 run=0 run_left_ms=0 sent=902 nonzero=253 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21132199499 stage=3 coord=4096 valid=1 packets=752
+# MOTOR epoch=2 t_us=21132297173 stage=3 coord=4096 valid=1 packets=753
+# MOTOR epoch=2 t_us=21132397164 stage=3 coord=4096 valid=1 packets=754
+# MOTOR epoch=2 t_us=21132497164 stage=3 coord=4096 valid=1 packets=755
+# STATE mode=replay armed=1 value=256 target=256 run=0 run_left_ms=0 sent=908 nonzero=259 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21132597169 stage=3 coord=4096 valid=1 packets=756
+# MOTOR epoch=2 t_us=21132697164 stage=3 coord=4096 valid=1 packets=757
+# STATE mode=replay armed=1 value=256 target=256 run=0 run_left_ms=0 sent=912 nonzero=263 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21132797169 stage=3 coord=4096 valid=1 packets=758
+# MOTOR epoch=2 t_us=21132897164 stage=3 coord=4096 valid=1 packets=759
+# MOTOR epoch=2 t_us=21132997164 stage=3 coord=4096 valid=1 packets=760
+# STATE mode=replay armed=1 value=256 target=256 run=0 run_left_ms=0 sent=918 nonzero=269 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21133097169 stage=3 coord=4096 valid=1 packets=761
+# MOTOR epoch=2 t_us=21133197164 stage=3 coord=4096 valid=1 packets=762
+# STATE mode=replay armed=1 value=256 target=256 run=0 run_left_ms=0 sent=923 nonzero=274 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# ACK go requested=-256 applied=-256
+# STATE mode=replay armed=1 value=256 target=-256 run=0 run_left_ms=0 sent=923 nonzero=274 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21133297169 stage=3 coord=4059 valid=1 packets=763
+# MOTOR epoch=2 t_us=21133397164 stage=3 coord=3907 valid=1 packets=764
+# MOTOR epoch=2 t_us=21133497164 stage=3 coord=3756 valid=1 packets=765
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=928 nonzero=279 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21133597169 stage=3 coord=3604 valid=1 packets=766
+# MOTOR epoch=2 t_us=21133697164 stage=3 coord=3453 valid=1 packets=767
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=933 nonzero=284 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21133797169 stage=3 coord=3301 valid=1 packets=768
+# MOTOR epoch=2 t_us=21133897164 stage=3 coord=3149 valid=1 packets=769
+# MOTOR epoch=2 t_us=21133997164 stage=3 coord=2998 valid=1 packets=770
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=938 nonzero=289 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21134097169 stage=3 coord=2846 valid=1 packets=771
+# MOTOR epoch=2 t_us=21134197164 stage=3 coord=2694 valid=1 packets=772
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=943 nonzero=294 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21134297169 stage=3 coord=2543 valid=1 packets=773
+# MOTOR epoch=2 t_us=21134397164 stage=3 coord=2391 valid=1 packets=774
+# MOTOR epoch=2 t_us=21134497164 stage=3 coord=2239 valid=1 packets=775
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=948 nonzero=299 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21134597169 stage=3 coord=2088 valid=1 packets=776
+# MOTOR epoch=2 t_us=21134697164 stage=3 coord=1936 valid=1 packets=777
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=953 nonzero=304 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21134797169 stage=3 coord=1785 valid=1 packets=778
+# MOTOR epoch=2 t_us=21134897164 stage=3 coord=1633 valid=1 packets=779
+# MOTOR epoch=2 t_us=21134997164 stage=3 coord=1481 valid=1 packets=780
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=958 nonzero=309 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21135097169 stage=3 coord=1330 valid=1 packets=781
+# MOTOR epoch=2 t_us=21135197164 stage=3 coord=1178 valid=1 packets=782
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=963 nonzero=314 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21135297169 stage=3 coord=1026 valid=1 packets=783
+# MOTOR epoch=2 t_us=21135397164 stage=3 coord=875 valid=1 packets=784
+# MOTOR epoch=2 t_us=21135497164 stage=3 coord=723 valid=1 packets=785
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=968 nonzero=319 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21135597169 stage=3 coord=571 valid=1 packets=786
+# MOTOR epoch=2 t_us=21135697164 stage=3 coord=420 valid=1 packets=787
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=973 nonzero=324 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21135797169 stage=3 coord=268 valid=1 packets=788
+# MOTOR epoch=2 t_us=21135897164 stage=3 coord=117 valid=1 packets=789
+# MOTOR epoch=2 t_us=21135997163 stage=3 coord=0 valid=1 packets=790
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=978 nonzero=329 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21136097171 stage=3 coord=0 valid=1 packets=791
+# MOTOR epoch=2 t_us=21136197164 stage=3 coord=0 valid=1 packets=792
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=983 nonzero=334 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21136297169 stage=3 coord=0 valid=1 packets=793
+# MOTOR epoch=2 t_us=21136397170 stage=3 coord=0 valid=1 packets=794
+# MOTOR epoch=2 t_us=21136497164 stage=3 coord=0 valid=1 packets=795
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=988 nonzero=339 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21136597169 stage=3 coord=0 valid=1 packets=796
+# MOTOR epoch=2 t_us=21136697168 stage=3 coord=0 valid=1 packets=797
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=994 nonzero=345 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21136797176 stage=3 coord=0 valid=1 packets=798
+# MOTOR epoch=2 t_us=21136897166 stage=3 coord=0 valid=1 packets=799
+# MOTOR epoch=2 t_us=21136997164 stage=3 coord=0 valid=1 packets=800
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=998 nonzero=349 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21137097176 stage=3 coord=0 valid=1 packets=801
+# MOTOR epoch=2 t_us=21137197164 stage=3 coord=0 valid=1 packets=802
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=1004 nonzero=355 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21137297169 stage=3 coord=0 valid=1 packets=803
+# MOTOR epoch=2 t_us=21137397173 stage=3 coord=0 valid=1 packets=804
+# MOTOR epoch=2 t_us=21137497171 stage=3 coord=0 valid=1 packets=805
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=1008 nonzero=359 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21137597174 stage=3 coord=0 valid=1 packets=806
+# MOTOR epoch=2 t_us=21137697170 stage=3 coord=0 valid=1 packets=807
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=1014 nonzero=365 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21137797175 stage=3 coord=0 valid=1 packets=808
+# MOTOR epoch=2 t_us=21137897173 stage=3 coord=0 valid=1 packets=809
+# MOTOR epoch=2 t_us=21137997170 stage=3 coord=0 valid=1 packets=810
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=1018 nonzero=369 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21138097174 stage=3 coord=0 valid=1 packets=811
+# MOTOR epoch=2 t_us=21138198148 stage=3 coord=0 valid=1 packets=812
+# MOTOR epoch=2 t_us=21138297171 stage=3 coord=0 valid=1 packets=813
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=1024 nonzero=375 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21138397175 stage=3 coord=0 valid=1 packets=814
+# MOTOR epoch=2 t_us=21138498148 stage=3 coord=0 valid=1 packets=815
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=1028 nonzero=379 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21138598148 stage=3 coord=0 valid=1 packets=816
+# MOTOR epoch=2 t_us=21138697170 stage=3 coord=0 valid=1 packets=817
+# MOTOR epoch=2 t_us=21138797171 stage=3 coord=0 valid=1 packets=818
+# STATE mode=replay armed=1 value=-256 target=-256 run=0 run_left_ms=0 sent=1034 nonzero=385 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# ACK disarm value=0
+# STATE mode=replay armed=0 value=-256 target=0 run=0 run_left_ms=0 sent=1035 nonzero=386 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21138898148 stage=3 coord=0 valid=1 packets=819
+# MOTOR epoch=2 t_us=21138997170 stage=3 coord=0 valid=1 packets=820
+# STATE mode=replay armed=0 value=0 target=0 run=0 run_left_ms=0 sent=1035 nonzero=386 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21139097173 stage=3 coord=0 valid=1 packets=821
+# MOTOR epoch=2 t_us=21139198148 stage=3 coord=0 valid=1 packets=822
+# MOTOR epoch=2 t_us=21139298148 stage=3 coord=0 valid=1 packets=823
+# STATE mode=replay armed=0 value=0 target=0 run=0 run_left_ms=0 sent=1035 nonzero=386 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21139397175 stage=3 coord=0 valid=1 packets=824
+# MOTOR epoch=2 t_us=21139498148 stage=3 coord=0 valid=1 packets=825
+# STATE mode=replay armed=0 value=0 target=0 run=0 run_left_ms=0 sent=1035 nonzero=386 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# ACK stop value=0
+# STATE mode=replay armed=0 value=0 target=0 run=0 run_left_ms=0 sent=1035 nonzero=386 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21139598148 stage=3 coord=0 valid=1 packets=826
+# MOTOR epoch=2 t_us=21139698148 stage=3 coord=0 valid=1 packets=827
+# MOTOR epoch=2 t_us=21139798149 stage=3 coord=0 valid=1 packets=828
+# STATE mode=replay armed=0 value=0 target=0 run=0 run_left_ms=0 sent=1035 nonzero=386 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21139898148 stage=3 coord=0 valid=1 packets=829
+# MOTOR epoch=2 t_us=21139998148 stage=3 coord=0 valid=1 packets=830
+# STATE mode=replay armed=0 value=0 target=0 run=0 run_left_ms=0 sent=1035 nonzero=386 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21140098148 stage=3 coord=0 valid=1 packets=831
+# MOTOR epoch=2 t_us=21140198148 stage=3 coord=0 valid=1 packets=832
+# MOTOR epoch=2 t_us=21140298148 stage=3 coord=0 valid=1 packets=833
+# STATE mode=replay armed=0 value=0 target=0 run=0 run_left_ms=0 sent=1035 nonzero=386 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21140398148 stage=3 coord=0 valid=1 packets=834
+# MOTOR epoch=2 t_us=21140498148 stage=3 coord=0 valid=1 packets=835
+# STATE mode=replay armed=0 value=0 target=0 run=0 run_left_ms=0 sent=1035 nonzero=386 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21140598148 stage=3 coord=0 valid=1 packets=836
+# MOTOR epoch=2 t_us=21140698148 stage=3 coord=0 valid=1 packets=837
+# MOTOR epoch=2 t_us=21140798148 stage=3 coord=0 valid=1 packets=838
+# STATE mode=replay armed=0 value=0 target=0 run=0 run_left_ms=0 sent=1035 nonzero=386 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21140898148 stage=3 coord=0 valid=1 packets=839
+# MOTOR epoch=2 t_us=21140998148 stage=3 coord=0 valid=1 packets=840
+# STATE mode=replay armed=0 value=0 target=0 run=0 run_left_ms=0 sent=1035 nonzero=386 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21141098152 stage=3 coord=0 valid=1 packets=841
+# MOTOR epoch=2 t_us=21141198148 stage=3 coord=0 valid=1 packets=842
+# MOTOR epoch=2 t_us=21141298148 stage=3 coord=0 valid=1 packets=843
+# STATE mode=replay armed=0 value=0 target=0 run=0 run_left_ms=0 sent=1035 nonzero=386 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21141398148 stage=3 coord=0 valid=1 packets=844
+# MOTOR epoch=2 t_us=21141498148 stage=3 coord=0 valid=1 packets=845
+# STATE mode=replay armed=0 value=0 target=0 run=0 run_left_ms=0 sent=1035 nonzero=386 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21141598148 stage=3 coord=0 valid=1 packets=846
+# MOTOR epoch=2 t_us=21141698148 stage=3 coord=0 valid=1 packets=847
+# MOTOR epoch=2 t_us=21141798155 stage=3 coord=0 valid=1 packets=848
+# STATE mode=replay armed=0 value=0 target=0 run=0 run_left_ms=0 sent=1035 nonzero=386 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21141898148 stage=3 coord=0 valid=1 packets=849
+# MOTOR epoch=2 t_us=21141998150 stage=3 coord=0 valid=1 packets=850
+# STATE mode=replay armed=0 value=0 target=0 run=0 run_left_ms=0 sent=1035 nonzero=386 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21142098155 stage=3 coord=0 valid=1 packets=851
+# MOTOR epoch=2 t_us=21142198148 stage=3 coord=0 valid=1 packets=852
+# MOTOR epoch=2 t_us=21142298148 stage=3 coord=0 valid=1 packets=853
+# STATE mode=replay armed=0 value=0 target=0 run=0 run_left_ms=0 sent=1035 nonzero=386 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+# MOTOR epoch=2 t_us=21142398153 stage=3 coord=0 valid=1 packets=854
+# MOTOR epoch=2 t_us=21142498155 stage=3 coord=0 valid=1 packets=855
+# STATE mode=replay armed=0 value=0 target=0 run=0 run_left_ms=0 sent=1035 nonzero=386 zero=649 rejected=0 tx_failed=0 twai_state=1 msgs_to_tx=0 bus_errors=0 tx_errors=0 rx_missed=0 limit=2048 interval_ms=50 watchdog_ms=2000 watchdog_stops=0 run_complete=0 pulse=0 pulse_done=0 button=0 cal_pending=0 cal_active_seen=1 cal_attempts=1 cal_sent=1 cal_observed=1 cal_wait_ms=0 version="motor_control 1.2 calibration_trigger"
+#

@@ -1243,3 +1243,11 @@
 - 已校验上轮镜像/复用编译产物，esptool4.11核实ESP32-S3 rev0.2/MAC28:84:85:92:34:84，0x10000应用291568字节Hash verified，esptool自处理复位并启动，未单独操作RTS，不动FM03 MCU固件。日志reports/20261010_124619_821176_calibration_control_upload.txt，完整部署记录reports/20261010_calibration_control_flash.json。
 - UART DTR/RTS先false再open，仅version/status读3秒；captures/20261010_124659_953817_calibration_control_version_verify.log及同名json，7STATE版本1.2、armed/value/target/sent/校准pending/attempts/sent/observed全0、无错误警告。没有ARM/非零/触发校准/猜取消；零计数仅本次未武装诊断，不能判定主动控制/校准可靠或无丢帧。
 - 单文件新版GUI已打开无自动连接；188旧文件哈希不变。更新guide/README/HANDOFF与两动作映射，git diff --check及暂存raw校验后本轮内容本地提交main（本条随本轮提交，号见git log），不推送/改历史；用户新会话留未跟踪。下一步由用户独立台架手动一次自动寻限位并记录机械动作/阶段1/2→3与坐标，STOP不保证取消内部校准。
+
+## 2026-10-10 18:49:06 北京时间 — 对照18:37测试录屏，记录自动寻限位首次成功
+
+- 用户新确认“测得寻限位功能可用”，视频I:/OBScatch/2026-10-10 18-37-40.mp4与captures/control_sessions/20261010_183747_709961_6bdc8a25画面目录一致。开始main/a1b8ecd，两用户新会话未跟踪，保留原件；本轮只离线分析，不开串口/复位/烧录/CAN发送。
+- 单次calibrate/启动hex匹配、53STATE普通速度目标0、阶段0→1→2→3约12.6s、首有限坐标3789；末attempts/sent/observed各1、pending0、armed/value/target0。370有效阶段3样本0～4096，4向外边界平台106样本；本次机械平台是否停止/是否碰硬挡块没有逐段确认。A/B没有点击。裸单包脱离已ARM/周期请求零值流是否有效、取消、持久化和实际位置仍未知。
+- 新tools/analyze_calibration_session.py及reports/20261010_183747_*派生分析/证据/验证/原件哈希清单；正25负47内部对增益中位5.937203，不把旧8.16当固定标定。主机通知max125ms/驱动100ms中位，无旧4096批次，支持刷新改善实测。真实断言、可复算相同、CLI拒绝覆盖通过；已有固件/GUI没有代码变更，不重复整套软/硬件实验。
+- 视频副本原字节14184888/SHA9465d4c1afa9e85e9e1113d0a07aefbb4cdbea0597b2ca59206ce3a676f9e5ac相同，FFmpeg5.1.1完整解码70.88s/2560x1440/120fps；9关键帧视觉检查，未听写两音轨，仅GUI画面，机械可用确认来自用户。194既有log/json/jsonl哈希未变，原summary历史限制不改写。
+- 更新HANDOFF/指南/README/CAPTURE_FILE_MAP/captures INDEX；git diff --check和新原件暂存字节核对后仅本轮新日志/视频/分析提交main（本条随本轮提交，号见git log），不推送/改历史。无关12:43原会话继续未跟踪。下一步机械标记与实际A/B记录，再开发/实测坐标反馈减速接近目标；STOP仍不是已验证校准取消。

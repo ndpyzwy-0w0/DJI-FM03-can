@@ -1,0 +1,53 @@
+{
+  "recorded_at_beijing": "2026-10-10 18:49:06",
+  "baseline_commit": "a1b8ecd",
+  "scope": "Offline log/video verification of user-reported calibration success; no serial/reset/upload/CAN operation",
+  "source_session": "captures/control_sessions/20261010_183747_709961_6bdc8a25",
+  "source_video": "I:\\OBScatch\\2026-10-10 18-37-40.mp4",
+  "video_copy": "captures/media/20261010_183740_calibration_host_operation.mp4",
+  "video_bytes": 14184888,
+  "video_sha256": "9465d4c1afa9e85e9e1113d0a07aefbb4cdbea0597b2ca59206ce3a676f9e5ac",
+  "video_decode_exit_code": 0,
+  "video_metadata": "FFmpeg5.1.1: H264 2560x1440 120fps 70.88s; 2 AAC tracks not transcribed",
+  "visually_inspected_seconds": [
+    8,
+    17,
+    24,
+    31,
+    44,
+    49,
+    55,
+    61,
+    64
+  ],
+  "checks": {
+    "real_session_stage_order": [
+      1,
+      2,
+      3
+    ],
+    "single_request_attempt_sent_observed": true,
+    "calibration_ordinary_speed_zero": true,
+    "state_samples_during_calibration": 53,
+    "working_range": [
+      0,
+      4096
+    ],
+    "outward_platforms": 4,
+    "outward_samples": 106,
+    "derived_recompute_equal": true,
+    "cli_no_overwrite_verified": true,
+    "raw_files_unchanged": 194,
+    "original_video_copy_equal": true
+  },
+  "evidence_level": "User confirms calibration usable; logged single application request within normal armed background traffic, stages and coordinates agree; no universal bare-packet or persistence claim",
+  "software_runtime": "unchanged firmware/host; new offline analyzer only",
+  "remaining_unknown": [
+    "Mechanical coordinate vs internal reference",
+    "Power/reset persistence",
+    "No verified cancellation",
+    "No physical endpoint stop timestamps or standalone full CAN capture",
+    "Background request/zero traffic necessity",
+    "No A/B click in this session"
+  ]
+}
