@@ -1,0 +1,77 @@
+{
+  "beijing_time": "2026-10-10 20:39:04",
+  "base_commit": "aef3abd",
+  "branch": "main",
+  "host_version": "motor_control_host 1.6 strict_positioning",
+  "firmware": "motor_control 1.2 calibration_trigger; unchanged; no flash",
+  "configuration": {
+    "strict_default": false,
+    "slowdown_default": false,
+    "min_speed_default": 1,
+    "min_speed_range": "integer 1..max_speed",
+    "strict_effective_tolerance": 0,
+    "near_correction_duration_ms": 100,
+    "continuous_duration_ms": 200
+  },
+  "success": "fresh distinct exact target samples stable for at least400ms/at least4 samples after firmware ordinary-zero confirmation",
+  "failure": "timeout, no coordinate progress or existing connection/feedback/calibration/error guards; no nearest-coordinate success fallback",
+  "tests": {
+    "position_control": 23,
+    "existing_regressions": 44,
+    "total": 67,
+    "passed": true,
+    "hardware_used": false
+  },
+  "checks": {
+    "source_self_check": true,
+    "frozen_self_check": true,
+    "ui": {
+      "requested_size": [
+        874,
+        1129
+      ],
+      "screen_size": [
+        2194,
+        1234
+      ],
+      "fits": true,
+      "strict_default": false,
+      "min_speed_default": 1
+    },
+    "tracked_raw_files_unchanged": 190,
+    "user_untracked_raw_files": "preserved; active logging may append naturally; not edited by agent"
+  },
+  "simulation": {
+    "path": "reports/20261010_strict_positioning_simulation.json",
+    "cases": 9,
+    "arrived_exact": 6,
+    "failed": 3,
+    "scope": "synthetic only, not mechanical accuracy measurements"
+  },
+  "executable": {
+    "path": "dist/FM03_MotorControl_StrictPosition.exe",
+    "bytes": 12143136,
+    "sha256": "6fb6561dc075059bc55ae6f74df2a65009d10390f4ee98fca641f884382b74f8",
+    "opened_without_connect": true
+  },
+  "hardware_actions_by_agent": {
+    "serial_opened": false,
+    "reset": false,
+    "flashed": false,
+    "arm": false,
+    "can_sent": false
+  },
+  "old_running_program": "PositionOptions observed at start, not terminated/disconnected by agent; absent in20:39 delivery process snapshot",
+  "unresolved": [
+    "mechanical strict arrival reliability and precision",
+    "minimum practical speed/load/backlash",
+    "short-motion effect under real communication delays",
+    "position sensor or internal reference source"
+  ],
+  "new_user_session_seen_at_delivery": {
+    "path": "captures/control_sessions/20261010_203847_236655_5f32e982",
+    "inspected": "directory presence only",
+    "motion_result_unknown": true,
+    "left_untracked_and_uninterrupted": true
+  }
+}

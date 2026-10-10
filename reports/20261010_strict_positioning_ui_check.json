@@ -1,0 +1,13 @@
+{
+  "requested_size": [
+    874,
+    1129
+  ],
+  "screen_size": [
+    2194,
+    1234
+  ],
+  "fits": true,
+  "strict_default": false,
+  "min_speed_default": 1
+}

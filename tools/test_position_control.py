@@ -35,12 +35,12 @@ class Plant:
             self.pending.append((self.now+self.delay,0,0))
         else:
             verb,value,ms = command.split()
-            assert verb=='run' and ms=='200'
+            assert verb=='run' and int(ms) in (100,200)
             self.pending.append((self.now+self.delay,int(value),self.now+int(ms)/1000))
         return True
 
-    def run(self, target, timeout=60, slowdown=True):
-        self.controller.start(target,self.ctx,self.now,timeout_s=timeout,slowdown=slowdown)
+    def run(self, target, timeout=60, slowdown=True, strict=False, min_speed=1):
+        self.controller.start(target,self.ctx,self.now,timeout_s=timeout,slowdown=slowdown,strict=strict,min_speed=min_speed)
         for step in range(int(timeout*100)+10):
             self.now = 100+(step+1)/100
             while self.pending and self.pending[0][0] <= self.now+1e-8:
@@ -64,6 +64,68 @@ class Plant:
 
 
 class PositionTests(unittest.TestCase):
+    def test_strict_mode_reaches_exact_integer_with_coarse_stop_or_slowdown(self):
+        for start,target,slowdown in ((1000,2000,False),(3000,2000,False),(1000,2000,True),
+                                      (3000,2000,True),(2048,0,False),(2048,4096,True)):
+            p=Plant(start,6,.05);r=p.run(target,strict=True,slowdown=slowdown)
+            self.assertEqual(r['status'],'arrived',r)
+            self.assertEqual(r['error'],0)
+            self.assertEqual(r['tolerance'],0)
+            self.assertTrue(r['strict'] and r['firmware_zero_confirmed'])
+            if target==2000:
+                self.assertGreater(r['fine_pulses'],0)
+                self.assertTrue(any(c in ('run 1 100','run -1 100') for _,c in p.written))
+
+    def test_strict_mode_does_not_accept_tolerance_or_a_brief_exact_reading(self):
+        written=[];controller=PositionController(lambda cmd:written.append(cmd) or True)
+        c=context(1999);controller.start(2000,c,100,strict=True,tolerance=4);controller.tick(c,100)
+        self.assertEqual(written,['stop'])
+        c['state_at']=100.1;controller.tick(c,100.1)
+        c['motor']['sample_t_us']+=100000;controller.tick(c,100.2)
+        self.assertEqual(written[-1],'run 1 100')
+        c['motor'].update(coordinate=2000,sample_t_us=1200000);controller.tick(c,100.3)
+        self.assertEqual(written[-1],'stop')
+        c['state_at']=100.4;controller.tick(c,100.4)
+        c['motor']['sample_t_us']+=100000;controller.tick(c,100.5)
+        self.assertTrue(controller.active)  # One exact sample never establishes success.
+        c['motor'].update(coordinate=1999,sample_t_us=1400000);controller.tick(c,100.6)
+        self.assertTrue(controller.active)
+        self.assertEqual(written[-1],'run 1 100')
+
+    def test_short_correction_stops_and_waits_for_firmware_zero_before_retry(self):
+        written=[];controller=PositionController(lambda cmd:written.append(cmd) or True)
+        c=context(1998);controller.start(2000,c,100,strict=True);controller.tick(c,100)
+        c['state_at']=100.1;controller.tick(c,100.1)
+        c['motor']['sample_t_us']+=100000;controller.tick(c,100.2)
+        self.assertEqual(written[-1],'run 1 100')
+        controller.tick(c,100.25)
+        self.assertEqual(written[-1],'run 1 100')  # Duplicate feedback cannot renew it.
+        c['motor']['sample_t_us']+=100000;controller.tick(c,100.3)
+        self.assertEqual(written[-1],'stop')
+        c['state'].update(value=1,target=1,run=1);c['state_at']=100.4
+        count=len(written);c['motor']['sample_t_us']+=100000;controller.tick(c,100.4)
+        self.assertEqual(len(written),count)
+
+    def test_minimum_speed_validation_and_slowdown_floor(self):
+        for options in ({'min_speed':0},{'min_speed':65},{'min_speed':True},{'strict':'yes'}):
+            written=[];controller=PositionController(lambda cmd:written.append(cmd) or True)
+            with self.assertRaises(ValueError):controller.start(2000,context(1900),100,**options)
+            self.assertEqual(written,[])
+        for start,speed in ((1900,8),(2100,-8)):
+            written=[];controller=PositionController(lambda cmd:written.append(cmd) or True)
+            c=context(start);controller.start(2000,c,100,slowdown=True,min_speed=8);controller.tick(c,100)
+            self.assertEqual(written,[f'run {speed} 200'])
+
+    def test_strict_unreachable_coordinate_fails_instead_of_accepting_nearby(self):
+        p=Plant(1998,gain=0);r=p.run(2000,strict=True)
+        self.assertEqual(r['status'],'failed')
+        self.assertEqual(r['reason'],'no_coordinate_progress')
+        self.assertNotEqual(r['error'],0)
+        self.assertEqual(p.written[-1][1],'stop')
+        p=Plant(1000,6,.05);r=p.run(2000,strict=True,timeout=2)
+        self.assertEqual(r['status'],'failed')
+        self.assertEqual(r['reason'],'timeout')
+
     def test_direct_mode_keeps_speed_until_tolerance_in_both_directions(self):
         for initial,near,arrived,speed in ((1000,1950,1997,64),(3000,2050,2003,-64)):
             written=[];events=[]
@@ -258,6 +320,28 @@ class PositionGuiTests(unittest.TestCase):
             app.position_slowdown_var.set(True);app.start_position();app.update_position_status()
             self.assertTrue(app.position.slowdown)
             self.assertEqual(self.fake.written[-1],'run 43 200\n')
+
+    def test_strict_and_minimum_speed_ui_are_frozen_and_logged(self):
+        from control_session import SessionLog,summarize
+        app=self.app
+        with patch.object(mc.time,'monotonic',return_value=100):
+            app.link.session=SessionLog(Path(self.temp.name),'FAKE',mc.BAUD)
+            app.link.last_session_dir=app.link.session.path
+            app.position_strict_var.set(True);app.position_min_speed_var.set('8')
+            app.position_target_var.set('1001');app.start_position();app.update_position_status()
+            self.assertTrue(app.position.strict)
+            self.assertEqual(app.position.min_speed,8)
+            self.assertEqual(app.position.tolerance,0)
+            self.assertEqual(str(app.position_strict_button['state']),'disabled')
+            self.assertEqual(str(app.position_min_speed_entry['state']),'disabled')
+            app.stop();app.update_position_status()
+            self.assertEqual(str(app.position_strict_button['state']),'normal')
+            self.assertEqual(str(app.position_min_speed_entry['state']),'normal')
+            app.disconnect()
+        events=summarize(app.link.last_session_dir)['position_events']
+        self.assertTrue(events[0]['strict'] and events[-1]['strict'])
+        self.assertEqual(events[0]['effective_tolerance'],0)
+        self.assertEqual(events[0]['min_speed'],8)
 
     def test_mark_validity_and_direct_zero_stop(self):
         app=self.app

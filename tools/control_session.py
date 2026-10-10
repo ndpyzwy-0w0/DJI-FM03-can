@@ -14,7 +14,7 @@ import threading
 import time
 import uuid
 
-HOST_VERSION = 'motor_control_host 1.5 positioning_options'
+HOST_VERSION = 'motor_control_host 1.6 strict_positioning'
 BEIJING = timezone(timedelta(hours=8))
 
 

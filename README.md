@@ -1,3 +1,5 @@
+> 2026-10-10：上位机1.6新增“严格到点（误差=0）”及可设置最低速度。严格模式持续低速纠偏，只有坐标等于目标并归零稳定才成功，失效/不可达/超时报告失败。打开 `dist/FM03_MotorControl_StrictPosition.exe` 或启动CMD，无需重烧。[使用说明](reports/20261010_strict_positioning_guide.md)。
+
 > 2026-10-10：上位机1.5新增“接近目标减速”开关，默认关闭、恒速到达/跨过目标直接停；勾选沿用减速。打开 `dist/FM03_MotorControl_PositionOptions.exe` 或启动CMD，无需重烧。[开关与停止说明](reports/20261010_positioning_options_guide.md)。
 
 > 2026-10-10：指定坐标自动到位已加入上位机1.4，支持接近减速、归零稳定确认、到A/B和自动日志。打开 `dist/FM03_MotorControl_Position.exe` 或“启动运动控制.cmd”，复用已烧录控制固件1.2，无需重烧；58项软件测试通过，自动机械到位待手动首测。[操作与限制](reports/20261010_positioning_guide.md)。

@@ -333,3 +333,10 @@
 
 - 用户要求减速可选，主机1.5默认恒速到达/跨过目标直停；日志position_start/end新增slowdown，后续可区分恒速与减速。原两模式的实际速度/动作/停下误差须从用户观察及新会话确认，本轮无对应实机动作记录。
 - 61离线测试与4组模拟仅软件；指南reports/20261010_positioning_options_guide.md，模拟/验证见同前缀simulation.json/validation.json。202既有原件哈希不变；三个未跟踪用户会话保留不提交，20:11已有summary但本轮不据此宣布到位成功。agent未串口/复位/烧录/CAN，旧EXE保留。
+
+## 2026-10-10 20:39:04 北京时间 — 严格到点软件开发，无agent实机动作
+
+- 主机1.6新增严格到点与最低速度，日志position_start/end有strict/min_speed/effective tolerance/fine_pulses，sample有fine_control；只有严格相等/普通归零确认/持续新样本稳定才成功。具体字段start的effective_tolerance、end的tolerance区分输入近邻范围与真实成功误差。
+- 67离线测试、9组模拟不是实际电机动作/定位精度；指南reports/20261010_strict_positioning_guide.md、模拟reports/20261010_strict_positioning_simulation.json、验证reports/20261010_strict_positioning_validation.json。190已跟踪原件哈希不变；四未跟踪用户会话及旧程序保留，活动日志可自然增长，不强绑新模式的实机结果。agent未串口/复位/烧录/CAN，用户后续需记录动作/机械标记/灯语/电源。
+
+- 交付时另发现用户新会话captures/control_sessions/20261010_203847_236655_5f32e982；仅目录发现，动作/实际到位结果未核查，原件保留未跟踪、不中断、不纳开发提交。

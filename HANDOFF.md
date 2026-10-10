@@ -1,3 +1,13 @@
+## 当前入口：2026-10-10 20:39:04 北京时间 — 严格到点与可设置最低速度，主机1.6已打包打开
+
+- 用户明确授权开发严格到点，结合前条最低速度可选要求；起点main/aef3abd，保留四个未跟踪用户会话及正在运行PositionOptions旧进程，不中断/断串口。新增严格复选框/最低速度输入1～max_speed（默认1），两策略默认关闭；开始时固定参数，运行时禁用新参数控件，到A/B复用。
+- strict=True有效成功容差0，输入tolerance只作微调进入范围。接近/跨目标先STOP并等新STATE普通零值，再最低速度纠偏；误差≤2时每次run v 100后在下一新反馈STOP，零确认及新坐标后再决定。其余普通续期200ms；重复样本不续期。严格只在零确认后连续新样本≥4个/≥400ms全部等目标时arrived；临时相等/容差内/停止漂移不成功，漂移继续纠偏。普通策略保留，减速下限改为min_speed。
+- 严格纠偏不沿用普通4次反向上限，但受超时/无进展/旧反馈与校准/epoch/错误/日志等全部保护；首次刹车后重新跟踪微调进展，避免把刹车漂移误判为低速停滞。不可达/失效明确失败STOP，不以附近点降级成功。实际最低可推动速度、100ms短命令效果/回差及机械精度未知，精确成功判据不保证每次必能成功。
+- 修改tools/position_control.py/motor_control.py/control_session.py/test_position_control.py与启动CMD；主机1.6 strict_positioning日志start/end含strict/min_speed/effective tolerance/fine_pulses，sample含fine_control，仍完整UART记录。新增reports/20261010_strict_positioning_guide.md、simulation.json、validation.json、ui_check.json、raw_baseline.json（其余同20261010_strict_positioning_前缀）。固件不改，仍用1.2，无需重烧。
+- 67项软件测试通过（到位23+已有44），源码/最终EXE --check/GUI尺寸通过；9模拟6个严格0误差/3失败，不是机械实测。GUI874x1129/屏幕2194x1234；dist/FM03_MotorControl_StrictPosition.exe 12143136字节/SHA6fb6561dc075059bc55ae6f74df2a65009d10390f4ee98fca641f884382b74f8，已可见打开不带--connect。未主动关闭旧窗口；20:39交付进程快照仅见新版StrictPosition（旧进程已自行消失），新版未自动ARM/校准/运动；agent未真实串口/复位/烧录/CAN。
+- 交付时另发现用户新会话captures/control_sessions/20261010_203847_236655_5f32e982；仅目录发现，动作/实际到位结果未核查，原件保留未跟踪、不中断、不纳开发提交。
+- 190已跟踪不可变原件哈希不变；未跟踪用户实验可自然增长，本轮不编辑/覆盖/删除、不混入开发提交、不分析未确认动作。更新交接/README/WORK_LOG/动作两索引，git diff --check和暂存复核后仅本轮main本地提交（准确号见git log），不推送/改历史。下一步用户手动严格模式附近内部目标、最低速度1起，对照停下坐标和机械标记，记录真实成功率/偏差；仓库只FM03通用能力。
+
 ## 当前入口：2026-10-10 20:21:59 北京时间 — 坐标到位减速改为可选，主机1.5默认恒速直停
 
 - 用户要求“无需接近减速，到了直接停，做成可选开关”；起点main/6573890，保留三用户未跟踪会话。界面新增“接近目标减速”，默认关闭；控制器start增加slowdown=False，日志start/end保存选项。启动固定策略、进行中复选框禁用；到A/B共用开关，不影响记录按钮行为。

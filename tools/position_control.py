@@ -6,6 +6,7 @@ The supplied send callback returns UART write success, not motor execution.
 import math
 
 LEASE_MS = 200
+FINE_LEASE_MS = 100
 FEEDBACK_MAX_AGE_S = .3
 STATE_MAX_AGE_S = 1.0
 SETTLE_S = .4
@@ -27,6 +28,7 @@ REASONS = {
     'operator_stop':'手动STOP', 'operator_disarm':'手动DISARM', 'operator_zero_or_stop':'手动归零/停止',
     'disconnect':'串口断开', 'window_closed':'窗口关闭',
     'coordinate_in_tolerance_and_stable':'坐标在允许误差内且已稳定',
+    'coordinate_exact_and_stable':'坐标精确等于目标且归零后已稳定',
 }
 
 
@@ -65,7 +67,8 @@ class PositionController:
         self.move_id = 0
         self.result = None
 
-    def start(self, target, context, now, tolerance=4, max_speed=64, timeout_s=60, slowdown=False):
+    def start(self, target, context, now, tolerance=4, max_speed=64, timeout_s=60, slowdown=False,
+              strict=False, min_speed=1):
         if self.active:
             raise ValueError('自动到位仍在进行，请先取消。')
         if type(target) is not int or not 0 <= target <= 4096:
@@ -78,6 +81,10 @@ class PositionController:
             raise ValueError('超时必须为2～120秒。')
         if type(slowdown) is not bool:
             raise ValueError('接近目标减速必须是布尔开关。')
+        if type(strict) is not bool:
+            raise ValueError('严格到点必须是布尔开关。')
+        if type(min_speed) is not int or not 1 <= min_speed <= max_speed:
+            raise ValueError('最低速度必须为1～最大速度的整数。')
         reason = unavailable(context)
         if reason:
             raise ValueError('不能启动自动到位：'+reason_text(reason))
@@ -85,8 +92,12 @@ class PositionController:
             raise ValueError('请先STOP并等普通速度、定时和脉冲状态全部归零。')
         self.move_id += 1
         self.active, self.phase, self.result = True, 'moving', None
-        self.target, self.tolerance, self.max_speed = target, tolerance, max_speed
+        self.target, self.tolerance, self.max_speed = target, 0 if strict else tolerance, max_speed
+        self.approach_window, self.strict, self.min_speed = tolerance, strict, min_speed
         self.slowdown = slowdown
+        self.fine_control = self.fine_pulse_pending = False
+        self.fine_started = False
+        self.fine_pulses = 0
         self.started, self.deadline = now, now+timeout_s
         self.last_tick_at = now
         self.epoch = context['motor']['epoch']
@@ -100,8 +111,9 @@ class PositionController:
         self.zero_at = self.zero_confirmed_at = self.stable_since = None
         self.stable_coordinates = []
         recorded = self.event('position_start', move_id=self.move_id, target=target, tolerance=tolerance,
+                   effective_tolerance=self.tolerance, strict=strict, min_speed=min_speed,
                    max_speed=max_speed, timeout_s=timeout_s, slowdown=slowdown, initial_coordinate=context['motor']['coordinate'],
-                   epoch=self.epoch, lease_ms=LEASE_MS)
+                   epoch=self.epoch, lease_ms=LEASE_MS, fine_lease_ms=FINE_LEASE_MS)
         if recorded is False:
             self._finish('failed', 'position_log_failed', context, now)
 
@@ -110,7 +122,8 @@ class PositionController:
         coordinate = context['motor'].get('coordinate')
         self.result = dict(move_id=self.move_id, status=status, reason=reason, target=self.target,
                            final_coordinate=coordinate, error=coordinate-self.target if coordinate is not None else None,
-                           elapsed_s=round(now-self.started, 3), tolerance=self.tolerance, slowdown=self.slowdown, reversals=self.reversals,
+                           elapsed_s=round(now-self.started, 3), tolerance=self.tolerance, slowdown=self.slowdown,
+                           strict=self.strict, min_speed=self.min_speed, fine_pulses=self.fine_pulses, reversals=self.reversals,
                            firmware_zero_confirmed=self.zero_confirmed_at is not None and all(context['state'].get(k)==0 for k in ('value','target','run','pulse')),
                            stop_write_ok=self.send('stop') if stop else None,
                            coordinate_success_only=True)
@@ -125,6 +138,9 @@ class PositionController:
             self._finish('failed', 'stop_write_failed', context, now)
             return
         self.phase, self.zero_at = 'settling', now
+        self.fine_pulse_pending = False
+        if self.strict:
+            self.last_nonzero = 0
         self.zero_confirmed_at = self.stable_since = None
         self.stable_coordinates = []
 
@@ -163,7 +179,7 @@ class PositionController:
         coordinate = motor['coordinate']
         error = self.target-coordinate
         if self.event('position_sample', move_id=self.move_id, coordinate=coordinate, error=error,
-                      phase=self.phase, sample_t_us=sample, epoch=self.epoch) is False:
+                      phase=self.phase, fine_control=self.fine_control, sample_t_us=sample, epoch=self.epoch) is False:
             self._finish('failed', 'position_log_failed', context, now)
             return
         if abs(error) < self.best_error:
@@ -175,20 +191,40 @@ class PositionController:
                 if max(self.stable_coordinates)-min(self.stable_coordinates) > self.tolerance:
                     self.stable_since, self.stable_coordinates = now, [coordinate]
                 if now-self.stable_since >= SETTLE_S and len(self.stable_coordinates) >= 4:
-                    self._finish('arrived', 'coordinate_in_tolerance_and_stable', context, now, stop=False)
+                    self._finish('arrived', 'coordinate_exact_and_stable' if self.strict else 'coordinate_in_tolerance_and_stable', context, now, stop=False)
                 return
-            if not self.slowdown:
+            if not self.slowdown and not self.strict:
                 self._finish('failed', 'direct_stop_outside_tolerance', context, now)
                 return  # Direct stop never reverses automatically to chase an overshoot.
-            self.phase, self.progress_at, self.best_error = 'moving', now, abs(error)
+            self.phase = 'moving'
+            if self.strict:
+                self.fine_control = True
+                # Rebase after the initial braking drift, or drift from an exact reading.
+                if not self.fine_started or self.best_error == 0:
+                    self.progress_at, self.best_error = now, abs(error)
+                self.fine_started = True
+            else:
+                self.progress_at, self.best_error = now, abs(error)
         if abs(error) <= self.tolerance:
             self._zero(context, now)
             return
+        if self.strict and not self.fine_control and abs(error) <= self.approach_window:
+            self.fine_control = True
+            self._zero(context, now)
+            return
+        if self.fine_pulse_pending:
+            self._zero(context, now)
+            return  # One short correction, then confirm zero and inspect new feedback.
         if now-self.progress_at > 3:
             self._finish('failed', 'no_coordinate_progress', context, now)
             return
         direction = 1 if error > 0 else -1
         if self.last_nonzero and direction != self.last_nonzero:
+            if self.strict:
+                self.reversals += 1
+                self.fine_control = True
+                self._zero(context, now)
+                return
             if not self.slowdown:
                 self._zero(context, now)
                 return  # The sample skipped across the target; stop immediately.
@@ -199,9 +235,16 @@ class PositionController:
             else:
                 self._zero(context, now)
             return
-        # Conservative proportional speed, not an assumed distance/time integral.
-        speed = direction*(max(1, min(self.max_speed, abs(error)//24)) if self.slowdown else self.max_speed)
-        if self.send(f'run {speed} {LEASE_MS}'):
+        magnitude = self.min_speed if self.fine_control else self.max_speed
+        if self.slowdown and not self.fine_control:
+            magnitude = max(self.min_speed, min(self.max_speed, abs(error)//24))
+        speed = direction*magnitude
+        short_correction = self.strict and self.fine_control and abs(error) <= 2
+        duration = FINE_LEASE_MS if short_correction else LEASE_MS
+        if self.send(f'run {speed} {duration}'):
             self.last_nonzero = direction
+            if short_correction:
+                self.fine_pulses += 1
+                self.fine_pulse_pending = True
         else:
             self._finish('failed', 'motion_write_failed', context, now)

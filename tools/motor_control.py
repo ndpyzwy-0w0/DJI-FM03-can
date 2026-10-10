@@ -333,7 +333,7 @@ class MotorControlApp:
 
     # -- UI ----------------------------------------------------------------
     def build_ui(self) -> None:
-        self.root.title("FM03 跟焦电机 运动控制（到位减速可选/日志版）")
+        self.root.title("FM03 跟焦电机 运动控制（严格到点/日志版）")
         self.root.minsize(860, 760)
         outer = ttk.Frame(self.root, padding=10)
         outer.pack(fill="both", expand=True)
@@ -480,9 +480,16 @@ class MotorControlApp:
         self.position_slowdown_var = tk.BooleanVar(value=False)
         self.position_slowdown_button = ttk.Checkbutton(positioning,text='接近目标减速',variable=self.position_slowdown_var)
         self.position_slowdown_button.grid(row=2,column=0,columnspan=3,sticky='w')
-        ttk.Label(positioning,text='不勾选：按最大速度运行，到达或越过目标时直接停止。').grid(row=2,column=3,columnspan=5,sticky='w')
+        self.position_min_speed_var = tk.StringVar(value='1')
+        ttk.Label(positioning,text='最低速度').grid(row=2,column=3,sticky='e')
+        self.position_min_speed_entry = ttk.Entry(positioning,textvariable=self.position_min_speed_var,width=7)
+        self.position_min_speed_entry.grid(row=2,column=4,padx=3)
+        self.position_strict_var = tk.BooleanVar(value=False)
+        self.position_strict_button = ttk.Checkbutton(positioning,text='严格到点（误差=0）',variable=self.position_strict_var)
+        self.position_strict_button.grid(row=2,column=5,columnspan=3,sticky='w')
+        ttk.Label(positioning,text='严格模式会最低速纠偏；允许误差只作进入微调的范围，成功必须坐标相等。').grid(row=3,column=0,columnspan=8,sticky='w')
         self.position_label = ttk.Label(positioning,text='尚未启动；允许误差是原始坐标单位，实际机械误差需复测。',wraplength=800)
-        self.position_label.grid(row=3,column=0,columnspan=8,sticky='w')
+        self.position_label.grid(row=4,column=0,columnspan=8,sticky='w')
 
         # Telemetry + log
         bottom = ttk.Frame(outer)
@@ -862,7 +869,8 @@ class MotorControlApp:
         try:
             self.position.start(int(self.position_target_var.get()), self.position_context(),time.monotonic(),
                 tolerance=int(self.position_tolerance_var.get()),max_speed=int(self.position_speed_var.get()),
-                timeout_s=float(self.position_timeout_var.get()),slowdown=self.position_slowdown_var.get())
+                timeout_s=float(self.position_timeout_var.get()),slowdown=self.position_slowdown_var.get(),
+                strict=self.position_strict_var.get(),min_speed=int(self.position_min_speed_var.get()))
         except ValueError as exc:
             messagebox.showwarning('不能开始自动到位',str(exc))
             return
@@ -872,7 +880,7 @@ class MotorControlApp:
         if not self.position.active:
             self.log('自动到位未启动：日志保存失败。')
             return
-        self.log(f'开始自动到位：目标{self.position.target}、误差±{self.position.tolerance}、速度上限{self.position.max_speed}、接近减速{self.position.slowdown}')
+        self.log(f'开始自动到位：目标{self.position.target}、误差±{self.position.tolerance}、速度{self.position.min_speed}～{self.position.max_speed}、接近减速{self.position.slowdown}、严格到点{self.position.strict}')
 
     def goto_mark(self, marker):
         context = self.position_context()
@@ -898,13 +906,15 @@ class MotorControlApp:
         ready = not self.position.active and position_unavailable(context) is None and all(context['state'].get(k)==0 for k in ('value','target','run','pulse'))
         self.position_button.configure(state='normal' if ready else 'disabled')
         self.position_slowdown_button.configure(state='disabled' if self.position.active else 'normal')
+        self.position_strict_button.configure(state='disabled' if self.position.active else 'normal')
+        self.position_min_speed_entry.configure(state='disabled' if self.position.active else 'normal')
         for marker,button in (('A',self.goto_a_button),('B',self.goto_b_button)):
             mark = context['motor']['marks'].get(marker)
             valid = ready and mark and mark['valid'] and mark['epoch']==context['motor']['epoch']
             button.configure(state='normal' if valid else 'disabled')
         if self.position.active:
             coordinate = context['motor']['coordinate']
-            motion_text = '减速接近' if self.position.slowdown else '恒速接近'
+            motion_text = '最低速纠偏' if self.position.fine_control else '减速接近' if self.position.slowdown else '恒速接近'
             text = f"{motion_text if self.position.phase=='moving' else '归零/稳定确认'}：目标{self.position.target}，当前{coordinate}，允许±{self.position.tolerance}"
         elif self.position.result:
             r = self.position.result
